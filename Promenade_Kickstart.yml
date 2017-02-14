@@ -1,0 +1,277 @@
+---
+
+#This playbook is the first step of the process to instantiate a openstack-helm
+#cluster on baremetal nodes.   The purpose of this playbook is to take a server
+#loaded with Ubuntu 16.04, deploy kubernetes, create a cluster, and load the
+#MaaS (Metal-as-a-Service). Once MaaS has been brought up, a user can then bootstrap
+#the other baremetal nodes in the cluster.
+
+- name: Promenade Kickstart
+  hosts: kube_master
+  become: true
+  vars:
+
+    #Provide the IP of the node you are running this playbook against
+    kube_master_ip: "10.0.2.15"
+    #Set to `false` if you do not plan on running containers on this host
+    deploy_pods_master: true
+    #Provide any kubernetes labels here.
+    kube_labels:
+      - "openstack-control-plane"
+    #Provide Version for Kube Controller Manager
+    kube_controller_manager_version: "v1.5.1"
+
+  tasks:
+
+    - name: Install Repo Key for Kubernetes and Docker
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        state: present
+
+    - name: Install Apt Repository for Kubernetes
+      apt_repository:
+        repo: "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+        state: present
+
+    - name: Install Required Packages for Kubernetes and Docker
+      apt:
+        name: "{{ item }}"
+        update_cache: true
+        state: present
+      with_items:
+        - docker.io
+        - kubeadm
+        - kubelet
+        - kubectl
+        - kubernetes-cni
+
+    - name: Install Debugging Tools Packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - htop
+        - vim
+        - ethtool
+        - tmux
+        - traceroute
+        - git
+        - build-essential
+        - lldpd
+
+    - name: Check for Kubernetes Bootstrap
+      shell: kubectl get nodes
+      register: bootstrap_output
+      ignore_errors: true
+
+
+    - name: Initialize Cluster for Kubernetes
+      shell: "kubeadm init --api-advertise-addresses {{ kube_master_ip }} >> /root/kube_cluster_details"
+      when: bootstrap_output | failed
+      register: kube_init
+
+    - name: Gather Cluster Details
+      shell: cat /root/kube_cluster_details | sed -n '$p'
+      register: cluster_details
+
+    - name: Display output for kubejoin
+      debug:
+        msg: "NOTE: To join more nodes to this cluster execute:  {{ cluster_details.stdout }}"
+
+    - name: Label nodes
+      shell: "kubectl label nodes {{ item }}=enabled --all"
+      when: deploy_pods_master == true and kube_init | changed
+      with_items:
+        - "{{ kube_labels }}"
+
+    - name: Enable Scheduling of Pods on master
+      shell: "kubectl taint nodes {{ ansible_hostname }} dedicated:NoSchedule-"
+      when: deploy_pods_master == true and kube_init | changed
+
+    - name: Check if Calico is deployed
+      shell: kubectl get pod -o wide --all-namespaces | grep calico
+      register: calico_check
+      ignore_errors: true
+
+    - name: Deploy Calico
+      shell: kubectl apply -f http://docs.projectcalico.org/v2.0/getting-started/kubernetes/installation/hosted/kubeadm/calico.yaml
+      when: calico_check | failed
+
+    - name: Install Ceph
+      apt:
+        name: ceph-common
+        state: present
+      register: ceph_installed
+
+    - name: Create Ceph and OpenStack-Helm directories
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "/var/lib/openstack-helm/ceph/osd"
+        - "/var/lib/openstack-helm/ceph/ceph"
+        - "/var/lib/openstack-helm/ceph/mon"
+        - "/var/lib/nova/instances"
+
+    - name: Install Sigil for Ceph Secrets
+      shell: curl -L https://github.com/gliderlabs/sigil/releases/download/v0.4.0/sigil_0.4.0_Linux_x86_64.tgz | tar -zxC /usr/local/bin
+      when: ceph_installed | changed
+
+    - name: Capture kubernetes version
+      shell: kubelet --version | cut -d " " -f2
+      register: kube_version
+
+    - name: Deploy kube config
+      template:
+        src: templates/kube-controller-manager.json.j2
+        dest: /etc/kubernetes/manifests/kube-controller-manager.json
+      register: kube_controller_manager
+
+    - name: Restart kubelet
+      service:
+        name: kubelet
+        state: restarted
+      when: kube_controller_manager | changed
+
+
+    - name: Capture KubeDNS Output
+      shell: "kubectl get svc kube-dns --namespace=kube-system | awk '{print $2}' | sed -n '$p'"
+      register: kube_dns_server
+
+    - name: Ensure kubeDNS is in the /etc/resolv.conf
+      lineinfile:
+        dest: /etc/resolv.conf
+        insertafter: "^#     DO"
+        line: "nameserver {{ kube_dns_server.stdout }}"
+        state: present
+        backup: true
+
+    - name: Ensure other kubernetes line is in the /etc/resolv.conf
+      lineinfile:
+        dest: /etc/resolv.conf
+        insertafter: EOF
+        line: "search svc.cluster.local"
+        state: present
+        backup: true
+
+    - action: shell kubectl get pods -o wide --all-namespaces | grep kube-controller-manager
+      register: kcm_output
+      until: kcm_output.stdout.find("Running") != -1
+      retries: 20
+      delay: 15
+
+    - name: Make sure DNS entry is in Kube Control Manager
+      shell: "kubectl exec -ti -n kube-system kube-controller-manager-{{ ansible_hostname }} -- cat /etc/resolv.conf | grep {{ kube_dns_server.stdout }}"
+
+    - name: Check for Kubernetes dashboard
+      shell: kubectl get pods -o wide --all-namespaces | grep kubernetes-dashboard
+      register: dashboard_check
+      ignore_errors: true
+
+    - name: Deploy Kubernetes Dashboard
+      shell: kubectl create -f https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml
+      when: dashboard_check | failed
+
+    - name: Check if Helm is installed
+      stat:
+        path: /usr/local/bin/helm
+      register: helm_installed
+
+    - name: Install helm
+      shell: curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > /root/get_helm.sh
+      when: helm_installed.stat.exists == False
+
+    - name: Set file properties
+      file:
+        path: /root/get_helm.sh
+        mode: 0700
+      when: helm_installed.stat.exists == False
+
+    - name: Install helm
+      shell: sh /root/get_helm.sh
+      when: helm_installed.stat.exists == False
+
+    - name: Create directories for OpenStack Helm
+      file:
+        path: /srv/openstack-helm
+        state: directory
+
+    - name: Checkout OpenStack-Helm
+      git:
+        repo: https://github.com/att-comdev/openstack-helm.git
+        dest: /srv/openstack-helm/
+        update: true
+
+    - name: Check for Helm/Tiller
+      shell: kubectl get po --namespace kube-system | grep tiller
+      ignore_errors: true
+      register: helm_running
+
+    - name: Initialize Helm/Tiller
+      shell: helm init --home /srv/openstack-helm/.helm
+      environment:
+        HELM_HOME: /srv/openstack-helm/.helm/
+
+      when: helm_running | failed
+
+    #Running helm in the background. Hacky using `nohup` but helm serve stops during ansible run when it goes onto next step
+    - name: Helm Serve
+      shell: nohup helm serve --repo-path /srv/openstack-helm/.helm/repository/local &
+      environment:
+        HELM_HOME: /srv/openstack-helm/.helm/
+      args:
+        chdir: /srv/openstack-helm/
+      when: helm_running | failed
+
+    - name: Add helm repositories
+      shell: helm repo add local http://localhost:8879/charts --home /srv/openstack-helm/.helm
+      args:
+        chdir: /srv/openstack-helm/
+      when: helm_running | failed
+
+    - name: Check if MAAS is Running
+      shell: kubectl get pod -o wide --all-namespaces | grep maas
+      ignore_errors: true
+      register: maas_deployed
+
+    #Check every 15 seconds to make sure the tiller pod has fully come up.
+    - action: shell kubectl get pods --all-namespaces | grep tiller
+      register: tiller_output
+      until: tiller_output.stdout.find("Running") != -1
+      retries: 20
+      delay: 15
+
+    - name: Run Make on all Helm charts
+      shell: make
+      environment:
+        HELM_HOME: /srv/openstack-helm/.helm/
+      args:
+        chdir: /srv/openstack-helm/
+      when: maas_deployed | failed
+
+    - name: Deploy MaaS
+      shell: helm install maas --namespace=maas
+      environment:
+        HELM_HOME: /srv/openstack-helm/.helm/
+      args:
+        chdir: /srv/openstack-helm/
+      when: maas_deployed | failed
+
+    #Check every 15 seconds until MaaS comes up
+    - action: shell kubectl get pods --namespace maas
+      register: maas_output
+      until: maas_output.stdout.find("Running") != -1
+      retries: 20
+      delay: 15
+
+    #Deployment Succeed!  Output messages
+    - name: Display output for kubejoin
+      debug:
+        msg: "Kubernetes Deployment Successfully Completed! To join more nodes to this cluster execute:  {{ cluster_details.stdout }}"
+
+    - name: Display output for MAAS
+      debug:
+        msg: "MAAS Deployment Successfully Completed.  To access MAAS API go to:  https://{{ kube_master_ip }}/MAAS"
+
+
+      #kubectl taint nodes node01 dedicated:NoSchedule-
