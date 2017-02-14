@@ -1,0 +1,4 @@
+atlfoundry*
+*.log
+*.retry
+.vagrant/
