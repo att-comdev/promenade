@@ -1,0 +1,33 @@
+#Default Override-able variables for bootstrap role
+bootstrap_enabled: "false"
+ansible_user: "ubuntu"
+#ansible_ssh_pass="password"
+
+# For DNS Resilliency, override this with FQDN in your environment which resolves to all "master" servers
+api_server_fqdn: "cluster-ha.default.svc.cluster.local"
+cluster_domain: "cluster.local"
+
+# Kubernetes versions:
+boot_kube_version: "v0.4.0"
+hyperkube_version: "v1.6.1"
+kubelet_version: "v1.6.1"
+kube_controller_manager_version: "v1.6.1"
+kube_label: "openstack-control-plane"
+
+# SDN/CNI Parameters:
+cni_version: "v0.5.2"
+calicoctl_version: "v1.1.1"
+
+# Calico BGP Peering Options:
+calico_peer1: 10.23.21.2
+calico_peer2: 10.23.21.3
+
+## Kubernetes Add-Ons:
+# Optional Items: kube_dashboard, kube_helm (more to come).
+addons_enabled: false
+addons:
+  - dashboard
+  - helm
+  - osh
+  - ceph
+  - maas

@@ -1,0 +1,16 @@
+{
+    "name": "calico-k8s-network",
+    "cniVersion": "{{ cni_version }}",
+    "type": "calico",
+    "etcd_endpoints": "http://{{ api_server_fqdn }}:12379",
+    "log_level": "info",
+    "ipam": {
+        "type": "calico-ipam"
+    },
+    "policy": {
+        "type": "k8s"
+    },
+    "kubernetes": {
+        "kubeconfig": "/etc/kubernetes/kubeconfig"
+    }
+}

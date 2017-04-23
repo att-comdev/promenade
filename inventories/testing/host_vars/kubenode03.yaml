@@ -1,0 +1,6 @@
+##  Role:
+#   Options: master, worker
+#   Note: More grainular options coming soon (api, controller, etc)
+kube_role: worker
+
+hostname: kubenode03

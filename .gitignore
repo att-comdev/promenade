@@ -1,3 +1,8 @@
+# Includes:
+
+# Excludes:
 *.retry
 hosts-deploy.yaml
+files/bootkube
+files/backup/bootkube
 roles/deploy-kubelet/templates/kubeconfig

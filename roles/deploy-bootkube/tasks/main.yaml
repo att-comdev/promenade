@@ -1,0 +1,4 @@
+---
+- include: deploy-kube-manifests.yaml
+- include: deploy-hyperkube.yaml
+- include: deploy-bootkube.yaml

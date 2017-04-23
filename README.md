@@ -1,3 +1,33 @@
+# Playbook Ordering:
+1. Clean previous bootstrap deployment if bootstrap_enabled=true
+2. Prepare the bootkube host
+2. Render assets | or | BYOA folder (copy bootkube folder to `files` directory)
+3. Download CNI requirements
+4. Deploy Kubelet (will be in wait state until API server is available)
+5. Sync bootkube directory in /tmp/bootkube (on remote hosts)
+5. Load declared sdn cni plugins
+6. Launch bootkube
+
+
+
+## Rendering Assets
+Promenade is flexible, and allows operators to generate their own rendered assets if they wish. To that this point, there are two methods for implementing rendered assets with Promenade. You can either render assets on your own locally (on your own host or elsewhere), and have them deployed (this is default), or you can have Promenade intelligently render assets on your behalf as part of the bootstrap process. The boolean variable `bootkube_render` is what determines the rendering actions. Using `bootkube_render=true` at the time of deployment will override the default "bring your own assets" behavior and automatically render assets for you on the bootstrap host.
+
+docker run quay.io/coreos/bootkube:v0.4.0 \
+      --insecure-options=image \
+      --volume=target,kind=host,source="${PWD}" \
+      --mount volume=target,target=/target \
+      --net=none \
+      --exec=/bootkube \
+      -- render \
+      --asset-dir=/target/assets/bootkube \
+      --api-servers=https://172.15.0.10:443 \
+      --etcd-servers=http://master.k8s:2379 \
+      --api-server-alt-names=DNS=master.k8s,IP=172.15.0.10
+
+
+
+
 # Promenade: Manually Self-hosted Kubernetes via Bootkube
 A small howto on how to bring up a self-hosted kubernetes cluster
 

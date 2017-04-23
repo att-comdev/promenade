@@ -1,0 +1,10 @@
+[Unit]
+Description=Kubernetes Control Plane Bootstrapping
+Documentation=https://github.com/kubernetes-incubator/bootkube
+
+[Service]
+ExecStart=/usr/local/bin/bootkube start --asset-dir=/tmp/bootkube/assets/
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

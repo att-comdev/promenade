@@ -1,0 +1,22 @@
+---
+# Obtains auth/kubeconfig from loaded bootkube assets
+- name: Ensure pre-generated bootkube assets exist on the bootstrap master
+  when:
+    - (bootstrap_enabled == 'true') and (bootkube_render == 'false') and (inventory_hostname in groups['master'])
+  copy:
+    src: '../files/bootkube'
+    dest: '/tmp'
+    owner: root
+    group: root
+    mode: 0644
+
+# Obtains auth/kubeconfig from created bootkube assets
+- name: Ensure promenade-generated bootkube assets exist on the bootstrap master
+  when:
+    - (bootstrap_enabled == 'true') and (bootkube_render == 'true') and (inventory_hostname in groups['master'])
+  copy:
+    src: '../files/backup/bootkube'
+    dest: '/tmp'
+    owner: root
+    group: root
+    mode: 0644

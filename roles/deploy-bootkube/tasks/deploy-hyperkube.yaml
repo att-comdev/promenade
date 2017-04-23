@@ -1,0 +1,10 @@
+---
+- name: Download the Hyperkube binary
+  get_url:
+    url: "http://storage.googleapis.com/kubernetes-release/release/{{ hyperkube_version }}/bin/linux/amd64/hyperkube"
+    dest: /usr/local/bin/hyperkube
+
+- name: Set hyperkube permissions
+  file:
+    path: /usr/local/bin/hyperkube
+    mode: 0755

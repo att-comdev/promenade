@@ -1,0 +1,37 @@
+---
+- name: Ensures bootkube dir exists
+  when:
+    bootstrap_enabled
+  file:
+    path: /tmp/bootkube
+    state: directory
+
+- name: Extract bootkube binaries
+  when:
+    bootstrap_enabled
+  unarchive:
+    src: "https://github.com/kubernetes-incubator/bootkube/releases/download/{{ boot_kube_version }}/bootkube.tar.gz"
+    dest: /tmp/bootkube
+    remote_src: True
+
+- name: Move bootkube binary to /usr/local/bin/
+  when:
+    bootstrap_enabled
+  copy:
+    remote_src: true
+    src: /tmp/bootkube/bin/linux/bootkube
+    dest: /usr/local/bin/bootkube
+    owner: root
+    group: root
+    mode: 0655
+
+- name: Move checkpoint binary to /usr/local/bin/
+  when:
+    bootstrap_enabled
+  copy:
+    remote_src: true
+    src: /tmp/bootkube/bin/linux/checkpoint
+    dest: /usr/local/bin/checkpoint
+    owner: root
+    group: root
+    mode: 0655

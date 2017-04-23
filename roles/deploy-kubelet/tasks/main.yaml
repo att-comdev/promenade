@@ -1,6 +1,3 @@
-#Deploys Kubelet
 ---
-- include: prep-host.yaml
-- include: prep-hyperkube.yaml
-- include: prep-cni.yaml
-- include: deploy-kubernetes.yaml
+- include: prep-kubelet.yaml
+- include: deploy-kubelet.yaml
