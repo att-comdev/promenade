@@ -1,0 +1,4 @@
+---
+- include: deploy-cni.yaml
+- include: deploy-sdn.yaml
+- include: deploy-calico.yaml

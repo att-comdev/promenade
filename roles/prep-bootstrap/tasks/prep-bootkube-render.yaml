@@ -1,0 +1,47 @@
+---
+- name: Clean previous bootkube assets if re-rendering and bootkube_render is flagged true
+  when:
+    - (bootstrap_enabled == 'true') and (bootkube_render == 'true')
+  file:
+    path: /tmp/bootkube/assets
+    state: absent
+
+- name: Clean up any previous bootkube deployments
+  file:
+    path: /tmp/bootkube/
+    state: absent
+
+- name: Ensure /tmp/bootkube directory is in a clean state
+  file:
+    path: /tmp/bootkube/
+    state: directory
+    owner: root
+    group: root
+
+- name: Render bootkube remotely
+  when:
+    - (bootstrap_enabled == 'true') and (bootkube_render == 'true')
+  command: "/usr/local/bin/bootkube render --asset-dir=/tmp/bootkube/assets --experimental-self-hosted-etcd --etcd-servers=http://10.3.0.15:2379 --api-servers=https://{{ api_server_fqdn }}:443"
+  args:
+    creates: /etc/kubernetes/kubeconfig
+
+- name: Copy remote bootkube rendered assets to local backup folder
+  when:
+    - (bootstrap_enabled == 'true') and (bootkube_render == 'true')
+  synchronize:
+    mode: pull
+    src: '/tmp/bootkube'
+    dest: '../files/backup'
+
+- name: Look for local deploy-host bootkube rendered assets folder
+  become: false
+  when:
+    - (bootstrap_enabled == 'true') and (bootkube_render == 'false')
+  local_action: stat path="../files/bootkube/assets"
+
+- name: Copy local bootkube rendered assets folder to bootkube host
+  when:
+    - (bootstrap_enabled == 'true') and (bootkube_render == 'false')
+  copy:
+    src: '../files/bootkube/'
+    dest: '/tmp/bootkube/'

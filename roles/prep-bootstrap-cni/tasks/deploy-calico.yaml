@@ -1,0 +1,53 @@
+---
+- name: Download Calico CNI plugin
+  when:
+    - (bootstrap_enabled == 'true') and (kube_sdn == 'calico')
+  get_url:
+    url: "https://github.com/projectcalico/cni-plugin/releases/download/{{ calico_cni_plugin_version }}/calico"
+    dest: /opt/cni/bin/calico
+    owner: root
+    group: root
+    mode: 0655
+
+- name: Download Calico IPAM CNI plugin
+  when:
+    - (bootstrap_enabled == 'true') and (kube_sdn == 'calico')
+  get_url:
+    url: "https://github.com/projectcalico/cni-plugin/releases/download/{{ calico_cni_plugin_version }}/calico-ipam"
+    dest: /opt/cni/bin/calico-ipam
+    owner: root
+    group: root
+    mode: 0655
+
+- name: Download calicoctl client
+  when:
+    - (bootstrap_enabled == 'true') and (kube_sdn == 'calico') and (inventory_hostname in groups['master'])
+  get_url:
+    url: "https://github.com/projectcalico/calicoctl/releases/download/{{ calicoctl_version }}/calicoctl"
+    dest: /usr/local/bin/calicoctl
+    owner: root
+    group: root
+    mode: 0655
+
+- name: If upload the Calico CNI config to the /etc/cni/net.d directory
+  when:
+    - (bootstrap_enabled == 'true') and (kube_sdn == 'calico')
+  template:
+    src: calico-cni-config.j2
+    dest: /etc/cni/net.d/10-calico.conf
+
+#- name: If bootstrap_enabled is true, flush the /etc/cni configs
+#  when:
+#    - (bootstrap_enabled == 'true') and (kube_sdn == 'calico') and (inventory_hostname in groups['master'])
+#  template:
+#    src: calico-cni-config.j2
+#    dest: /etc/cni/net.d/10-calico.conf
+
+- name: Deploy Calico manifest to /etc/kubernetes/manifests directory
+  when:
+    - (bootstrap_enabled == 'true') and (kube_sdn == 'calico')
+  template:
+    src: calico-v1.6-manifest.yaml.j2
+    dest: /etc/kubernetes/manifests/calico.yaml
+
+# sudo ETCD_ENDPOINTS=http://0.0.0.0:12379 /usr/local/bin/calicoctl node run

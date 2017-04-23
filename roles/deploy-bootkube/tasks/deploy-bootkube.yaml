@@ -1,0 +1,13 @@
+---
+- name: Setup bootkube.service
+  when: bootstrap_enabled
+  template:
+    src: bootkube.service.j2
+    dest: /etc/systemd/system/bootkube.service
+
+- name: Run bootkube
+  when: bootstrap_enabled
+  systemd:
+    name: bootkube
+    state: started
+    daemon_reload: yes

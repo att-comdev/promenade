@@ -1,0 +1,72 @@
+---
+- name: If bootstrap_enabled is true, stop the Kubelet service
+  when:
+    (bootstrap_enabled)
+  systemd:
+    name: kubelet.service
+    state: stopped
+    enabled: no
+  ignore_errors: true
+
+- name: If bootstrap_enabled is true, stop the bootkube service
+  when:
+    (bootstrap_enabled) and (inventory_hostname in groups['master'])
+  systemd:
+    name: bootkube
+    state: stopped
+    enabled: no
+    daemon_reload: yes
+
+- name: If bootstrap_enabled is true, flush the bootkube directory
+  when:
+    (bootstrap_enabled) and (inventory_hostname in groups['master'])
+  file:
+    path: /tmp/bootkube
+    state: absent
+
+- name: If bootstrap_enabled is true, flush the CNI directory
+  when:
+    bootstrap_enabled
+  file:
+    path: /opt/cni
+    state: absent
+
+- name: If bootstrap_enabled is true, flush the /etc/cni configs
+  when:
+    bootstrap_enabled
+  file:
+    path: /etc/cni
+    state: absent
+
+- name: If bootstrap_enabled is true, flush the Kubernetes directory
+  when:
+    bootstrap_enabled
+  file:
+    path: /etc/kubernetes
+    state: absent
+
+- name: If bootstrap_enabled is true, flush deployed binaries
+  when:
+    bootstrap_enabled
+  file:
+    path: /usr/local/bin/{{ item }}
+    state: absent
+  with_items:
+    - kubelet
+    - hyperkube
+    - bootkube
+    - checkpoint
+
+- name: Stop all remaining bootkube and kubernetes docker artifacts
+  when:
+    bootstrap_enabled
+  shell: docker stop $(docker ps -a | grep k8s| cut -c1-20 | xargs docker stop)
+  no_log: true
+  ignore_errors: yes
+
+- name: Remove all remaining bootkube and kubernetes docker artifacts
+  when:
+    bootstrap_enabled
+  shell: docker rm $(docker ps -a | grep k8s| cut -c1-20 | xargs docker stop)
+  no_log: true
+  ignore_errors: yes

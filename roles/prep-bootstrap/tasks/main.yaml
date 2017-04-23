@@ -1,0 +1,4 @@
+---
+- include: prep-bootkube-host.yaml
+- include: prep-bootkube.yaml
+- include: prep-bootkube-render.yaml

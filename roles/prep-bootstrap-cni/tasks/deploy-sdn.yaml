@@ -1,0 +1,5 @@
+---
+- name: Ensures /etc/kubernetes/manifests dir exists
+  file:
+    path: /etc/kubernetes/manifests
+    state: directory

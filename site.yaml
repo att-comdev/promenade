@@ -1,23 +1,47 @@
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+    - prep-bootstrap-cleanup
+
 - hosts: bootstrap
   remote_user: ubuntu
   become: yes
   become_method: sudo
   roles:
-    - deploy-bootstrap
+    - prep-bootstrap
+
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+    - prep-bootstrap-cni
+
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+    - deploy-kubelet
 
 - hosts: master
   remote_user: ubuntu
   become: yes
   become_method: sudo
   roles:
-    - deploy-kubelet
+    - deploy-bootkube
 
-- hosts: workers
-  remote_user: ubuntu
-  become: yes
-  become_method: sudo
-  roles:
-    - deploy-kubelet
+
+#- hosts: master
+#  remote_user: ubuntu
+#  become: yes
+#  become_method: sudo
+#  roles:
+#    - deploy-kubelet
+
+
 
 #- hosts: master
 #  remote_user: ubuntu

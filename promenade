@@ -1,0 +1,5 @@
+#!/bin/bash
+
+inventory=${INVENTORY:-inventory.ini}
+
+ansible-playbook -i ${inventory} site.yaml $@ 
