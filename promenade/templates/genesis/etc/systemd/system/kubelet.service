@@ -1,0 +1,22 @@
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://kubernetes.io/docs/admin/kubelet/
+
+[Service]
+ExecStart=/usr/local/bin/kubelet \
+    --allow-privileged=true \
+    --api-servers=http://127.0.0.1:80 \
+    --cluster-dns={{ network.cluster_dns }} \
+    --cluster-domain={{ network.cluster_domain }} \
+    --cni-bin-dir=/opt/cni/bin \
+    --cni-conf-dir=/etc/cni/net.d \
+    --hostname-override={{ genesis.hostname }} \
+    --network-plugin=cni \
+    --node-labels=beta.kubernetes.io/arch=amd64,node-role.kubernetes.io/master=,promenade=genesis \
+    --pod-manifest-path=/etc/kubernetes/kubelet/manifests \
+    --v=5
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

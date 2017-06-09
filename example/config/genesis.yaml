@@ -1,0 +1,10 @@
+---
+genesis:
+  hostname: genesis-host
+  ip: 192.168.77.10
+
+network:
+  cluster_domain: cluster.local
+  cluster_dns: 10.96.0.10
+  pod_ip_cidr: 10.97.0.0/16
+  service_ip_cidr: 10.96.0.0/16

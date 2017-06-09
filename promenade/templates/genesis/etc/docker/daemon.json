@@ -1,0 +1,4 @@
+{
+  "live-reload": true,
+  "storage-driver": "overlay2"
+}

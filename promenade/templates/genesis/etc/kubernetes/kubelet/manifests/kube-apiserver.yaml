@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-apiserver
+  namespace: kube-system
+  labels:
+    tier: control-plane
+    component: kube-apiserver
+  annotations:
+    scheduler.alpha.kubernetes.io/critical-pod: ''
+spec:
+  hostNetwork: true
+  containers:
+    - name: kube-apiserver
+      image: gcr.io/google_containers/hyperkube-amd64:v1.6.2
+      command:
+        - /hyperkube
+        - apiserver
+        - --advertise-address=$(POD_IP)
+        - --authorization-mode=RBAC,AlwaysAllow
+        - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds
+        - --anonymous-auth=false
+        - --insecure-bind-address=0.0.0.0
+        - --insecure-port=80
+        - --allow-privileged=true
+        - --etcd-servers=http://127.0.0.1:2379
+        - --service-cluster-ip-range={{ network.service_ip_cidr }}
+        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+        - --service-account-key-file=/etc/kubernetes/pki/sa.pub
+        - --v=5
+      env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+      volumeMounts:
+        - name: config
+          mountPath: /etc/kubernetes
+          readOnly: true
+  volumes:
+    - name: config
+      hostPath:
+        path: /etc/kubernetes/apiserver

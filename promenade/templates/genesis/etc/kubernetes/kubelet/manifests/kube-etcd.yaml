@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-etcd
+  namespace: kube-system
+spec:
+  hostNetwork: true
+  containers:
+    - name: k8s-etcd
+      image: quay.io/coreos/etcd:v3.0.17
+      env:
+        - name: ETCD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: ETCD_DATA_DIR
+          value: /var/lib/etcd
+        - name: ETCD_ADVERTISE_CLIENT_URLS
+          value: http://$(ETCD_NAME):2379
+        - name: ETCD_INITIAL_ADVERTISE_PEER_URLS
+          value: http://$(ETCD_NAME):2380
+        - name: ETCD_INITIAL_CLUSTER
+          value: $(ETCD_NAME)=http://$(ETCD_NAME):2380
+        - name: ETCD_INITIAL_CLUSTER_TOKEN
+          value: promenade-kube-etcd-token
+        - name: ETCD_LISTEN_CLIENT_URLS
+          value: http://0.0.0.0:2379
+        - name: ETCD_LISTEN_PEER_URLS
+          value: http://0.0.0.0:2380
+      ports:
+        - name: client
+          containerPort: 2379
+        - name: peer
+          containerPort: 2380
+      volumeMounts:
+        - name: data
+          mountPath: /var/lib/etcd
+  volumes:
+    - name: data
+      hostPath:
+        path: /var/lib/etcd
