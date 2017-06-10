@@ -32,8 +32,8 @@ RUN set -ex \
     && curl -sLo $BIN_DIR/kubectl http://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl \
     && chmod 555 $BIN_DIR/kubelet \
     && chmod 555 $BIN_DIR/kubectl \
-    && mkdir -p /opt/cni/bin \
-    && curl -sL https://github.com/containernetworking/cni/releases/download/$CNI_VERSION/cni-amd64-$CNI_VERSION.tgz | tar -zxv -C /opt/cni/bin/ \
+    && mkdir -p /assets/opt/cni/bin \
+    && curl -sL https://github.com/containernetworking/cni/releases/download/$CNI_VERSION/cni-amd64-$CNI_VERSION.tgz | tar -zxv -C /assets/opt/cni/bin/ \
     && curl -sL https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar -zxv -C /tmp linux-amd64/helm \
     && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
     && chmod 555 /usr/local/bin/helm
