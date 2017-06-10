@@ -26,15 +26,14 @@ RUN mkdir /promenade
 WORKDIR /promenade
 
 RUN set -ex \
-    && export KUBELET_DIR=/assets/usr/local/bin \
-    && mkdir -p $KUBELET_DIR \
-    && curl -sL -o $KUBELET_DIR/kubelet \
-        http://storage.googleapis.com/kubernetes-release/release/$KUBELET_VERSION/bin/linux/amd64/kubelet \
-    && chmod 555 $KUBELET_DIR/kubelet \
+    && export BIN_DIR=/assets/usr/local/bin \
+    && mkdir -p $BIN_DIR \
+    && curl -sLo $BIN_DIR/kubelet http://storage.googleapis.com/kubernetes-release/release/$KUBELET_VERSION/bin/linux/amd64/kubelet \
+    && curl -sLo $BIN_DIR/kubectl http://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl \
+    && chmod 555 $BIN_DIR/kubelet \
+    && chmod 555 $BIN_DIR/kubectl \
     && mkdir -p /opt/cni/bin \
     && curl -sL https://github.com/containernetworking/cni/releases/download/$CNI_VERSION/cni-amd64-$CNI_VERSION.tgz | tar -zxv -C /opt/cni/bin/ \
-    && curl -sLo /usr/local/bin/kubectl http://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubelet \
-    && chmod 555 /usr/local/bin/kubectl \
     && curl -sL https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar -zxv -C /tmp linux-amd64/helm \
     && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
     && chmod 555 /usr/local/bin/helm
