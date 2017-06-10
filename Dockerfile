@@ -14,14 +14,30 @@
 
 FROM python:3.6
 
-ENV KUBELET_VERSION=v1.6.2 \
-    CNI_VERSION=v0.5.2
+ENV CNI_VERSION=v0.5.2 \
+    HELM_VERSION=v2.4.2 \
+    KUBECTL_VERSION=v1.6.2 \
+    KUBELET_VERSION=v1.6.2
 
 VOLUME /etc/promenade
 VOLUME /target
 
 RUN mkdir /promenade
 WORKDIR /promenade
+
+RUN set -ex \
+    && export KUBELET_DIR=/assets/usr/local/bin \
+    && mkdir -p $KUBELET_DIR \
+    && curl -sL -o $KUBELET_DIR/kubelet \
+        http://storage.googleapis.com/kubernetes-release/release/$KUBELET_VERSION/bin/linux/amd64/kubelet \
+    && chmod 555 $KUBELET_DIR/kubelet \
+    && mkdir -p /opt/cni/bin \
+    && curl -sL https://github.com/containernetworking/cni/releases/download/$CNI_VERSION/cni-amd64-$CNI_VERSION.tgz | tar -zxv -C /opt/cni/bin/ \
+    && curl -sLo /usr/local/bin/kubectl http://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubelet \
+    && chmod 555 /usr/local/bin/kubectl \
+    && curl -sL https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar -zxv -C /tmp linux-amd64/helm \
+    && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
+    && chmod 555 /usr/local/bin/helm
 
 RUN set -ex \
     && apt-get update -qq \
@@ -31,17 +47,10 @@ RUN set -ex \
         rsync \
     && rm -rf /var/lib/apt/lists/*
 
-RUN set -ex \
-    && export KUBELET_DIR=/assets/usr/local/bin \
-    && mkdir -p $KUBELET_DIR \
-    && curl -sL -o $KUBELET_DIR/kubelet \
-        http://storage.googleapis.com/kubernetes-release/release/$KUBELET_VERSION/bin/linux/amd64/kubelet \
-    && chmod 555 $KUBELET_DIR/kubelet \
-    && mkdir -p /opt/cni/bin \
-    && curl -sL https://github.com/containernetworking/cni/releases/download/$CNI_VERSION/cni-amd64-$CNI_VERSION.tgz | tar -zxv -C /opt/cni/bin/
-
 COPY requirements-frozen.txt /promenade
 RUN pip install --no-cache-dir -r requirements-frozen.txt
 
 COPY . /promenade
 RUN pip install -e /promenade
+
+COPY assets/ /assets

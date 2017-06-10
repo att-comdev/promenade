@@ -1,6 +1,6 @@
 ---
 genesis:
-  hostname: genesis-host
+  hostname: n0
   ip: 192.168.77.10
 
 network:

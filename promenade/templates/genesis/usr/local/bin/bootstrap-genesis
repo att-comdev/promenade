@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -ex
+
+systemctl reload docker
+
+systemctl daemon-reload
+systemctl restart kubelet

@@ -8,11 +8,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, privileged: true, inline:<<EOS
 set -ex
 
-echo === Installing packages ===
+echo === Installing Docker ===
 apt-get update -qq
-apt-get install -y -qq --no-install-recommends \
-  chrony \
-  docker.io \
+apt-get install -y -qq --no-install-recommends docker.io
 
 if [ -f /vagrant/promenade.tar ]; then
   echo === Loading updated promenade image ===
