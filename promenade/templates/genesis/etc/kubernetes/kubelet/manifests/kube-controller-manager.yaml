@@ -23,7 +23,7 @@ spec:
       - --configure-cloud-routes=false
       - --leader-elect=true
       - --kubeconfig=/etc/kubernetes/kubeconfig.yaml
-      - --service-account-private-key-file=/etc/kubernetes/pki/sa.key
+      - --service-account-private-key-file=/etc/kubernetes/pki/sa-key.pem
       - --service-cluster-ip-range={{ network.service_ip_cidr }}
       - --use-service-account-credentials=true
       - --v=5
