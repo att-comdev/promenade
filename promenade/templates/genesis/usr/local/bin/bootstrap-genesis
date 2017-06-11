@@ -2,7 +2,13 @@
 
 set -ex
 
-systemctl reload docker
+at now + 1 minute <<EOS
+systemctl stop docker || true
+rm -rf /var/lib/docker || true
+systemctl restart docker
 
 systemctl daemon-reload
 systemctl restart kubelet
+EOS
+
+systemctl restart atd

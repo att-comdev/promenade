@@ -35,8 +35,8 @@ RUN set -ex \
     && mkdir -p /assets/opt/cni/bin \
     && curl -sL https://github.com/containernetworking/cni/releases/download/$CNI_VERSION/cni-amd64-$CNI_VERSION.tgz | tar -zxv -C /assets/opt/cni/bin/ \
     && curl -sL https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar -zxv -C /tmp linux-amd64/helm \
-    && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
-    && chmod 555 /usr/local/bin/helm
+    && mv /tmp/linux-amd64/helm $BIN_DIR/helm \
+    && chmod 555 $BIN_DIR/helm
 
 RUN set -ex \
     && apt-get update -qq \
