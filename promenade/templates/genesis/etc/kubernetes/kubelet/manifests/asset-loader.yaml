@@ -17,6 +17,7 @@ spec:
         - /bin/bash
         - -c
         - |-
+            set -x
             while true; do
               sleep 60
               /kubectl \

@@ -35,7 +35,7 @@ def entry_point(*, asset_dir, config_dir, target_dir, verbose):
     templater = promenade.templaters.Genesis.from_config_dir(config_dir)
     templater.render_to_target(target_dir=target_dir)
 
-    promenade.pki.generate_keys(target_dir)
+    promenade.pki.generate_keys(config_dir=config_dir, target_dir=target_dir)
 
     # Perform final initialization on the host.
     promenade.chroot.genesis(target_dir)

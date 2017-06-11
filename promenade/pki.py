@@ -11,6 +11,22 @@ LOG = logging.getLogger(__name__)
 
 
 DISTRIBUTION_MAP = {
+    'apiserver': [
+        'apiserver',
+    ],
+    'apiserver-key': [
+        'apiserver',
+    ],
+    'cluster-ca': [
+        'apiserver',
+        'controller-manager',
+        'kubelet',
+        'proxy',
+        'scheduler',
+    ],
+    'cluster-ca-key': [
+        'controller-manager',
+    ],
     'sa': [
         'apiserver',
     ],
@@ -20,11 +36,14 @@ DISTRIBUTION_MAP = {
 }
 
 
-def generate_keys(target):
+def generate_keys(*, config_dir, target_dir):
     with tempfile.TemporaryDirectory() as tmp:
         _make_sa_keypair(tmp)
 
-        _distribute_files(tmp, target)
+        _copy_ca(config_dir, tmp)
+        _generate_certs(tmp, target_dir)
+
+        _distribute_files(tmp, target_dir)
 
 
 def _make_sa_keypair(output_dir):
@@ -35,6 +54,26 @@ def _make_sa_keypair(output_dir):
         subprocess.run(['/usr/bin/openssl', 'rsa', '-pubout',
                         '-in', private_key,
                         '-out', public_key], check=True)
+
+
+def _copy_ca(src, dest):
+    shutil.copy(os.path.join(src, 'cluster-ca.pem'), dest)
+    shutil.copy(os.path.join(src, 'cluster-ca-key.pem'), dest)
+
+
+def _generate_certs(dest, target):
+    ca_config_path = os.path.join(target, 'etc/kubernetes/cfssl/ca-config.json')
+    ca_path = os.path.join(dest, 'cluster-ca.pem')
+    ca_key_path = os.path.join(dest, 'cluster-ca-key.pem')
+    search_dir = os.path.join(target, 'etc/kubernetes/cfssl/csr-configs')
+    for filename in os.listdir(search_dir):
+        name, _ext = os.path.splitext(filename)
+        path = os.path.join(search_dir, filename)
+        cfssl_result = subprocess.check_output([
+            'cfssl', 'gencert', '-ca', ca_path, '-ca-key', ca_key_path,
+            '-config', ca_config_path, '-profile', 'kubernetes', path])
+        subprocess.run(['cfssljson', '-bare', name], cwd=dest,
+                       input=cfssl_result, check=True)
 
 
 def _distribute_files(src, dest):

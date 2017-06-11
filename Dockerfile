@@ -46,6 +46,12 @@ RUN set -ex \
         rsync \
     && rm -rf /var/lib/apt/lists/*
 
+RUN set -ex \
+    && curl -sLo /usr/local/bin/cfssl https://pkg.cfssl.org/R1.1/cfssl_linux-amd64 \
+    && chmod 555 /usr/local/bin/cfssl \
+    && curl -sLo /usr/local/bin/cfssljson https://pkg.cfssl.org/R1.1/cfssljson_linux-amd64 \
+    && chmod 555 /usr/local/bin/cfssljson
+
 COPY requirements-frozen.txt /promenade
 RUN pip install --no-cache-dir -r requirements-frozen.txt
 

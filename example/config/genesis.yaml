@@ -6,5 +6,6 @@ genesis:
 network:
   cluster_domain: cluster.local
   cluster_dns: 10.96.0.10
+  kube_service_ip: 10.96.0.1
   pod_ip_cidr: 10.97.0.0/16
   service_ip_cidr: 10.96.0.0/16
