@@ -38,7 +38,7 @@ def entry_point(*, asset_dir, config_dir, target_dir, verbose):
     promenade.pki.generate_keys(config_dir=config_dir, target_dir=target_dir)
 
     # Perform final initialization on the host.
-    promenade.chroot.genesis(target_dir)
+    promenade.chroot.bootstrap(target_dir)
 
     # wait for the api
     # do helm thing

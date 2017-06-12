@@ -29,14 +29,14 @@ vagrant snapshot save clean
 Start the genesis node:
 
 ```bash
-vagrant ssh n0 -c 'sudo docker run --rm -v /vagrant/example/config:/etc/promenade -v /:/target promenade:experimental genesis'
+vagrant ssh n0 -c 'sudo docker run --rm -v /vagrant/example/config/n0:/etc/promenade -v /:/target promenade:experimental genesis'
 ```
 
 Join additional nodes (as masters):
 
 ```bash
 for i in 1 2 3; do
-    vagrant ssh n$i -c 'sudo docker run --rm -v /vagrant/example/config:/etc/promenade -v /:/target promenade:experimental join master'
+    vagrant ssh n$i -c 'sudo docker run --rm -v /vagrant/example/config/n$i:/etc/promenade -v /:/target promenade:experimental join'
 done
 ```
 

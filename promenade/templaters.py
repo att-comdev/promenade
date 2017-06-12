@@ -74,6 +74,11 @@ class Genesis(BaseTemplater):
     TEMPLATE_PATHS = ('common', 'genesis')
 
 
+class Join(BaseTemplater):
+    CONFIG_FILE = 'join.yaml'
+    TEMPLATE_PATHS = ('common', 'join')
+
+
 def _ensure_path(path):
     base = os.path.dirname(path)
     os.makedirs(base, mode=0o775, exist_ok=True)

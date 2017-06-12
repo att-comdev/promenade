@@ -1,7 +1,11 @@
 ---
-genesis:
+node:
   hostname: n0
   ip: 192.168.77.10
+  labels:
+    - beta.kubernetes.io/arch=amd64
+    - node-role.kubernetes.io/master=
+    - promenade=genesis
 
 network:
   cluster_domain: cluster.local

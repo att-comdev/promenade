@@ -17,7 +17,7 @@ spec:
       command:
         - /hyperkube
         - apiserver
-        - --advertise-address={{ genesis.ip }}
+        - --advertise-address={{ node.ip }}
         - --authorization-mode=RBAC,AlwaysAllow
         - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds
         - --anonymous-auth=false

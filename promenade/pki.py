@@ -4,13 +4,20 @@ import shutil
 import subprocess
 import tempfile
 
-__all__ = ['generate_keys']
+__all__ = ['copy_ca', 'generate_keys']
 
 
 LOG = logging.getLogger(__name__)
 
 
-DISTRIBUTION_MAP = {
+CA_ONLY_MAP = {
+    'cluster-ca': [
+        'kubelet',
+    ],
+}
+
+
+FULL_DISTRIBUTION_MAP = {
     'apiserver': [
         'apiserver',
     ],
@@ -36,6 +43,14 @@ DISTRIBUTION_MAP = {
 }
 
 
+def copy_ca(*, config_dir, target_dir):
+    with tempfile.TemporaryDirectory() as tmp:
+
+        shutil.copy(os.path.join(src, 'cluster-ca.pem'), dest)
+        _distribute_files(tmp, target_dir, CA_ONLY_MAP)
+
+
+
 def generate_keys(*, config_dir, target_dir):
     with tempfile.TemporaryDirectory() as tmp:
         _make_sa_keypair(tmp)
@@ -43,7 +58,7 @@ def generate_keys(*, config_dir, target_dir):
         _copy_ca(config_dir, tmp)
         _generate_certs(tmp, target_dir)
 
-        _distribute_files(tmp, target_dir)
+        _distribute_files(tmp, target_dir, FULL_DISTRIBUTION_MAP)
 
 
 def _make_sa_keypair(output_dir):
@@ -76,8 +91,8 @@ def _generate_certs(dest, target):
                        input=cfssl_result, check=True)
 
 
-def _distribute_files(src, dest):
-    for filename, destinations in DISTRIBUTION_MAP.items():
+def _distribute_files(src, dest, distribution_map):
+    for filename, destinations in distribution_map.items():
         src_path = os.path.join(src, filename + '.pem')
         for destination in destinations:
             dest_dir = os.path.join(dest, 'etc/kubernetes/%s/pki' % destination)
