@@ -2,16 +2,8 @@
 
 set -ex
 
-at now + 1 minute <<EOS
-systemctl stop docker || true
-rm -rf /var/lib/docker || true
-systemctl restart docker
-
 systemctl daemon-reload
 systemctl restart kubelet
 
-apt-get update
-apt-get install -y -qq --no-install-recommends socat
-EOS
-
-systemctl restart atd
+apt-get update -qq
+apt-get install -y -qq --no-install-recommends dnsmasq socat

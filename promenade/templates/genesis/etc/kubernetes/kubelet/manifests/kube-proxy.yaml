@@ -18,7 +18,7 @@ spec:
         - proxy
         - --cluster-cidr={{ network.pod_ip_cidr }}
         - --hostname-override=$(NODE_NAME)
-        - --kubeconfig=/etc/kubernetes/kubeconfig.yaml
+        - --kubeconfig=/etc/kubernetes/config/kubeconfig.yaml
         - --proxy-mode=iptables
         - --v=5
       env:
@@ -30,10 +30,10 @@ spec:
         privileged: true
       volumeMounts:
         - name: config
-          mountPath: /etc/kubernetes
+          mountPath: /etc/kubernetes/config
           readOnly: true
   hostNetwork: true
   volumes:
     - name: config
       hostPath:
-        path: /etc/kubernetes/proxy
+        path: /etc/kubernetes/proxy/config

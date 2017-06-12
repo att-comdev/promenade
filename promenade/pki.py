@@ -45,10 +45,8 @@ FULL_DISTRIBUTION_MAP = {
 
 def copy_ca(*, config_dir, target_dir):
     with tempfile.TemporaryDirectory() as tmp:
-
-        shutil.copy(os.path.join(src, 'cluster-ca.pem'), dest)
+        shutil.copy(os.path.join(config_dir, 'cluster-ca.pem'), tmp)
         _distribute_files(tmp, target_dir, CA_ONLY_MAP)
-
 
 
 def generate_keys(*, config_dir, target_dir):

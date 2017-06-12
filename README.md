@@ -19,30 +19,34 @@ the Vagrant VMs.
 docker build -t promenade:experimental .
 ```
 
-Start the VMs and save a snapshot for quicker iteration:
+Start the VMs:
 
 ```bash
 vagrant up
-vagrant snapshot save clean
 ```
 
 Start the genesis node:
 
 ```bash
-vagrant ssh n0 -c 'sudo docker run --rm -v /vagrant/example/config/n0:/etc/promenade -v /:/target promenade:experimental genesis'
+vagrant ssh n0 -c 'sudo PROMENADE_CONFIG_DIR=/vagrant/example/config/n0-genesis /vagrant/setup.sh genesis'
 ```
 
 Join additional nodes (as masters):
 
 ```bash
-for i in 1 2 3; do
-    vagrant ssh n$i -c 'sudo docker run --rm -v /vagrant/example/config/n$i:/etc/promenade -v /:/target promenade:experimental join'
+for i in 1 2; do
+    vagrant ssh n$i -c 'sudo PROMENADE_CONFIG_DIR=/vagrant/example/config/n$i /vagrant/setup.sh join'
 done
 ```
 
-To test changes, you can safely reset single or multiple nodes:
+Tear down the genesis node:
 
 ```bash
-vagrant snapshot resotre n2 clean --no-provision
-vagrant snapshot restore clean --no-provision
+...
+```
+
+Re-provision the genesis node as a normal node:
+
+```bash
+vagrant ssh n0 -c 'sudo PROMENADE_CONFIG_DIR=/vagrant/example/config/n0-master /vagrant/setup.sh join'
 ```
