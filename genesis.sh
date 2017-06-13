@@ -16,8 +16,8 @@ cat <<EOS > /etc/docker/daemon.json
 }
 EOS
 
+export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
-
 apt-get install -y -qq --no-install-recommends \
     docker.io \
 
@@ -27,9 +27,10 @@ if [ -f "${PROMENADE_LOAD_IMAGE}" ]; then
   docker load -i "${PROMENADE_LOAD_IMAGE}"
 fi
 
-docker run --rm \
+docker run -t --rm \
     -v /:/target \
     promenade:experimental \
     promenade \
+        genesis \
         --hostname $(hostname) \
-        --config-path /target/$1
+        --config-path /target$(realpath $1) 2>&1

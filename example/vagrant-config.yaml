@@ -59,7 +59,7 @@ pki:
     O1G/5Sc5HA/MvMldKvLrtqG4
     -----END CERTIFICATE-----
 
-  clusetr-ca-key: |-
+  cluster-ca-key: |-
     -----BEGIN RSA PRIVATE KEY-----
     MIIEpQIBAAKCAQEA7y+MCgbK/oqKBOcXpZkyiyTN8ILZmwtPbbLjnv+Ks57YRhrM
     dt5fP/smVvwvBae4xJoaW7/Hld8XdUaUySrf3ZLYKx+os47wCNROfhgY5THkhT76

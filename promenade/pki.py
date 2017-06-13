@@ -49,7 +49,6 @@ def generate_keys(*, initial_pki, target_dir):
             _write_initial_pki(tmp, initial_pki)
             _make_sa_keypair(tmp)
 
-            _generate_ca(tmp, target_dir)
             _generate_certs(tmp, target_dir)
 
             _distribute_files(tmp, target_dir, FULL_DISTRIBUTION_MAP)
@@ -57,17 +56,10 @@ def generate_keys(*, initial_pki, target_dir):
 
 def _write_initial_pki(tmp, initial_pki):
     for filename, data in initial_pki.items():
-        with open(os.path.join(tmp, filename + '.pem'), 'w') as f:
+        path = os.path.join(tmp, filename + '.pem')
+        with open(path, 'w') as f:
+            LOG.debug('Writing data for "%s" to path "%s"', filename, path)
             f.write(data)
-
-
-def _generate_ca(tmp, target):
-    base_dir = os.path.join(target, 'etc/kubernetes/cfssl')
-    cfssl_result = subprocess.check_output([
-        'cfssl', 'gencert', '-initca',
-        os.path.join(base_dir, 'cluster-ca-csr.json')])
-    subprocess.run(['cfssljson', '-bare', 'cluster-ca'],
-                   cwd=tmp, input=cfssl_result, check=True)
 
 
 def _make_sa_keypair(output_dir):

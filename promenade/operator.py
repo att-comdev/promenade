@@ -24,7 +24,14 @@ class Operator:
         self.node_data = node_data
         self.target_dir = target_dir
 
-    def setup(self, *, asset_dir=None):
+    def genesis(self, *, asset_dir=None):
+        self.setup(asset_dir=asset_dir)
+        self.expand_etcd_cluster()
+
+    def join(self, *, asset_dir=None):
+        self.setup(asset_dir=asset_dir)
+
+    def setup(self, *, asset_dir):
         self.rsync_from(asset_dir)
         self.render()
         self.install_keys()
@@ -56,3 +63,8 @@ class Operator:
                         self.target_dir,
                         '/bin/bash', '/usr/local/bin/bootstrap'],
                        check=True)
+
+    def expand_etcd_cluster(self):
+        # wait for all master nodes to be online & health
+        # add both new etcd members
+        pass
