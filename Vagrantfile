@@ -5,6 +5,14 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.box_check_update = false
 
+  config.vm.provision :shell, privileged: true, inline:<<EOS
+set -ex
+
+echo === Setting up NTP so simulate MaaS environment ===
+apt-get update -qq
+apt-get install -y -qq --no-install-recommends chrony
+EOS
+
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = 2
     vb.memory = "2048"

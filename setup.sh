@@ -18,9 +18,7 @@ EOS
 
 apt-get update -qq
 
-# XXX Install chrony here for now.  We can manage it via helm as a feature.
 apt-get install -y -qq --no-install-recommends \
-    chrony \
     docker.io \
 
 
@@ -34,4 +32,4 @@ docker run --rm \
     promenade:experimental \
     promenade \
         --hostname $(hostname) \
-        --config /target/$1
+        --config-path /target/$1
