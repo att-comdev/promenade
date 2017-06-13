@@ -1,0 +1,6 @@
+srv-host=_etcd-server._tcp.kube-etcd,{{ current_node['hostname'] }},2380
+srv-host=_etcd-client._tcp.kube-etcd,{{ current_node['hostname'] }},2379
+{% if current_node['hostname'] != genesis['hostname'] %}
+srv-host=_etcd-server._tcp.kube-etcd,{{ genesis['hostname'] }},2380
+srv-host=_etcd-client._tcp.kube-etcd,{{ genesis['hostname'] }},2379
+{% endif %}

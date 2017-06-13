@@ -2,8 +2,7 @@
 
 set -ex
 
+apt-get install -y -qq --no-install-recommends dnsmasq socat
+
 systemctl daemon-reload
 systemctl restart kubelet
-
-apt-get update -qq
-apt-get install -y -qq --no-install-recommends dnsmasq socat

@@ -16,17 +16,17 @@ spec:
         - name: ETCD_NAME
           valueFrom:
             fieldRef:
-              fieldPath: status.podIP
+              fieldPath: spec.nodeName
         - name: ETCD_DATA_DIR
-          value: /var/lib/etcd
+          value: /var/lib/kube-etcd
         - name: ETCD_ADVERTISE_CLIENT_URLS
           value: http://$(ETCD_NAME):2379
         - name: ETCD_INITIAL_ADVERTISE_PEER_URLS
           value: http://$(ETCD_NAME):2380
-        - name: ETCD_INITIAL_CLUSTER
-          value: $(ETCD_NAME)=http://$(ETCD_NAME):2380
         - name: ETCD_INITIAL_CLUSTER_TOKEN
           value: promenade-kube-etcd-token
+        - name: ETCD_DISCOVERY_SRV
+          value: kube-etcd
         - name: ETCD_LISTEN_CLIENT_URLS
           value: http://0.0.0.0:2379
         - name: ETCD_LISTEN_PEER_URLS
@@ -38,8 +38,8 @@ spec:
           containerPort: 2380
       volumeMounts:
         - name: data
-          mountPath: /var/lib/etcd
+          mountPath: /var/lib/kube-etcd
   volumes:
     - name: data
       hostPath:
-        path: /var/lib/etcd
+        path: /var/lib/kube-etcd

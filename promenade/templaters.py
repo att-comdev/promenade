@@ -1,38 +1,40 @@
 from promenade import logging
-import abc
 import jinja2
+import operator
 import os
 import pkg_resources
 import yaml
 
-__all__ = ['Genesis']
+__all__ = ['Templater']
 
 
 LOG = logging.getLogger(__name__)
 
 
-class BaseTemplater(metaclass=abc.ABCMeta):
-    @abc.abstractproperty
-    def CONFIG_FILE(self):
-        pass
-
-    @abc.abstractproperty
-    def TEMPLATE_PATHS(self):
-        pass
-
+class Templater:
     @classmethod
-    def from_config_dir(cls, config_dir_path):
-        path = os.path.join(config_dir_path, cls.CONFIG_FILE)
+    def from_config(cls, hostname, path):
         LOG.debug('Loading genesis configuration from "%s"', path)
-        data = yaml.load(open(path))
+        cluster_data = yaml.load(open(path))
         LOG.debug('Loaded genesis configruation from "%s"', path)
-        return cls(data)
+        return cls(hostname, cluster_data)
 
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, hostname, cluster_data):
+        self.data = {
+            'cluster': cluster_data['nodes'],
+            'current_node': _extract_current_node_data(cluster_data['nodes'],
+                                                       hostname),
+            'genesis': _extract_genesis_data(cluster_data['nodes']),
+            'masters': _extract_master_data(cluster_data['nodes']),
+            'network': cluster_data['network'],
+        }
+
+    @property
+    def template_paths(self):
+        return ['common'] + self.data['current_node']['roles']
 
     def render_to_target(self, *, target_dir):
-        for template_dir in self.TEMPLATE_PATHS:
+        for template_dir in self.template_paths:
             self.render_template_dir(template_dir=template_dir,
                                      target_dir=target_dir)
 
@@ -68,15 +70,50 @@ class BaseTemplater(metaclass=abc.ABCMeta):
         LOG.info('Installed "%s"', os.path.join('/', base_path))
 
 
+def _extract_current_node_data(nodes, hostname):
+    base = nodes[hostname]
+    return {
+        'hostname': hostname,
+        'labels': _extract_node_labels(base),
+        **base,
+    }
 
-class Genesis(BaseTemplater):
-    CONFIG_FILE = 'genesis.yaml'
-    TEMPLATE_PATHS = ('common', 'genesis')
+
+ROLE_LABELS = {
+    'common': [
+    ],
+    'genesis': [
+        'promenade=genesis',
+    ],
+    'master': [
+        'node-role.kubernetes.io/master=',
+    ],
+    'worker': [
+    ],
+}
 
 
-class Join(BaseTemplater):
-    CONFIG_FILE = 'join.yaml'
-    TEMPLATE_PATHS = ('common', 'join')
+def _extract_node_labels(data):
+    labels = set(map(lambda k: ROLE_LABELS[k], ['common'] + data['roles']))
+    labels.update(data.get('additional_labels', []))
+    return sorted(labels)
+
+
+def _extract_genesis_data(nodes):
+    for hostname, node in nodes.items():
+        if 'genesis' in node['roles']:
+            return {
+                'hostname': hostname,
+                'ip': node['ip'],
+            }
+
+
+def _extract_master_data(nodes):
+    # XXX Testing this + dnsmasq registration
+    return sorted(({'hostname': hostname, 'ip': node['ip']}
+                   for hostname, node in nodes.items()
+                   if 'master' in node['roles']),
+                  key=operator.itemgetter('hostname'))
 
 
 def _ensure_path(path):

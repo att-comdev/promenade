@@ -4,7 +4,7 @@ import shutil
 import subprocess
 import tempfile
 
-__all__ = ['copy_ca', 'generate_keys']
+__all__ = ['generate_keys']
 
 
 LOG = logging.getLogger(__name__)
@@ -43,20 +43,24 @@ FULL_DISTRIBUTION_MAP = {
 }
 
 
-def copy_ca(*, config_dir, target_dir):
-    with tempfile.TemporaryDirectory() as tmp:
-        shutil.copy(os.path.join(config_dir, 'cluster-ca.pem'), tmp)
-        _distribute_files(tmp, target_dir, CA_ONLY_MAP)
+def generate_keys(*, target_dir):
+    if os.path.exists(os.path.join(target_dir, 'etc/kubernetes/cfssl')):
+        with tempfile.TemporaryDirectory() as tmp:
+            _make_sa_keypair(tmp)
+
+            _generate_ca(tmp, target_dir)
+            _generate_certs(tmp, target_dir)
+
+            _distribute_files(tmp, target_dir, FULL_DISTRIBUTION_MAP)
 
 
-def generate_keys(*, config_dir, target_dir):
-    with tempfile.TemporaryDirectory() as tmp:
-        _make_sa_keypair(tmp)
-
-        _copy_ca(config_dir, tmp)
-        _generate_certs(tmp, target_dir)
-
-        _distribute_files(tmp, target_dir, FULL_DISTRIBUTION_MAP)
+def _generate_ca(tmp, target):
+    base_dir = os.path.join(target, 'etc/kubernetes/cfssl')
+    cfssl_result = subprocess.check_output([
+        'cfssl', 'gencert', '-initca',
+        os.path.join(base_dir, 'cluster-ca-csr.json')])
+    subprocess.run(['cfssljson', '-bare', 'cluster-ca'],
+                   cwd=tmp, input=cfssl_result, check=True)
 
 
 def _make_sa_keypair(output_dir):

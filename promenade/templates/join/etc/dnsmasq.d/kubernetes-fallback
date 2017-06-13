@@ -1,3 +1,0 @@
-{% for ip in bootstrap.apiserver_ips %}
-host-record=kubernetes,{{ ip }}
-{% endfor %}

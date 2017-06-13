@@ -8,8 +8,6 @@ fi
 
 set -ex
 
-PROMENADE_CONFIG_DIR=${PROMENADE_CONFIG_DIR:-$(pwd)}
-
 mkdir -p /etc/docker
 cat <<EOS > /etc/docker/daemon.json
 {
@@ -32,7 +30,8 @@ if [ -f "${PROMENADE_LOAD_IMAGE}" ]; then
 fi
 
 docker run --rm \
-    -v ${PROMENADE_CONFIG_DIR}:/etc/promenade \
     -v /:/target \
     promenade:experimental \
-    $1
+    promenade \
+        --hostname $(hostname) \
+        --config /target/$1
