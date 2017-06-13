@@ -43,15 +43,22 @@ FULL_DISTRIBUTION_MAP = {
 }
 
 
-def generate_keys(*, target_dir):
+def generate_keys(*, initial_pki, target_dir):
     if os.path.exists(os.path.join(target_dir, 'etc/kubernetes/cfssl')):
         with tempfile.TemporaryDirectory() as tmp:
+            _write_initial_pki(tmp, initial_pki)
             _make_sa_keypair(tmp)
 
             _generate_ca(tmp, target_dir)
             _generate_certs(tmp, target_dir)
 
             _distribute_files(tmp, target_dir, FULL_DISTRIBUTION_MAP)
+
+
+def _write_initial_pki(tmp, initial_pki):
+    for filename, data in initial_pki.items():
+        with open(os.path.join(tmp, filename + '.pem'), 'w') as f:
+            f.write(data)
 
 
 def _generate_ca(tmp, target):
@@ -71,11 +78,6 @@ def _make_sa_keypair(output_dir):
         subprocess.run(['/usr/bin/openssl', 'rsa', '-pubout',
                         '-in', private_key,
                         '-out', public_key], check=True)
-
-
-def _copy_ca(src, dest):
-    shutil.copy(os.path.join(src, 'cluster-ca.pem'), dest)
-    shutil.copy(os.path.join(src, 'cluster-ca-key.pem'), dest)
 
 
 def _generate_certs(dest, target):

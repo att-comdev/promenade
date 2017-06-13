@@ -31,9 +31,6 @@ class Operator:
 
         self.bootstrap()
 
-        self.wait_for_etcd()
-        self.expand_etcd_membership()
-
     def rsync_from(self, src):
         if src:
             LOG.debug('Syncing assets from "%s" to "%s".', src, self.target_dir)
@@ -50,7 +47,8 @@ class Operator:
         r.render()
 
     def install_keys(self):
-        pki.generate_keys(target_dir=self.target_dir)
+        pki.generate_keys(initial_pki=self.cluster_data['pki'],
+                          target_dir=self.target_dir)
 
     def bootstrap(self):
         LOG.debug('Running genesis script with chroot "%s"', self.target_dir)
@@ -58,9 +56,3 @@ class Operator:
                         self.target_dir,
                         '/bin/bash', '/usr/local/bin/bootstrap'],
                        check=True)
-
-    def wait_for_etcd(self):
-        LOG.warning('NOT IMPLEMENTED: Waiting for etcd')
-
-    def expand_etcd_membership(self):
-        LOG.warning('NOT IMPLEMENTED: expanding etcd membership')
