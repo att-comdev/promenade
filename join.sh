@@ -29,8 +29,9 @@ fi
 
 docker run -t --rm \
     -v /:/target \
-    promenade:experimental \
+    quay.io/attcomdev/promenade:experimental \
     promenade \
+        -v \
         join \
-        --hostname $(hostname) \
-        --config-path /target$(realpath $1)
+            --hostname $(hostname) \
+            --config-path /target$(realpath $1)

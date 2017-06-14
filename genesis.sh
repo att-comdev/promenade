@@ -30,8 +30,9 @@ fi
 docker run -t --rm \
     --net host \
     -v /:/target \
-    promenade:experimental \
+    quay.io/attcomdev/promenade:experimental \
     promenade \
+        -v \
         genesis \
             --hostname $(hostname) \
             --config-path /target$(realpath $1) 2>&1

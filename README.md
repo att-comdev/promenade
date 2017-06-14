@@ -7,13 +7,6 @@ Promenade is tool for deploying self-hosted, highly resilient Kubernetes cluster
 Make sure you have [Vagrant](https://vagrantup.com) and
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed.
 
-Build the genesis and join images and save them to disk for quick loading into
-the Vagrant VMs.
-
-```bash
-docker build -t promenade:experimental .
-```
-
 Start the VMs:
 
 ```bash
@@ -37,4 +30,10 @@ Join the worker node:
 
 ```bash
 vagrant ssh n3 -c 'sudo /vagrant/join.sh /vagrant/example/vagrant-config.yaml'
+```
+
+## Building the image
+
+```bash
+docker build -t quay.io/attcomdev/promenade:experimental .
 ```
