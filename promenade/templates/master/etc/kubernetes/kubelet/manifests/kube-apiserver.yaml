@@ -18,12 +18,11 @@ spec:
         - /hyperkube
         - apiserver
         - --advertise-address={{ current_node.ip }}
-        - --authorization-mode=RBAC,AlwaysAllow
+        - --authorization-mode=RBAC
         - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds
         - --anonymous-auth=false
         - --client-ca-file=/etc/kubernetes/pki/cluster-ca.pem
-        - --insecure-bind-address=0.0.0.0
-        - --insecure-port=80
+        - --insecure-port=0
         - --bind-address=0.0.0.0
         - --secure-port=443
         - --allow-privileged=true

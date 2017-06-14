@@ -50,8 +50,11 @@ FULL_DISTRIBUTION_MAP = {
     ],
 
     'cluster-ca': [
+        'admin',
         'apiserver',
+        'asset-loader',
         'controller-manager',
+        'genesis',
         'kubelet',
         'proxy',
         'scheduler',
@@ -65,6 +68,25 @@ FULL_DISTRIBUTION_MAP = {
     ],
     'sa-key': [
         'controller-manager',
+    ],
+
+    'admin': [
+        'admin',
+    ],
+    'admin-key': [
+        'admin',
+    ],
+    'asset-loader': [
+        'asset-loader',
+    ],
+    'asset-loader-key': [
+        'asset-loader',
+    ],
+    'genesis': [
+        'genesis',
+    ],
+    'genesis-key': [
+        'genesis',
     ],
 }
 
@@ -94,6 +116,7 @@ def _generate_certs(dest, target):
     search_dir = os.path.join(target, 'etc/kubernetes/cfssl/csr-configs')
     for filename in os.listdir(search_dir):
         name, _ext = os.path.splitext(filename)
+        LOG.info('Generating cert for %s', name)
         path = os.path.join(search_dir, filename)
         cfssl_result = subprocess.check_output([
             'cfssl', 'gencert', '-ca', ca_path, '-ca-key', ca_key_path,
