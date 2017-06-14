@@ -26,7 +26,10 @@ spec:
         - --bind-address=0.0.0.0
         - --secure-port=443
         - --allow-privileged=true
-        - --etcd-servers=http://kubernetes:2379
+        - --etcd-servers=https://kubernetes:2379
+        - --etcd-cafile=/etc/kubernetes/pki/cluster-ca.pem
+        - --etcd-certfile=/etc/kubernetes/pki/apiserver.pem
+        - --etcd-keyfile=/etc/kubernetes/pki/apiserver-key.pem
         - --service-cluster-ip-range={{ network.service_ip_cidr }}
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --service-account-key-file=/etc/kubernetes/pki/sa.pem

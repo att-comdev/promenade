@@ -53,7 +53,7 @@ def _extract_etcd_data(hostname, genesis, masters):
             break
 
     result['env']['ETCD_INITIAL_CLUSTER'] = ','.join(
-            '%s=http://%s:2380' % (p['hostname'], p['hostname'])
+            '%s=https://%s:2380' % (p['hostname'], p['hostname'])
             for p in peers)
 
     if hostname == genesis['hostname']:

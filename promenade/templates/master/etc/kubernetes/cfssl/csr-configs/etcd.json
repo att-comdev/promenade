@@ -1,5 +1,5 @@
 {
-  "CN": "system:kube-apiserver",
+  "CN": "etcd:{{ current_node['hostname'] }}",
   "hosts": [
     "kubernetes",
     "kubernetes.default",

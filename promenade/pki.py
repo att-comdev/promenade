@@ -54,6 +54,7 @@ FULL_DISTRIBUTION_MAP = {
         'apiserver',
         'asset-loader',
         'controller-manager',
+        'etcd',
         'genesis',
         'kubelet',
         'proxy',
@@ -68,6 +69,13 @@ FULL_DISTRIBUTION_MAP = {
     ],
     'sa-key': [
         'controller-manager',
+    ],
+
+    'etcd': [
+        'etcd',
+    ],
+    'etcd-key': [
+        'etcd',
     ],
 
     'admin': [
