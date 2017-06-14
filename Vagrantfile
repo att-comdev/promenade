@@ -33,8 +33,8 @@ EOS
       c.vm.network "private_network", ip: "192.168.77.12"
   end
 
-  config.vm.define "n2" do |c|
-      c.vm.hostname = "n2"
+  config.vm.define "n3" do |c|
+      c.vm.hostname = "n3"
       c.vm.network "private_network", ip: "192.168.77.13"
   end
 
