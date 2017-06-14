@@ -1,4 +1,4 @@
-from . import config, logging, pki, renderer
+from . import config, etcd, logging, kube, pki, renderer
 import os
 import subprocess
 
@@ -65,6 +65,13 @@ class Operator:
                        check=True)
 
     def expand_etcd_cluster(self):
-        # wait for all master nodes to be online & health
-        # add both new etcd members
-        pass
+        for node in self.node_data['etcd']['boot_order'][1:]:
+            LOG.info('Waiting for Node "%s" to be Ready', node['hostname'])
+            kube.wait_for_node(node['hostname'])
+            LOG.info('Node "%s" Ready.  Adding to etcd cluster.', node['hostname'])
+            etcd.add_member(self.genesis_etcd_pod, node['hostname'], port=2380)
+        LOG.info('Finished expanding etcd cluster.')
+
+    @property
+    def genesis_etcd_pod(self):
+        return 'kube-etcd-%s' % self.node_data['genesis']['hostname']

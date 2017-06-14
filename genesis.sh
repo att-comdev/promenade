@@ -28,9 +28,10 @@ if [ -f "${PROMENADE_LOAD_IMAGE}" ]; then
 fi
 
 docker run -t --rm \
+    --net host \
     -v /:/target \
     promenade:experimental \
     promenade \
         genesis \
-        --hostname $(hostname) \
-        --config-path /target$(realpath $1) 2>&1
+            --hostname $(hostname) \
+            --config-path /target$(realpath $1) 2>&1

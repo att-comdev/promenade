@@ -23,18 +23,16 @@ spec:
           value: http://$(ETCD_NAME):2379
         - name: ETCD_INITIAL_ADVERTISE_PEER_URLS
           value: http://$(ETCD_NAME):2380
-{% if current_node['hostname'] != genesis['hostname'] %}
-        - name: ETCD_INITIAL_CLUSTER_STATE
-          value: existing
-{% endif %}
         - name: ETCD_INITIAL_CLUSTER_TOKEN
           value: promenade-kube-etcd-token
-        - name: ETCD_DISCOVERY_SRV
-          value: kube-etcd
         - name: ETCD_LISTEN_CLIENT_URLS
           value: http://0.0.0.0:2379
         - name: ETCD_LISTEN_PEER_URLS
           value: http://0.0.0.0:2380
+{%- for env_name, env_value in etcd['env'].items() %}
+        - name: {{ env_name }}
+          value: {{ env_value }}
+{%- endfor %}
       ports:
         - name: client
           containerPort: 2379

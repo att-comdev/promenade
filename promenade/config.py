@@ -22,14 +22,46 @@ def load_config_file(*, config_path, hostname):
 
 
 def extract_node_data(hostname, cluster_data):
+    genesis = _extract_genesis_data(cluster_data['nodes'])
+    masters = _extract_master_data(cluster_data['nodes'])
     return {
         'cluster': cluster_data['nodes'],
         'current_node': _extract_current_node_data(cluster_data['nodes'],
                                                    hostname),
-        'genesis': _extract_genesis_data(cluster_data['nodes']),
-        'masters': _extract_master_data(cluster_data['nodes']),
+        'etcd': _extract_etcd_data(hostname, genesis, masters),
+        'genesis': genesis,
+        'masters': masters,
         'network': cluster_data['network'],
     }
+
+
+def _extract_etcd_data(hostname, genesis, masters):
+    LOG.info('hostname=%r genesis=%r masters=%r',
+             hostname, genesis, masters)
+    non_genesis_masters = [d for d in masters if d['hostname'] != genesis['hostname']]
+    boot_order = [genesis] + sorted(non_genesis_masters, key=itemgetter('hostname'))
+
+    result = {
+        'boot_order': boot_order,
+        'env': {},
+    }
+
+    peers = []
+    for host in boot_order:
+        peers.append(host)
+        if host['hostname'] == hostname:
+            break
+
+    result['env']['ETCD_INITIAL_CLUSTER'] = ','.join(
+            '%s=http://%s:2380' % (p['hostname'], p['hostname'])
+            for p in peers)
+
+    if hostname == genesis['hostname']:
+        result['env']['ETCD_INITIAL_CLUSTER_STATE'] = 'new'
+    else:
+        result['env']['ETCD_INITIAL_CLUSTER_STATE'] = 'existing'
+
+    return result
 
 
 def _extract_current_node_data(nodes, hostname):
