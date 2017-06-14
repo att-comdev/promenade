@@ -30,10 +30,10 @@ spec:
         privileged: true
       volumeMounts:
         - name: config
-          mountPath: /etc/kubernetes/config
+          mountPath: /etc/kubernetes
           readOnly: true
   hostNetwork: true
   volumes:
     - name: config
       hostPath:
-        path: /etc/kubernetes/proxy/config
+        path: /etc/kubernetes/proxy

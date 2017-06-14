@@ -24,6 +24,31 @@ FULL_DISTRIBUTION_MAP = {
     'apiserver-key': [
         'apiserver',
     ],
+    'controller-manager': [
+        'controller-manager',
+    ],
+    'controller-manager-key': [
+        'controller-manager',
+    ],
+    'kubelet': [
+        'kubelet',
+    ],
+    'kubelet-key': [
+        'kubelet',
+    ],
+    'proxy': [
+        'proxy',
+    ],
+    'proxy-key': [
+        'proxy',
+    ],
+    'scheduler': [
+        'scheduler',
+    ],
+    'scheduler-key': [
+        'scheduler',
+    ],
+
     'cluster-ca': [
         'apiserver',
         'controller-manager',
@@ -34,6 +59,7 @@ FULL_DISTRIBUTION_MAP = {
     'cluster-ca-key': [
         'controller-manager',
     ],
+
     'sa': [
         'apiserver',
     ],
@@ -90,7 +116,8 @@ def _generate_certs(dest, target):
 def _distribute_files(src, dest, distribution_map):
     for filename, destinations in distribution_map.items():
         src_path = os.path.join(src, filename + '.pem')
-        for destination in destinations:
-            dest_dir = os.path.join(dest, 'etc/kubernetes/%s/pki' % destination)
-            os.makedirs(dest_dir, exist_ok=True)
-            shutil.copy(src_path, dest_dir)
+        if os.path.exists(src_path):
+            for destination in destinations:
+                dest_dir = os.path.join(dest, 'etc/kubernetes/%s/pki' % destination)
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(src_path, dest_dir)
