@@ -73,7 +73,6 @@ def generate_keys(*, initial_pki, target_dir):
     if os.path.exists(os.path.join(target_dir, 'etc/kubernetes/cfssl')):
         with tempfile.TemporaryDirectory() as tmp:
             _write_initial_pki(tmp, initial_pki)
-            _make_sa_keypair(tmp)
 
             _generate_certs(tmp, target_dir)
 
@@ -86,16 +85,6 @@ def _write_initial_pki(tmp, initial_pki):
         with open(path, 'w') as f:
             LOG.debug('Writing data for "%s" to path "%s"', filename, path)
             f.write(data)
-
-
-def _make_sa_keypair(output_dir):
-        private_key = os.path.join(output_dir, 'sa-key.pem')
-        public_key = os.path.join(output_dir, 'sa.pem')
-        subprocess.run(['/usr/bin/openssl', 'genrsa',
-                        '-out', private_key], check=True)
-        subprocess.run(['/usr/bin/openssl', 'rsa', '-pubout',
-                        '-in', private_key,
-                        '-out', public_key], check=True)
 
 
 def _generate_certs(dest, target):
