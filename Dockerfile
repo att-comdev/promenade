@@ -57,5 +57,3 @@ RUN pip install --no-cache-dir -r requirements-frozen.txt
 
 COPY . /promenade
 RUN pip install -e /promenade
-
-COPY assets/ /assets

@@ -1,4 +1,7 @@
 __pycache__
+Vagrantfile
 .vagrant
 promenade.tar
+promenade.egg-info
+example
 setup.sh
