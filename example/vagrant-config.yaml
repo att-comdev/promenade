@@ -1,4 +1,6 @@
 ---
+apiVersion: promenade/v1
+kind: Config
 network:
   cluster_domain: cluster.local
   cluster_dns: 10.96.0.10
