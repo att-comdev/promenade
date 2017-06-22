@@ -2,6 +2,9 @@
 
 set -x
 
+export KUBECONFIG=/etc/kubernetes/admin/kubeconfig.yaml
+kubectl drain --force $(hostname)
+
 systemctl stop kubelet
 docker rm -fv $(docker ps -aq)
 
