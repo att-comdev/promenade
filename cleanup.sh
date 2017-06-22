@@ -7,7 +7,7 @@ docker rm -fv $(docker ps -aq)
 
 systemctl stop docker
 
-apt-get remove -qq -y dnsmasq
+apt-get remove -qq -y dnsmasq ceph-common
 
 systemctl daemon-reload
 
