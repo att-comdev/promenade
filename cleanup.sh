@@ -13,6 +13,7 @@ systemctl daemon-reload
 
 rm -rf \
     /etc/dnsmasq.d/kubernetes-masters \
+    /etc/dnsmasq.d/upstream-dns \
     /etc/docker \
     /etc/kubernetes \
     /etc/systemd/system/docker.service.d \
