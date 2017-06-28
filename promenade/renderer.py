@@ -51,25 +51,24 @@ class Renderer:
 
         LOG.info('Installed "%s"', os.path.join('/', base_path))
 
+#Generate SHA256 Hases of all the files for host validation
     def generate_sha_hashes(self, *, path, root):
         base_path = os.path.relpath(path, root)
         target_path = os.path.join(self.target_dir, base_path)
         log_path = "var/log/promenade/"
-        LOG.info('VARIABLE REVEAL: self.target_dir is:"%s" and base_path is: "%s" and target_path is "%s"', self.target_dir, base_path, target_path)
         target_log_path = os.path.join(self.target_dir, log_path)
-        log_file = os.path.join(target_log_path, "modified_file_check.txt")
-        try:
-            LOG.debug('Creating "%s"', target_log_path)
+        log_file = os.path.join(target_log_path, "promenade_file_hash.log")
+        if not os.path.exists(target_log_path):
+            LOG.info('Creating "%s"', target_log_path)
             os.mkdir(target_log_path)
-        except OSError:
-            LOG.debug('Skipping creation of "%s" because it already exists', target_log_path)
-
+        else:
+            LOG.info('Skipping creation of "%s" because it already exists', target_log_path)
+#Generate Hashes and Write to file
         hash_sums = {}
         hash = hashlib.sha256(open(path,'rb').read()).hexdigest()
-        hash_sums[target_path] = hash
-        #os.chdir(log_path)
-        LOG.info('HASHING:  "%s" into "%s"', hash_sums, target_path)
-        LOG.info('Writing:  "%s"', log_file)
+        hash_sums[base_path] = hash
+        LOG.info('File Hash:  "%s" into "%s"', hash_sums, target_path)
+        #TODO: Test without changing directory
         os.chdir(target_log_path)
         file_out = open(log_file, "a")
         for key,value in hash_sums.items():
