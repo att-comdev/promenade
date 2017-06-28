@@ -65,14 +65,14 @@ class Renderer:
             LOG.info('Skipping creation of "%s" because it already exists', target_log_path)
 #Generate Hashes and Write to file
         hash_sums = {}
-        hash = hashlib.sha256(open(path,'rb').read()).hexdigest()
+        hash = hashlib.sha256(open(target_path,'rb').read()).hexdigest()
         hash_sums[base_path] = hash
-        LOG.info('File Hash:  "%s" into "%s"', hash_sums, target_path)
+        LOG.info('File Hash:  "%s" into "%s"', hash_sums, os.path.join('/', base_path))
         #TODO: Test without changing directory
         os.chdir(target_log_path)
         file_out = open(log_file, "a")
         for key,value in hash_sums.items():
-            output = key + ": " + value
+            output = os.path.join('/', key) + ": " + value
             file_out.write(output + "\n")
         file_out.close()
 
