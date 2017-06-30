@@ -18,11 +18,12 @@ spec:
         - -c
         - |-
             set -x
+
+            export KUBECONFIG=/etc/kubernetes/asset-loader/kubeconfig.yaml
+
             while true; do
               sleep 10
-              if /kubectl \
-                  --kubeconfig /etc/kubernetes/asset-loader/kubeconfig.yaml \
-                  apply -f /etc/kubernetes/asset-loader/assets; then
+              if /kubectl apply -f /etc/kubernetes/asset-loader/assets; then
                 break
               fi
             done
