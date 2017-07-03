@@ -9,6 +9,8 @@ apt-get install -y --no-install-recommends \
     dnsmasq \
     socat
 
+apt-get remove -y chrony ntp
+
 systemctl daemon-reload
 systemctl enable kubelet
 systemctl restart kubelet
