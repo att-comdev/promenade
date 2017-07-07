@@ -6,7 +6,7 @@ __Objective:__ To determine the best strategy to validate hosts have joined the 
 
 ## Problem Statement
 
-The Promenade project is a simple and efficient tool for orchestrating the deployment of self-hosted Kubernetes clusters.  However, Promenade currently lacks the ability to validate that clusters have been deployed successfully and are actually ready to schedule workloads.   I would like to propose a series of tests and validations that can be included with Promenade which will ensure the Kubernetes clusters are working as intended at the time of deployment, and can be executed at any point in time  after the cluster has been deployed to ensure it is continuing to function as intended for Day 2 operations. This tool should be able to identify potential problems with the Kubernetes cluster and provide the user with a comprehensive debugging output which highlights the identified issues.
+The Promenade project is a simple and efficient tool for orchestrating the deployment of Kubernetes clusters.  However, Promenade currently lacks the ability to validate that clusters have been deployed successfully and are actually ready to schedule workloads.   I would like to propose a series of tests and validations that can be included with Promenade which will ensure the Kubernetes clusters are working as intended at the time of deployment, and can be executed at any point in time  after the cluster has been deployed to ensure it is continuing to function as intended for Day 2 operations. This tool should be able to identify potential problems with the Kubernetes cluster and provide the user with a comprehensive debugging output which highlights the identified issues.
 
 ## Identified Tests
 
@@ -14,7 +14,7 @@ I have identified the following tests which I believe to be a good base-line for
 
 1. __Generate SHA256 hashes of all Promenade Generated configuration files and certificates:__ This process will run during the initial deployment of all the Kubernetes hosts in the cluster. Promenade will write a file to `/var/log/promenade/promenade_file_hash.log` with the path to the file as well as the SHA256 hash of that file when it was originally generated. Subsequent runs of the host validation script will re-calculate the SHA256 hashes of the files as they are presently, and compare them with the values written in the log file at the time of deployment. If the file hashes differ, the host validation script will log a failure and provide the user with a list of files that have potentially been modified.
 
-2. __Issue a REST Post Request to the Kubernetes API:__ This test will trigger a simple POST request to the internernal and external Kubernetes API and validate that it gets a `200` response.  This test will check to see if the Kubernetes API is running and responding to requests as needed.
+2. __Issue a REST Post Request to the Kubernetes API:__ This test will trigger a simple POST request to the internernal and external Kubernetes API and validate that it gets a `200` response. This check wil also query the `kube-system` namespace to ensure all pods are in a `RUNNING` state. This will ensure that the K8's API and system pods are running and responding as expected. 
 
 3. __Kubelet and Docker Validation__ : The goal of this test will be to ensure the Kubelet and Docker are present on the host and running without error.
 
