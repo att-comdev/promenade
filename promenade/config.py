@@ -80,7 +80,8 @@ class Configuration:
         for document in self.documents:
             identifier = (document.kind, document.name)
             if identifier in identifiers:
-                LOG.error('Found duplicate document in config: kind=%s name=%s',
+                LOG.error('Found duplicate document in '
+                          ' config: kind=%s name=%s',
                           document.kind, document.name)
                 raise RuntimeError('Duplicate document')
             else:
@@ -99,7 +100,7 @@ class Configuration:
         for document in self.documents:
             if (document.kind == kind
                     and (not alias or document.alias == alias)
-                    and (not name or document.name == name)) :
+                    and (not name or document.name == name)):
                 return document
 
     def iterate(self, *, kind=None, target=None):

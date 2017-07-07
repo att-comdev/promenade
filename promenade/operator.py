@@ -33,13 +33,13 @@ class Operator:
 
     def rsync_from(self, src):
         if src:
-            LOG.debug('Syncing assets from "%s" to "%s".', src, self.target_dir)
+            LOG.debug('Syncing assets from "%s" to "%s".', src,
+                      self.target_dir)
             subprocess.run(['/usr/bin/rsync', '-r',
                             os.path.join(src, ''), self.target_dir],
                            check=True)
         else:
             LOG.debug('No source directory given for rsync.')
-
 
     def render(self):
         r = renderer.Renderer(config=self.config,

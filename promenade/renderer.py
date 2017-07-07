@@ -21,7 +21,7 @@ class Renderer:
 
     def render_template_dir(self, template_dir):
         source_root = pkg_resources.resource_filename(
-                'promenade', os.path.join('templates', template_dir))
+            'promenade', os.path.join('templates', template_dir))
         LOG.debug('Searching for templates in: "%s"', source_root)
         for root, _dirnames, filenames in os.walk(source_root,
                                                   followlinks=True):

@@ -28,7 +28,7 @@ class Generator:
                 raise
 
         assert self.input_config['Cluster'].metadata['name'] \
-                == self.input_config['Network'].metadata['cluster']
+            == self.input_config['Network'].metadata['cluster']
 
     def generate_all(self, output_dir):
         cluster = self.input_config['Cluster']
@@ -41,17 +41,17 @@ class Generator:
         LOG.info('Generating common PKI for cluster "%s"', cluster_name)
         keys = pki.PKI(cluster_name)
         cluster_ca, cluster_ca_key = keys.generate_ca(
-                ca_name='cluster',
-                cert_target='all',
-                key_target='masters')
+            ca_name='cluster',
+            cert_target='all',
+            key_target='masters')
         etcd_client_ca, etcd_client_ca_key = keys.generate_ca(
-                ca_name='etcd-client',
-                cert_target='all',
-                key_target='masters')
+            ca_name='etcd-client',
+            cert_target='all',
+            key_target='masters')
         etcd_peer_ca, etcd_peer_ca_key = keys.generate_ca(
-                ca_name='etcd-peer',
-                cert_target='all',
-                key_target='masters')
+            ca_name='etcd-peer',
+            cert_target='all',
+            key_target='masters')
 
         admin_cert, admin_cert_key = keys.generate_certificate(
             name='admin',
@@ -104,26 +104,26 @@ class Generator:
             node = _construct_node_config(cluster_name, hostname, data)
 
             kubelet_cert, kubelet_cert_key = keys.generate_certificate(
-                    alias='kubelet',
-                    name='system:node:%s' % hostname,
-                    ca_name='cluster',
-                    groups=['system:nodes'],
-                    hosts=[
-                        hostname,
-                        data['ip'],
-                    ],
-                    target=hostname)
+                alias='kubelet',
+                name='system:node:%s' % hostname,
+                ca_name='cluster',
+                groups=['system:nodes'],
+                hosts=[
+                    hostname,
+                    data['ip'],
+                ],
+                target=hostname)
 
             proxy_cert, proxy_cert_key = keys.generate_certificate(
-                    alias='proxy',
-                    config_name='system:kube-proxy:%s' % hostname,
-                    name='system:kube-proxy',
-                    ca_name='cluster',
-                    hosts=[
-                        hostname,
-                        data['ip'],
-                    ],
-                    target=hostname)
+                alias='proxy',
+                config_name='system:kube-proxy:%s' % hostname,
+                name='system:kube-proxy',
+                ca_name='cluster',
+                hosts=[
+                    hostname,
+                    data['ip'],
+                ],
+                target=hostname)
 
             complete_configuration.extend([
                 kubelet_cert,
@@ -157,7 +157,7 @@ class Generator:
                 ])
                 if 'genesis' not in data.get('roles', []):
                     etcd_config = _master_etcd_config(
-                            cluster_name, genesis_hostname, hostname, masters)
+                        cluster_name, genesis_hostname, hostname, masters)
                     complete_configuration.append(etcd_config)
                     role_specific_documents.append(etcd_config)
                 master_documents = _master_config(hostname, data,
@@ -167,20 +167,25 @@ class Generator:
 
             if 'genesis' in data.get('roles', []):
                 role_specific_documents.extend(_genesis_config(hostname, data,
-                                                               masters, network, keys))
-                role_specific_documents.append(_genesis_etcd_config(cluster_name, hostname))
+                                                               masters,
+                                                               network,
+                                                               keys))
+                role_specific_documents.append(
+                    _genesis_etcd_config(cluster_name, hostname))
                 node.data['spec']['is_genesis'] = True
 
-            c = config.Configuration(common_documents + role_specific_documents)
+            c = config.Configuration(common_documents +
+                                     role_specific_documents)
             c.write(os.path.join(output_dir, hostname + '.yaml'))
 
         config.Configuration(complete_configuration).write(
-                os.path.join(output_dir, 'complete-bundle.yaml'))
+            os.path.join(output_dir, 'complete-bundle.yaml'))
 
     def construct_masters(self, cluster_name):
         masters = []
         for hostname, data in self.input_config['Cluster']['nodes'].items():
-            if 'master' in data.get('roles', []) or 'genesis' in data.get('roles', []):
+            if ('master' in data.get('roles', []) or
+               'genesis' in data.get('roles', [])):
                 masters.append({'hostname': hostname, 'ip': data['ip']})
 
         return config.Document({
@@ -355,7 +360,8 @@ def _construct_node_config(cluster_name, hostname, data):
     spec = {
         'hostname': hostname,
         'ip': data['ip'],
-        'labels': _labels(data.get('roles', []), data.get('additional_labels', [])),
+        'labels': _labels(data.get('roles', []),
+                          data.get('additional_labels', [])),
         'templates': _templates(data.get('roles', [])),
     }
 
