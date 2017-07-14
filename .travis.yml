@@ -1,0 +1,18 @@
+language: python
+
+sudo: required
+
+python:
+  - "2.7"
+  - "3.5"
+
+before_install:
+    - pip install -r test-requirements.txt
+    - pip install -r requirements.txt
+    - pip install tox
+
+install:
+    - pip install -e .
+
+script:
+    - flake8 ./promonade

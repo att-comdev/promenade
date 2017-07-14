@@ -27,7 +27,12 @@ class PKI:
                 'signing': {
                     'default': {
                         'expiry': '8760h',
-                        'usages': ['signing', 'key encipherment', 'server auth', 'client auth'],
+                        'usages': [
+                            'signing',
+                            'key encipherment',
+                            'server auth',
+                            'client auth'
+                        ],
                     },
                 },
             })
@@ -38,8 +43,8 @@ class PKI:
                              files={
                                  'csr.json': self.csr(
                                      name='Kubernetes',
-                                     groups=['Kubernetes']),
-                             })
+                                     groups=['Kubernetes']), })
+
         LOG.debug('ca_cert=%r', result['cert'])
         self.certificate_authorities[ca_name] = result
 
@@ -52,10 +57,10 @@ class PKI:
 
     def generate_keypair(self, *, alias=None, name, target):
         priv_result = self._openssl(['genrsa', '-out', 'priv.pem'])
-        pub_result = self._openssl(['rsa', '-in', 'priv.pem', '-pubout', '-out', 'pub.pem'],
+        pub_result = self._openssl(['rsa', '-in', 'priv.pem', '-pubout',
+                                    '-out', 'pub.pem'],
                                    files={
-                                       'priv.pem': priv_result['priv.pem'],
-                                   })
+                                       'priv.pem': priv_result['priv.pem'], })
 
         if not alias:
             alias = name
@@ -69,21 +74,18 @@ class PKI:
                            name=name,
                            target=target))
 
-
     def generate_certificate(self, *, alias=None, config_name=None,
                              ca_name, groups=[], hosts=[], name, target):
         result = self._cfssl(
-                ['gencert',
-                 '-ca', 'ca.pem',
-                 '-ca-key', 'ca-key.pem',
-                 '-config', 'ca-config.json',
-                 'csr.json'],
-                files={
-                    'ca-config.json': self.ca_config,
-                    'ca.pem': self.certificate_authorities[ca_name]['cert'],
-                    'ca-key.pem': self.certificate_authorities[ca_name]['key'],
-                    'csr.json': self.csr(name=name, groups=groups, hosts=hosts),
-                })
+            ['gencert',
+             '-ca', 'ca.pem',
+             '-ca-key', 'ca-key.pem',
+             '-config', 'ca-config.json', 'csr.json'],
+            files={
+                'ca-config.json': self.ca_config,
+                'ca.pem': self.certificate_authorities[ca_name]['cert'],
+                'ca-key.pem': self.certificate_authorities[ca_name]['key'],
+                'csr.json': self.csr(name=name, groups=groups, hosts=hosts), })
 
         if not alias:
             alias = name
@@ -100,7 +102,8 @@ class PKI:
                            name=config_name,
                            target=target))
 
-    def csr(self, *, name, groups=[], hosts=[], key={'algo': 'rsa', 'size': 2048}):
+    def csr(self, *, name, groups=[], hosts=[],
+            key={'algo': 'rsa', 'size': 2048}):
         return json.dumps({
             'CN': name,
             'key': key,
@@ -152,8 +155,8 @@ class PKI:
         })
 
 
-class block_literal(str): pass
-
+class block_literal(str):
+    pass
 
 def block_literal_representer(dumper, data):
     return dumper.represent_scalar(u'tag:yaml.org,2002:str', data, style='|')

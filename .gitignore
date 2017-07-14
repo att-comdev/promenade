@@ -12,3 +12,4 @@ __pycache__
 /join_image_cache/
 /promenade.egg-info
 /tmp
+**/*.pyc
