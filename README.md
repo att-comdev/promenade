@@ -25,6 +25,8 @@ To get started, see [getting started](docs/getting-started.md).
 
 Configuration is documented [here](docs/configuration.md).
 
+Bootstrap validation is documented [here](docs/bootstrap-validation.md)
+
 ## Bugs
 
 Bugs are tracked in
