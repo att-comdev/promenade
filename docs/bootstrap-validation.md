@@ -23,6 +23,8 @@ to the host machine to avoid surprising issues.
 
 * Host DNS Validation
   * Ensure DNS is configured on the correct interface (e.g. not lo)
+* Host NTP Validation
+  * Ensure that the NTP servers given are reachable
 
 ### Post-Genesis Validation
 
