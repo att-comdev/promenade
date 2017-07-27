@@ -3,6 +3,7 @@ import base64
 import jinja2
 import os
 import pkg_resources
+import hashlib
 
 __all__ = ['Renderer']
 
@@ -32,6 +33,8 @@ class Renderer:
                 source_path = os.path.join(root, source_filename)
                 self.render_template_file(path=source_path,
                                           root=source_root)
+                self.generate_sha_hashes(path=source_path,
+                                          root=source_root)
 
     def render_template_file(self, *, path, root):
         base_path = os.path.relpath(path, root)
@@ -54,6 +57,31 @@ class Renderer:
             f.write(rendered_data)
 
         LOG.info('Installed "%s"', os.path.join('/', base_path))
+
+#Generate SHA256 Hases of all the files for host validation
+    def generate_sha_hashes(self, *, path, root):
+        base_path = os.path.relpath(path, root)
+        target_path = os.path.join(self.target_dir, base_path)
+        log_path = "var/log/promenade/"
+        target_log_path = os.path.join(self.target_dir, log_path)
+        log_file = os.path.join(target_log_path, "promenade_file_hash.log")
+        if not os.path.exists(target_log_path):
+            LOG.info('Creating "%s"', target_log_path)
+            os.mkdir(target_log_path)
+        else:
+            LOG.info('Skipping creation of "%s" because it already exists', target_log_path)
+#Generate Hashes and Write to file
+        hash_sums = {}
+        hash = hashlib.sha256(open(target_path,'rb').read()).hexdigest()
+        hash_sums[base_path] = hash
+        LOG.info('File Hash:  "%s" into "%s"', hash_sums, os.path.join('/', base_path))
+        #TODO: Test without changing directory
+        os.chdir(target_log_path)
+        file_out = open(log_file, "a")
+        for key,value in hash_sums.items():
+            output = os.path.join('/', key) + ": " + value
+            file_out.write(output + "\n")
+        file_out.close()
 
 
 def _ensure_path(path):
