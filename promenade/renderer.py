@@ -4,6 +4,8 @@ import jinja2
 import os
 import pkg_resources
 
+import promenade_exceptions as exceptions
+
 __all__ = ['Renderer']
 
 
@@ -23,8 +25,11 @@ class Renderer:
             self.render_template_dir(template_dir)
 
     def render_template_dir(self, template_dir):
-        source_root = pkg_resources.resource_filename(
-                'promenade', os.path.join('templates', template_dir))
+        try:
+            source_root = pkg_resources.resource_filename(
+                    'promenade', os.path.join('templates', template_dir))
+        except (pkg_resources.ResolutionError, pkg_resources.ExtractionError):
+            raise exceptions.RenderTemplateDirException(template_dir)
         LOG.debug('Searching for templates in: "%s"', source_root)
         for root, _dirnames, filenames in os.walk(source_root,
                                                   followlinks=True):
@@ -46,12 +51,19 @@ class Renderer:
                 undefined=jinja2.StrictUndefined)
         env.filters['b64enc'] = _base64_encode
 
-        with open(path) as f:
-            template = env.from_string(f.read())
+        try:
+            with open(path) as f:
+                template = env.from_string(f.read())
+        except IOError:
+            raise exceptions.TemplateLoadException(path)
+
         rendered_data = template.render(config=self.config)
 
-        with open(target_path, 'w') as f:
-            f.write(rendered_data)
+        try:
+            with open(target_path, 'w') as f:
+                f.write(rendered_data)
+        except IOError:
+            raise exceptions.TemplateSaveException(target_path)
 
         LOG.info('Installed "%s"', os.path.join('/', base_path))
 

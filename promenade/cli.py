@@ -1,6 +1,8 @@
 from . import generator, logging, operator
 import click
 
+import promenade_exceptions as exceptions
+
 __all__ = []
 
 
@@ -30,9 +32,11 @@ def up(*, asset_dir, config_path, hostname, target_dir):
     op = operator.Operator.from_config(config_path=config_path,
                                        hostname=hostname,
                                        target_dir=target_dir)
-
-    op.up(asset_dir=asset_dir)
-
+    try:
+        op.up(asset_dir=asset_dir)
+    except Exception as e:
+       LOG.error('{} raised with message {} while bringing cluster up.'.format(
+                 type(e).__name__, e.message)
 
 @promenade.command(help='Generate certs and keys')
 @click.option('-c', '--config-path', type=click.File(),
@@ -45,4 +49,9 @@ def up(*, asset_dir, config_path, hostname, target_dir):
               help='Location to write complete cluster configuration.')
 def generate(*, config_path, output_dir):
     g = generator.Generator.from_config(config_path=config_path)
-    g.generate_all(output_dir)
+
+    try:
+        g.generate_all(output_dir)
+    except Exception as e:
+        LOG.error('{} raised with message {} while generating certs.'.format(
+                 type(e).__name__, e.message)

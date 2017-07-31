@@ -5,6 +5,8 @@ import subprocess
 import tempfile
 import yaml
 
+import promenade_exceptions as exceptions
+
 __all__ = ['PKI']
 
 
@@ -17,8 +19,11 @@ class PKI:
         self.cluster_name = cluster_name
 
         self._ca_config_string = None
-        if ca_config:
-            self._ca_config_string = json.dumps(ca_config)
+        try:
+            if ca_config:
+                self._ca_config_string = json.dumps(ca_config)
+        except json.JSONDecodeError:
+            raise exceptions.MalformedCAConfigException(ca_config)
 
     @property
     def ca_config(self):

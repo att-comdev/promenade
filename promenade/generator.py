@@ -1,6 +1,8 @@
 from . import config, logging, pki, renderer
 import os
 
+import promenade_exceptions as exceptions
+
 __all__ = ['Generator']
 
 
@@ -25,11 +27,17 @@ class Generator:
             except KeyError:
                 LOG.error('Generator requires one "%s" document to function.',
                           required_kind)
-                raise
 
-        assert self.input_config['Cluster'].metadata['name'] \
-                == self.input_config['Network'].metadata['cluster']
+                raise exceptions.MissingDocumentException(required_kind)
 
+        try:
+            assert self.input_config['Cluster'].metadata['name'] \
+                 == self.input_config['Network'].metadata['cluster']
+        except AssertionError:
+            raise exceptions.ClusterNameMistmatchException(
+                  self.input_config['Cluster'].metadata['name'], 
+                  self.input_config['Network'].metadata['cluster']) 
+ 
     def generate_up_sh(self, output_dir):
         r = renderer.Renderer(config=self.input_config,
                               target_dir=output_dir)
