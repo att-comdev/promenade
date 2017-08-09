@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae560fa4_f72073d7",
+        "filename": ".travis.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-08-09T20:12:46Z",
+      "side": 1,
+      "message": "Should this be promonade instead of promenade?",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "603779c8aefdf79e7701599e0aa834985b08b467",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06cd8cbd_1a08a570",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-08-09T20:12:46Z",
+      "side": 1,
+      "message": "py35,py27,pep8",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "603779c8aefdf79e7701599e0aa834985b08b467",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67c2663_2d9ea893",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-08-09T20:12:46Z",
+      "side": 1,
+      "message": "I think it\u0027d also be useful to include:\n\ncommands \u003d\n  find . -type f -name \"*.pyc\" -delete\n\nTo delete .pyc files every time you run tox -e py27, etc.",
+      "revId": "603779c8aefdf79e7701599e0aa834985b08b467",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5c4c3bf_68b0ae62",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-08-09T20:12:46Z",
+      "side": 1,
+      "message": "I think it\u0027d be useful to add:\n\n[testenv:pep8]\ncommands \u003d\n    flake8 {posargs}",
+      "revId": "603779c8aefdf79e7701599e0aa834985b08b467",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
