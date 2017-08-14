@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b9c9d36_744e7722",
+        "filename": "docs/bootstrap-validation.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-08-14T21:45:55Z",
+      "side": 1,
+      "message": "the pattern",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "d0b6fa8c637a2000fafcc2aadb5d39a8e671a1a9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
