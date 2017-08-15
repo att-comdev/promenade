@@ -18,6 +18,7 @@ systemctl restart kubelet
 
 cat <<EOF > /etc/resolv.conf
 options timeout:1 attempts:1
+search svc.{{ config['Network']['cluster_domain'] }} {{ config['Network']['cluster_domain'] }}
 
 nameserver 127.0.0.1
 
