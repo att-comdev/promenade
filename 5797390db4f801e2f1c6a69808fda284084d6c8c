@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07169d8d_2493599c",
+        "filename": "promenade/templates/genesis/etc/kubernetes/asset-loader/assets/configmap-promenade-join.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-08-15T18:53:26Z",
+      "side": 1,
+      "message": "ConfigMap namespace should be ucp as well",
+      "revId": "5797390db4f801e2f1c6a69808fda284084d6c8c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
