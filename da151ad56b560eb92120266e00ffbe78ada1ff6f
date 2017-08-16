@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6021eb22_d05a8b2d",
+        "filename": "docs/Host_Validation_Architecture.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-08-16T01:21:52Z",
+      "side": 1,
+      "message": "internal",
+      "range": {
+        "startLine": 17,
+        "startChar": 108,
+        "endLine": 17,
+        "endChar": 119
+      },
+      "revId": "da151ad56b560eb92120266e00ffbe78ada1ff6f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be0e44f5_410d8c5d",
+        "filename": "docs/Host_Validation_Architecture.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-08-16T01:21:52Z",
+      "side": 1,
+      "message": "nit: extra space.",
+      "range": {
+        "startLine": 17,
+        "startChar": 381,
+        "endLine": 17,
+        "endChar": 382
+      },
+      "revId": "da151ad56b560eb92120266e00ffbe78ada1ff6f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
