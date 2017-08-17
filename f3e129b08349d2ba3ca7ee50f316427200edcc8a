@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efcb8348_25484af7",
+        "filename": "promenade/templates/common/usr/local/bin/bootstrap",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-08-17T19:52:11Z",
+      "side": 1,
+      "message": "This has shown to cause instability in dnsmasq.",
+      "revId": "f3e129b08349d2ba3ca7ee50f316427200edcc8a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
