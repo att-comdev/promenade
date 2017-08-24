@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b475727_24e911c1",
+        "filename": "tools/promenade-config.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1011938
+      },
+      "writtenOn": "2017-08-24T20:38:47Z",
+      "side": 1,
+      "message": "Can we version tag the armada image that is guaranteed to work with this version of Promenade, so we don\u0027t have to rely on `latest`?",
+      "revId": "47f142c5f2e704b43f05e74910dae95b9986c7c5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
