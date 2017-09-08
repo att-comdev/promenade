@@ -1,0 +1,1 @@
+host-record=kubernetes,{{ config.get_first('Genesis:ip', 'KubernetesNode:join_ip') }}

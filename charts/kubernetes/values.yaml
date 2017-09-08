@@ -1,0 +1,35 @@
+apiserver:
+  enabled: true
+  ingress:
+    enabled: true
+
+controller_manager:
+  enabled: true
+
+dns:
+  enabled: true
+
+proxy:
+  enabled: true
+  node_selector:
+    key: kubernetes-proxy
+    value: enabled
+  tls:
+    ca: placeholder
+    cert: placeholder
+    key: placeholder
+
+scheduler:
+  enabled: true
+
+images:
+  apiserver: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+  controller_manager: quay.io/attcomdev/kube-controller-manager:v1.6.8
+  dns:
+    a: b
+  proxy: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+  scheduler: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+
+network:
+  pod_cidr: 10.97.0.0/16
+  kubernetes_service_ip: 10.96.0.1
