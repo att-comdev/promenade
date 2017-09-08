@@ -1,0 +1,121 @@
+{{- $envAll := . }}
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-manager
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        {{ .Values.service.name | quote }}: manager
+    spec:
+      nodeSelector:
+        {{ .Values.node_selector.key }}: {{ .Values.node_selector.value }}
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      - key: CriticalAddonsOnly
+        operator: Exists
+      serviceAccountName: {{ .Values.service.name }}-manager
+      containers:
+        - name: etcdctl
+          image: {{ .Values.images.etcd }}
+          command:
+            - /bin/sh
+            - -c
+            - |-
+              set -x
+
+              while true; do
+                  sleep 30
+
+                  # Only consider taking action if all nodes are Ready
+                  if grep False /ipc/hosts; then
+                      continue
+                  fi
+                  # Only consider taking action if the cluster is completely healthy
+                  if etcdctl member list | grep -v '\bstarted\b'; then
+                      continue
+                  fi
+
+                  for ip in $(nslookup {{ .Values.service.name }}-discovery | grep Address | awk -F ': ' '{ print $2 }'); do
+                      HOSTNAME=$(grep $ip /ipc/hosts | awk '{ print $1 }')
+                      {{- range .Values.nodes }}
+                      {{- $node := . }}
+                      if [ "x{{ $node.name }}" = "x$HOSTNAME" ]; then
+                          if (etcdctl member list | awk -F ', ' '{ print $3 }' | grep $HOSTNAME) ; then
+                              echo $HOSTNAME @ $ip is already an etcd member.
+                          else
+                              etcdctl member add $HOSTNAME --peer-urls https://$ip:{{ $envAll.Values.service.target_ports.peer }}
+                              break
+                          fi
+                      fi
+                      {{- end }}
+                  done
+              done
+          env:
+            - name: ETCDCTL_ENDPOINTS
+              {{- if .Values.service.ip }}
+              value: https://{{ .Values.service.ip }}:{{ .Values.service.ports.client }}
+              {{- else }}
+              value: https://{{ .Values.service.name }}:{{ .Values.service.ports.client }}
+              {{- end }}
+            - name: ETCDCTL_CACERT
+              value: /etc/etcd/tls/client-ca.pem
+            - name: ETCDCTL_CERT
+              value: /etc/etcd/tls/manager-etcd-client.pem
+            - name: ETCDCTL_KEY
+              value: /etc/etcd/tls/manager-etcd-client-key.pem
+            - name: ETCDCTL_API
+              value: '3'
+            - name: ETCDCTL_DIAL_TIMEOUT
+              value: 3s
+            - name: ETCDCTL_INSECURE_TRANSPORT
+              value: 'false'
+          volumeMounts:
+            - name: certs
+              mountPath: /etc/etcd/tls/client-ca.pem
+              subPath: client-ca.pem
+            - name: certs
+              mountPath: /etc/etcd/tls/manager-etcd-client.pem
+              subPath: manager-etcd-client.pem
+            - name: keys
+              mountPath: /etc/etcd/tls/manager-etcd-client-key.pem
+              subPath: manager-etcd-client-key.pem
+            - name: ipc
+              mountPath: /ipc
+        - name: kubectl
+          image: {{ .Values.images.kubectl }}
+          command:
+            - /bin/sh
+            - -c
+            - |-
+              CA_PATH=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+              TOKEN_PATH=/var/run/secrets/kubernetes.io/serviceaccount/token
+
+              CUSTOM_COLUMNS='custom-columns=NAME:.metadata.name,ADDRESS:.status.addresses[?(@.type=="InternalIP")].address,READY:.status.conditions[?(@.type=="Ready")].status'
+
+              while true; do
+                  kubectl \
+                      --certificate-authority $CA_PATH \
+                      --token=$(cat $TOKEN_PATH) \
+                          get nodes \
+                            -l {{ .Values.node_selector.key }}={{ .Values.node_selector.value }} \
+                            -o "${CUSTOM_COLUMNS}" | tee /ipc/next-hosts
+                  mv -f /ipc/next-hosts /ipc/hosts
+                  sleep 30
+              done
+          volumeMounts:
+            - name: ipc
+              mountPath: /ipc
+      volumes:
+        - name: certs
+          configMap:
+            name: {{ .Values.service.name }}
+        - name: keys
+          secret:
+            secretName: {{ .Values.service.name }}-manager
+        - name: ipc
+          emptyDir: {}

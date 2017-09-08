@@ -1,0 +1,49 @@
+[Unit]
+Description=Kubernetes Worker Process
+Requires=docker.service network-online.target
+After=docker.service network-online.target
+
+[Service]
+ExecStartPre=/bin/sh -c "while /bin/umount /var/lib/kubelet ; do /bin/sleep 0.1 ; done"
+ExecStartPre=/bin/mkdir -p /var/lib/kubelet
+ExecStartPre=/bin/mount --bind /var/lib/kubelet /var/lib/kubelet
+ExecStartPre=/bin/mount --make-shared /var/lib/kubelet
+
+ExecStart=/usr/bin/docker run \
+        --net=host \
+        --pid=host \
+        --privileged \
+        -v /sys:/sys:ro \
+        -v /var/run:/var/run:rw \
+        -v /var/lib/docker/:/var/lib/docker:rw \
+        -v /var/lib/kubelet/:/var/lib/kubelet:shared \
+        -v /var/log:/var/log:shared \
+        -v /srv/kubernetes:/srv/kubernetes:ro \
+        -v /etc/kubernetes:/etc/kubernetes:ro \
+        -v /etc/cni/net.d:/etc/cni/net.d:ro \
+        -v /opt/cni:/opt/cni:ro \
+          {{ config['Images:kubernetes.kubelet'] }} \
+            /kubelet \
+                --allow-privileged=true \
+                --cluster-domain={{ config['KubernetesNetwork:dns.cluster_domain'] }} \
+                --cluster-dns={{ config['KubernetesNetwork:dns.service_ip'] }} \
+                --cni-bin-dir=/opt/cni/bin \
+                --cni-conf-dir=/etc/cni/net.d \
+                --kubeconfig=/etc/kubernetes/kubelet/kubeconfig.yaml \
+                --network-plugin=cni \
+                --node-ip={{ config.get_first('Genesis:ip', 'KubernetesNode:ip') }} \
+                --node-labels={{ config.get_first('Genesis:labels', 'KubernetesNode:labels') | join(',') }} \
+                --pod-manifest-path=/etc/kubernetes/kubelet/manifests \
+                --require-kubeconfig=true \
+                --client-ca-file=/etc/kubernetes/kubelet/pki/cluster-ca.pem \
+                --tls-cert-file=/etc/kubernetes/kubelet/pki/kubelet.pem \
+                --tls-private-key-file=/etc/kubernetes/kubelet/pki/kubelet-key.pem \
+                --v=5
+
+Restart=always
+StartLimitInterval=0
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

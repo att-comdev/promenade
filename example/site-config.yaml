@@ -1,0 +1,51 @@
+---
+schema: promenade/KubernetesNetwork/v1
+metadata:
+  schema: metadata/Document/v1
+  name: kubernetes-network
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  dns:
+    cluster_domain: cluster.local
+    service_ip: 10.96.0.10
+    upstream_servers:
+      - 8.8.8.8
+      - 8.8.4.4
+  kubernetes:
+    pod_cidr: 10.97.0.0/16
+    service_cidr: 10.96.0.0/16
+    service_ip: 10.96.0.1
+#  proxy:
+#    url: http://proxy.example.com:8080
+#    additional_no_proxy:
+#      - 10.0.1.1
+---
+schema: promenade/SystemPackages/v1
+metadata:
+  schema: metadata/Document/v1
+  name: system-packages
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  additional:
+    - ceph-common=10.2.7-0ubuntu0.16.04.1
+    - jq
+  required:
+    docker: docker.io=1.12.6-0ubuntu1~16.04.1
+    dnsmasq: dnsmasq=2.75-1ubuntu0.16.04.2
+    socat: socat=1.7.3.1-1
+---
+schema: promenade/Images/v1
+metadata:
+  schema: metadata/Document/v1
+  name: images
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  kubernetes:
+    kubelet: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+...

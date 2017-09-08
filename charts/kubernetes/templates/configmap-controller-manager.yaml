@@ -1,0 +1,32 @@
+{{- if .Values.controller_manager.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubernetes-controller-manager
+data:
+  kubeconfig.yaml: |-
+    ---
+    apiVersion: v1
+    clusters:
+    - cluster:
+        server: https://{{ .Values.network.kubernetes_service_ip }}
+        certificate-authority: pki/cluster-ca.pem
+      name: kubernetes
+    contexts:
+    - context:
+        cluster: kubernetes
+        user: controller-manager
+      name: controller-manager@kubernetes
+    current-context: controller-manager@kubernetes
+    kind: Config
+    preferences: {}
+    users:
+    - name: controller-manager
+      user:
+        client-certificate: pki/controller-manager.pem
+        client-key: pki/controller-manager-key.pem
+
+  cluster-ca.pem: {{ .Values.common.tls.ca | quote }}
+  controller-manager.pem: {{ .Values.controller_manager.tls.cert | quote }}
+{{- end }}

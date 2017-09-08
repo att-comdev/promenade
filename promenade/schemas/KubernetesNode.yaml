@@ -1,0 +1,45 @@
+---
+schema: deckhand/DataSchema/v1
+metadata:
+  schema: metadata/Control/v1
+  name: promenade/KubernetesNode/v1
+  labels:
+    application: promenade
+data:
+  $schema: http://json-schema.org/schema#
+  definitions:
+    hostname:
+      type: string
+      # XXX add regex
+    image:
+      type: string
+      # XXX add regex
+    ip_address:
+      type: string
+      # XXX add regex
+    label:
+      type: string
+      # XXX add regex
+
+  type: object
+  properties:
+    hostname:
+      $ref: '#/definitions/hostname'
+
+    ip:
+      $ref: '#/definitions/ip_address'
+
+    join_ip:
+      $ref: '#/definitions/ip_address'
+
+    labels:
+      type: array
+      items:
+        $ref: '#/definitions/label'
+
+  required:
+    - ip
+    - join_ip
+    - labels
+  additionalProperties: false
+...

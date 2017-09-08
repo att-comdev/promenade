@@ -1,0 +1,29 @@
+---
+schema: deckhand/DataSchema/v1
+metadata:
+  schema: metadata/Control/v1
+  name: promenade/Images/v1
+  labels:
+    application: promenade
+data:
+  $schema: http://json-schema.org/schema#
+  definitions:
+    image:
+      type: string
+      # XXX add regex
+
+  type: object
+  properties:
+    kubernetes:
+      type: object
+      properties:
+        kubelet:
+          $ref: '#/definitions/image'
+      required:
+        - kubelet
+      additionalProperties: false
+
+  required:
+    - kubernetes
+  additionalProperties: false
+...

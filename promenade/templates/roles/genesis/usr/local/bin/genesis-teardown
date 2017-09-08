@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -xe
+
+MEMBER_ID=$(kubectl -n kube-system exec kubernetes-etcd-{{ config['Genesis:hostname'] }} etcdctl member list | grep genesis | awk -F ', ' '{print $1}')
+
+kubectl -n kube-system exec kubernetes-etcd-{{ config['Genesis:hostname'] }} etcdctl member remove $MEMBER_ID
+
+systemctl stop kubelet
+docker rm -f $(docker ps -aq)
