@@ -1,5 +1,7 @@
 click==6.7
 Jinja2==2.9.6
+jsonpath-ng==1.4.3
+jsonschema==2.6.0
 MarkupSafe==1.0
 pbr==3.0.1
 PyYAML==3.12

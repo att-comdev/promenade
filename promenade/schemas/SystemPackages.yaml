@@ -1,0 +1,60 @@
+---
+schema: deckhand/DataSchema/v1
+metadata:
+  schema: metadata/Control/v1
+  name: promenade/SystemPackages/v1
+  labels:
+    application: promenade
+data:
+  $schema: http://json-schema.org/schema#
+  definitions:
+    package:
+      type: string
+      # XXX add regex
+    public_key:
+      type: string
+      # XXX add regex
+    apt_source_line:
+      type: string
+      # XXX add regex
+
+  type: object
+  properties:
+    keys:
+      type: array
+      items:
+        $ref: '#/definitions/public_key'
+
+    packages:
+      type: object
+      properties:
+        additional:
+          type: array
+          items:
+            $ref: '#/definitions/package'
+        required:
+          type: object
+          properties:
+            docker:
+              $ref: '#/definitions/package'
+            ipset:
+              $ref: '#/definitions/package'
+            socat:
+              $ref: '#/definitions/package'
+          required:
+            - docker
+            - ipset
+            - socat
+          additionalProperties: false
+
+      required:
+        - required
+
+    repositories:
+      type: array
+      items:
+        $ref: '#/definitions/apt_source_line'
+  required:
+    - packages
+  additionalProperties: false
+...
