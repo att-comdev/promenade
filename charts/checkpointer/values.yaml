@@ -1,0 +1,15 @@
+iptables_checkpointer:
+  # Time in seconds between saving iptables state
+  period: 60
+  node_selector:
+    key: checkpointer
+    value: enabled
+
+pod_checkpointer:
+  node_selector:
+    key: checkpointer
+    value: enabled
+
+images:
+  iptables_checkpointer: quay.io/calico/node:v2.5.1
+  pod_checkpointer: quay.io/coreos/pod-checkpointer:abdcbc46df985b832cccf805b34f4652a0ca9d56
