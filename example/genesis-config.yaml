@@ -1,0 +1,30 @@
+---
+schema: promenade/Genesis/v1
+metadata:
+  schema: metadata/Document/v1
+  name: genesis
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  hostname: n0
+  ip: 192.168.77.10
+  labels:
+    - calico-etcd-gensis=enabled
+    - node-role.kubernetes.io/master=
+    - promenade-genesis=enabled
+    - kubernetes-proxy=enabled
+    - ucp-control-plane=enabled
+  images:
+    armada: quay.io/attcomdev/armada:latest
+    helm:
+      helm: lachlanevenson/k8s-helm:v2.5.1
+      tiller: gcr.io/kubernetes-helm/tiller:v2.5.1
+    kubernetes:
+      apiserver: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+      controller-manager: quay.io/attcomdev/kube-controller-manager:v1.6.8
+      etcd: quay.io/coreos/etcd:v3.2.7
+      kubectl: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+      scheduler: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+    promenade: quay.io/attcomdev/promenade:latest
+...

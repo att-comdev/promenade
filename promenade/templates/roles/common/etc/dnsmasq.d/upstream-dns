@@ -1,0 +1,1 @@
+server=/{{ config['KubernetesNetwork:dns.cluster_domain'] }}/{{ config['KubernetesNetwork:dns.service_ip'] }}

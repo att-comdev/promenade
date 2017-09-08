@@ -1,0 +1,462 @@
+---
+schema: armada/Manifest/v1
+metadata:
+  schema: metadata/Document/v1
+  name: cluster-bootstrap
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  release_prefix: ucp
+  chart_groups:
+    - kubernetes-proxy
+    - container-networking
+    - kubernetes
+    - kubernetes-rbac
+---
+schema: armada/ChartGroup/v1
+metadata:
+  schema: metadata/Document/v1
+  name: kubernetes-proxy
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  description: Kubernetes proxy
+  sequenced: true
+  chart_group:
+    - kubernetes-proxy
+---
+schema: armada/ChartGroup/v1
+metadata:
+  schema: metadata/Document/v1
+  name: container-networking
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  description: Container networking via Calico and Kubernetes DNS
+  sequenced: true
+  chart_group:
+    - calico-etcd
+    - calico
+    - kube-dns
+---
+schema: armada/ChartGroup/v1
+metadata:
+  schema: metadata/Document/v1
+  name: kubernetes-rbac
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  description: Role Based Access Control configuration for Kubernetes
+  sequenced: true
+  chart_group:
+    - kubernetes-rbac
+---
+schema: armada/ChartGroup/v1
+metadata:
+  schema: metadata/Document/v1
+  name: kubernetes
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  description: Kubernetes components
+  sequenced: true
+  chart_group:
+    - kubernetes
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: kubernetes-proxy
+  layeringDefinition:
+    abstract: false
+    layer: site
+  substitutions:
+    -
+      src:
+        schema: deckhand/CertificateAuthority/v1
+        name: kubernetes
+        path: $
+      dest:
+        path: '$.values.common.tls.ca'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: proxy
+        path: $
+      dest:
+        path: '$.values.proxy.tls.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: proxy
+        path: $
+      dest:
+        path: '$.values.proxy.tls.key'
+data:
+  chart_name: kubernetes
+  release: kubernetes-proxy
+  namespace: kube-system
+  timeout: 600
+  values:
+    common:
+      tls:
+        ca: placeholder
+    proxy:
+      enabled: true
+      tls:
+        cert: placeholder
+        key: placeholder
+  source:
+    type: local
+    location: /etc/kubernetes/armada/assets/charts
+    subpath: kubernetes
+  dependencies: []
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: calico-etcd
+  layeringDefinition:
+    abstract: false
+    layer: site
+  substitutions:
+    -
+      src:
+        schema: deckhand/CertificateAuthority/v1
+        name: calico-etcd
+        path: $
+      dest:
+        path: '$.values.nodes[*].tls.client.ca'
+    -
+      src:
+        schema: deckhand/CertificateAuthority/v1
+        name: calico-etcd-peer
+        path: $
+      dest:
+        path: '$.values.nodes[*].tls.peer.ca'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: calico-etcd-genesis
+        path: $
+      dest:
+        path: '$.values.nodes[0].tls.client.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: calico-etcd-genesis
+        path: $
+      dest:
+        path: '$.values.nodes[0].tls.client.key'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: calico-etcd-genesis-peer
+        path: $
+      dest:
+        path: '$.values.nodes[0].tls.peer.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: calico-etcd-genesis-peer
+        path: $
+      dest:
+        path: '$.values.nodes[0].tls.peer.key'
+data:
+  chart_name: etcd
+  release: calico-etcd
+  namespace: kube-system
+  timeout: 600
+  values:
+    images:
+      etcd: quay.io/coreos/etcd:v3.2.7
+    service:
+      name: calico-etcd
+      ip: 10.96.232.136
+      ports:
+        client: 6666
+        peer: 6667
+      target_ports:
+        client: 6666
+        peer: 6667
+    nodes:
+      - name: genesis
+        host: 192.168.77.10
+        is_initial_node: true
+        node_selector:
+          key: calico-etcd-gensis
+          value: enabled
+        host_data_path: /var/etcd/calico-gensis
+        tls:
+          client:
+            ca: placeholder
+            cert: placeholder
+            key: placeholder
+          peer:
+            ca: placeholder
+            cert: placeholder
+            key: placeholder
+  source:
+    type: local
+    location: /etc/kubernetes/armada/assets/charts
+    subpath: etcd
+  dependencies: []
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: calico
+  layeringDefinition:
+    abstract: false
+    layer: site
+  substitutions:
+    -
+      src:
+        schema: deckhand/CertificateAuthority/v1
+        name: calico-etcd
+        path: $
+      dest:
+        path: '$.values.etcd.tls.ca'
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: calico-node
+        path: $
+      dest:
+        path: '$.values.etcd.tls.cert'
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: calico-node
+        path: $
+      dest:
+        path: '$.values.etcd.tls.key'
+data:
+  chart_name: calico
+  release: calico
+  namespace: kube-system
+  timeout: 600
+  values:
+    calico:
+      ip_autodetection_method: interface=ens6
+      pod_ip_cidr: 10.97.0.0/16
+      ctl:
+        install_on_host: true
+    etcd:
+      service:
+        ip: 10.96.232.136
+        port: 6666
+      tls:
+        ca: placeholder
+        cert: placeholder
+        key: placeholder
+    images:
+      cni: quay.io/calico/cni:v1.10.0
+      ctl: quay.io/calico/ctl:v1.5.0
+      node: quay.io/calico/node:v2.5.1
+      policy_controller: quay.io/calico/kube-policy-controller:v0.7.0
+  source:
+    type: local
+    location: /etc/kubernetes/armada/assets/charts
+    subpath: calico
+  dependencies: []
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: kube-dns
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  chart_name: kube-dns
+  release: kube-dns
+  namespace: kube-system
+  timeout: 600
+  values:
+    kube_dns:
+      replicas: 1
+      upstream_nameservers:
+        - 8.8.8.8
+        - 8.8.4.4
+  source:
+    type: local
+    location: /etc/kubernetes/armada/assets/charts
+    subpath: kube-dns
+  dependencies: []
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: kubernetes-rbac
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  chart_name: rbac
+  release: rbac
+  namespace: kube-system
+  timeout: 600
+  values: {}
+  source:
+    type: local
+    location: /etc/kubernetes/armada/assets/charts
+    subpath: rbac
+  dependencies: []
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: kubernetes
+  layeringDefinition:
+    abstract: false
+    layer: site
+  substitutions:
+    -
+      src:
+        schema: deckhand/CertificateAuthority/v1
+        name: kubernetes
+        path: $
+      dest:
+        path: $.values.common.tls.ca
+
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: apiserver
+        path: $
+      dest:
+        path: $.values.apiserver.tls.cert
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: apiserver
+        path: $
+      dest:
+        path: $.values.apiserver.tls.key
+    -
+      src:
+        schema: deckhand/CertificateAuthority/v1
+        name: kubernetes-etcd
+        path: $
+      dest:
+        path: $.values.apiserver.etcd.tls.ca
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: apiserver-etcd
+        path: $
+      dest:
+        path: $.values.apiserver.etcd.tls.cert
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: apiserver-etcd
+        path: $
+      dest:
+        path: $.values.apiserver.etcd.tls.key
+    -
+      src:
+        schema: deckhand/PublicKey/v1
+        name: service-account
+        path: $
+      dest:
+        path: $.values.apiserver.service_account.public_key
+
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: controller-manager
+        path: $
+      dest:
+        path: $.values.controller_manager.tls.cert
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: controller-manager
+        path: $
+      dest:
+        path: $.values.controller_manager.tls.key
+    -
+      src:
+        schema: deckhand/PrivateKey/v1
+        name: service-account
+        path: $
+      dest:
+        path: $.values.controller_manager.service_account.private_key
+
+    -
+      src:
+        schema: deckhand/Certificate/v1
+        name: scheduler
+        path: $
+      dest:
+        path: $.values.scheduler.tls.cert
+    -
+      src:
+        schema: deckhand/CertificateKey/v1
+        name: scheduler
+        path: $
+      dest:
+        path: $.values.scheduler.tls.key
+
+data:
+  chart_name: kubernetes
+  release: kubernetes
+  namespace: kube-system
+  timeout: 600
+  values:
+    apiserver:
+      enabled: true
+      etcd:
+        endpoints: https://192.168.77.10:2379,https://192.168.77.11:2379,https://192.168.77.12:2379
+        tls:
+          ca: placeholder
+          cert: placeholder
+          key: placeholder
+      service_account:
+        public_key: placeholder
+      tls:
+        cert: placeholder
+        key: placeholder
+
+    common:
+      tls:
+        ca: placeholder
+
+    controller_manager:
+      enabled: true
+      command: kube-controller-manager
+      service_account:
+        private_key: placeholder
+      tls:
+        cert: placeholder
+        key: placeholder
+
+    scheduler:
+      enabled: true
+      tls:
+        cert: placeholder
+        key: placeholder
+
+    network:
+      kubernetes_service_ip: 10.96.0.1
+      pod_cidr: 10.97.0.0/16
+      service_cidr: 10.96.0.0/16
+
+    images:
+      apiserver: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+      controller_manager: quay.io/attcomdev/kube-controller-manager:v1.6.8
+      scheduler: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+
+  source:
+    type: local
+    location: /etc/kubernetes/armada/assets/charts
+    subpath: kubernetes
+  dependencies: []
+...
