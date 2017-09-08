@@ -1,0 +1,94 @@
+apiserver:
+  enabled: false
+
+  command: /apiserver
+
+  etcd:
+    endpoints: https://kubernetes-etcd.kube-system.svc.cluster.local
+    tls:
+      ca: placeholder
+      cert: placeholder
+      key: placeholder
+
+  hard_antiaffinity: true
+
+  ingress:
+    enabled: false
+
+  node_selector:
+    key: kubernetes-control-plane
+    value: enabled
+
+  replicas: 2
+
+  service_account:
+    public_key: placeholder
+
+  tls:
+    cert: placeholder
+    key: placeholder
+
+common:
+  tls:
+    ca: placeholder
+
+controller_manager:
+  enabled: false
+
+  command: /controller-manager
+
+  hard_antiaffinity: true
+
+  node_selector:
+    key: kubernetes-control-plane
+    value: enabled
+
+  replicas: 2
+
+  service_account:
+    private_key: placeholder
+
+  tls:
+    cert: placeholder
+    key: placeholder
+
+proxy:
+  enabled: false
+
+  command: /proxy
+
+  node_selector:
+    key: kubernetes-proxy
+    value: enabled
+
+  tls:
+    cert: placeholder
+    key: placeholder
+
+scheduler:
+  enabled: false
+
+  command: /scheduler
+
+  hard_antiaffinity: true
+
+  node_selector:
+    key: kubernetes-control-plane
+    value: enabled
+
+  replicas: 2
+
+  tls:
+    cert: placeholder
+    key: placeholder
+
+images:
+  apiserver: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+  controller_manager: quay.io/attcomdev/kube-controller-manager:v1.6.8
+  proxy: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+  scheduler: gcr.io/google_containers/hyperkube-amd64:v1.6.8
+
+network:
+  kubernetes_service_ip: 10.96.0.1
+  pod_cidr: 10.97.0.0/16
+  service_cidr: 10.96.0.0/16

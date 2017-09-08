@@ -1,78 +1,69 @@
-#!/usr/bin/env bash
+{% include "common_validation.sh" with context %}
 
+set -e
+
+# Ensure the script is running as root.
+#
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root." 1>&2
    exit 1
 fi
 
-if [ "x$1" = "x" ]; then
-    echo "Path to node configuration required." 1>&2
-    exit 1
-fi
-
-set -ex
-
-#Proxy Variables
-http_proxy={{ config['Network'].get('http_proxy', '') }}
-https_proxy={{ config['Network'].get('https_proxy', '') }}
-no_proxy={{ config['Network'].get('no_proxy', '') }}
-
-DOCKER_HTTP_PROXY=${DOCKER_HTTP_PROXY:-${HTTP_PROXY:-${http_proxy}}}
-DOCKER_HTTPS_PROXY=${DOCKER_HTTPS_PROXY:-${HTTPS_PROXY:-${https_proxy}}}
-DOCKER_NO_PROXY=${DOCKER_NO_PROXY:-${NO_PROXY:-${no_proxy}}}
+# Unpack prepared files into place
+#
+set +x
+log
+log === Extracting prepared files ===
+echo "{{ tarball | b64enc }}" | base64 -d | tar -zxv -C /
 
 
-mkdir -p /etc/docker
-cat <<EOS > /etc/docker/daemon.json
-{
-  "live-restore": true,
-  "storage-driver": "overlay2"
-}
-EOS
+# Set proxy variables
+#
+log
+log === Setting proxy variables ===
+set -x
+export http_proxy={{ config['KubernetesNetwork:proxy.url'] | default('', true) }}
+export https_proxy={{ config['KubernetesNetwork:proxy.url'] | default('', true) }}
+export no_proxy={{ config.get(kind='KubernetesNetwork') | fill_no_proxy }}
 
-#Configuration for Docker Behind a Proxy
-mkdir -p /etc/systemd/system/docker.service.d
 
-#Set HTTPS Proxy Variable
-cat <<EOF > /etc/systemd/system/docker.service.d/http-proxy.conf
-[Service]
-Environment="HTTP_PROXY=${DOCKER_HTTP_PROXY}"
-EOF
-
-#Set HTTPS Proxy Variable
-cat <<EOF > /etc/systemd/system/docker.service.d/https-proxy.conf
-[Service]
-Environment="HTTPS_PROXY=${DOCKER_HTTPS_PROXY}"
-EOF
-
-#Set No Proxy Variable
-cat <<EOF > /etc/systemd/system/docker.service.d/no-proxy.conf
-[Service]
-Environment="NO_PROXY=${DOCKER_NO_PROXY}"
-EOF
-
-#Reload systemd and docker if present
-systemctl daemon-reload
-systemctl restart docker || true
+# Install system packages
+#
+set +x
+log
+log === Installing system packages ===
+set -x
 
 export DEBIAN_FRONTEND=noninteractive
-apt-get update -qq
-apt-get install -y -qq --no-install-recommends \
-    {{ config['Versions']['packages']['docker'] }}
+apt-get update
+apt-get install -y --no-install-recommends \
+    {%- for package in config['SystemPackages:additional'] | default([]) %}
+    {{ package }} \
+    {%- endfor %}
+    {{ config['SystemPackages:required.docker'] }} \
+    {{ config['SystemPackages:required.dnsmasq'] }} \
+    {{ config['SystemPackages:required.socat'] }}
 
-if [ -f "${PROMENADE_LOAD_IMAGE}" ]; then
-  echo === Loading updated promenade image ===
-  docker load -i "${PROMENADE_LOAD_IMAGE}"
-fi
 
-docker run -t --rm \
-    --net host \
-    -v /:/target \
-    {{ config['Versions']['images']['promenade'] }} \
-    promenade \
-        -v \
-        up \
-            --hostname $(hostname) \
-            --config-path /target$(realpath $1) 2>&1
+# Start core processes
+#
+set +x
+log
+log === Starting Docker and Kubelet ===
+set -x
+systemctl daemon-reload
+systemctl restart docker || true
+systemctl enable kubelet
+systemctl restart kubelet
 
-touch /var/lib/prom.done
+
+# Force resolv.conf to be injected after dnsmasq installation.
+#
+cat <<EOF > /etc/resolv.conf
+options timeout:1 attempts:1
+
+nameserver 127.0.0.1
+{% for server in config['KubernetesNetwork:dns.upstream_servers'] | default([]) %}
+nameserver {{ server }}
+{%- endfor %}
+EOF

@@ -1,0 +1,43 @@
+service:
+  name: etcd
+  ip: null
+  ports:
+    client: 2379
+    peer: 2380
+  target_ports:
+    client: 2379
+    peer: 2380
+
+allowed_additional_nodes: []
+
+host_data_path: /var/etcd/example
+
+tls:
+  client:
+    ca: placeholder
+  peer:
+    ca: placeholder
+
+manager:
+  tls:
+    cert: placeholder
+    key: placeholder
+
+node_selector:
+  key: etcd-example
+  value: enabled
+
+nodes:
+  - name: example-0
+    is_initial_node: true
+    tls:
+      client:
+        cert: placeholder
+        key: placeholder
+      peer:
+        cert: placeholder
+        key: placeholder
+
+images:
+  etcd: quay.io/coreos/etcd:v3.2.1
+  kubectl: gcr.io/google_containers/hyperkube-amd64:v1.6.8

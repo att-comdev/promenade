@@ -1,0 +1,68 @@
+{{- if .Values.scheduler.enabled }}
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kubernetes-scheduler
+  labels:
+    k8s-app: scheduler
+spec:
+  replicas: {{ .Values.scheduler.replicas }}
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      labels:
+        k8s-app: scheduler
+    spec:
+      nodeSelector:
+        {{ .Values.scheduler.node_selector.key }}: {{ .Values.scheduler.node_selector.value }}
+      {{- if .Values.scheduler.hard_antiaffinity }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchExpressions:
+                  - key: k8s-app
+                    operator: In
+                    values:
+                      - scheduler
+      {{- end }}
+      containers:
+        - name: kube-scheduler
+          image: {{ .Values.images.scheduler }}
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          command:
+            - {{ .Values.scheduler.command }}
+
+            - --leader-elect=true
+            - --kubeconfig=/etc/kubernetes/scheduler/kubeconfig.yaml
+
+            - --v=5
+
+          volumeMounts:
+            - name: cm
+              mountPath: /etc/kubernetes/scheduler/kubeconfig.yaml
+              subPath: kubeconfig.yaml
+
+            - name: cm
+              mountPath: /etc/kubernetes/scheduler/pki/cluster-ca.pem
+              subPath: cluster-ca.pem
+            - name: cm
+              mountPath: /etc/kubernetes/scheduler/pki/scheduler.pem
+              subPath: scheduler.pem
+            - name: cert-keys
+              mountPath: /etc/kubernetes/scheduler/pki/scheduler-key.pem
+              subPath: scheduler-key.pem
+      volumes:
+        - name: cm
+          configMap:
+            name: kubernetes-scheduler
+        - name: cert-keys
+          secret:
+            secretName: kubernetes-scheduler-cert-keys
+{{- end }}

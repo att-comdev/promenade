@@ -1,0 +1,82 @@
+{{- if .Values.controller_manager.enabled }}
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kubernetes-controller-manager
+  labels:
+    k8s-app: controller-manager
+spec:
+  replicas: {{ .Values.controller_manager.replicas }}
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      labels:
+        k8s-app: controller-manager
+    spec:
+      nodeSelector:
+        {{ .Values.controller_manager.node_selector.key }}: {{ .Values.controller_manager.node_selector.value }}
+      {{- if .Values.controller_manager.hard_antiaffinity }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchExpressions:
+                  - key: k8s-app
+                    operator: In
+                    values:
+                      - controller-manager
+      {{- end }}
+      containers:
+        - name: kube-controller-manager
+          image: {{ .Values.images.controller_manager }}
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          command:
+            - {{ .Values.controller_manager.command }}
+
+            - --allocate-node-cidrs=true
+            - --cluster-cidr={{ .Values.network.pod_cidr }}
+            - --configure-cloud-routes=false
+            - --leader-elect=true
+            - --kubeconfig=/etc/kubernetes/controller-manager/kubeconfig.yaml
+            - --root-ca-file=/etc/kubernetes/controller-manager/pki/cluster-ca.pem
+            - --service-account-private-key-file=/etc/kubernetes/controller-manager/pki/service-account.priv
+            - --service-cluster-ip-range={{ .Values.network.service_cidr }}
+            - --use-service-account-credentials=true
+
+            - --v=5
+
+          volumeMounts:
+            - name: cm
+              mountPath: /etc/kubernetes/controller-manager/kubeconfig.yaml
+              subPath: kubeconfig.yaml
+
+            - name: cm
+              mountPath: /etc/kubernetes/controller-manager/pki/cluster-ca.pem
+              subPath: cluster-ca.pem
+            - name: cm
+              mountPath: /etc/kubernetes/controller-manager/pki/controller-manager.pem
+              subPath: controller-manager.pem
+            - name: cert-keys
+              mountPath: /etc/kubernetes/controller-manager/pki/controller-manager-key.pem
+              subPath: controller-manager-key.pem
+
+            - name: sa-priv-key
+              mountPath: /etc/kubernetes/controller-manager/pki/service-account.priv
+              subPath: service-account.priv
+      volumes:
+        - name: cm
+          configMap:
+            name: kubernetes-controller-manager
+        - name: cert-keys
+          secret:
+            secretName: kubernetes-controller-manager-cert-keys
+        - name: sa-priv-key
+          secret:
+            secretName: service-account-private-key
+{{- end }}
