@@ -1,0 +1,4 @@
+{
+  "live-restore": true,
+  "storage-driver": "overlay2"
+}

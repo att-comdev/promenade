@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+docker run --rm -it \
+    --net host \
+    -v /etc/kubernetes/admin:/etc/kubernetes/admin \
+    -e KUBECONFIG=/etc/kubernetes/admin/kubeconfig.yaml \
+    {{ config['Genesis:images.kubernetes.kubectl'] }} \
+        /kubectl \
+            $*

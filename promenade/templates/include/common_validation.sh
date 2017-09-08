@@ -30,8 +30,8 @@ function report_docker_state {
 
 function report_kube_state {
     log General cluster state report
-    kubectl get nodes 1>&2
-    kubectl get --all-namespaces pods -o wide 1>&2
+    kubectl --request-timeout 15s get nodes 1>&2
+    kubectl --request-timeout 15s get --all-namespaces pods -o wide 1>&2
 }
 
 function fail {
@@ -48,20 +48,47 @@ function wait_for_ready_nodes {
 
     log $(date) Waiting $SECONDS seconds for $NODES Ready nodes.
 
-    NODE_READY_JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[?(@.type=="Ready")]}{@.type}={@.status}{"\n"}{end}{end}'
+    NODE_READY_JSONPATH='{.items[*].status.conditions[?(@.type=="Ready")].status}'
 
     end=$(($(date +%s) + $SECONDS))
     while true; do
-        READY_NODE_COUNT=$(kubectl get nodes -o jsonpath="${NODE_READY_JSONPATH}" | grep "Ready=True" | wc -l)
+        READY_NODE_COUNT=$(kubectl --request-timeout 10s get nodes -o jsonpath="${NODE_READY_JSONPATH}" | tr ' ' '\n' | grep True | wc -l)
         if [ $NODES -ne $READY_NODE_COUNT ]; then
             now=$(date +%s)
             if [ $now -gt $end ]; then
                 log $(date) Nodes were not all ready before timeout.
                 fail
             fi
+            echo -n .
             sleep 5
         else
             log $(date) Found expected nodes.
+            break
+        fi
+    done
+
+    set -x
+}
+
+function wait_for_kubernetes_api {
+    set +x
+
+    SECONDS=${1:-600}
+
+    log $(date) Waiting $SECONDS seconds for API response.
+
+    end=$(($(date +%s) + $SECONDS))
+    while true; do
+        if kubectl --request-timeout 5s get nodes; then
+            now=$(date +%s)
+            if [ $now -gt $end ]; then
+                log $(date) API not returning node list before timeout.
+                fail
+            fi
+            echo -n .
+            sleep 5
+        else
+            log $(date) Got response from Kubernetes API.
             break
         fi
     done
@@ -82,19 +109,19 @@ function wait_for_pod_termination {
 
     end=$(($(date +%s) + $SECONDS))
     while true; do
-        POD_PHASE=$(kubectl --namespace $NAMESPACE get -o jsonpath="${POD_PHASE_JSONPATH}" pod $POD_NAME)
+        POD_PHASE=$(kubectl --request-timeout 10s --namespace $NAMESPACE get -o jsonpath="${POD_PHASE_JSONPATH}" pod $POD_NAME)
         if [ "x$POD_PHASE" = "xSucceeded" ]; then
             log $(date) Pod $POD_NAME succeeded.
             break
         elif [ "x$POD_PHASE" = "xFailed" ]; then
             log $(date) Pod $POD_NAME failed.
-            kubectl --namespace $NAMESPACE get -o yaml pod $POD_NAME 1>&2
+            kubectl --request-timeout 10s --namespace $NAMESPACE get -o yaml pod $POD_NAME 1>&2
             fail
         else
             now=$(date +%s)
             if [ $now -gt $end ]; then
                 log $(date) Pod did not terminate before timeout.
-                kubectl --namespace $NAMESPACE get -o yaml pod $POD_NAME 1>&2
+                kubectl --request-timeout 10s --namespace $NAMESPACE get -o yaml pod $POD_NAME 1>&2
                 fail
             fi
             sleep 1

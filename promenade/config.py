@@ -1,150 +1,168 @@
-from . import logging
-from operator import attrgetter, itemgetter
-import itertools
+from . import exceptions, logging, validation
+import copy
+import jinja2
+import jsonpath_ng
 import yaml
 
-__all__ = ['Configuration', 'Document', 'load']
+__all__ = ['Configuration']
 
 
 LOG = logging.getLogger(__name__)
 
 
-def load(f):
-    return Configuration(list(map(instantiate_document, yaml.safe_load_all(f))))
-
-
-def instantiate_document(data):
-    if data.get('schema', '').startswith('armada'):
-        return Document({
-            'apiVersion': 'promenade/v1',
-            'kind': 'ArmadaDocument',
-            'metadata': {
-                'name': data['schema'] + '/' + data['metadata']['name'],
-                'target': 'none',
-            },
-            'spec': data,
-        })
-    else:
-        return Document(data)
-
-
-class Document:
-    KEYS = {
-        'apiVersion',
-        'metadata',
-        'kind',
-        'spec',
-    }
-
-    SUPPORTED_KINDS = {
-        'ArmadaDocument',
-
-        'Certificate',
-        'CertificateAuthority',
-        'CertificateAuthorityKey',
-        'CertificateKey',
-        'Cluster',
-        'Etcd',
-        'Masters',
-        'Network',
-        'Node',
-        'PrivateKey',
-        'PublicKey',
-        'Versions',
-    }
-
-    def __init__(self, data):
-        if set(data.keys()) != self.KEYS:
-            LOG.error('data.keys()=%s expected %s', data.keys(), self.KEYS)
-            raise AssertionError('Did not get expected keys')
-        assert data['apiVersion'] == 'promenade/v1'
-        assert data['kind'] in self.SUPPORTED_KINDS
-        assert data['metadata']['name']
-
-        self.data = data
-
-    @property
-    def kind(self):
-        return self.data['kind']
-
-    @property
-    def name(self):
-        return self.metadata['name']
-
-    @property
-    def alias(self):
-        return self.metadata.get('alias')
-
-    @property
-    def target(self):
-        return self.metadata.get('target')
-
-    @property
-    def metadata(self):
-        return self.data['metadata']
-
-    def __getitem__(self, key):
-        return self.data['spec'][key]
-
-    def get(self, key, default=None):
-        return self.data['spec'].get(key, default)
-
-
 class Configuration:
-    def __init__(self, documents):
-        self.documents = sorted(documents, key=attrgetter('kind', 'target'))
+    def __init__(self, *, documents, substitute=True):
+        if substitute:
+            documents = _substitute(documents)
+        self.documents = documents
 
-        self.validate()
+    @classmethod
+    def from_streams(cls, *, streams, **kwargs):
+        documents = []
+        for stream in streams:
+            stream_name = getattr(stream, 'name')
+            if stream_name is not None:
+                LOG.info('Loading documents from %s', stream_name)
+            stream_documents = list(yaml.safe_load_all(stream))
+            validation.check_schemas(stream_documents)
+            if stream_name is not None:
+                LOG.info('Successfully validated documents from %s', stream_name)
+            documents.extend(stream_documents)
 
-    def validate(self):
-        identifiers = set()
+        return cls(documents=documents, **kwargs)
+
+    def __getitem__(self, path):
+        kind, jsonpath = path.split(':')
+        document = self.get(kind=kind)
+        value = _extract(document, jsonpath)
+        if value:
+            return value
+        else:
+            return jinja2.StrictUndefined('No match found for path %s' % path)
+
+    def get_first(self, *paths):
+        for path in paths:
+            value = self[path]
+            if not isinstance(value, jinja2.StrictUndefined):
+                return value
+
+        return jinja2.StrictUndefined('Nothing found matching paths: %s' % ','.join(paths))
+
+    def get(self, *, kind=None, name=None, schema=None):
+        if kind is not None:
+            assert schema is None
+            schema = 'promenade/%s/v1' % kind
+
+        result = _get(self.documents, schema, name)
+
+        if result:
+            return result['data']
+        else:
+            return jinja2.StrictUndefined(
+                    'No document found matching kind=%s schema=%s name=%s'
+                    % (kind, schema, name))
+
+    def iterate(self, *, kind=None, schema=None, labels=None):
+        if kind is not None:
+            assert schema is None
+            schema = 'promenade/%s/v1' % kind
+
         for document in self.documents:
-            identifier = (document.kind, document.name)
-            if identifier in identifiers:
-                LOG.error('Found duplicate document in config: kind=%s name=%s',
-                          document.kind, document.name)
-                raise RuntimeError('Duplicate document')
+            if _matches_filter(document, schema=schema, labels=labels):
+                yield document
+
+
+    def extract_genesis_config(self):
+        documents = []
+        for document in self.documents:
+            if _mg(document, 'schema') != 'promenade/KubernetesNode/v1':
+                documents.append(document)
+        return Configuration(documents=documents, substitute=False)
+
+    def extract_node_config(self, name):
+        documents = []
+        for document in self.documents:
+            schema = _mg(document, 'schema')
+            if schema == 'promenade/Genesis/v1':
+                continue
+            elif schema == 'promenade/KubernetesNode/v1' and _mg(document, 'name') != name:
+                continue
             else:
-                identifiers.add(identifier)
+                documents.append(document)
+        return Configuration(documents=documents, substitute=False)
 
-    def __getitem__(self, key):
-        results = [d for d in self.documents if d.kind == key]
-        if len(results) < 1:
-            raise KeyError
-        elif len(results) > 1:
-            raise KeyError('Too many results.')
-        else:
-            return results[0]
 
-    def get(self, *, kind, alias=None, name=None):
-        for document in self.documents:
-            if (document.kind == kind
-                    and (not alias or document.alias == alias)
-                    and (not name or document.name == name)) :
-                return document
+def _matches_filter(document, *, schema, labels):
+    matches = True
+    if schema is not None and not document.get('schema', '').startswith(schema):
+        matches = False
 
-    def iterate(self, *, kind=None, target=None):
-        if target:
-            docs = self._iterate_with_target(target)
-        else:
-            docs = self.documents
+    if labels is not None:
+        document_labels = _mg(document, 'labels', [])
+        for key, value in labels.items():
+            if key not in document_labels:
+                matches = False
+            else:
+                if document_labels[key] != value:
+                    matches = False
 
-        for document in docs:
-            if not kind or document.kind == kind:
-                yield document
+    return matches
 
-    def get_armada_documents(self):
-        return [d.data['spec'] for d in self.iterate(kind='ArmadaDocument')]
 
-    def _iterate_with_target(self, target):
-        for document in self.documents:
-            if document.target == target or document.target == 'all':
-                yield document
+def _get(documents, schema, name):
+    for document in documents:
+        if (schema == document.get('schema')
+                and (name is None
+                     or name == _mg(document, 'name'))):
+            return document
 
-    def write(self, path):
-        with open(path, 'w') as f:
-            yaml.dump_all(map(attrgetter('data'), self.documents),
-                          default_flow_style=False,
-                          explicit_start=True,
-                          indent=2,
-                          stream=f)
+
+def _substitute(documents):
+    result = []
+
+    for document in documents:
+        dest_schema = document.get('schema')
+        dest_name = _mg(document, 'name')
+        LOG.debug('Checking for substitutions in schema=%s metadata.name=%s',
+                  dest_schema, dest_name)
+        final_doc = copy.deepcopy(document)
+        for substitution in _mg(document, 'substitutions', []):
+            source_schema = substitution['src']['schema']
+            source_name = substitution['src']['name']
+            source_path = substitution['src']['path']
+            dest_path = substitution['dest']['path']
+            LOG.debug('Substituting from schema=%s name=%s src_path=%s '
+                      'into dest_path=%s', source_schema, source_name,
+                      source_path, dest_path)
+            source_document = _get(documents, schema=source_schema, name=source_name)
+            if source_document is None:
+                msg = 'Failed to find source document for subsitution.  ' \
+                        'dest_schema=%s dest_name=%s ' \
+                        'source_schema=%s source_name=%s' \
+                        % (dest_schema, dest_name, source_schema, source_name)
+                LOG.critical(msg)
+                raise exceptions.ValidationException(msg)
+
+            source_value = _extract(source_document['data'], substitution['src']['path'])
+            final_doc['data'] = _replace(final_doc['data'], source_value,
+                                         substitution['dest']['path'])
+
+        result.append(final_doc)
+
+    return result
+
+
+def _extract(document, jsonpath):
+    p = jsonpath_ng.parse(jsonpath)
+    matches = p.find(document)
+    if matches:
+        return matches[0].value
+
+
+def _replace(document, value, jsonpath):
+    p = jsonpath_ng.parse(jsonpath)
+    return p.update(document, value)
+
+
+def _mg(document, field, default=None):
+    return document.get('metadata', {}).get(field, default)

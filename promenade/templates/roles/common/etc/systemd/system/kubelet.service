@@ -1,0 +1,38 @@
+[Unit]
+Description=Kubernetes worker process
+After=docker.service
+Requires=docker.service
+Wants=network-online.target
+
+[Service]
+ExecStartPre=/bin/bash -c "/usr/bin/docker rm -fv promenade-kubelet || true"
+ExecStart=/usr/bin/docker run --rm \
+      --name promenade-kubelet \
+      --network host \
+      --privileged \
+      --volume /etc/kubernetes:/etc/kubernetes \
+      --volume /var:/var:rshared \
+      --volume /run:/run:rshared \
+      --volume /sys:/sys:rshared \
+      --volume /opt/cni:/opt/cni \
+          {{ config['Images:kubernetes.kubelet'] }} /kubelet \
+            --allow-privileged=true \
+            --cluster-domain={{ config['KubernetesNetwork:dns.cluster_domain'] }} \
+            --cluster-dns={{ config['KubernetesNetwork:dns.service_ip'] }} \
+            --cni-bin-dir=/opt/cni/bin \
+            --cni-conf-dir=/etc/cni/net.d \
+            --hostname-override={{ config.get_first('Genesis:hostname', 'KubernetesNode:hostname') }} \
+            --kubeconfig=/etc/kubernetes/kubelet/kubeconfig.yaml \
+            --network-plugin=cni \
+            --node-ip={{ config.get_first('Genesis:ip', 'KubernetesNode:ip') }} \
+            --node-labels={{ config.get_first('Genesis:labels', 'KubernetesNode:labels') | join(',') }} \
+            --pod-manifest-path=/etc/kubernetes/kubelet/manifests \
+            --require-kubeconfig=true \
+            --v=5
+
+ExecStop=/bin/bash -c "/usr/bin/docker rm -fv promenade-kubelet || true"
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

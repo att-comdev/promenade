@@ -1,0 +1,141 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: auxiliary-etcd
+  namespace: kube-system
+  labels:
+    component: auxiliary-etcd
+    promenade: genesis
+spec:
+  hostNetwork: true
+  containers:
+    - name: auxiliary-etcd-0
+      image: {{ config['Genesis:images.kubernetes.etcd'] }}
+      env:
+        - name: ETCD_NAME
+          value: auxiliary-etcd-0
+        - name: ETCD_STRICT_RECONFIG_CHECK
+          value: "false"
+        - name: ETCD_CLIENT_CERT_AUTH
+          value: "true"
+        - name: ETCD_PEER_CLIENT_CERT_AUTH
+          value: "true"
+        - name: ETCD_DATA_DIR
+          value: /var/lib/auxiliary-etcd-0
+        - name: ETCD_TRUSTED_CA_FILE
+          value: /etc/kubernetes/kube-etcd/pki/client-ca.pem
+        - name: ETCD_CERT_FILE
+          value: /etc/kubernetes/kube-etcd/pki/etcd-client.pem
+        - name: ETCD_KEY_FILE
+          value: /etc/kubernetes/kube-etcd/pki/etcd-client-key.pem
+        - name: ETCD_PEER_TRUSTED_CA_FILE
+          value: /etc/kubernetes/kube-etcd/pki/peer-ca.pem
+        - name: ETCD_PEER_CERT_FILE
+          value: /etc/kubernetes/kube-etcd/pki/etcd-peer.pem
+        - name: ETCD_PEER_KEY_FILE
+          value: /etc/kubernetes/kube-etcd/pki/etcd-peer-key.pem
+        - name: ETCD_ADVERTISE_CLIENT_URLS
+          value: https://kubernetes:12379
+        - name: ETCD_INITIAL_ADVERTISE_PEER_URLS
+          value: https://kubernetes:12380
+        - name: ETCD_INITIAL_CLUSTER_TOKEN
+          value: promenade-kube-etcd-token
+        - name: ETCD_LISTEN_CLIENT_URLS
+          value: https://0.0.0.0:12379
+        - name: ETCD_LISTEN_PEER_URLS
+          value: https://0.0.0.0:12380
+        - name: ETCD_INITIAL_CLUSTER_STATE
+          value: new
+        - name: ETCD_INITIAL_CLUSTER
+          value: {{ config['Genesis:hostname'] | fill_initial_etcd_cluster }}
+        - name: ETCD_CLIENT_CERT_AUTH
+          value: 'true'
+        - name: ETCD_PEER_CLIENT_CERT_AUTH
+          value: 'true'
+      ports:
+        - name: client
+          containerPort: 12379
+        - name: peer
+          containerPort: 12380
+      resources:
+        limits:
+          cpu: 200m
+        requests:
+          cpu: 200m
+      volumeMounts:
+        - name: data-0
+          mountPath: /var/lib/auxiliary-etcd-0
+        - name: pki
+          mountPath: /etc/kubernetes/kube-etcd/pki
+          readOnly: true
+    - name: auxiliary-etcd-1
+      image: {{ config['Genesis:images.kubernetes.etcd'] }}
+      env:
+        - name: ETCD_NAME
+          value: auxiliary-etcd-1
+        - name: ETCD_STRICT_RECONFIG_CHECK
+          value: "false"
+        - name: ETCD_CLIENT_CERT_AUTH
+          value: "true"
+        - name: ETCD_PEER_CLIENT_CERT_AUTH
+          value: "true"
+        - name: ETCD_DATA_DIR
+          value: /var/lib/auxiliary-etcd-1
+        - name: ETCD_TRUSTED_CA_FILE
+          value: /etc/kubernetes/kube-etcd/pki/client-ca.pem
+        - name: ETCD_CERT_FILE
+          value: /etc/kubernetes/kube-etcd/pki/etcd-client.pem
+        - name: ETCD_KEY_FILE
+          value: /etc/kubernetes/kube-etcd/pki/etcd-client-key.pem
+        - name: ETCD_PEER_TRUSTED_CA_FILE
+          value: /etc/kubernetes/kube-etcd/pki/peer-ca.pem
+        - name: ETCD_PEER_CERT_FILE
+          value: /etc/kubernetes/kube-etcd/pki/etcd-peer.pem
+        - name: ETCD_PEER_KEY_FILE
+          value: /etc/kubernetes/kube-etcd/pki/etcd-peer-key.pem
+        - name: ETCD_ADVERTISE_CLIENT_URLS
+          value: https://kubernetes:22379
+        - name: ETCD_INITIAL_ADVERTISE_PEER_URLS
+          value: https://kubernetes:22380
+        - name: ETCD_INITIAL_CLUSTER_TOKEN
+          value: promenade-kube-etcd-token
+        - name: ETCD_LISTEN_CLIENT_URLS
+          value: https://0.0.0.0:22379
+        - name: ETCD_LISTEN_PEER_URLS
+          value: https://0.0.0.0:22380
+        - name: ETCD_INITIAL_CLUSTER_STATE
+          value: new
+        - name: ETCD_INITIAL_CLUSTER
+          value: {{ config['Genesis:hostname'] | fill_initial_etcd_cluster }}
+        - name: ETCD_CLIENT_CERT_AUTH
+          value: 'true'
+        - name: ETCD_PEER_CLIENT_CERT_AUTH
+          value: 'true'
+      ports:
+        - name: client
+          containerPort: 22379
+        - name: peer
+          containerPort: 22380
+      resources:
+        limits:
+          cpu: 200m
+        requests:
+          cpu: 200m
+      volumeMounts:
+        - name: data-1
+          mountPath: /var/lib/auxiliary-etcd-1
+        - name: pki
+          mountPath: /etc/kubernetes/kube-etcd/pki
+          readOnly: true
+  volumes:
+    - name: data-0
+      hostPath:
+        path: /var/lib/auxiliary-etcd-0
+    - name: data-1
+      hostPath:
+        path: /var/lib/auxiliary-etcd-1
+    - name: pki
+      hostPath:
+        path: /etc/kubernetes/kube-etcd/pki
+...

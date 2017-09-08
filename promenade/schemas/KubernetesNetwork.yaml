@@ -1,0 +1,79 @@
+---
+schema: deckhand/DataSchema/v1
+metadata:
+  schema: metadata/Control/v1
+  name: promenade/KubernetesNetwork/v1
+data:
+  $schema: http://json-schema.org/schema#
+  definitions:
+    cidr:
+      type: string
+      # XXX add regex
+    domain_name:
+      type: string
+      # XXX add regex
+    image:
+      type: string
+      # XXX add regex
+    ip_address:
+      type: string
+      # XXX add regex
+    url:
+      type: string
+      # XXX add regex
+
+  type: object
+  properties:
+    cni_tarball_url:
+      $ref: '#/definitions/url'
+
+    dns:
+      type: object
+      properties:
+        cluster_domain:
+          $ref: '#/definitions/domain_name'
+        service_ip:
+          $ref: '#/definitions/ip_address'
+        upstream_servers:
+          type: array
+          items:
+            $ref: '#/definitions/ip_address'
+      required:
+        - cluster_domain
+        - service_ip
+      additionalProperties: false
+
+    kubernetes:
+      type: object
+      properties:
+        pod_cidr:
+          $ref: '#/definitions/cidr'
+        service_ip:
+          $ref: '#/definitions/ip_address'
+        service_cidr:
+          $ref: '#/definitions/cidr'
+      required:
+        - pod_cidr
+        - service_cidr
+        - service_ip
+      additionalProperties: false
+
+    proxy:
+      type: object
+      properties:
+        additional_no_proxy:
+          type: array
+          items:
+            $ref: '#/definitions/ip_address'
+        url:
+          $ref: '#/definitions/url'
+      required:
+        - url
+      additionalFields: false
+
+  required:
+    - cni_tarball_url
+    - dns
+    - kubernetes
+  additionalProperties: false
+...

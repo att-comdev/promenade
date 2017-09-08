@@ -1,0 +1,19 @@
+{{- $envAll := . }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $envAll.Values.service.name }}-discovery
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+spec:
+  selector:
+    {{ $envAll.Values.service.name }}: enabled
+  clusterIP: None
+  ports:
+    - name: etcd-client
+      port: 2379
+      targetPort: {{ $envAll.Values.service.target_ports.client }}
+    - name: etcd-server
+      port: 2380
+      targetPort: {{ $envAll.Values.service.target_ports.peer }}

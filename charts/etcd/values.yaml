@@ -1,0 +1,32 @@
+service:
+  name: etcd
+  ip: null
+  ports:
+    client: 2379
+    peer: 2380
+  target_ports:
+    client: 2379
+    peer: 2380
+
+allowed_additional_nodes: []
+
+nodes:
+  - name: example-0
+    host: example-0
+    node_selector:
+      key: etcd-example-0
+      value: enabled
+    host_data_path: /var/etcd/example-0
+    is_initial_node: true
+    tls:
+      client:
+        ca: placeholder
+        cert: placeholder
+        key: placeholder
+      peer:
+        ca: placeholder
+        cert: placeholder
+        key: placeholder
+
+images:
+  etcd: quay.io/coreos/etcd:v3.2.1

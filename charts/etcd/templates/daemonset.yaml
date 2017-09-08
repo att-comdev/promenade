@@ -1,0 +1,112 @@
+{{- $envAll := . }}
+{{- range .Values.nodes }}
+{{- $node := . }}
+---
+apiVersion: extensions/v1beta1
+# XXX Can this be a deployment?
+kind: DaemonSet
+metadata:
+  name: {{ $envAll.Values.service.name }}-{{ $node.name }}
+spec:
+  selector:
+    matchLabels:
+      {{ $node.node_selector.key }}: {{ $node.node_selector.value }}
+  template:
+    metadata:
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ''
+      labels:
+        {{ $envAll.Values.service.name }}: enabled
+        {{ $node.node_selector.key }}: {{ $node.node_selector.value }}
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      nodeSelector:
+        {{ $node.node_selector.key }}: {{ $node.node_selector.value }}
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      - key: CriticalAddonsOnly
+        operator: Exists
+      containers:
+        - name: etcd
+          image: {{ $envAll.Values.images.etcd }}
+          env:
+            - name: ETCD_NAME
+              value: {{ $node.name }}
+            {{- if $envAll.debug }}
+            - name: ETCD_DEBUG
+              value: 'true'
+            {{- end }}
+            - name: ETCD_ADVERTISE_CLIENT_URLS
+              value: https://{{- if $envAll.Values.service.ip -}}{{- $envAll.Values.service.ip -}}{{- else -}}{{- $envAll.Values.service.name -}}{{- end -}}:{{ $envAll.Values.service.target_ports.client }}
+            - name: ETCD_INITIAL_ADVERTISE_PEER_URLS
+              value: https://{{ $node.host }}:{{ $envAll.Values.service.target_ports.peer }}
+            - name: ETCD_INITIAL_CLUSTER_TOKEN
+              value: {{ $envAll.Values.service.name }}-init-token
+            - name: ETCD_INITIAL_CLUSTER_STATE
+              {{- if $node.is_initial_node }}
+              value: new
+              {{- else }}
+              value: existing
+              {{- end }}
+            - name: ETCD_CLIENT_CERT_AUTH
+              value: 'true'
+            - name: ETCD_PEER_CLIENT_CERT_AUTH
+              value: 'true'
+            - name: ETCD_INITIAL_CLUSTER
+              value: {{ range $envAll.Values.nodes -}}
+                {{- if not (contains .name (first $envAll.Values.nodes).name) -}},{{- end -}}
+                {{- .name -}}=https://{{- .host -}}:{{- $envAll.Values.service.target_ports.peer -}}
+                {{- end -}}
+                {{- if $envAll.Values.allowed_additional_nodes -}}
+                  {{- range $envAll.Values.allowed_additional_nodes -}}
+                    ,{{- .name -}}=https://{{- .host -}}:{{- .ports.peer -}}
+                  {{- end -}}
+                {{- end }}
+            - name: ETCD_LISTEN_CLIENT_URLS
+              value: https://0.0.0.0:{{ $envAll.Values.service.target_ports.client }}
+            - name: ETCD_LISTEN_PEER_URLS
+              value: https://0.0.0.0:{{ $envAll.Values.service.target_ports.peer }}
+            - name: ETCD_DATA_DIR
+              value: /var/etcd
+            - name: ETCD_TRUSTED_CA_FILE
+              value: /etc/etcd/tls/client-ca.pem
+            - name: ETCD_CERT_FILE
+              value: /etc/etcd/tls/etcd-client.pem
+            - name: ETCD_KEY_FILE
+              value: /etc/etcd/tls/etcd-client-key.pem
+            - name: ETCD_PEER_TRUSTED_CA_FILE
+              value: /etc/etcd/tls/peer-ca.pem
+            - name: ETCD_PEER_CERT_FILE
+              value: /etc/etcd/tls/etcd-peer.pem
+            - name: ETCD_PEER_KEY_FILE
+              value: /etc/etcd/tls/etcd-peer-key.pem
+            - name: ETCDCTL_API
+              value: '3'
+            - name: ETCDCTL_DIAL_TIMEOUT
+              value: 3s
+            - name: ETCDCTL_CACERT
+              value: /etc/etcd/tls/client-ca.pem
+            - name: ETCDCTL_CERT
+              value: /etc/etcd/tls/etcd-client.pem
+            - name: ETCDCTL_KEY
+              value: /etc/etcd/tls/etcd-client-key.pem
+          ports:
+            - name: client
+              containerPort: {{ $envAll.Values.service.target_ports.client }}
+            - name: peer
+              containerPort: {{ $envAll.Values.service.target_ports.peer }}
+          volumeMounts:
+            - name: data
+              mountPath: /var/etcd
+            - name: tls
+              mountPath: /etc/etcd/tls
+      volumes:
+        - name: data
+          hostPath:
+            path: {{ $node.host_data_path }}
+        - name: tls
+          secret:
+            secretName: {{ $envAll.Values.service.name }}-{{ $node.name }}
+{{- end }}

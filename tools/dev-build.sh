@@ -9,15 +9,22 @@ mkdir configs
 echo === Building image ===
 docker build -t quay.io/attcomdev/promenade:latest .
 
-echo === Generating updated configuration ===
+echo === Generating updated certificates ===
 docker run --rm -t \
+    -w /target \
     -v $(pwd):/target quay.io/attcomdev/promenade:latest \
         promenade -v \
-            generate \
-                -c /target/example/vagrant-input-config.yaml \
-                -o /target/configs
+            generate-certs \
+                -o example \
+                example/*.yaml
 
-echo === Saving image ===
-docker save -o promenade.tar quay.io/attcomdev/promenade:latest
+echo === Building bootstrap scripts ===
+docker run --rm -t \
+    -w /target \
+    -v $(pwd):/target quay.io/attcomdev/promenade:latest \
+        promenade -v \
+            build-all \
+                -o configs \
+                example/*.yaml
 
 echo === Done ===
