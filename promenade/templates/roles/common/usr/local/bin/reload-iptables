@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -x
+
+if [ -s /etc/iptables-loader/saved-ipsets -a -s /etc/iptables-loader/saved-iptables ]; then
+    set -e
+    ipset flush
+    iptables -F
+    set +e
+
+    ipset restore < /etc/iptables-loader/saved-ipsets
+    iptables-restore < /etc/iptables-loader/saved-iptables
+fi

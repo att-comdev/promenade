@@ -1,0 +1,15 @@
+tls:
+  ca: placeholder
+  cert: placeholder
+  key: placeholder
+
+
+proxy:
+  command: /proxy
+
+images:
+  anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
+  proxy: gcr.io/google_containers/hyperkube-amd64:v1.8.0
+
+network:
+  kubernetes_service_ip: 10.96.0.1

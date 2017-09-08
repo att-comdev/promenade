@@ -1,4 +1,4 @@
-{% include "common_validation.sh" with context %}
+{% include "utils.sh" with context %}
 
 wait_for_ready_nodes 1
 

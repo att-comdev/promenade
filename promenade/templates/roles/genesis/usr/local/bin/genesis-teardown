@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -xe
+
+if [ $(kubectl get nodes | grep '\bReady\b' | wc -l) -lt 3 ]; then
+    echo Not enough live nodes to proceed with genesis teardown. 1>&2
+    exit 1
+fi
+
+# Remove etcd process from cluster
+MEMBER_ID=$(kubectl -n kube-system exec kubernetes-etcd-{{ config['Genesis:hostname'] }} etcdctl member list | grep genesis | awk -F ', ' '{print $1}')
+kubectl -n kube-system exec kubernetes-etcd-{{ config['Genesis:hostname'] }} etcdctl member remove $MEMBER_ID
+
+# Delete etcd
+# Delete apiserver so we don't have race conditions as we clear out the node
+sleep 60
+rm /etc/kubernetes/manifests/kubernetes-etcd.yaml /etc/kubernetes/manifests/kubernetes-apiserver.yaml
+sleep 60
+
+# Evict pods
+kubectl drain --force --timeout 3600s --grace-period 1800 --ignore-daemonsets --delete-local-data {{ config['Genesis:hostname'] }} || true
+
+sleep 60
+
+kubectl label node {{ config['Genesis:hostname'] }} $(kubectl get node {{ config['Genesis:hostname'] }} -o 'jsonpath={.metadata.labels}' | sed 's/map\[//' | sed 's/\]//' | tr ' ' '\n' | sed 's/:.*/-/g')
+
+sleep 120
+
+# Delete static pods
+rm /etc/kubernetes/manifests/*
+sleep 60
+
+# Delete node
+kubectl delete node {{ config['Genesis:hostname'] }}
+
+# Stop kubelet
+systemctl stop kubelet
+
+# Stop remaining/rogue containers processes
+docker rm -f $(docker ps -aq) || true

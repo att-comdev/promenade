@@ -1,0 +1,9 @@
+iptables_checkpointer:
+  # Time in seconds between saving iptables state
+  period: 60
+  node_selector:
+    key: checkpointer
+    value: enabled
+
+images:
+  iptables_checkpointer: quay.io/calico/node:v2.5.1
