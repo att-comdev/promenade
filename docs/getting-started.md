@@ -4,6 +4,8 @@
 
 ### Deployment using Vagrant
 
+#### Initial Setup
+
 Deployment using Vagrant uses KVM instead of Virtualbox due to better
 performance of disk and networking, which both have significant impact on the
 stability of the etcd clusters.
@@ -15,64 +17,49 @@ run `./tools/full-vagrant-setup.sh`, which will do the following:
 * Install NFS dependencies for Vagrant volume sharing
 * Install [packer](https://packer.io) and build a KVM image for Ubuntu 16.04
 
-Generate the per-host configuration, certificates and keys to be used:
+#### Deployment
+
+A complete set of configuration that works with the `Vagrantfile` in the
+top-level directory is provided in the `example` directory.
+
+To exercise that example, first combine the configuration into usable parts:
 
 ```bash
-mkdir configs
-docker run --rm -t -v $(pwd):/target quay.io/attcomdev/promenade:latest promenade -v generate -c /target/example/vagrant-input-config.yaml -o /target/configs
+./tools/build-example.sh
 ```
 
 Start the VMs:
 
 ```bash
-vagrant up
+vagrant up --parallel
 ```
 
-Start the genesis node:
+Then bring up the genesis node:
 
 ```bash
-vagrant ssh n0 -c 'sudo bash /vagrant/configs/up.sh /vagrant/configs/n0.yaml'
+vagrant ssh n0 -c 'sudo bash /vagrant/example/scripts/genesis.sh'
 ```
 
-Join the master nodes:
+Join additional master nodes:
 
 ```bash
-vagrant ssh n1 -c 'sudo bash /vagrant/configs/up.sh /vagrant/configs/n1.yaml'
-vagrant ssh n2 -c 'sudo bash /vagrant/configs/up.sh /vagrant/configs/n2.yaml'
+vagrant ssh n1 -c 'sudo bash /vagrant/example/scripts/join-n1.sh'
+vagrant ssh n2 -c 'sudo bash /vagrant/example/scripts/join-n2.sh'
 ```
 
-Join the worker node:
+Re-provision the genesis node as a normal master:
 
 ```bash
-vagrant ssh n3 -c 'sudo bash /vagrant/configs/up.sh /vagrant/configs/n3.yaml'
+vagrant ssh n0 -c 'sudo genesis-teardown'
+vagrant destroy -f n0
+vagrant up n0
+vagrant ssh n0 -c 'sudo bash /vagrant/example/scripts/join-n0.sh'
 ```
 
-### Building the image
+Join the remaining worker
 
 ```bash
-docker build -t promenade:local .
-```
-
-For development, you may wish to save it and have the `up.sh` script load it:
-
-```bash
-docker save -o promenade.tar promenade:local
-```
-
-Then on a node:
-
-```bash
-PROMENADE_LOAD_IMAGE=/vagrant/promenade.tar bash /vagrant/up.sh /vagrant/path/to/node-config.yaml
-```
-
-These commands are combined in a convenience script at `tools/dev-build.sh`.
-
-To build the image from behind a proxy, you can:
-
-```bash
-export http_proxy=...
-export no_proxy=...
-docker build --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy --build-arg no_proxy=$no_proxy  -t promenade:local .
+vagrant ssh n3 -c 'sudo bash /vagrant/example/scripts/join-n3.sh'
 ```
 
 ## Using Promenade Behind a Proxy

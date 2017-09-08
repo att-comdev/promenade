@@ -1,0 +1,110 @@
+{{- if .Values.apiserver.enabled }}
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kubernetes-apiserver
+  labels:
+    k8s-app: apiserver
+spec:
+  replicas: {{ .Values.apiserver.replicas }}
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      labels:
+        k8s-app: apiserver
+      annotations:
+        checkpointer.alpha.coreos.com/checkpoint: "true"
+    spec:
+      hostNetwork: true
+      nodeSelector:
+        {{ .Values.apiserver.node_selector.key }}: {{ .Values.apiserver.node_selector.value }}
+      {{- if .Values.apiserver.hard_antiaffinity }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchExpressions:
+                  - key: k8s-app
+                    operator: In
+                    values:
+                      - apiserver
+      {{- end }}
+      containers:
+        - name: kube-apiserver
+          image: {{ .Values.images.apiserver }}
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          command:
+            - {{ .Values.apiserver.command }}
+            - --authorization-mode=Node,RBAC
+            - --advertise-address=$(POD_IP)
+            - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds
+            - --anonymous-auth=false
+            - --bind-address=0.0.0.0
+            - --secure-port=443
+            - --apiserver-count={{ .Values.apiserver.replicas }}
+
+            - --client-ca-file=/etc/kubernetes/apiserver/pki/cluster-ca.pem
+            - --tls-cert-file=/etc/kubernetes/apiserver/pki/apiserver.pem
+            - --tls-private-key-file=/etc/kubernetes/apiserver/pki/apiserver-key.pem
+
+            - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+            - --kubelet-certificate-authority=/etc/kubernetes/apiserver/pki/cluster-ca.pem
+            - --kubelet-client-certificate=/etc/kubernetes/apiserver/pki/apiserver.pem
+            - --kubelet-client-key=/etc/kubernetes/apiserver/pki/apiserver-key.pem
+
+            - --etcd-servers={{ .Values.apiserver.etcd.endpoints }}
+            - --etcd-cafile=/etc/kubernetes/apiserver/pki/etcd-client-ca.pem
+            - --etcd-certfile=/etc/kubernetes/apiserver/pki/etcd-client.pem
+            - --etcd-keyfile=/etc/kubernetes/apiserver/pki/etcd-client-key.pem
+
+            - --allow-privileged=true
+
+            - --service-cluster-ip-range={{ .Values.network.service_cidr }}
+            - --service-account-key-file=/etc/kubernetes/apiserver/pki/service-account.pub
+
+            - --v=5
+
+          volumeMounts:
+            - name: certs
+              mountPath: /etc/kubernetes/apiserver/pki/cluster-ca.pem
+              subPath: cluster-ca.pem
+            - name: certs
+              mountPath: /etc/kubernetes/apiserver/pki/apiserver.pem
+              subPath: apiserver.pem
+            - name: cert-keys
+              mountPath: /etc/kubernetes/apiserver/pki/apiserver-key.pem
+              subPath: apiserver-key.pem
+
+            - name: certs
+              mountPath: /etc/kubernetes/apiserver/pki/etcd-client-ca.pem
+              subPath: etcd-client-ca.pem
+            - name: certs
+              mountPath: /etc/kubernetes/apiserver/pki/etcd-client.pem
+              subPath: etcd-client.pem
+            - name: cert-keys
+              mountPath: /etc/kubernetes/apiserver/pki/etcd-client-key.pem
+              subPath: etcd-client-key.pem
+
+            - name: sa-pub-key
+              mountPath: /etc/kubernetes/apiserver/pki/service-account.pub
+              subPath: service-account.pub
+          ports:
+            - name: https
+              containerPort: 443
+      volumes:
+        - name: certs
+          configMap:
+            name: kubernetes-apiserver-certs
+        - name: cert-keys
+          secret:
+            secretName: kubernetes-apiserver-cert-keys
+        - name: sa-pub-key
+          configMap:
+            name: service-account-public-key
+{{- end }}

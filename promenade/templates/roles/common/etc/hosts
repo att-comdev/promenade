@@ -1,0 +1,5 @@
+# This file is controlled by Promenade.  Do not modify.
+#
+127.0.0.1       {{ config.get_first('Genesis:hostname', 'KubernetesNode:hostname') }}
+127.0.0.1       localhost
+{{ config['KubernetesNetwork:kubernetes.service_ip'] }}       kubernetes kubernetes.default kubernetes.default.svc.{{ config['KubernetesNetwork:dns.cluster_domain'] }}

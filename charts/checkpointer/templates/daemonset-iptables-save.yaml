@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: iptables-checkpointer
+  namespace: kube-system
+  labels:
+    application: checkpointer
+    component: checkpointer-iptables
+spec:
+  template:
+    metadata:
+      labels:
+        application: checkpointer
+        component: checkpointer-iptables
+    spec:
+      hostNetwork: true
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      nodeSelector:
+        {{ .Values.iptables_checkpointer.node_selector.key }}: {{ .Values.iptables_checkpointer.node_selector.value }}
+      containers:
+        - name: iptables-checkpointer
+          image: {{ .Values.images.iptables_checkpointer }}
+          command:
+            - sh
+            - -c
+            - |-
+              set -ex
+
+              while true ; do
+                  sleep {{ .Values.iptables_checkpointer.period }}
+
+                  ipset save > /etc/iptables-loader/saved-ipsets-next
+                  mv /etc/iptables-loader/saved-ipsets-next /etc/iptables-loader/saved-ipsets
+                  iptables-save > /etc/iptables-loader/saved-iptables-next
+                  mv /etc/iptables-loader/saved-iptables-next /etc/iptables-loader/saved-iptables
+              done
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: output-dir
+              mountPath: /etc/iptables-loader
+      volumes:
+      - name: output-dir
+        hostPath:
+          path: /etc/iptables-loader

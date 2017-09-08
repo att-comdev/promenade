@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for the pod checkpointer
+name: checkpointer
+version: 0.1.0

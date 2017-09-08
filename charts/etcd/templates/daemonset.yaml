@@ -1,0 +1,265 @@
+{{- $envAll := . }}
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  selector:
+    matchLabels:
+      {{ .Values.service.name | quote }}: server
+  template:
+    metadata:
+      annotations:
+        checkpointer.alpha.coreos.com/checkpoint: "true"
+        scheduler.alpha.kubernetes.io/critical-pod: ''
+      labels:
+        {{ $envAll.Values.service.name | quote }}: server
+        {{ $envAll.Values.service.name }}-service: enabled
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      nodeSelector:
+        {{ .Values.node_selector.key }}: {{ .Values.node_selector.value }}
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      - key: CriticalAddonsOnly
+        operator: Exists
+      initContainers:
+        - name: wait-for-cluster
+          image: {{ .Values.images.etcd }}
+          command:
+            - /bin/sh
+            - -c
+            - |-
+              set -x
+              ETCDCTL_ENDPOINTS=
+                {{- range .Values.nodes -}}
+                  {{- $node := . -}}
+                  ,https://{{ $node.ip }}:{{ $envAll.Values.service.target_ports.client -}}
+                {{- end }}
+              export ETCDCTL_ENDPOINTS=${ETCDCTL_ENDPOINTS:1}
+
+              if [ ! -d /var/lib/etcd/member -a "x${ETCD_NAME}" != "x{{ .Values.bootstrapping_node }}" ]; then
+                  while ! (etcdctl member list | grep $(POD_IP)); do
+                      sleep 10
+                  done
+              fi
+          env:
+            - name: ETCD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: ETCDCTL_API
+              value: '3'
+            - name: ETCDCTL_DIAL_TIMEOUT
+              value: 3s
+            - name: ETCDCTL_CACERT
+              value: /etc/etcd/tls/certs/client-ca.pem
+            - name: ETCDCTL_CERT
+              value: /etc/etcd/tls/certs/$(ETCD_NAME)-etcd-client.pem
+            - name: ETCDCTL_KEY
+              value: /etc/etcd/tls/keys/$(ETCD_NAME)-etcd-client-key.pem
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/etcd
+            - name: certs
+              mountPath: /etc/etcd/tls/certs
+            - name: keys
+              mountPath: /etc/etcd/tls/keys
+      containers:
+        - name: etcd
+          image: {{ .Values.images.etcd }}
+          command:
+            - /bin/sh
+            - -c
+            - |-
+              set -x
+
+              TEMPORARY_ETCDCTL_ENDPOINTS=
+                {{- range .Values.nodes -}}
+                  {{- $node := . -}}
+                  ,https://{{ $node.ip }}:{{ $envAll.Values.service.target_ports.client -}}
+                {{- end }}
+              TEMPORARY_ETCDCTL_ENDPOINTS=${TEMPORARY_ETCDCTL_ENDPOINTS:1}
+              EXISTING_CLUSTER=
+              end=$(($(date +%s) + {{ .Values.service.startup_timeout }}))
+              while [ "x${EXISTING_CLUSTER}" = "x" ]; do
+                  now=$(date +%s)
+                  if [ $now -gt $end ]; then
+                      echo Failed to find existing cluster members within timeout
+                      break
+                  fi
+                  sleep 10
+
+                  EXISTING_CLUSTER=$(ETCDCTL_ENDPOINTS=$TEMPORARY_ETCDCTL_ENDPOINTS etcdctl member list --write-out simple \
+                      | grep -v $POD_IP \
+                      | awk -F ', ' '{ print $3 "=" $4 }' \
+                      | tr '\n' ',' \
+                      | sed "s;\$;$ETCD_NAME=https://$POD_IP:{{ $envAll.Values.service.target_ports.peer }};")
+              done
+
+              if [ "x${EXISTING_CLUSTER}" != "x" ]; then
+                  echo Found existing cluster $EXISTING_CLUSTER 1>&2
+                  export ETCD_INITIAL_CLUSTER=$EXISTING_CLUSTER
+                  export ETCD_INITIAL_CLUSTER_STATE=existing
+              elif [ -d /var/lib/etcd/member ]; then
+                  export ETCD_INITIAL_CLUSTER_STATE=existing
+                  echo Found existing data, starting up using those data. 1>&2
+              elif [ "x${ETCD_NAME}" = "x{{ .Values.bootstrapping_node }}" ]; then
+                  echo Found no existing cluster and this node is flagged as the bootstrapping node. 1>&2
+                  export ETCD_INITIAL_CLUSTER=${ETCD_NAME}=https://${POD_IP}:{{ $envAll.Values.service.target_ports.peer }}
+                  export ETCD_INITIAL_CLUSTER_STATE=new
+              else
+                  echo "Unexpected: nodes should not reach this due to init container.  Exiting to try again." 1>&2
+                  exit 1
+              fi
+
+              exec etcd
+
+          env:
+            - name: ETCD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            {{- if .Values.debug }}
+            - name: ETCD_DEBUG
+              value: 'true'
+            {{- end }}
+            - name: ETCD_ADVERTISE_CLIENT_URLS
+              value: https://$(POD_IP):{{ .Values.service.target_ports.client }}
+            - name: ETCD_INITIAL_ADVERTISE_PEER_URLS
+              value: https://$(POD_IP):{{ .Values.service.target_ports.peer }}
+            - name: ETCD_INITIAL_CLUSTER_TOKEN
+              value: {{ .Values.service.name }}-init-token
+            - name: ETCD_STRICT_RECONFIG_CHECK
+              value: 'false'
+            - name: ETCD_CLIENT_CERT_AUTH
+              value: 'true'
+            - name: ETCD_PEER_CLIENT_CERT_AUTH
+              value: 'true'
+            - name: ETCD_LISTEN_CLIENT_URLS
+              value: https://0.0.0.0:{{ .Values.service.target_ports.client }}
+            - name: ETCD_LISTEN_PEER_URLS
+              value: https://0.0.0.0:{{ .Values.service.target_ports.peer }}
+            - name: ETCD_DATA_DIR
+              value: /var/lib/etcd
+            - name: ETCD_TRUSTED_CA_FILE
+              value: /etc/etcd/tls/certs/client-ca.pem
+            - name: ETCD_CERT_FILE
+              value: /etc/etcd/tls/certs/$(ETCD_NAME)-etcd-client.pem
+            - name: ETCD_KEY_FILE
+              value: /etc/etcd/tls/keys/$(ETCD_NAME)-etcd-client-key.pem
+            - name: ETCD_PEER_TRUSTED_CA_FILE
+              value: /etc/etcd/tls/certs/peer-ca.pem
+            - name: ETCD_PEER_CERT_FILE
+              value: /etc/etcd/tls/certs/$(ETCD_NAME)-etcd-peer.pem
+            - name: ETCD_PEER_KEY_FILE
+              value: /etc/etcd/tls/keys/$(ETCD_NAME)-etcd-peer-key.pem
+            - name: ETCDCTL_API
+              value: '3'
+            - name: ETCDCTL_DIAL_TIMEOUT
+              value: 3s
+            - name: ETCDCTL_ENDPOINTS
+              value: https://$(POD_IP):{{ .Values.service.target_ports.client }},https://127.0.0.1:{{ .Values.service.target_ports.client }}
+            - name: ETCDCTL_CACERT
+              value: $(ETCD_TRUSTED_CA_FILE)
+            - name: ETCDCTL_CERT
+              value: $(ETCD_CERT_FILE)
+            - name: ETCDCTL_KEY
+              value: $(ETCD_KEY_FILE)
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - sh
+                  - -c
+                  - |-
+                    set -x
+
+                    export ETCDCTL_ENDPOINTS=https://127.0.0.1:{{ .Values.service.target_ports.client }}
+
+                    etcdctl txn <<EOTXN
+                    value("currentlyTerminating") = "$(POD_IP)"
+
+                    del currentlyTerminating
+
+                    get currentlyTerminating
+
+                    EOTXN
+
+                    true
+
+            preStop:
+              exec:
+                command:
+                  - sh
+                  - -c
+                  - |-
+                    set -x
+
+                    ETCDCTL_ENDPOINTS=
+                      {{- range .Values.nodes -}}
+                        {{- $node := . -}}
+                        ,https://{{ $node.ip }}:{{ $envAll.Values.service.target_ports.client -}}
+                      {{- end }}
+                    export ETCDCTL_ENDPOINTS=${ETCDCTL_ENDPOINTS:1}
+
+                    while true; do
+                        sleep (($RANDOM % 15))
+                        if etcdctl endpoint health; do
+                            etcdctl txn <<EOTXN
+                            version("currentlyTerminating") > "0"
+
+                            get currentlyTerminating
+
+                            value("currentlyTerminating") = "$(POD_IP)"
+
+                            ETOXN
+
+                            if [ "x$(POD_IP)" = "x$(etcdctl get selfNotifyTerminating)" ]; then
+                                break
+                            fi
+                        done
+                    done
+
+          ports:
+            - name: client
+              containerPort: {{ .Values.service.target_ports.client }}
+            - name: peer
+              containerPort: {{ .Values.service.target_ports.peer }}
+          readinessProbe:
+            exec:
+              command:
+              - etcdctl
+              - endpoint
+              - health
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/etcd
+            - name: certs
+              mountPath: /etc/etcd/tls/certs
+            - name: keys
+              mountPath: /etc/etcd/tls/keys
+      terminationGracePeriodSeconds: 600
+      volumes:
+        - name: data
+          hostPath:
+            path: {{ .Values.host_data_path }}
+        - name: certs
+          configMap:
+            name: {{ .Values.service.name }}
+        - name: keys
+          secret:
+            secretName: {{ .Values.service.name }}

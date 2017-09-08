@@ -1,0 +1,32 @@
+{{- if .Values.scheduler.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubernetes-scheduler
+data:
+  kubeconfig.yaml: |-
+    ---
+    apiVersion: v1
+    clusters:
+    - cluster:
+        server: https://{{ .Values.network.kubernetes_service_ip }}
+        certificate-authority: pki/cluster-ca.pem
+      name: kubernetes
+    contexts:
+    - context:
+        cluster: kubernetes
+        user: scheduler
+      name: scheduler@kubernetes
+    current-context: scheduler@kubernetes
+    kind: Config
+    preferences: {}
+    users:
+    - name: scheduler
+      user:
+        client-certificate: pki/scheduler.pem
+        client-key: pki/scheduler-key.pem
+
+  cluster-ca.pem: {{ .Values.common.tls.ca | quote }}
+  scheduler.pem: {{ .Values.scheduler.tls.cert | quote }}
+{{- end }}

@@ -1,0 +1,91 @@
+---
+schema: deckhand/DataSchema/v1
+metadata:
+  schema: metadata/Control/v1
+  name: promenade/Genesis/v1
+  labels:
+    application: promenade
+data:
+  $schema: http://json-schema.org/schema#
+  definitions:
+    hostname:
+      type: string
+      pattern: '^[a-z][a-z0-9-]+$'
+    image:
+      type: string
+      # XXX add regex
+    ip_address:
+      type: string
+      pattern: '^(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))$'
+    kubernetes_label:
+      type: string
+      # XXX add regex
+
+  type: object
+  properties:
+    hostname:
+      $ref: '#/definitions/hostname'
+
+    ip:
+      $ref: '#/definitions/ip_address'
+
+    labels:
+      properties:
+        static:
+          type: array
+          items:
+            $ref: '#/definitions/kubernetes_label'
+        dynamic:
+          type: array
+          items:
+            $ref: '#/definitions/kubernetes_label'
+      required:
+        - static
+      additionalProperties: false
+
+    images:
+      type: object
+      properties:
+        armada:
+          $ref: '#/definitions/image'
+        helm:
+          type: object
+          properties:
+            tiller:
+              $ref: '#/definitions/image'
+          required:
+            - tiller
+          additionalProperties: false
+        kubernetes:
+          type: object
+          properties:
+            apiserver:
+              $ref: '#/definitions/image'
+            controller-manager:
+              $ref: '#/definitions/image'
+            etcd:
+              $ref: '#/definitions/image'
+            scheduler:
+              $ref: '#/definitions/image'
+          required:
+            - apiserver
+            - controller-manager
+            - etcd
+            - scheduler
+          additionalProperties: false
+        promenade:
+          $ref: '#/definitions/image'
+      required:
+        - armada
+        - helm
+        - kubernetes
+        - promenade
+      additionalProperties: false
+
+  required:
+    - hostname
+    - ip
+    - images
+    - labels
+  additionalProperties: false
+...
