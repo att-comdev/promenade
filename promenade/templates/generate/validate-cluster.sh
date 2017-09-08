@@ -1,4 +1,4 @@
-{% include "common_validation.sh" with context %}
+{% include "utils.sh" with context %}
 
 EXPECTED_NODE_COUNT={{ config['Cluster']['nodes'] | length }}
 wait_for_ready_nodes $EXPECTED_NODE_COUNT

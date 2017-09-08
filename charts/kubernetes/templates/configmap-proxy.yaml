@@ -1,0 +1,32 @@
+{{- if .Values.proxy.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubernetes-proxy
+data:
+  kubeconfig.yaml: |-
+    ---
+    apiVersion: v1
+    clusters:
+    - cluster:
+        server: https://{{ .Values.network.kubernetes_service_ip }}
+        certificate-authority: pki/cluster-ca.pem
+      name: kubernetes
+    contexts:
+    - context:
+        cluster: kubernetes
+        user: proxy
+      name: proxy@kubernetes
+    current-context: proxy@kubernetes
+    kind: Config
+    preferences: {}
+    users:
+    - name: proxy
+      user:
+        client-certificate: pki/proxy.pem
+        client-key: pki/proxy-key.pem
+
+  cluster-ca.pem: {{ .Values.common.tls.ca | quote }}
+  proxy.pem: {{ .Values.proxy.tls.cert | quote }}
+{{- end }}

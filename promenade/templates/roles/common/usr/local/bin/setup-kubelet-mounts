@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -x
+
+mkdir -p /var/lib/kubelet
+
+if ! (findmnt -o PROPAGATION /var/lib/kubelet | grep \bshared\b); then
+    if ! findmnt /var/lib/kubelet; then
+        /bin/mount --bind /var/lib/kubelet /var/lib/kubelet
+    fi
+
+    /bin/mount --make-shared /var/lib/kubelet
+fi
