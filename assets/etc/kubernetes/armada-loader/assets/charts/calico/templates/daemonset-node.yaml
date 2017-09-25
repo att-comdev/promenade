@@ -95,9 +95,9 @@ spec:
             # Auto-detect the BGP IP address.
             - name: IP
               value: ""
-            {{- if .Values.calico.interface }}
+            {{- if .Values.calico.calico_interface }}
             - name: IP_AUTODETECTION_METHOD
-              value: interface={{ .Values.calico.interface }}
+              value: interface={{ .Values.calico.calico_interface }}
             {{- end }}
           securityContext:
             privileged: true
