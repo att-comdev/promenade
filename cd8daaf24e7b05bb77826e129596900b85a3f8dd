@@ -318,6 +318,29 @@
     },
     {
       "key": {
+        "uuid": "e22c084a_dcd519a0",
+        "filename": "charts/kubernetes/templates/configmap-apiserver.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T19:46:11Z",
+      "side": 1,
+      "message": "for simplicity would it not make more sense to keep the cert and key in the same secret? This applies to all the other kube configmaps as well.",
+      "range": {
+        "startLine": 4,
+        "startChar": 6,
+        "endLine": 4,
+        "endChar": 15
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d08fe7_31722a3b",
         "filename": "promenade/templates/roles/join/usr/local/bin/helm",
         "patchSetId": 7
