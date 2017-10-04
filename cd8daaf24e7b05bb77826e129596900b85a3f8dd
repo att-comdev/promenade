@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2de51d00_01b8f1ea",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "we should also apply the labels from helm toolkit to meet clcp reqs.",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "941454d1_d2eb2f19",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "as these are charts - can we put all scripts in a configmap to be consistent across all of clcp.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d3bd8_c9038bfa",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "should these containers have resource requests/limits applied?",
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50691911_325514c2",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "can be reduced to single awk command simply",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 57
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8d07b0a_b06c7ef5",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "that",
+      "range": {
+        "startLine": 113,
+        "startChar": 62,
+        "endLine": 113,
+        "endChar": 67
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef4f2aea_bff79492",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "can you put this in a configmap.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 23
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6e8f35e_877f4c08",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "should this not be tuneable?",
+      "range": {
+        "startLine": 171,
+        "startChar": 21,
+        "endLine": 171,
+        "endChar": 23
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ca83d9_1871811d",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "can you put in configmap",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 24
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2228f2bf_ae2e4f8e",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "This could probably do with a note as to why - to ensure all pots don\u0027t shut down at the same time? if so should we not make this a param, along with the termination grace time for the pod.",
+      "range": {
+        "startLine": 218,
+        "startChar": 30,
+        "endLine": 218,
+        "endChar": 46
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "637ea6b4_0d932f2b",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "can you put in configmap",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 24
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df42f49d_9e484389",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "can we make these read-only?",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 43
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f758c4a2_92e66610",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "should set default mask: 440?",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 44
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adf7a2df_c6c98358",
+        "filename": "charts/etcd/templates/daemonset.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "should set default mask: 440?",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 50
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6579f52_25628eb2",
+        "filename": "charts/etcd/values.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "can you use the endpoints format used in other clcp components.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d08fe7_31722a3b",
+        "filename": "promenade/templates/roles/join/usr/local/bin/helm",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-04T05:37:17Z",
+      "side": 1,
+      "message": "should this not be: WORKDIR\u003d/up ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "cd8daaf24e7b05bb77826e129596900b85a3f8dd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
