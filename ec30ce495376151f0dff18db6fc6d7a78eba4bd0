@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de85df08_6bfdef14",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "Is this even used? I\u0027m surprised it\u0027s even legal syntax. I would expect *args.",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59719a10_f143dcea",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "If you\u0027re going to use an assert statement, I think it\u0027d be good to do:\n\n    assert schema is None, \"Kind and schema parameters are both required for....\"\n\nThen you\u0027d need logic for intercepting that AssertionError elsewhere. Alternatively you should probably just raise your own custom exception.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7042cd7b_3233c552",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "I\u0027m kind of curious why this is here. Does Promenade need to do substitution as well? Or is this a band-aid around the fact that secret substitution is missing from Deckhand ATM?\n\nI ask mostly because it constrains the context of this code review.\n\nIf this is for Deckhand, then this is missing pattern handling in substitution[\u0027dest\u0027][\u0027pattern\u0027].",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5857b0e2_8a4a44b8",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "I take it oslo_log integration will be done later? I\u0027m just pointing this out for the future. Don\u0027t expect this PS to address.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8afc744c_0f0665e5",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "The one shortcoming with this function is that it assumes the path is already present in the document.\n\nFrom what I understood, in Deckhand, if data\u003d{} then the path ought to be created along with the value in the right place along that path.\n\nNote that this behavior won\u0027t work if you need a pattern, since a pattern requires that the data path be present. Bear in mind this is all already implemented and mostly tested in an open PS I have in Deckhand.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "996d0e8c_c268ed60",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "If you\u0027re getting the document from Deckhand, metadata will always be present due to schema validation. I intentionally use document[\u0027metadata\u0027] to allow expected failures, because if metadata is missing then something is very wrong.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe19140a_2dc7355c",
+        "filename": "promenade/pki.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "I don\u0027t believe Deckhand currently supports some of these kinds, like PrivateKey, PublicKey, CertificateAuthority and CertificateAuthorityKey.\n\nThat\u0027ll have to be added if we want Deckhand to handle these docs.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab151306_6a8463ba",
+        "filename": "promenade/pki.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "typo: layeringDefinition",
+      "range": {
+        "startLine": 133,
+        "startChar": 17,
+        "endLine": 133,
+        "endChar": 34
+      },
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5cb6eb1_755d8987",
+        "filename": "promenade/renderer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-04T15:09:55Z",
+      "side": 1,
+      "message": "The two args here should have same level of indentation or be on the same line.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
