@@ -1,0 +1,923 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b01204d_3d074bfa",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "set -ex",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b70d9dc8_1d2a1201",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "could these be made env vars that are injected into the pod, rather than needing to template the script.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 62
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1971f46_a45c1812",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "we should use the standardized clcp labels from helm toolkit in addition to these.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48dc30a1_8c192ffc",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "this makes me uncomfortable - could this be placed in its own configmap and mounted in /etc/\u003cfoo\u003e.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f50b1ce0_1eacd3e7",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "it would be cleaner if this was an env var, and the templating moved to the manifest.",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 37
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee5bfab4_d2df32e5",
+        "filename": "charts/apiserver/templates/bin/_pre_stop.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "set -ex",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7a1b601_1ee1c5ca",
+        "filename": "charts/apiserver/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "anchor.sh",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8027fedb_d1bb8be3",
+        "filename": "charts/apiserver/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "pre_stop.sh",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c800e58_f79f9a78",
+        "filename": "charts/apiserver/templates/configmap-certs.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "as before for simplicity would it not be better to have these split into secrets for each set of cert/key/ca ?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e551d12_08fd2a05",
+        "filename": "charts/apiserver/templates/daemonset.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "could you use the helm-toolkit function here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 42
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67753595_a161059c",
+        "filename": "charts/apiserver/templates/daemonset.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "could you use the helm-toolkit function here.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f098be3_52940a0f",
+        "filename": "charts/apiserver/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "6443 would be a better default and would bring prom inline with other tools.",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf1609df_a4cd8fb0",
+        "filename": "charts/calico/templates/configmap.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "I assume this is here to make it easier while an early stage wip - but can you confirm that this works with alans calico chart as well.",
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e2f980d_6cf64f56",
+        "filename": "charts/calico/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "can we use the endpoints layout here for consistency with other clcp components, tls could be represented at the same level auth is.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af8eafb2_b382417a",
+        "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "why specify twice?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41666a1e_7dbd616b",
+        "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "could you use the function from helm-toolkit",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3498f44c_88cd039b",
+        "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "could you move this to a configmap, eg configmap-bin",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6a4f95e_dcdb06ee",
+        "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "would NET_ADMIN suffice?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd0c46e5_f0a92011",
+        "filename": "charts/controller_manager/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "same comments as api server apply here",
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97f4b400_95cb7c25",
+        "filename": "charts/controller_manager/templates/bin/_pre_stop.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "set -ex",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0763cbd1_ea1d96d0",
+        "filename": "charts/controller_manager/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "same comments as api-server",
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3b8ec93_6ac2997c",
+        "filename": "charts/controller_manager/templates/configmap-etc.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "same comments as api-server",
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9eb43ed6_e3badc05",
+        "filename": "charts/controller_manager/templates/daemonset.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "could you use the function from helm-toolkit here",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 51
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb59a6bf_22b3c997",
+        "filename": "charts/controller_manager/templates/daemonset.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "could you use the function from helm toolkit here",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b78c6be_1c098ad0",
+        "filename": "charts/dns/Chart.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "why not kube-dns?",
+      "range": {
+        "startLine": 3,
+        "startChar": 6,
+        "endLine": 3,
+        "endChar": 9
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00e31e6e_3301187c",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "can you use the function from helm toolkit here",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f00f968_23efb933",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 24
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5c1749b_913bf07c",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "can you use the function from helm-toolkit here, it may need to be extended to encorp maxSurge i think.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67cb347_2bb2d286",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "can we move these to configmap-bin(s)",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51851e8c_b330cf79",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "can we move these to configmap-bin(s)",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 44
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0b57ce_f2d9558a",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "can we move these to configmap-bin(s)",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 79
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59022ccb_c1dd2280",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "set -ex",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e2601ba_55845e10",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "move to pod manifest.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "583b18c6_652057a7",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "move to configmap",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b20f6710_b8063c43",
+        "filename": "charts/etcd/templates/bin/_pre_stop.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "set -ex",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "175b9234_864c5589",
+        "filename": "charts/etcd/templates/bin/_pre_stop.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "move to pod manifest",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 63
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a966007_096b940c",
+        "filename": "charts/etcd/templates/bin/_readiness.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "can we get this injected via the pod manifest as an env var.",
+      "range": {
+        "startLine": 5,
+        "startChar": 41,
+        "endLine": 5,
+        "endChar": 81
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68ae82f3_f15e5445",
+        "filename": "charts/etcd/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "etcdctl_anchor.sh",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11107167_abdf2b32",
+        "filename": "charts/etcd/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "pre_stop.sh",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "178ef896_1acea988",
+        "filename": "charts/etcd/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "readiness.sh",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e7f086_ae97938c",
+        "filename": "charts/etcd/templates/configmap-certs.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-07T15:32:08Z",
+      "side": 1,
+      "message": "not required",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
