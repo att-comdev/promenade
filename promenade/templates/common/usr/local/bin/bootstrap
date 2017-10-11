@@ -11,6 +11,8 @@ apt-get install -y --no-install-recommends \
     {{ config['Versions']['packages']['dnsmasq'] }} \
     {{ config['Versions']['packages']['socat'] }}
 
+apt-get remove -y chrony ntp
+
 systemctl daemon-reload
 systemctl enable kubelet
 systemctl restart kubelet
