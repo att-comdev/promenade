@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "98d1be55_ff6e741c",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-11T15:20:38Z",
+      "side": 1,
+      "message": "Its important that we have proper error handling in these scripts, and assume that this may take things other than the happy path: therefore set -e is required.",
+      "parentUuid": "768dd93d_9ab54425",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b70d9dc8_1d2a1201",
         "filename": "charts/apiserver/templates/bin/_anchor.tpl",
         "patchSetId": 9
