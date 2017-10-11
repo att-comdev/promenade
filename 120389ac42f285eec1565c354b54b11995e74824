@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0b33fc6_dbdee389",
+        "filename": "charts/coredns/templates/bin/_anchor.tpl",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-11T03:15:13Z",
+      "side": 1,
+      "message": "why not create this as a configmap? this comment applies to most of the cat\u0027d configs and files in the \u0027anchor\u0027 scripts.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "120389ac42f285eec1565c354b54b11995e74824",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
