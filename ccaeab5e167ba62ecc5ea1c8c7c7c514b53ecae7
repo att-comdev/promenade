@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "768dd93d_9ab54425",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "set -e might be appropriate for this anchor, but I\u0027m not sure it\u0027s appropriate in general for these.  We don\u0027t want the pod to crash due to, e.g. a single kubectl query failing.\n\nWe can add this enhancement in a later PS; hopefully, though we will be able to extract the anchor pattern as a common toolkit item, where the issue can be decided directly.",
+      "parentUuid": "9b01204d_3d074bfa",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b70d9dc8_1d2a1201",
         "filename": "charts/apiserver/templates/bin/_anchor.tpl",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "could these be made env vars that are injected into the pod, rather than needing to template the script.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 62
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "917468f9_f5549dc2",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "b70d9dc8_1d2a1201",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bbba1a18_a589f404",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "f1971f46_a45c1812",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48dc30a1_8c192ffc",
         "filename": "charts/apiserver/templates/bin/_anchor.tpl",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "this makes me uncomfortable - could this be placed in its own configmap and mounted in /etc/\u003cfoo\u003e.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83a395bd_0a7e70ac",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "48dc30a1_8c192ffc",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6a430ab2_e7114094",
+        "filename": "charts/apiserver/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "f50b1ce0_1eacd3e7",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 37
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee5bfab4_d2df32e5",
         "filename": "charts/apiserver/templates/bin/_pre_stop.tpl",
         "patchSetId": 9
@@ -128,6 +248,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "set -ex",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fc1aa31_6c75d921",
+        "filename": "charts/apiserver/templates/bin/_pre_stop.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "ee5bfab4_d2df32e5",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "5618d4fa_3310fff2",
+        "filename": "charts/apiserver/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "d7a1b601_1ee1c5ca",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8027fedb_d1bb8be3",
         "filename": "charts/apiserver/templates/configmap-bin.yaml",
         "patchSetId": 9
@@ -174,6 +342,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "pre_stop.sh",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1931cc0f_6c415420",
+        "filename": "charts/apiserver/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "8027fedb_d1bb8be3",
       "range": {
         "startLine": 9,
         "startChar": 2,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "8d5a426c_f3a514b5",
+        "filename": "charts/apiserver/templates/configmap-certs.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "4c800e58_f79f9a78",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e551d12_08fd2a05",
         "filename": "charts/apiserver/templates/daemonset.yaml",
         "patchSetId": 9
@@ -220,6 +436,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "could you use the helm-toolkit function here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 42
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd809a90_c9c085ac",
+        "filename": "charts/apiserver/templates/daemonset.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "3e551d12_08fd2a05",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "f14edef9_3da8256c",
+        "filename": "charts/apiserver/templates/daemonset.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "67753595_a161059c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f098be3_52940a0f",
         "filename": "charts/apiserver/values.yaml",
         "patchSetId": 9
@@ -266,6 +530,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "6443 would be a better default and would bring prom inline with other tools.",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3c6f15c_5866a00d",
+        "filename": "charts/apiserver/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "You\u0027ll note in the official docs here (https://kubernetes.io/docs/admin/accessing-the-api/) that the very first sentence of the Transport Security section states directly that 443 is the typical port, so to say that 6443 is more standard is clearly incorrect.\n\nI\u0027m happy to make this configurable in a later PS.",
+      "parentUuid": "7f098be3_52940a0f",
       "range": {
         "startLine": 22,
         "startChar": 8,
@@ -295,6 +583,24 @@
     },
     {
       "key": {
+        "uuid": "e7764589_ed11c307",
+        "filename": "charts/calico/templates/configmap.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "That needs to be part of a different PS, as it will surely only require minor modifications if any.",
+      "parentUuid": "bf1609df_a4cd8fb0",
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e2f980d_6cf64f56",
         "filename": "charts/calico/values.yaml",
         "patchSetId": 9
@@ -306,6 +612,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "can we use the endpoints layout here for consistency with other clcp components, tls could be represented at the same level auth is.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf2bbc38_ac1d2006",
+        "filename": "charts/calico/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "2e2f980d_6cf64f56",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -341,6 +671,30 @@
     },
     {
       "key": {
+        "uuid": "5de83a35_c7a038e6",
+        "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "This has been removed altogether.",
+      "parentUuid": "af8eafb2_b382417a",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41666a1e_7dbd616b",
         "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
         "patchSetId": 9
@@ -352,6 +706,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "could you use the function from helm-toolkit",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4444e79_f5ee47ca",
+        "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "This has been removed.",
+      "parentUuid": "41666a1e_7dbd616b",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -387,6 +765,30 @@
     },
     {
       "key": {
+        "uuid": "bb36d07d_2a7ffec7",
+        "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "3498f44c_88cd039b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a4f95e_dcdb06ee",
         "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
         "patchSetId": 9
@@ -398,6 +800,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "would NET_ADMIN suffice?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af402095_01a8cfaa",
+        "filename": "charts/checkpointer/templates/daemonset-iptables-save.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "b6a4f95e_dcdb06ee",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -427,6 +853,24 @@
     },
     {
       "key": {
+        "uuid": "e72f1fcb_7c10e3dd",
+        "filename": "charts/controller_manager/templates/bin/_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Likewise same responses.",
+      "parentUuid": "cd0c46e5_f0a92011",
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97f4b400_95cb7c25",
         "filename": "charts/controller_manager/templates/bin/_pre_stop.tpl",
         "patchSetId": 9
@@ -450,6 +894,30 @@
     },
     {
       "key": {
+        "uuid": "d64846ce_ca51e94c",
+        "filename": "charts/controller_manager/templates/bin/_pre_stop.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "97f4b400_95cb7c25",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0763cbd1_ea1d96d0",
         "filename": "charts/controller_manager/templates/configmap-bin.yaml",
         "patchSetId": 9
@@ -461,6 +929,24 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "same comments as api-server",
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e8082f8_d51f8dfd",
+        "filename": "charts/controller_manager/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Same responses.",
+      "parentUuid": "0763cbd1_ea1d96d0",
       "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -507,6 +993,30 @@
     },
     {
       "key": {
+        "uuid": "7a61fb55_cb1fc61b",
+        "filename": "charts/controller_manager/templates/daemonset.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "9eb43ed6_e3badc05",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 51
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb59a6bf_22b3c997",
         "filename": "charts/controller_manager/templates/daemonset.yaml",
         "patchSetId": 9
@@ -518,6 +1028,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "could you use the function from helm toolkit here",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ea92a12_6254d23d",
+        "filename": "charts/controller_manager/templates/daemonset.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "eb59a6bf_22b3c997",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -553,6 +1087,30 @@
     },
     {
       "key": {
+        "uuid": "7b77ab01_22637555",
+        "filename": "charts/dns/Chart.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "replaced by coredns",
+      "parentUuid": "4b78c6be_1c098ad0",
+      "range": {
+        "startLine": 3,
+        "startChar": 6,
+        "endLine": 3,
+        "endChar": 9
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00e31e6e_3301187c",
         "filename": "charts/dns/templates/deployment.yaml",
         "patchSetId": 9
@@ -564,6 +1122,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "can you use the function from helm toolkit here",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87a1c5d6_d42c9189",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "kube-dns has been replaced with coredns",
+      "parentUuid": "00e31e6e_3301187c",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -599,6 +1181,30 @@
     },
     {
       "key": {
+        "uuid": "a2e13881_59dd86bf",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "replaced by coredns",
+      "parentUuid": "1f00f968_23efb933",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 24
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5c1749b_913bf07c",
         "filename": "charts/dns/templates/deployment.yaml",
         "patchSetId": 9
@@ -610,6 +1216,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "can you use the function from helm-toolkit here, it may need to be extended to encorp maxSurge i think.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16fb6fd8_56bc29a9",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "replaced by coredns",
+      "parentUuid": "f5c1749b_913bf07c",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -645,6 +1275,30 @@
     },
     {
       "key": {
+        "uuid": "0526ac11_1b730be8",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "replaced by coredns",
+      "parentUuid": "b67cb347_2bb2d286",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51851e8c_b330cf79",
         "filename": "charts/dns/templates/deployment.yaml",
         "patchSetId": 9
@@ -656,6 +1310,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "can we move these to configmap-bin(s)",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 44
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9df00089_3f436e3c",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "replaced by coredns",
+      "parentUuid": "51851e8c_b330cf79",
       "range": {
         "startLine": 97,
         "startChar": 0,
@@ -691,6 +1369,30 @@
     },
     {
       "key": {
+        "uuid": "c51dbb05_dfc905bc",
+        "filename": "charts/dns/templates/deployment.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "replaced by coredns",
+      "parentUuid": "3e0b57ce_f2d9558a",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 79
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59022ccb_c1dd2280",
         "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
         "patchSetId": 9
@@ -702,6 +1404,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "set -ex",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09a002f0_82e9b2cd",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "As described in previous comments, a bit of care will be required to update to script to be usable with -e, as it\u0027s possible for something like etcdctl member list to fail and not be a proper error.",
+      "parentUuid": "59022ccb_c1dd2280",
       "range": {
         "startLine": 3,
         "startChar": 0,
@@ -737,6 +1463,30 @@
     },
     {
       "key": {
+        "uuid": "5335eac6_221f44d9",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "3e2601ba_55845e10",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "583b18c6_652057a7",
         "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
         "patchSetId": 9
@@ -748,6 +1498,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "move to configmap",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d6365fe_cda131b6",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "583b18c6_652057a7",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -783,6 +1557,30 @@
     },
     {
       "key": {
+        "uuid": "e63784c3_5853164a",
+        "filename": "charts/etcd/templates/bin/_pre_stop.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Care will be required here too.  No sense in crashing if etcdctl member list fails.",
+      "parentUuid": "b20f6710_b8063c43",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "175b9234_864c5589",
         "filename": "charts/etcd/templates/bin/_pre_stop.tpl",
         "patchSetId": 9
@@ -794,6 +1592,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "move to pod manifest",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 63
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7ea23e9_c0a1869d",
+        "filename": "charts/etcd/templates/bin/_pre_stop.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "175b9234_864c5589",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -829,6 +1651,30 @@
     },
     {
       "key": {
+        "uuid": "84c1888c_77ee2ec3",
+        "filename": "charts/etcd/templates/bin/_readiness.tpl",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "7a966007_096b940c",
+      "range": {
+        "startLine": 5,
+        "startChar": 41,
+        "endLine": 5,
+        "endChar": 81
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68ae82f3_f15e5445",
         "filename": "charts/etcd/templates/configmap-bin.yaml",
         "patchSetId": 9
@@ -840,6 +1686,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "etcdctl_anchor.sh",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef159b5c_ff6cd547",
+        "filename": "charts/etcd/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "68ae82f3_f15e5445",
       "range": {
         "startLine": 7,
         "startChar": 2,
@@ -875,6 +1745,30 @@
     },
     {
       "key": {
+        "uuid": "b68e8cbe_201a67c5",
+        "filename": "charts/etcd/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "11107167_abdf2b32",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "178ef896_1acea988",
         "filename": "charts/etcd/templates/configmap-bin.yaml",
         "patchSetId": 9
@@ -898,6 +1792,30 @@
     },
     {
       "key": {
+        "uuid": "45f01f7d_d9a1c1b8",
+        "filename": "charts/etcd/templates/configmap-bin.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "178ef896_1acea988",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7e7f086_ae97938c",
         "filename": "charts/etcd/templates/configmap-certs.yaml",
         "patchSetId": 9
@@ -909,6 +1827,30 @@
       "writtenOn": "2017-10-07T15:32:08Z",
       "side": 1,
       "message": "not required",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f28cc23_0bcce705",
+        "filename": "charts/etcd/templates/configmap-certs.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-11T14:02:07Z",
+      "side": 1,
+      "message": "Consistency issues \u0026 enhancements will be addressed in a later PS.",
+      "parentUuid": "d7e7f086_ae97938c",
       "range": {
         "startLine": 16,
         "startChar": 0,
