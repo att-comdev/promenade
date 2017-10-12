@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae2c4b27_081d75fe",
+        "filename": "promenade/templates/roles/join/usr/local/bin/helm",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-12T15:00:36Z",
+      "side": 1,
+      "message": "should this not be /up ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "af27402199370fb5dd72ff9e1b1877accc4f7f4e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e292cff_a99c5633",
+        "filename": "promenade/templates/roles/join/usr/local/bin/helm",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-12T15:00:36Z",
+      "side": 1,
+      "message": "both of these should be read-only at a minimum.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "af27402199370fb5dd72ff9e1b1877accc4f7f4e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "508b5f84_3e3b8c57",
+        "filename": "tools/build-example.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-12T15:00:36Z",
+      "side": 1,
+      "message": "nit: could you put this on a new line.",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "af27402199370fb5dd72ff9e1b1877accc4f7f4e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c660921_ceed3785",
+        "filename": "tools/build-example.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-12T15:00:36Z",
+      "side": 1,
+      "message": "nit: could you put this on a new line.",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "af27402199370fb5dd72ff9e1b1877accc4f7f4e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b8882fc_eba60b25",
+        "filename": "tools/dev-build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-12T15:00:36Z",
+      "side": 1,
+      "message": "should this not be $(dirname $0) to match below?",
+      "range": {
+        "startLine": 6,
+        "startChar": 51,
+        "endLine": 6,
+        "endChar": 52
+      },
+      "revId": "af27402199370fb5dd72ff9e1b1877accc4f7f4e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
