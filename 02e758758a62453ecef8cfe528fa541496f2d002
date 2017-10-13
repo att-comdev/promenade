@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac3f4312_933b9707",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-13T05:23:39Z",
+      "side": 1,
+      "message": "``node_id``",
+      "range": {
+        "startLine": 8,
+        "startChar": 39,
+        "endLine": 8,
+        "endChar": 49
+      },
+      "revId": "02e758758a62453ecef8cfe528fa541496f2d002",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9900d617_ef094156",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-13T05:23:39Z",
+      "side": 1,
+      "message": "plural?  would this be better to be /v1.0/statuses/{node_id}",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "02e758758a62453ecef8cfe528fa541496f2d002",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a62c1ce_c15eb46c",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-13T05:23:39Z",
+      "side": 1,
+      "message": "should these paths be plural?  /configmaps/",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "02e758758a62453ecef8cfe528fa541496f2d002",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "531e3154_4c076b19",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-13T05:23:39Z",
+      "side": 1,
+      "message": "``node_id``",
+      "range": {
+        "startLine": 22,
+        "startChar": 79,
+        "endLine": 22,
+        "endChar": 87
+      },
+      "revId": "02e758758a62453ecef8cfe528fa541496f2d002",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cbf67bd_d6424145",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-13T05:23:39Z",
+      "side": 1,
+      "message": "Is the Promenade API going to allow me to list all the configmaps?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "02e758758a62453ecef8cfe528fa541496f2d002",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de074d73_22d3f495",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-13T05:23:39Z",
+      "side": 1,
+      "message": "If it is a create, wouldn\u0027t this be a POST?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "02e758758a62453ecef8cfe528fa541496f2d002",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6bcdb3_ca096c29",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-13T05:23:39Z",
+      "side": 1,
+      "message": "201?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 5
+      },
+      "revId": "02e758758a62453ecef8cfe528fa541496f2d002",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
