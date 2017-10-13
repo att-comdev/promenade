@@ -590,6 +590,30 @@
     },
     {
       "key": {
+        "uuid": "5f89090d_97d9589a",
+        "filename": "charts/apiserver/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-10-13T00:02:21Z",
+      "side": 1,
+      "message": "I\u0027m not saying it\u0027s the standard port for https, but it is the default port used by the common tools to deploy kubernetes including KubeADM, KOPS, OpenShift and is also referred to in the doc you link to as the standard API port in the section \u0027API Server Ports and IPs\u0027. Also using 443 prevents running ingress controllers on nodes running the API.",
+      "parentUuid": "e3c6f15c_5866a00d",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf1609df_a4cd8fb0",
         "filename": "charts/calico/templates/configmap.yaml",
         "patchSetId": 9
