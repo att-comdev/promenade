@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d917497_14b7b8be",
+        "filename": "tools/gate/config-templates/bootstrap-armada-config.yaml",
+        "patchSetId": 18
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "Roger",
+      "parentUuid": "b4fe3f4b_6898511f",
+      "range": {
+        "startLine": 166,
+        "startChar": 25,
+        "endLine": 166,
+        "endChar": 45
+      },
+      "revId": "204282ccfb9d991457d76fde6f6354d653348b3a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab25dc6a_74eb9a05",
         "filename": "tools/gate/config-templates/genesis-config.yaml",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-13T19:55:29Z",
       "side": 1,
       "message": "Should an equals sign be here?",
+      "range": {
+        "startLine": 15,
+        "startChar": 38,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "204282ccfb9d991457d76fde6f6354d653348b3a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06d6bfc2_cb0efb0a",
+        "filename": "tools/gate/config-templates/genesis-config.yaml",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "Indeed, it simply means the value (these are key\u003dvalue pairs) is an empty string.",
+      "parentUuid": "ab25dc6a_74eb9a05",
       "range": {
         "startLine": 15,
         "startChar": 38,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6c1ecb05_e3538aec",
+        "filename": "tools/gate/config-templates/joining-host-config.yaml",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "Likewise.",
+      "parentUuid": "33d8a2ad_01ca51fc",
+      "range": {
+        "startLine": 15,
+        "startChar": 38,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "204282ccfb9d991457d76fde6f6354d653348b3a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57f0e1b2_34d2c397",
         "filename": "tools/gate/promenade-config.yaml",
         "patchSetId": 18
@@ -82,6 +154,30 @@
       "writtenOn": "2017-10-13T19:55:29Z",
       "side": 1,
       "message": "White space",
+      "range": {
+        "startLine": 25,
+        "startChar": 18,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "204282ccfb9d991457d76fde6f6354d653348b3a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cefabb7c_83eba918",
+        "filename": "tools/gate/promenade-config.yaml",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "Lingering whitespace from old gate config -- This has been replaced with Deckhand-formatted config, which I think has this kind of issue fixed.",
+      "parentUuid": "57f0e1b2_34d2c397",
       "range": {
         "startLine": 25,
         "startChar": 18,
