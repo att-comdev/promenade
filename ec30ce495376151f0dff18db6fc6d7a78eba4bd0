@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41c4d6e1_d440c36e",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "This is Python 3 syntax to indicate that the arguments that follow it are keyword-only.",
+      "parentUuid": "de85df08_6bfdef14",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59719a10_f143dcea",
         "filename": "promenade/config.py",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2017-10-04T15:09:55Z",
       "side": 1,
       "message": "If you\u0027re going to use an assert statement, I think it\u0027d be good to do:\n\n    assert schema is None, \"Kind and schema parameters are both required for....\"\n\nThen you\u0027d need logic for intercepting that AssertionError elsewhere. Alternatively you should probably just raise your own custom exception.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cea798ec_533e8ef6",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "Yeah, you\u0027re right this isn\u0027t good.  I suspect the assert really indicates it just has the wrong interface.\n\nI wonder if just auto-detecting whether it\u0027s a schema or a kind would be better, since it\u0027s pretty obvious which it is.",
+      "parentUuid": "59719a10_f143dcea",
       "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a3d14dea_7d9e0fda",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "This code is here to make it more convenient to generate and use secrets without having to commit them for the example.\n\nThis is only intended to be a naive implementation, not necessarily a complete or model implementation for Deckhand.\n\nI do hope to leverage the deckhand engine to manage this kind of thing in the future :)",
+      "parentUuid": "7042cd7b_3233c552",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5857b0e2_8a4a44b8",
         "filename": "promenade/config.py",
         "patchSetId": 6
@@ -70,6 +130,24 @@
       "writtenOn": "2017-10-04T15:09:55Z",
       "side": 1,
       "message": "I take it oslo_log integration will be done later? I\u0027m just pointing this out for the future. Don\u0027t expect this PS to address.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21518a51_ec733482",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "Yeah, consistent logging is less pressing than further integration.",
+      "parentUuid": "5857b0e2_8a4a44b8",
       "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "ff38dc81_4c7ababd",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "Indeed, this is unfortunate.  I will happily remove this when I\u0027m able to leverage the Deckhand client for this (no Deckhand API is available when this functionality is used).",
+      "parentUuid": "8afc744c_0f0665e5",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "996d0e8c_c268ed60",
         "filename": "promenade/config.py",
         "patchSetId": 6
@@ -104,6 +200,24 @@
       "writtenOn": "2017-10-04T15:09:55Z",
       "side": 1,
       "message": "If you\u0027re getting the document from Deckhand, metadata will always be present due to schema validation. I intentionally use document[\u0027metadata\u0027] to allow expected failures, because if metadata is missing then something is very wrong.",
+      "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "487d3167_24235842",
+        "filename": "promenade/config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-14T00:55:41Z",
+      "side": 1,
+      "message": "Right, these documents are not guaranteed to come from Deckhand unfortunately -- they are currently being used for genesis script generation and cert generation, so no Deckhand API is available.",
+      "parentUuid": "996d0e8c_c268ed60",
       "revId": "ec30ce495376151f0dff18db6fc6d7a78eba4bd0",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
