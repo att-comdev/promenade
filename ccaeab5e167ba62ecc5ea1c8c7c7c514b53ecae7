@@ -614,6 +614,30 @@
     },
     {
       "key": {
+        "uuid": "4e7382b8_879d004e",
+        "filename": "charts/apiserver/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1011936
+      },
+      "writtenOn": "2017-10-14T18:21:44Z",
+      "side": 1,
+      "message": "Scroll the same link to very bottom https://kubernetes.io/docs/admin/accessing-the-api/\n\nIt will say that default is 6443\n - default is port 6443, change with `--secure-port` flag.\n\nSo there is a bit of inconsistency there.",
+      "parentUuid": "5f89090d_97d9589a",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "ccaeab5e167ba62ecc5ea1c8c7c7c514b53ecae7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf1609df_a4cd8fb0",
         "filename": "charts/calico/templates/configmap.yaml",
         "patchSetId": 9
