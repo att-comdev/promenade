@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64128dff_74865f69",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-15T02:21:19Z",
+      "side": 1,
+      "message": "Hey Tin, thanks for looking at this!  I actually didn\u0027t expect much visibility.\n\nThis first PS was based on some mis-communication, but please take a look at later revisions :)",
+      "parentUuid": "ac3f4312_933b9707",
+      "range": {
+        "startLine": 8,
+        "startChar": 39,
+        "endLine": 8,
+        "endChar": 49
+      },
+      "revId": "02e758758a62453ecef8cfe528fa541496f2d002",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9900d617_ef094156",
         "filename": "docs/source/api.rst",
         "patchSetId": 1
