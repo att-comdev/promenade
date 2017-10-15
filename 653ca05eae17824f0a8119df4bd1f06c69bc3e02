@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d872b9e_3395c9f8",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-15T02:21:19Z",
+      "side": 1,
+      "message": "Please spell these out as they would be used exactly, e.g. \"hostname\" and \"dynamic.labels\".\n\nAlso, we will want to support \"static.labels\".\n\nFinally, you may want to write this as a definition list: http://docutils.sourceforge.net/docs/user/rst/quickref.html#definition-lists  I do not have strong feelings on the matter, however.",
+      "revId": "653ca05eae17824f0a8119df4bd1f06c69bc3e02",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa429804_1a9bf598",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-15T02:21:19Z",
+      "side": 1,
+      "message": "I asked Bryan, and I think the wording we\u0027re going to use for this sort of thing across UCP is going to be \"design reference\", so let\u0027s call this \"design_ref\".",
+      "revId": "653ca05eae17824f0a8119df4bd1f06c69bc3e02",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
