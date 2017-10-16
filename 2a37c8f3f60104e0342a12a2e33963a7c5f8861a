@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c53f9e4a_68f8f513",
+        "filename": "charts/coredns/templates/daemonset.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-16T03:14:36Z",
+      "side": 1,
+      "message": "Is this dead code or just a placeholder for a TODO?",
+      "revId": "2a37c8f3f60104e0342a12a2e33963a7c5f8861a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "550ceb07_5685f41e",
+        "filename": "charts/proxy/templates/daemonset.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-16T03:14:36Z",
+      "side": 1,
+      "message": "See prev comment.",
+      "revId": "2a37c8f3f60104e0342a12a2e33963a7c5f8861a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc399aaf_fb1fc14a",
+        "filename": "example/site-config.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-16T03:14:36Z",
+      "side": 1,
+      "message": "Should this be removed?",
+      "revId": "2a37c8f3f60104e0342a12a2e33963a7c5f8861a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
