@@ -50,6 +50,46 @@
       "revId": "2a37c8f3f60104e0342a12a2e33963a7c5f8861a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcbc0e07_b4c3d1d9",
+        "filename": "tools/vagrant/build-vagrant-box.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2017-10-16T21:07:10Z",
+      "side": 1,
+      "message": "The current script has some problems with the syntax, checksum values and does not execute properly.  The below should correct the behavior:\n\n\nsed -i -e \u0027s#http://releases.ubuntu.com/16.04/ubuntu-16.04-server-amd64.iso#http://old-releases.ubuntu.com/releases/xenial/ubuntu-16.04.2-server-amd64.iso#g\u0027 ubuntu.json\nsed -i -e \u0027s/de5ee8665048f009577763efbf4a6f0558833e59/f529548fa7468f2d8413b8427d8e383b830df5f6/g\u0027 ubuntu.json\n\nsed -i -e \u0027s#http://releases.ubuntu.com/16.04/ubuntu-16.04.1-server-amd64.iso#http://old-releases.ubuntu.com/releases/xenial/ubuntu-16.04.2-server-amd64.iso#g\u0027 ubuntu-vagrant.json\nsed -i -e \u0027s/de5ee8665048f009577763efbf4a6f0558833e59/f529548fa7468f2d8413b8427d8e383b830df5f6/g\u0027 ubuntu-vagrant.json\n\nsed -i -e \u0027s#http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso#http://old-releases.ubuntu.com/releases/xenial/ubuntu-16.04.2-server-amd64.iso#g\u0027 ubuntu1604.json\nsed -i -e \u0027s/a06cd926f5855d4f21fb4bc9978a35312f815fbda0d0ef7fdc846861f4fc4600/737ae7041212c628de5751d15c3016058b0e833fdc32e7420209b76ca3d0a535/g\u0027 ubuntu1604.json",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "2a37c8f3f60104e0342a12a2e33963a7c5f8861a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5031bae2_3f1d8b03",
+        "filename": "tools/vagrant/build-vagrant-box.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2017-10-16T21:07:10Z",
+      "side": 1,
+      "message": "I think we can also log the output of packer build with the following change so as to capture any error output:\n\n\nexport PACKER_LOG\u003d\"yes\" \u0026\u0026 packer build -var-file\u003dubuntu1604.json ubuntu-vagrant.json",
+      "revId": "2a37c8f3f60104e0342a12a2e33963a7c5f8861a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
