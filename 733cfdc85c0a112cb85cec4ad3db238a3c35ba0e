@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88b6c378_ccfa6601",
+        "filename": "charts/apiserver/templates/daemonset.yaml",
+        "patchSetId": 27
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-18T15:21:05Z",
+      "side": 1,
+      "message": "There is a helm-toolkit snippet for this.",
+      "revId": "733cfdc85c0a112cb85cec4ad3db238a3c35ba0e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ed69893_c8645915",
+        "filename": "charts/controller_manager/templates/daemonset.yaml",
+        "patchSetId": 27
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-18T15:21:05Z",
+      "side": 1,
+      "message": "There is a helm-toolkit snippet for this",
+      "revId": "733cfdc85c0a112cb85cec4ad3db238a3c35ba0e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bbe88a3_350ea669",
+        "filename": "charts/coredns/templates/daemonset.yaml",
+        "patchSetId": 27
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-18T15:21:05Z",
+      "side": 1,
+      "message": "There is a helm-toolkit snippet for this.",
+      "revId": "733cfdc85c0a112cb85cec4ad3db238a3c35ba0e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
