@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acec7aba_8cd0f70b",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-18T13:24:18Z",
+      "side": 1,
+      "message": "https://github.com/att-comdev/ucp-integration/blob/master/docs/api-conventions.md#get-v10health\n\nshould be 204 for the basic health endpoint.",
+      "revId": "a10b912d9e7d2a5a744cd6ee1ca71d677caec879",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c85ccf8f_8e2cb656",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-18T13:24:18Z",
+      "side": 1,
+      "message": "This returns the script, I\u0027m assuming?  If it doesn\u0027t return anything it should be a 204 No Content",
+      "revId": "a10b912d9e7d2a5a744cd6ee1ca71d677caec879",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37b62da7_9dbefc4a",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-18T13:24:18Z",
+      "side": 1,
+      "message": "Are these query parameters? if so, what are their names.  If this is an input body, I\u0027d like to see an example or structure specified.\n\nOr is it this: https://github.com/att-comdev/ucp-integration/blob/master/docs/api-conventions.md#post-v10validatedesign ?",
+      "revId": "a10b912d9e7d2a5a744cd6ee1ca71d677caec879",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
