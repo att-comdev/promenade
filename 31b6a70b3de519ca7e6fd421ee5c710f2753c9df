@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a264d6c_bc515eac",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-18T17:58:06Z",
+      "side": 1,
+      "message": "Superficial, but to attempt to maintain the separation of services you might want to remove explicit references to Drydock.",
+      "revId": "31b6a70b3de519ca7e6fd421ee5c710f2753c9df",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9de7f130_a769233a",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-18T17:58:06Z",
+      "side": 1,
+      "message": "Is it normal to return a 404 based on query parameters in a RESTful call? Seems like the functionality is sound, but not sure if it should be a 404 vs a 400.",
+      "revId": "31b6a70b3de519ca7e6fd421ee5c710f2753c9df",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3b5a905_b0b5c7ed",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-18T17:58:06Z",
+      "side": 1,
+      "message": "Can you call out the parameter names for these?",
+      "revId": "31b6a70b3de519ca7e6fd421ee5c710f2753c9df",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
