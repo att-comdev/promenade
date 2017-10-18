@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b37dcbd_e6bce292",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-18T21:15:57Z",
+      "side": 1,
+      "message": "204 No Content\n\nalso above.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "9b44240a46f896f5eb507776dbc0d19a72fbc0ad",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "260e6f9c_b44196e3",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-18T21:15:57Z",
+      "side": 1,
+      "message": "The term ```Parameters``` here is misleading.  While this doesn\u0027t say \"Query parameters\", I think better terms that lead to less confusion include Payload or Message Body.  Also, it would be helpful to reference that this is expected to be JSON as input.",
+      "revId": "9b44240a46f896f5eb507776dbc0d19a72fbc0ad",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
