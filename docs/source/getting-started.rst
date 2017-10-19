@@ -4,6 +4,111 @@ Getting Started
 Development
 -----------
 
+
+Using Virsh
+^^^^^^^^^^^
+
+Initial Setup of Virsh Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial setup involves downloading an Ubuntu cloud image and installing `virsh`
+and related tools.  Setup can be done using:
+
+.. code-block:: bash
+
+    ./tools/virsh/setup.sh
+
+Manual Deployment
+~~~~~~~~~~~~~~~~~
+
+Image & Configuration Construction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For convenience, there is a script which builds an image from the current code,
+then uses it to construct scripts for the example:
+
+.. code-block:: bash
+
+    ./tools/dev-build.sh
+
+Development VM Management
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A set of 4 test VMs can be constructed using:
+
+.. code-block:: bash
+
+    ./tools/virsh/create.sh
+
+To push generated scripts to these VMs, use:
+
+.. code-block:: bash
+
+    ./tools/virsh/push-example-scripts.sh
+
+To destroy the VMs:
+
+.. code-block:: bash
+
+    ./tools/virsh/destroy.sh
+
+There are some additional commands:
+
+* Cleanup - ``./tools/virsh/create.sh``
+* Power off existing VMs - ``./tools/virsh/stop.sh``
+* Rsync - ``./tools/virsh/rsync.sh``
+* SSH - ``./tools/virsh/ssh.sh``
+* Start existing VMs - ``./tools/virsh/start.sh``
+
+Using a Local Registry
+^^^^^^^^^^^^^^^^^^^^^^
+
+Repeatedly downloading multiple copies images during development can be quite
+slow.  To avoid this issue, you can run a docker registry on the development
+host:
+
+.. code-block:: bash
+
+    ./tools/registry/start.sh
+    ./tools/registry/update_cache.sh
+
+Then, the images used by the example can be updated using:
+
+.. code-block:: bash
+
+    ./tools/registry/update_example.sh
+
+That change can be undone via:
+
+.. code-block:: bash
+
+    ./tools/registry/revert_example.sh
+
+The registry can be stopped with:
+
+.. code-block:: bash
+
+    ./tools/registry/start.sh
+
+Testing
+~~~~~~~
+
+There is test-suite, which includes:
+
+* Launching a Genesis node.
+* Joining 2 masters to form an HA cluster.
+* Re-provisioning the Genesis node as a normal master node.
+* Joining a worker.
+* Performing a hard power off, then start of the entire cluster.
+
+It can be run using:
+
+.. code-block:: bash
+
+    ./tools/dev-build.sh
+    ./tools/virsh/gate.sh
+
+
 Deployment using Vagrant
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
