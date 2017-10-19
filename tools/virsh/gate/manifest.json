@@ -1,0 +1,87 @@
+{
+  "stages": [
+    {
+      "name": "Setup requirements for VMs",
+      "script": "tools/virsh/gate/setup.sh"
+    },
+    {
+      "name": "Build Image",
+      "script": "tools/virsh/gate/build-image.sh"
+    },
+    {
+      "name": "Generate Certificates",
+      "script": "tools/virsh/gate/generate-certs.sh"
+    },
+    {
+      "name": "Build Scripts",
+      "script": "tools/virsh/gate/build-scripts.sh"
+    },
+    {
+      "name": "Create VMs",
+      "script": "tools/virsh/gate/create-vms.sh"
+    },
+    {
+      "name": "Genesis",
+      "script": "tools/virsh/gate/launch-genesis.sh"
+    },
+    {
+      "name": "Validate Genesis",
+      "script": "tools/virsh/gate/validate-genesis.sh"
+    },
+    {
+      "name": "Join Masters",
+      "script": "tools/virsh/gate/join.sh",
+      "arguments": [
+        "n1",
+        "n2"
+      ]
+    },
+    {
+      "name": "Validate Joined Masters",
+      "script": "tools/virsh/validate-cluster.sh",
+      "arguments": [
+        "n0"
+      ]
+    },
+    {
+      "name": "Reprovision Genesis",
+      "script": "tools/virsh/reprovision.sh",
+      "arguments": [
+        "n0",
+        "n1"
+      ]
+    },
+    {
+      "name": "Validate Reprovisioned Genesis",
+      "script": "tools/virsh/validate-cluster.sh",
+      "arguments": [
+        "n1"
+      ]
+    },
+    {
+      "name": "Join Worker",
+      "script": "tools/virsh/gate/join.sh",
+      "arguments": [
+        "n3"
+      ]
+    },
+    {
+      "name": "Validate Joined Worker",
+      "script": "tools/virsh/validate-cluster.sh",
+      "arguments": [
+        "n1"
+      ]
+    },
+    {
+      "name": "Hard Reboot Cluster",
+      "script": "tools/virsh/gate/reboot-cluster.sh"
+    },
+    {
+      "name": "Validate Hard Reboot Cluster",
+      "script": "tools/virsh/validate-cluster.sh",
+      "arguments": [
+        "n1"
+      ]
+    }
+  ]
+}
