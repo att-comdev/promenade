@@ -426,7 +426,7 @@ data:
     no_hooks: true
   values:
     calico:
-      ip_autodetection_method: interface=ens6
+      ip_autodetection_method: interface=ens3
       pod_ip_cidr: 10.97.0.0/16
       ctl:
         install_on_host: true
