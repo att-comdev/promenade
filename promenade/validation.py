@@ -1,5 +1,5 @@
-from . import exceptions
-from . import logging
+from promenade import exceptions
+from promenade import logging
 import jsonschema
 import os
 import pkg_resources
