@@ -665,14 +665,16 @@ data:
     no_hooks: true
   values:
     images:
-      anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
-      controller_manager: gcr.io/google_containers/hyperkube-amd64:v1.8.0
-    service_account:
-      private_key: placeholder
-    tls:
-      ca: placeholder
-      cert: placeholder
-      key: placeholder
+      tags:
+        anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
+        controller_manager: gcr.io/google_containers/hyperkube-amd64:v1.8.0
+    secrets:
+      service_account:
+        private_key: placeholder
+      tls:
+        ca: placeholder
+        cert: placeholder
+        key: placeholder
     network:
       kubernetes_netloc: apiserver.kubernetes.promenade:6443
       pod_cidr: 10.97.0.0/16
