@@ -111,6 +111,24 @@
     },
     {
       "key": {
+        "uuid": "d9c0b5c1_51ed255c",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-20T20:58:45Z",
+      "side": 1,
+      "message": "I\u0027m fine with using oslo.context either now or later; whichever is easier for Sam to implement.  I find it really surprising that headers modified by keystone middleware are considered an unstable API, though.",
+      "parentUuid": "dae694d4_ba2e9a01",
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea765a87_bd1a8519",
         "filename": "promenade/control/middleware.py",
         "patchSetId": 1
@@ -122,6 +140,30 @@
       "writtenOn": "2017-10-20T19:24:55Z",
       "side": 1,
       "message": "I\u0027m guessing this is for testing? If so, should this be included as middleware only conditionally based on a config option?",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71750fd9_6230bf3c",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-20T20:58:45Z",
+      "side": 1,
+      "message": "I believe this approach was lifted from Cinder.  The inclusion of this is specified via paste config.",
+      "parentUuid": "ea765a87_bd1a8519",
       "range": {
         "startLine": 19,
         "startChar": 6,
