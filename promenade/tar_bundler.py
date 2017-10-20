@@ -1,4 +1,4 @@
-from . import logging
+import logging
 import hashlib
 import io
 import tarfile
