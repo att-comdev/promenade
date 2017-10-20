@@ -147,12 +147,13 @@ def _matches_filter(document, *, schema, labels):
 def _get(documents, kind=None, schema=None, name=None):
     if kind is not None:
         if schema is not None:
-            raise AssertionError('Logic error: specified both kind and schema')
+            msg = "Schema must be 'None' if kind is 'None'"
+            raise exceptions.ValidationException(msg)
         schema = 'promenade/%s/v1' % kind
 
     for document in documents:
-        if (schema == document.get('schema')
-                and (name is None or name == _mg(document, 'name'))):
+        if (schema == document.get('schema') and
+                (name is None or name == _mg(document, 'name'))):
             return document
 
 
