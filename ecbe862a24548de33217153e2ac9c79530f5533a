@@ -22,6 +22,30 @@
       "revId": "ecbe862a24548de33217153e2ac9c79530f5533a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1455c277_204d75a8",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-20T17:30:59Z",
+      "side": 1,
+      "message": "Yeah, I\u0027d like to see everything move this way eventually.  Probably not a pressing issue though.  I believe the discussion is lost in an etherpad somewhere.",
+      "parentUuid": "9250329e_9199cefa",
+      "range": {
+        "startLine": 23,
+        "startChar": 59,
+        "endLine": 23,
+        "endChar": 82
+      },
+      "revId": "ecbe862a24548de33217153e2ac9c79530f5533a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
