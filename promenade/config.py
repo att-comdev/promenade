@@ -1,4 +1,6 @@
-from . import exceptions, logging, validation
+import exceptions
+import logging
+import validation
 import copy
 import jinja2
 import jsonpath_ng
@@ -10,14 +12,14 @@ LOG = logging.getLogger(__name__)
 
 
 class Configuration:
-    def __init__(self, *, documents, debug=False, substitute=True):
+    def __init__(self, documents, debug=False, substitute=True):
         if substitute:
             documents = _substitute(documents)
         self.debug = debug
         self.documents = documents
 
     @classmethod
-    def from_streams(cls, *, streams, **kwargs):
+    def from_streams(cls, streams, **kwargs):
         documents = []
         for stream in streams:
             stream_name = getattr(stream, 'name')
@@ -47,7 +49,7 @@ class Configuration:
             return jinja2.StrictUndefined(
                 'Nothing found matching paths: %s' % ','.join(paths))
 
-    def get(self, *, kind=None, name=None, schema=None):
+    def get(self, kind=None, name=None, schema=None):
         result = _get(self.documents, kind=kind, schema=schema, name=name)
 
         if result:
@@ -57,7 +59,7 @@ class Configuration:
                 'No document found matching kind=%s schema=%s name=%s' %
                 (kind, schema, name))
 
-    def iterate(self, *, kind=None, schema=None, labels=None):
+    def iterate(self, kind=None, schema=None, labels=None):
         if kind is not None:
             assert schema is None
             schema = 'promenade/%s/v1' % kind
@@ -124,7 +126,7 @@ class Configuration:
         return default
 
 
-def _matches_filter(document, *, schema, labels):
+def _matches_filter(document, schema, labels):
     matches = True
     if schema is not None and not document.get('schema',
                                                '').startswith(schema):
@@ -148,8 +150,8 @@ def _get(documents, kind=None, schema=None, name=None):
         schema = 'promenade/%s/v1' % kind
 
     for document in documents:
-        if (schema == document.get('schema')
-                and (name is None or name == _mg(document, 'name'))):
+        if (schema == document.get('schema') and
+                (name is None or name == _mg(document, 'name'))):
             return document
 
 

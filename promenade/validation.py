@@ -1,5 +1,5 @@
-from . import exceptions
-from . import logging
+import exceptions
+import logging
 import jsonschema
 import os
 import pkg_resources
