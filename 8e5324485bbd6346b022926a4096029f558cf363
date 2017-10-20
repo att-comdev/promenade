@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a81b1e84_f008358f",
+        "filename": "etc/promenade/api-paste.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-20T19:24:55Z",
+      "side": 1,
+      "message": "This is not defined, I believe you need a section like this above:\n\n[filter:authtoken]\npaste.filter_factory \u003d keystonemiddleware.auth_token:filter_factory",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaec4e10_916e3106",
+        "filename": "promenade/config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-20T19:24:55Z",
+      "side": 1,
+      "message": "Just providing feedback for a future change, this shouldn\u0027t be done unless Promenade is catching an AttributeError and re-raising it as something intelligible.\n\nFor example:\n\n    if schema is not None:\n        raise PromenadeException(\u0027The schema must be None if the kind is not None\u0027)\n\nWhatever the requirements are.",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f57e2cf6_bdd3c0e5",
+        "filename": "promenade/control/base.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-20T19:24:55Z",
+      "side": 1,
+      "message": "Easier way to do all this is to just use oslo.context directly which does most of this stuff and then initialize stuff like `self.log_level` and so on yourself.",
+      "range": {
+        "startLine": 133,
+        "startChar": 30,
+        "endLine": 133,
+        "endChar": 36
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebc623c6_e135bed0",
+        "filename": "promenade/control/base.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-20T19:24:55Z",
+      "side": 1,
+      "message": "This should be removed. \u0027anyone\u0027 isn\u0027t a role we will ever use. Not only that, we don\u0027t want a default role of \u0027anyone\u0027... this should all be automatically done in the background.",
+      "range": {
+        "startLine": 141,
+        "startChar": 23,
+        "endLine": 141,
+        "endChar": 29
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dae694d4_ba2e9a01",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-20T19:24:55Z",
+      "side": 1,
+      "message": "Honestly I know I\u0027m going to get flak for this, but this is not how OpenStack integrates with Keystone. `oslo.context` implicitly does all of this header parsing for you.\n\nI know you got this from Drydock, but this approach does not use a stable API precisely because it does everything manually.",
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea765a87_bd1a8519",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-20T19:24:55Z",
+      "side": 1,
+      "message": "I\u0027m guessing this is for testing? If so, should this be included as middleware only conditionally based on a config option?",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
