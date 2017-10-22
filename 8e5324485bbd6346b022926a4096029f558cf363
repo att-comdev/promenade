@@ -129,6 +129,24 @@
     },
     {
       "key": {
+        "uuid": "459e956e_917ad52a",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-22T03:00:56Z",
+      "side": 1,
+      "message": "@Felipe - don\u0027t think anyone will flak you for this.  I don\u0027t view this as unstable as much as it is just unnecessary code that doesn\u0027t do anything.  All the process_request is doing is dumping the request\u0027s header into context.  That leads to two questions:\n\n(a) what are we doing with those headers in promenade?  Do we do anything with x-service-user-domain-id in the code? and (b) even if we do care about them, can we just load the entire req.header to the context.   I don\u0027t see value in pecking at the specific headers aside from X-Service-Identity-Status which you might need to inspect to terminate the API flow in case of a 401.",
+      "parentUuid": "d9c0b5c1_51ed255c",
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea765a87_bd1a8519",
         "filename": "promenade/control/middleware.py",
         "patchSetId": 1
@@ -169,6 +187,121 @@
         "startChar": 6,
         "endLine": 19,
         "endChar": 22
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eea26581_3709672f",
+        "filename": "promenade/control/service_endpoints.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-22T03:00:56Z",
+      "side": 1,
+      "message": "does promenade need to know the endpoints of deckhand or armada?",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 60
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18a09e59_fea118b1",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-22T03:00:56Z",
+      "side": 1,
+      "message": "This is likely copy \u0026 paste from shipyard, and I remember raising this before - can we move these utility function to some module !\u003d exceptions.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10679b64_37c0e0de",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-22T03:00:56Z",
+      "side": 1,
+      "message": "Can be rewritten:\n\n   self.err_type \u003d err_type or self.__class__.err_type",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 36
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a5043b_57b08637",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-22T03:00:56Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "053529cf_2915d8d3",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2017-10-22T03:00:56Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 32
       },
       "revId": "8e5324485bbd6346b022926a4096029f558cf363",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
