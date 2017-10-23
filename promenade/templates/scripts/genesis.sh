@@ -23,7 +23,7 @@ set -x
 
 while true; do
     sleep 10
-    if armada apply --debug /etc/genesis/armada/assets/manifest.yaml ; then
+    if armada --debug apply /etc/genesis/armada/assets/manifest.yaml ; then
         break
     fi
 done
