@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "893cd5aa_c490324a",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 32
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2017-10-23T22:36:46Z",
+      "side": 1,
+      "message": "I was getting the following error in a fresh VM, i.e.\n\n+ virsh pool-create-as --name promenade --type dir --target /var/lib/libvirt/promenade\nerror: Failed to create pool promenade\nerror: cannot open path \u0027/var/lib/libvirt/promenade\u0027: No such file or directory\n\n\nAnd had to do the following to get pass the error\n\n$ mkdir -p /var/lib/libvirt/promenade\n\n\nI think this can be included as part of the setup script\n\n\nI also ran into the following error\n\n+ virsh net-create /network.xml\nerror: Failed to open file \u0027/network.xml\u0027: No such file or directory\n\n\nI think there is a need to specify that the script is expecting the network.xml to be located under \u0027/\u0027 directory",
+      "revId": "c1a575c6bbe4a853732dc7bd587ea463542fd3f0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
