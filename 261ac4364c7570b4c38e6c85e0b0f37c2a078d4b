@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa53cb36_7ff91a9d",
+        "filename": "promenade/control/api.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-24T22:50:06Z",
+      "side": 1,
+      "message": "WS.\n\n@Mark is pep8 not implemented yet or is it just not voting in gate? Something to look into.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "261ac4364c7570b4c38e6c85e0b0f37c2a078d4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f359e532_dc61e17d",
+        "filename": "promenade/tar_bundler.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-24T22:50:06Z",
+      "side": 1,
+      "message": "Not for this PS, but general comment I left for Armada too: This needs to be standardized. Shouldn\u0027t be using a global LOG and instance-variable-level logger as well as it\u0027s a contradictory pattern.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "261ac4364c7570b4c38e6c85e0b0f37c2a078d4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
