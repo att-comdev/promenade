@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "929cb98c_e80484ab",
+        "filename": "promenade/control/service_endpoints.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-24T17:12:49Z",
+      "side": 1,
+      "message": "There\u0027s a typo: ApiError or AppError (see L23).\n\nAnd if this is a typo and is a copy/paste issue, is this issue present in other places like Shipyard?",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "51da45834b5995422b5811f17fa233252e215bb9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50551ffc_60813f05",
+        "filename": "promenade/promenade.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-24T17:12:49Z",
+      "side": 1,
+      "message": "May we place a note here saying that the paste config is passed in to uwsgi in entrypoint.sh?\n\nI had a hard time figuring out that that was where the config is registered when I was looking at this in Drydock.",
+      "revId": "51da45834b5995422b5811f17fa233252e215bb9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
