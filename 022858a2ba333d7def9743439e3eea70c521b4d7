@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee651cc6_0b10f636",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 33
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-24T17:43:01Z",
+      "side": 1,
+      "message": "probably should be stop.sh?",
+      "revId": "022858a2ba333d7def9743439e3eea70c521b4d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "549fde78_28225ac4",
+        "filename": "promenade/pki.py",
+        "patchSetId": 33
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-24T17:43:01Z",
+      "side": 1,
+      "message": "Just guessing you might need a \u0027# nosec\u0027 comment here to pass bandit.",
+      "revId": "022858a2ba333d7def9743439e3eea70c521b4d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4970cf4f_da773521",
+        "filename": "promenade/pki.py",
+        "patchSetId": 33
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-24T17:43:01Z",
+      "side": 1,
+      "message": "Just guessing you might need a \u0027# nosec\u0027 comment here to pass bandit.",
+      "revId": "022858a2ba333d7def9743439e3eea70c521b4d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
