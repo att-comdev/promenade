@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86a20856_86a9e315",
+        "filename": "promenade/validation.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-24T04:18:40Z",
+      "side": 1,
+      "message": "It\u0027s preferable to use absolute paths, e.g.:\n \n    from promenade import exceptions\n    from promenade import logging",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "31a36b40685d74e8f6dbbcc4cc86393794cc4c8c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
