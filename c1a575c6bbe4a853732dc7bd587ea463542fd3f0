@@ -16,6 +16,24 @@
       "revId": "c1a575c6bbe4a853732dc7bd587ea463542fd3f0",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138a196d_4c1a5df0",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 32
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-24T00:51:11Z",
+      "side": 1,
+      "message": "Thanks Anthony.\n\nI\u0027ve fixed both of these issues.  I actually had a note for the first one, but  missed adding the variable to const.sh for the second.",
+      "parentUuid": "893cd5aa_c490324a",
+      "revId": "c1a575c6bbe4a853732dc7bd587ea463542fd3f0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
