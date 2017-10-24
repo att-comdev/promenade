@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "dfeaaaf2_ef1fba82",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1012359
+      },
+      "writtenOn": "2017-10-24T00:08:09Z",
+      "side": 1,
+      "message": "This function seems to be only used in this file, and only once, so I moved it to where it was being used.\n\nDid you mean both this function and format_error_resp?",
+      "parentUuid": "18a09e59_fea118b1",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "8e5324485bbd6346b022926a4096029f558cf363",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10679b64_37c0e0de",
         "filename": "promenade/exceptions.py",
         "patchSetId": 1
