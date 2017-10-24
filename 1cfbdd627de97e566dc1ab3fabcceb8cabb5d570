@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a79e4d9_b89387fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-24T19:34:01Z",
+      "side": 1,
+      "message": "I don\u0027t see this documented anywhere. Would be nice to include this if it is indeed missing in docs in a follow-up PS.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "1cfbdd627de97e566dc1ab3fabcceb8cabb5d570",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
