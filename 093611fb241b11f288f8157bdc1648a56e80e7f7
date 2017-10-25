@@ -25,6 +25,46 @@
     },
     {
       "key": {
+        "uuid": "a789b7b0_19f4bd97",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-25T23:57:11Z",
+      "side": 1,
+      "message": ":",
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e684aac8_c596b39f",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-25T23:57:11Z",
+      "side": 1,
+      "message": "described",
+      "range": {
+        "startLine": 43,
+        "startChar": 34,
+        "endLine": 43,
+        "endChar": 42
+      },
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a65fc9_f398025e",
         "filename": "tools/basic-deployment.sh",
         "patchSetId": 2
