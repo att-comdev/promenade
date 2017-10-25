@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0515fbdb_c46f4aec",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-25T14:39:06Z",
+      "side": 0,
+      "message": "This display method is still needed by the CLI.\n\nWe should also try to support the trace kwarg.",
+      "revId": "972775ed29407f811c54fbbd7d4331f39c99053e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
