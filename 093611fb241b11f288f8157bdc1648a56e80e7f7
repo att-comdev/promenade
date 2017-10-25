@@ -69,6 +69,23 @@
       "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d882ce3a_93774448",
+        "filename": "tools/basic-deployment.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1012726
+      },
+      "writtenOn": "2017-10-25T23:25:19Z",
+      "side": 1,
+      "message": "undefined PROMENADE_DEBUG\nsince you using e*u*x  will fail with\nPROMENADE_DEBUG: unbound variable\nwould suggest\nPROMENADE_DEBUG\u003d${PROMENADE_DEBUG:-0}",
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
