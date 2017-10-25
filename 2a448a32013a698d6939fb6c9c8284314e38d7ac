@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efd6f41a_dbcb8394",
+        "filename": "tox.ini",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-25T01:37:17Z",
+      "side": 1,
+      "message": "Might want to add a list of flake8 exclusions that are a nuisance to uphold.",
+      "revId": "2a448a32013a698d6939fb6c9c8284314e38d7ac",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
