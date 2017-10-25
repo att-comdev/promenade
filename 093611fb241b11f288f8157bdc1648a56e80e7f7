@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a65fc9_f398025e",
+        "filename": "tools/basic-deployment.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1012726
+      },
+      "writtenOn": "2017-10-25T23:16:38Z",
+      "side": 1,
+      "message": "example",
+      "range": {
+        "startLine": 8,
+        "startChar": 47,
+        "endLine": 8,
+        "endChar": 55
+      },
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
