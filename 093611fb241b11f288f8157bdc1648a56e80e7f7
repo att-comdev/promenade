@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "431aa755_be3e65fb",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1012726
+      },
+      "writtenOn": "2017-10-25T23:20:04Z",
+      "side": 1,
+      "message": "examples/basic",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a65fc9_f398025e",
         "filename": "tools/basic-deployment.sh",
         "patchSetId": 2
