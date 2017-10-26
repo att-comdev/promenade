@@ -49,7 +49,7 @@ if ! sudo virt-host-validate qemu &> /dev/null; then
         echo 'GRUB_CMDLINE_LINUX_DEFAULT="${GRUB_CMDLINE_LINUX_DEFAULT} intel_iommu=on"' | sudo tee -a /etc/defaults/grub
     else
         echo -e ${C_ERROR}Failed to configure virtualization:${C_CLEAR}
-        sudo virt-host-health qemu
+        sudo virt-host-validate qemu
         exit 1
     fi
 fi
