@@ -22,6 +22,8 @@ sudo apt-get install -q -y --no-install-recommends \
     genisoimage \
     jq \
     libvirt-bin \
+    qemu-kvm \
+    qemu-utils \
     virtinst
 
 log_stage_header "Joining User Groups"
@@ -53,6 +55,7 @@ if ! sudo virt-host-validate qemu &> /dev/null; then
         sudo update-grub
     else
         log Intel IOMMU appears enabled in grub configuration already
+        cat /etc/defaults/grub 1>&2
     fi
 fi
 
