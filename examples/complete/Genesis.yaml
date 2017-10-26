@@ -12,7 +12,6 @@ data:
   labels:
     static:
       - calico-etcd=enabled
-      - node-role.kubernetes.io/master=
     dynamic:
       - ceph-mds=enabled
       - ceph-mon=enabled
