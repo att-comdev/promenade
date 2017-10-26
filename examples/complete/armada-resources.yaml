@@ -95,6 +95,18 @@ data:
     - ucp-memcached
     - ucp-keystone
 ---
+schema: armada/ChartGroup/v1
+metadata:
+  schema: metadata/Document/v1
+  name: ucp-platform
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  description: UCP platform components
+  chart_group:
+    - promenade
+---
 schema: armada/Chart/v1
 metadata:
   schema: metadata/Document/v1
@@ -1268,6 +1280,31 @@ data:
     type: git
     location: https://git.openstack.org/openstack/openstack-helm
     subpath: keystone
+  dependencies:
+    - helm-toolkit
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: promenade
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  chart_name: promenade
+  release: promenade
+  namespace: ucp
+  timeout: 600
+  values:
+    images:
+      tags:
+        api: quay.io/attcomdev/promenade:latest
+  upgrade:
+    no_hooks: true
+  source:
+    type: local
+    location: /etc/genesis/armada/assets/charts
+    subpath: promenade
   dependencies:
     - helm-toolkit
 ...
