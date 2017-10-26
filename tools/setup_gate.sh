@@ -22,6 +22,7 @@ sudo apt-get install -q -y --no-install-recommends \
     genisoimage \
     jq \
     libvirt-bin \
+    qemu-utils \
     virtinst
 
 log_stage_header "Joining User Groups"
