@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "cf8d4e64_44971625",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-26T12:43:21Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "431aa755_be3e65fb",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ff16f5a_895c343e",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-26T12:43:21Z",
+      "side": 1,
+      "message": "Fixed here too.",
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a789b7b0_19f4bd97",
         "filename": "docs/source/getting-started.rst",
         "patchSetId": 2
@@ -42,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "1c2d4163_0154c34c",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-26T12:43:21Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "a789b7b0_19f4bd97",
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e684aac8_c596b39f",
         "filename": "docs/source/getting-started.rst",
         "patchSetId": 2
@@ -53,6 +112,30 @@
       "writtenOn": "2017-10-25T23:57:11Z",
       "side": 1,
       "message": "described",
+      "range": {
+        "startLine": 43,
+        "startChar": 34,
+        "endLine": 43,
+        "endChar": 42
+      },
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c92455c1_2f7abe1e",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-26T12:43:21Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "e684aac8_c596b39f",
       "range": {
         "startLine": 43,
         "startChar": 34,
@@ -129,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "8c76e43c_bf53fd79",
+        "filename": "tools/basic-deployment.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-26T12:43:21Z",
+      "side": 1,
+      "message": "Thanks, fixed.",
+      "parentUuid": "d882ce3a_93774448",
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "600c0497_a24d25bd",
         "filename": "tools/basic-deployment.sh",
         "patchSetId": 2
@@ -140,6 +241,24 @@
       "writtenOn": "2017-10-26T00:56:28Z",
       "side": 1,
       "message": "TLDR - BUILD_DIR must absolute path or here it must be something like `pwd`/${BUILD_DIR}\n\nI\u0027m not really sure, but in my xenial system the most recent docker is\n Version:      1.12.6\nfrom\ndeb http://apt.dockerproject.org/repo ubuntu-xenial main\n\nin this version man docker-run says:\n\n-v|--volume[\u003d[[HOST-DIR:]CONTAINER-DIR[:OPTIONS]]]\n\u003ccut\u003e\nThe HOST-DIR can be an absolute path or a name value.\n\u003ccut\u003e\nIf you supply a HOST-DIR that is an absolute path,  Docker bind-mounts to the path you specify. If you supply a name, Docker creates a named volume by that name.\n\nIt doesn\u0027t seems like we trying to attach volume there, it\u0027s more likely we trying to make a bind mount from ./build to /target",
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79564f89_1f3d3aad",
+        "filename": "tools/basic-deployment.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-26T12:43:21Z",
+      "side": 1,
+      "message": "Thanks, the right idea here I believe is e.g. BUILD_DIR\u003d$(realpath ${1:-...}).",
+      "parentUuid": "600c0497_a24d25bd",
       "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
