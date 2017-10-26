@@ -1,0 +1,81 @@
+# Copyright 2017 AT&T Intellectual Property.  All other rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+conf:
+  paste:
+    pipeline:main:
+      pipeline: authtoken promenade-api
+    filter:authtoken:
+      paste.filter_factory: keystonemiddleware.auth_token:filter_factory
+    filter:noauth:
+      paste.filter_factory: promenade.control.middleware:NoAuthMiddleware.filter_factory
+    app:promenade-api:
+      paste.app_factory: promenade.promenade:paste_start_promenade
+
+images:
+  tags:
+    promenade: quay.io/attcomdev/promenade:latest
+  pull_policy: IfNotPresent
+
+labels:
+  node_selector_key: ucp-control-plane
+  node_selector_value: enabled
+
+manifests:
+  configmap_etc: true
+  deployment_api: true
+  rbac: true
+  service_api: true
+
+network:
+  api:
+    port: 80
+    target_port: 9000
+    ingress:
+      public: true
+
+pod:
+  affinity:
+    anti:
+      type:
+        default: preferredDuringSchedulingIgnoredDuringExecution
+      topologyKey:
+        default: kubernetes.io/hostname
+  replicas:
+    api: 1
+  lifecycle:
+    upgrades:
+      deployments:
+        revision_history: 3
+        pod_replacement_strategy: RollingUpdate
+        rolling_update:
+          max_unavailable: 1
+          max_surge: 3
+    disruption_budget:
+      api:
+        min_available: 0
+    termination_grace_period:
+      api:
+        timeout: 30
+  resources:
+    enabled: false
+    api:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "1024Mi"
+        cpu: "2000m"
+
+release_group: null
