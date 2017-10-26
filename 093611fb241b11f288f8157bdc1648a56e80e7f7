@@ -126,6 +126,46 @@
       "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "600c0497_a24d25bd",
+        "filename": "tools/basic-deployment.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1012726
+      },
+      "writtenOn": "2017-10-26T00:56:28Z",
+      "side": 1,
+      "message": "TLDR - BUILD_DIR must absolute path or here it must be something like `pwd`/${BUILD_DIR}\n\nI\u0027m not really sure, but in my xenial system the most recent docker is\n Version:      1.12.6\nfrom\ndeb http://apt.dockerproject.org/repo ubuntu-xenial main\n\nin this version man docker-run says:\n\n-v|--volume[\u003d[[HOST-DIR:]CONTAINER-DIR[:OPTIONS]]]\n\u003ccut\u003e\nThe HOST-DIR can be an absolute path or a name value.\n\u003ccut\u003e\nIf you supply a HOST-DIR that is an absolute path,  Docker bind-mounts to the path you specify. If you supply a name, Docker creates a named volume by that name.\n\nIt doesn\u0027t seems like we trying to attach volume there, it\u0027s more likely we trying to make a bind mount from ./build to /target",
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b38019f9_0cf235f8",
+        "filename": "tools/basic-deployment.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1012726
+      },
+      "writtenOn": "2017-10-26T00:56:28Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "093611fb241b11f288f8157bdc1648a56e80e7f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
