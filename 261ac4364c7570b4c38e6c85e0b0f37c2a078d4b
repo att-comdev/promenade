@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "58b39972_1366380c",
+        "filename": "promenade/control/api.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-27T14:58:53Z",
+      "side": 1,
+      "message": "May be worth pulling this out in some way to ensure consistency between building the route paths and what is returned via the VersionsResource.",
+      "revId": "261ac4364c7570b4c38e6c85e0b0f37c2a078d4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa53cb36_7ff91a9d",
         "filename": "promenade/control/api.py",
         "patchSetId": 9
@@ -43,6 +60,23 @@
         "endLine": 57,
         "endChar": 8
       },
+      "revId": "261ac4364c7570b4c38e6c85e0b0f37c2a078d4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d714c58_b74ee896",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-10-27T14:58:53Z",
+      "side": 1,
+      "message": "Do you need a marker in the context that this a noauth request so that the policy enforcement lets it through w/o valid roles?",
       "revId": "261ac4364c7570b4c38e6c85e0b0f37c2a078d4b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
