@@ -500,10 +500,7 @@ data:
     no_hooks: true
   values:
     coredns:
-      kubernetes_zones:
-        - cluster.local
-        - 10.96.0.0/16
-        - 10.97.0.0/16
+      cluster_domain: cluster.local
       upstream_nameservers:
         - 8.8.8.8
         - 8.8.4.4
@@ -525,7 +522,7 @@ data:
                 namespace: kube-system
     images:
       anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
-      coredns: coredns/coredns:0.9.9
+      coredns: coredns/coredns:011
     tls:
       ca: placeholder
       cert: placeholder
@@ -648,7 +645,7 @@ metadata:
         name: kubernetes
         path: $
       dest:
-        path: $.values.tls.ca
+        path: $.values.secrets.tls.ca
 
     -
       src:
@@ -656,21 +653,21 @@ metadata:
         name: controller-manager
         path: $
       dest:
-        path: $.values.tls.cert
+        path: $.values.secrets.tls.cert
     -
       src:
         schema: deckhand/CertificateKey/v1
         name: controller-manager
         path: $
       dest:
-        path: $.values.tls.key
+        path: $.values.secrets.tls.key
     -
       src:
         schema: deckhand/PrivateKey/v1
         name: service-account
         path: $
       dest:
-        path: $.values.service_account.private_key
+        path: $.values.secrets.service_account.private_key
 
 data:
   chart_name: controller_manager
@@ -681,14 +678,16 @@ data:
     no_hooks: true
   values:
     images:
-      anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
-      controller_manager: gcr.io/google_containers/hyperkube-amd64:v1.8.0
-    service_account:
-      private_key: placeholder
-    tls:
-      ca: placeholder
-      cert: placeholder
-      key: placeholder
+      tags:
+        anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
+        controller_manager: gcr.io/google_containers/hyperkube-amd64:v1.8.0
+    secrets:
+      service_account:
+        private_key: placeholder
+      tls:
+        ca: placeholder
+        cert: placeholder
+        key: placeholder
     network:
       kubernetes_netloc: apiserver.kubernetes.promenade:6443
       pod_cidr: 10.97.0.0/16
