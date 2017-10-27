@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7acaecdc_405ac632",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1011383
+      },
+      "writtenOn": "2017-10-27T19:32:44Z",
+      "side": 1,
+      "message": "do we need this middleware? since this is what the api-paste does for us?",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e067d24d_e21b1686",
         "filename": "promenade/control/service_endpoints.py",
         "patchSetId": 10
@@ -121,6 +138,23 @@
       "writtenOn": "2017-10-27T18:04:02Z",
       "side": 1,
       "message": "Are the policy rules elsewhere or just forthcoming?  Since it appears that the start_promenade() method in promenade.py doesn\u0027t register policies, assuming forthcoming.  I\u0027d recommend leaving TODO\u0027s in place in these cases.",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66db4e1f_4ec5bd44",
+        "filename": "promenade/validation.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011383
+      },
+      "writtenOn": "2017-10-27T19:32:44Z",
+      "side": 1,
+      "message": "this file is missing a License header",
       "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
