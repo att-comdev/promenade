@@ -1,4 +1,3 @@
-#!/bin/sh
 # Copyright 2017 AT&T Intellectual Property.  All other rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,34 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -x
-
-copy_etc_files() {
-    mkdir -p $ETC_PATH
-    cp /configmap/* /secret/* $ETC_PATH
-}
-
-create_manifest() {
-    mkdir -p $(dirname $MANIFEST_PATH)
-    cp /tmp/kubernetes-controller-manager.yaml $MANIFEST_PATH
-}
-
-cleanup() {
-    rm -f $MANIFEST_PATH
-    rm -rf $ETC_PATH
-}
-
-while true; do
-    if [ -e /tmp/stop ]; then
-        echo Stopping
-        cleanup
-        break
-    fi
-
-    if [ ! -e $MANIFEST_PATH ]; then
-        copy_etc_files
-        create_manifest
-    fi
-
-    sleep {{ .Values.anchor.period }}
-done
+---
+apiVersion: v1
+clusters:
+- cluster:
+    server: https://{{ .Values.network.kubernetes_netloc }}
+    certificate-authority: cluster-ca.pem
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: controller-manager
+  name: controller-manager@kubernetes
+current-context: controller-manager@kubernetes
+kind: Config
+preferences: {}
+users:
+- name: controller-manager
+  user:
+    client-certificate: controller-manager.pem
+    client-key: controller-manager-key.pem
