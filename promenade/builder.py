@@ -119,5 +119,5 @@ def _join_name(node_name):
 def _write_script(output_dir, name, script):
     path = os.path.join(output_dir, name)
     with open(path, 'w') as f:
-        os.fchmod(f.fileno(), 0o555)
+        os.fchmod(f.fileno(), 0o500)
         f.write(script)
