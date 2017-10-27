@@ -14,17 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */}}
 
-{{- if .Values.manifests.configmap_etc }}
+{{- if .Values.manifests.configmap_cm }}
 {{- $envAll := . }}
 
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.service.name }}-etc
+  name: cm-manifest
 data:
-  cluster-ca.pem: {{ .Values.secrets.tls.ca | quote }}
-  controller-manager.pem: {{ .Values.secrets.tls.cert | quote }}
-  kubeconfig.yaml: |+
-{{ tuple "etc/_kubeconfig.yaml.tpl" . | include "helm-toolkit.utils.template" | indent 4 }}
+  kubernetes-controller-manager.yaml: |+
+{{ tuple "etc/_kubernetes-controller-manager.yaml.tpl" . | include "helm-toolkit.utils.template" | indent 4 }}
 {{- end }}
