@@ -1,4 +1,3 @@
-#!/bin/sh
 # Copyright 2017 AT&T Intellectual Property.  All other rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -x
-
-touch /tmp/stop
-sleep {{ .Values.anchor.period }}
+---
+apiVersion: v1
+clusters:
+- cluster:
+    server: https://{{ .Values.network.kubernetes_netloc }}
+    certificate-authority: cluster-ca.pem
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: controller-manager
+  name: controller-manager@kubernetes
+current-context: controller-manager@kubernetes
+kind: Config
+preferences: {}
+users:
+- name: controller-manager
+  user:
+    client-certificate: controller-manager.pem
+    client-key: controller-manager-key.pem
