@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e067d24d_e21b1686",
+        "filename": "promenade/control/service_endpoints.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-27T18:04:02Z",
+      "side": 1,
+      "message": "This module is not used at all, I suggest removing it?",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2709e27f_a56da4c1",
+        "filename": "promenade/control/service_endpoints.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-27T18:04:02Z",
+      "side": 1,
+      "message": "Shipyard has nothing to do with this. ;)",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de5100a9_bd2c6f4a",
+        "filename": "promenade/control/service_endpoints.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-27T18:04:02Z",
+      "side": 1,
+      "message": "this is where?",
+      "range": {
+        "startLine": 75,
+        "startChar": 15,
+        "endLine": 75,
+        "endChar": 32
+      },
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c90c9f5_9aedbc8f",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-27T18:04:02Z",
+      "side": 1,
+      "message": "This wasn\u0027t finished being refactored here... you\u0027ve moved the code to lines 84-89, but not changed the use of the variable.",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "391aeeca_de6a5ebe",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-27T18:04:02Z",
+      "side": 1,
+      "message": "the logging you\u0027ve imported doesn\u0027t expose an error method.",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63245d0c_254ec6a0",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-27T18:04:02Z",
+      "side": 1,
+      "message": "LOG does not exist, see 2 lines down as well.",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1424af15_64a94d47",
+        "filename": "promenade/policy.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2017-10-27T18:04:02Z",
+      "side": 1,
+      "message": "Are the policy rules elsewhere or just forthcoming?  Since it appears that the start_promenade() method in promenade.py doesn\u0027t register policies, assuming forthcoming.  I\u0027d recommend leaving TODO\u0027s in place in these cases.",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
