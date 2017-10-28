@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "526ce813_713fe55f",
+        "filename": "charts/controller_manager/templates/bin/_anchor.tpl",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-28T01:49:09Z",
+      "side": 1,
+      "message": "We should consider more robust ways of handling this: e.g. what if there is a difference between the static manifest provided on the genesis host and the one this chart creates?  With this approach, we will not use the anchor\u0027s manifest.\n\nProbably we should consider comparing file contents or hashes and replacing the file if they\u0027re different?",
+      "revId": "f11833c477a1f9e8220884fa7ff471490ce2724e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aefce18_5f612926",
+        "filename": "charts/controller_manager/templates/etc/_kubernetes-controller-manager.yaml.tpl",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-28T01:49:09Z",
+      "side": 1,
+      "message": "We should probably consider allowing an arbitrary list of options here.\n\nMaybe we should specifically insert things like flags that refer to files we put in place (like kubeconfig or cluster-ca), then append the list provided by values?",
+      "revId": "f11833c477a1f9e8220884fa7ff471490ce2724e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
