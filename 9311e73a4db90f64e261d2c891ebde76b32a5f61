@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cbb34a8_47d1a63a",
+        "filename": "promenade/config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-29T16:22:49Z",
+      "side": 1,
+      "message": "This message doesn\u0027t fit with the logic above.\n\nThe logic says that `kind !\u003d None and schema \u003d\u003d None` but your message is suggesting that `kind !\u003d None and schema !\u003d None`.",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 65
+      },
+      "revId": "9311e73a4db90f64e261d2c891ebde76b32a5f61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fa8d971_15b0cde9",
+        "filename": "promenade/config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-29T16:22:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "9311e73a4db90f64e261d2c891ebde76b32a5f61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
