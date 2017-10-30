@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f640fa88_7cafb747",
+        "filename": "promenade/config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-30T17:36:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure it matters much the precise exception.\n\nI think the better approach is probably to change these function interfaces so that it\u0027s impossible to call them incorrectly (probably having two methods with different signatures), but that\u0027s a low priority refactor, IMO.",
+      "parentUuid": "ce2d957f_aecf9183",
+      "range": {
+        "startLine": 63,
+        "startChar": 22,
+        "endLine": 63,
+        "endChar": 36
+      },
+      "revId": "2a7ce80a47c60525aa96a5c0cf51cebce771a506",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa3b067e_20572870",
         "filename": "promenade/config.py",
         "patchSetId": 3
