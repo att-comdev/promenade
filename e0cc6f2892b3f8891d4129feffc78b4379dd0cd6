@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "872a9f8a_7538db3a",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1012359
+      },
+      "writtenOn": "2017-10-30T19:08:43Z",
+      "side": 1,
+      "message": "The middleware needs to exist so that api-paste can make use of it.",
+      "parentUuid": "7acaecdc_405ac632",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e067d24d_e21b1686",
         "filename": "promenade/control/service_endpoints.py",
         "patchSetId": 10
@@ -138,6 +156,24 @@
       "writtenOn": "2017-10-27T18:04:02Z",
       "side": 1,
       "message": "Are the policy rules elsewhere or just forthcoming?  Since it appears that the start_promenade() method in promenade.py doesn\u0027t register policies, assuming forthcoming.  I\u0027d recommend leaving TODO\u0027s in place in these cases.",
+      "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f256214_b44888e9",
+        "filename": "promenade/policy.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1012359
+      },
+      "writtenOn": "2017-10-30T19:08:43Z",
+      "side": 1,
+      "message": "It\u0027s forthcoming. Thank you for pointing this out. I\u0027ve added TODOs.",
+      "parentUuid": "1424af15_64a94d47",
       "revId": "e0cc6f2892b3f8891d4129feffc78b4379dd0cd6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
