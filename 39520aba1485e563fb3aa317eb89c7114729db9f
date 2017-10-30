@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b1996f0_1036fac7",
+        "filename": "tox.ini",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-30T20:20:32Z",
+      "side": 1,
+      "message": "Might be better to add a simple .sh script for this later, as this is difficult to read.",
+      "revId": "39520aba1485e563fb3aa317eb89c7114729db9f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
