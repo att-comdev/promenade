@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "219b0eec_69535614",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-10-30T20:03:51Z",
+      "side": 1,
+      "message": "I know I\u0027ve pointed this out before, but it looks like the purpose of this is to skip AuthZ but... pretend to do AuthN? I mean, this thing just sets ctx.authenticated \u003d True unconditionally and populates some headers. But why are those headers even needed if this is just meant to bypass authz/authn altogether (I presume)?",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "1798cd2f49cfa5207ade71dc6d2748faaebf0c93",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
