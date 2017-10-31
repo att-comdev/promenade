@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3be6f853_fa460f09",
+        "filename": "charts/controller_manager/templates/bin/_anchor.tpl",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-31T13:14:34Z",
+      "side": 1,
+      "message": "nit: Probably don\u0027t need -r.",
+      "revId": "5fe9ce4cfc17a389dceea29a5bfc5c2e0e6d60cc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9050920e_28510b82",
+        "filename": "charts/controller_manager/templates/bin/_anchor.tpl",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-31T13:14:34Z",
+      "side": 1,
+      "message": "I think you can collapse the \"if exists\" check with the \"if different\" check.  Something like:\n\nwhile true; do\n  ...\n\n  {{- range .Values.anchor.files_to_copy }}\n  if [ ! -e {{ .dest }} ] || cmp -s {{ .source }} {{ .dest }}; then\n    mkdir -p $(dirname {{ .dest }})\n    cp {{ .source }} /host{{ .dest }}\n  fi\n  {{- end }}\ndone\n\nNaturally, it\u0027s fine for all or part of this to be as a separate function.  I\u0027m not sure which is more clear.",
+      "revId": "5fe9ce4cfc17a389dceea29a5bfc5c2e0e6d60cc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e464d14_685210b4",
+        "filename": "charts/controller_manager/templates/configmap-cm.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-31T13:14:34Z",
+      "side": 1,
+      "message": "nit: I think this should probably go in configmap-etc",
+      "revId": "5fe9ce4cfc17a389dceea29a5bfc5c2e0e6d60cc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7438eb8_cd314835",
+        "filename": "charts/controller_manager/templates/etc/_kubernetes-controller-manager.yaml.tpl",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-31T13:14:34Z",
+      "side": 1,
+      "message": "Ideally we won\u0027t enumerate every option.  I was imagining that we could just embed an arbitrary list of options from config, kind of like:\n\ncommand:\n  {{- range .Values.controller_manger.command_prefix }}\n  - {{ . }}\n  {{- end }}\n  # Required flags that we don\u0027t allow users to configure go here\n  - --kubeconfig\u003d/etc/kubernetes/controller-manager/kubeconfig.yaml\n  {{- range .Values.controller_manager.command_suffix }}\n  - {{ . }}\n  {{- end }}\n\nwhere command_prefix and command_suffix are just lists of string arguments, like \"--cluster-cidr\u003d10.97.0.0/16\"",
+      "revId": "5fe9ce4cfc17a389dceea29a5bfc5c2e0e6d60cc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
