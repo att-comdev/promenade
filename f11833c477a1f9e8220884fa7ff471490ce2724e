@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e0cd722e_703147c1",
+        "filename": "charts/controller_manager/templates/bin/_anchor.tpl",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2017-10-31T03:13:47Z",
+      "side": 1,
+      "message": "Agree. Will address in the next patch set.",
+      "parentUuid": "526ce813_713fe55f",
+      "revId": "f11833c477a1f9e8220884fa7ff471490ce2724e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aefce18_5f612926",
         "filename": "charts/controller_manager/templates/etc/_kubernetes-controller-manager.yaml.tpl",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-28T01:49:09Z",
       "side": 1,
       "message": "We should probably consider allowing an arbitrary list of options here.\n\nMaybe we should specifically insert things like flags that refer to files we put in place (like kubeconfig or cluster-ca), then append the list provided by values?",
+      "revId": "f11833c477a1f9e8220884fa7ff471490ce2724e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "052e17b5_39080d08",
+        "filename": "charts/controller_manager/templates/etc/_kubernetes-controller-manager.yaml.tpl",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2017-10-31T03:13:47Z",
+      "side": 1,
+      "message": "Will make the options configurable in values.yaml",
+      "parentUuid": "5aefce18_5f612926",
       "revId": "f11833c477a1f9e8220884fa7ff471490ce2724e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
