@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b7ea4eb_5cc11361",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-31T17:25:28Z",
+      "side": 1,
+      "message": "Yeah, I think I\u0027ll expose this as a separate target too.",
+      "parentUuid": "d1c0169c_9f2d7d5f",
+      "revId": "f2bb08fb73c17edc8f67d461e6b1852a05bd15ba",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0921bc6e_deb11f76",
         "filename": "tools/helm_tk.sh",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-31T14:11:19Z",
       "side": 1,
       "message": "May want to go ahead and switch this to openstack-helm-infra as I believe that is the permanent home for HTK.",
+      "revId": "f2bb08fb73c17edc8f67d461e6b1852a05bd15ba",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "088aeb88_bde4d7b0",
+        "filename": "tools/helm_tk.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-10-31T17:25:28Z",
+      "side": 1,
+      "message": "I hadn\u0027t realized that had landed yet.  Will do.",
+      "parentUuid": "0921bc6e_deb11f76",
       "revId": "f2bb08fb73c17edc8f67d461e6b1852a05bd15ba",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
