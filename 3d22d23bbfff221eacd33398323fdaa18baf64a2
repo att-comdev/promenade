@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb830160_b718e642",
+        "filename": "promenade/control/base.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-11-01T20:58:17Z",
+      "side": 1,
+      "message": "Just noticed this here, this is a good idea.",
+      "range": {
+        "startLine": 42,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "3d22d23bbfff221eacd33398323fdaa18baf64a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
