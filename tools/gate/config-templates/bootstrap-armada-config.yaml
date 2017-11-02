@@ -134,7 +134,7 @@ data:
   chart_name: proxy
   release: kubernetes-proxy
   namespace: kube-system
-  timeout: 600
+  timeout: 900
   upgrade:
     no_hooks: true
   values:
