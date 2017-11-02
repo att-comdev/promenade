@@ -1013,7 +1013,7 @@ data:
     conf:
       paste:
         pipeline:main:
-          pipeline: noauth promenade-api
+          pipeline: promenade-api
     images:
       tags:
         api: quay.io/attcomdev/promenade:latest
