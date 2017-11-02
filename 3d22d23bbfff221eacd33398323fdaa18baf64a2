@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "3eb43cb2_df757b44",
+        "filename": "promenade/config.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-02T14:25:40Z",
+      "side": 1,
+      "message": "This message is inaccurate, the intent is that you can only specify kind or schema.",
+      "revId": "3d22d23bbfff221eacd33398323fdaa18baf64a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d910ea7_568d1967",
+        "filename": "promenade/control/api.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-02T14:25:40Z",
+      "side": 1,
+      "message": "The NoAuthMiddleware is intended to be a WSGI middleware that is inserted into a paste pipeline rather than into faclon\u0027s middleware chain.",
+      "revId": "3d22d23bbfff221eacd33398323fdaa18baf64a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb830160_b718e642",
         "filename": "promenade/control/base.py",
         "patchSetId": 16
@@ -19,6 +53,57 @@
         "endLine": 42,
         "endChar": 48
       },
+      "revId": "3d22d23bbfff221eacd33398323fdaa18baf64a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "359314e9_103336d3",
+        "filename": "promenade/control/middleware.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-02T14:25:40Z",
+      "side": 1,
+      "message": "This needs to become a WSGI middleware rather than a falcon one: https://github.com/openstack/cinder/blob/master/cinder/api/middleware/auth.py#L117\n\nI think it would be OK to delete this for now, and add it in a later patchset.",
+      "revId": "3d22d23bbfff221eacd33398323fdaa18baf64a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92233d5e_38080ced",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-02T14:25:40Z",
+      "side": 1,
+      "message": "Moving this off the exception is potentially, OK, but we need to update where it is used (cli.py).",
+      "revId": "3d22d23bbfff221eacd33398323fdaa18baf64a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0a190bd_61a4b32b",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-02T14:25:40Z",
+      "side": 1,
+      "message": "I don\u0027t think this module has these methods, maybe we can just keep using the module-level logger that was already here for this, e.g.:\n\nLOG.exception()",
       "revId": "3d22d23bbfff221eacd33398323fdaa18baf64a2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
