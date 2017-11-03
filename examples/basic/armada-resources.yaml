@@ -1032,7 +1032,7 @@ data:
     conf:
       paste:
         pipeline:main:
-          pipeline: promenade-api
+          pipeline: authtoken promenade-api
     images:
       tags:
         api: quay.io/attcomdev/promenade:latest

@@ -140,6 +140,8 @@ class PromenadeRequestContext(context.RequestContext):
         self.policy_engine = policy_engine
         self.is_admin_project = False
         self.authenticated = False
+        self.error_count = 0
+        self.messages = []
         super(PromenadeRequestContext, self).__init__(**kwargs)
 
     def set_log_level(self, level):
@@ -178,6 +180,46 @@ class PromenadeRequestContext(context.RequestContext):
         policy_dict['is_admin_project'] = self.is_admin_project
 
         return policy_dict
+
+    def return_error(self, resp, status_code, status="", message="",
+                     reason=""):
+        self.error_count += 1
+        self.messages.append({'message': message, 'error': 'true'})
+        resp.body = json.dumps({
+            "kind": "Status",
+            "apiVersion": "v1",
+            "metadata": {},
+            "status": status,
+            "message": message,
+            "reason": reason,
+            "details": {
+                "errorCount": self.error_count,
+                "messageList": self.messages,
+            },
+            "code": status_code,
+        })
+        resp.status = status_code
+
+    def return_success(self,
+                       resp,
+                       status_code,
+                       status="",
+                       message="",
+                       reason=""):
+        resp.body = json.dumps({
+            "kind": "Status",
+            "apiVersion": "v1",
+            "metadata": {},
+            "status": status,
+            "message": message,
+            "reason": reason,
+            "details": {
+                "errorCount": self.error_count,
+                "messageList": self.messages,
+            },
+            "code": status_code,
+        })
+        resp.status = status_code
 
 
 class PromenadeRequest(request.Request):
