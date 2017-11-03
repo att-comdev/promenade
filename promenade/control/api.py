@@ -18,6 +18,7 @@ from promenade.control.base import BaseResource, PromenadeRequest
 from promenade.control.health_api import HealthResource
 from promenade.control.middleware import (AuthMiddleware, ContextMiddleware,
                                           LoggingMiddleware)
+from promenade.control.validatedesign import ValidateDesignResource
 from promenade import exceptions as exc
 from promenade import logging
 
@@ -37,6 +38,7 @@ def start_api():
     v1_0_routes = [
         # API for managing region data
         ('/health', HealthResource()),
+        ('/validatedesign', ValidateDesignResource()),
     ]
 
     # Set up the 1.0 routes
