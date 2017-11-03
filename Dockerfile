@@ -40,5 +40,3 @@ RUN pip install --no-cache-dir -r requirements-frozen.txt
 
 COPY . /opt/promenade
 RUN pip install -e /opt/promenade
-
-USER promenade
