@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f56299f_c24afd14",
+        "filename": "promenade/control/api.py",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1012247
+      },
+      "writtenOn": "2017-11-03T15:02:15Z",
+      "side": 1,
+      "message": "repeated code on line 36",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 58
+      },
+      "revId": "04d4393b22e8e6746a3fcce4182355f304f52c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
