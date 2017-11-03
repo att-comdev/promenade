@@ -6,7 +6,7 @@ PORT=${PORT:-9000}
 if [ "$1" = 'server' ]; then
     exec uwsgi \
         --http :${PORT} \
-        --paste config:/etc/promenade/api-paste.ini \
+        --paste config:/etc/promenade/noauth-api-paste.ini \
         --enable-threads -L \
         --workers 4
 fi

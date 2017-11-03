@@ -179,6 +179,14 @@ class PromenadeRequestContext(context.RequestContext):
 
         return policy_dict
 
+    def return_error(self, resp, status_code, message="", retry=False):
+        resp.body = json.dumps({
+            'type': 'error',
+            'message': message,
+            'retry': retry
+        })
+        resp.status = status_code
+
 
 class PromenadeRequest(request.Request):
     context_type = PromenadeRequestContext
