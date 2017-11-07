@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59533d85_02281044",
+        "filename": "charts/apiserver/templates/etc/_kubernetes-apiserver.yaml.tpl",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-07T16:24:09Z",
+      "side": 1,
+      "message": "Let\u0027s expose this one in values.",
+      "revId": "d0dc389d98dd7103bf368eb65bd1970d3b718d89",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92ce5c66_ec7d3931",
+        "filename": "charts/apiserver/templates/etc/_kubernetes-apiserver.yaml.tpl",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-07T16:24:09Z",
+      "side": 1,
+      "message": "This is a valuable config flag for users, let\u0027s expose this one.",
+      "revId": "d0dc389d98dd7103bf368eb65bd1970d3b718d89",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53cab0bd_c71e7389",
+        "filename": "charts/apiserver/templates/etc/_kubernetes-apiserver.yaml.tpl",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-07T16:24:09Z",
+      "side": 1,
+      "message": "Let\u0027s go ahead and move this one to values too.",
+      "revId": "d0dc389d98dd7103bf368eb65bd1970d3b718d89",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1368ad7_4165e960",
+        "filename": "charts/apiserver/templates/etc/_kubernetes-apiserver.yaml.tpl",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-07T16:24:09Z",
+      "side": 1,
+      "message": "Let\u0027s let users configure this verbosity, it doesn\u0027t need to be mandatory.",
+      "revId": "d0dc389d98dd7103bf368eb65bd1970d3b718d89",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
