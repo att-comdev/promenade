@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5b97d36_7cad53c4",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-07T22:41:48Z",
+      "side": 1,
+      "message": "This is misspelled containers",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "b16c7f84ee3a46fe4882ce38fe949fab159354b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ae9f3f9_88be3f50",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-07T22:41:48Z",
+      "side": 1,
+      "message": "2\u003e/dev/null to avoid complaints when there is nothing to delete",
+      "revId": "b16c7f84ee3a46fe4882ce38fe949fab159354b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1304e4_e89985ef",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-07T22:41:48Z",
+      "side": 1,
+      "message": "need to add the \"k\". Change \"f\" to \"fk\"",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "b16c7f84ee3a46fe4882ce38fe949fab159354b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "735979e7_8c277143",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-07T22:41:48Z",
+      "side": 1,
+      "message": "What is this ? Delete this",
+      "range": {
+        "startLine": 93,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "b16c7f84ee3a46fe4882ce38fe949fab159354b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
