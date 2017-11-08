@@ -331,8 +331,9 @@ data:
       host_directory: /var/lib/anchor
       filename: calico-etcd-bootstrap
     images:
-      etcd: ${IMAGE_ETCD}
-      etcdctl: ${IMAGE_ETCD}
+      tags:
+        etcd: ${IMAGE_ETCD}
+        etcdctl: ${IMAGE_ETCD}
     nodes:
       - name: ${GENESIS_HOSTNAME}
         tls:
