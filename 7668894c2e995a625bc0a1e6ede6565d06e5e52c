@@ -34,6 +34,154 @@
       "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e195956_f193d9a2",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-08T22:00:42Z",
+      "side": 1,
+      "message": "Might we good to explain what validation actually does/means",
+      "range": {
+        "startLine": 56,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24a6084d_99e0dbd3",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-08T22:00:42Z",
+      "side": 1,
+      "message": "I wonder it this would be clear if you explain the build scripts. i.e. I just realized by reading this that the reason there is a join-\u003cgenesis hostname\u003e  script is for this reason specifically.  A section explain the genesis vs join scripts ,a n the reason for the validate scripts might be helpfull.",
+      "range": {
+        "startLine": 60,
+        "startChar": 56,
+        "endLine": 61,
+        "endChar": 59
+      },
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5f0372_c8a10acb",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-08T22:00:42Z",
+      "side": 1,
+      "message": "Ah, here you are explaining the scripts. Might be worth mentioning the limitations of join. Known vs Unknown servers after the genesis deployed cluster exists.",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8123ca90_440298ec",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-08T22:00:42Z",
+      "side": 1,
+      "message": "Looking at the teardown script, I believe it would make some sense to run the cleanup.sh or some aspects of it after a node is brought down.",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "599fb032_af764f7f",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-08T22:00:42Z",
+      "side": 1,
+      "message": "We discussed the alternative path yesterday of installing kubelet as a package , similar as docker, and therefore been able to leverage the same upgrade mechanism. Should you mention that . {erhaps instead of \"possible to convert sentence\". Some statement about work in progress defining the better approach (kubelet as a chart vs kubelet as a package)",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b37d64ac_c2d0a44c",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-08T22:00:42Z",
+      "side": 1,
+      "message": "Some blurb explaining step by step how to test this , or a real world example. i.e. Power failure al servers are down. Now lets power them up in any random order , etc...",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ceaa361_6c1e33d1",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-08T22:00:42Z",
+      "side": 1,
+      "message": "How about the notion of the preStart hook notion, and the possible use cases it might address. Just like before in the document there was discussion about some future development activities that might also be worth discussing/documenting as been WIP(exploratory)",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32d1ed84_005333cf",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-08T22:00:42Z",
+      "side": 1,
+      "message": "This section requires a Header  to separate it from Alternatives.",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
