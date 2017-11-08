@@ -1,7 +1,7 @@
 ---
 schema: deckhand/DataSchema/v1
 metadata:
-  schema: metadata/Control/v1
+  schema: metadata/Document/v1
   name: armada/Manifest/v1
   labels:
     application: armada
@@ -10,7 +10,7 @@ data:
 ---
 schema: deckhand/DataSchema/v1
 metadata:
-  schema: metadata/Control/v1
+  schema: metadata/Document/v1
   name: armada/ChartGroup/v1
   labels:
     application: armada
@@ -19,7 +19,7 @@ data:
 ---
 schema: deckhand/DataSchema/v1
 metadata:
-  schema: metadata/Control/v1
+  schema: metadata/Document/v1
   name: armada/Chart/v1
   labels:
     application: armada
