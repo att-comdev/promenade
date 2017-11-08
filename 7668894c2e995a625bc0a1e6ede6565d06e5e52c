@@ -16,6 +16,24 @@
       "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1abff2d_a3737045",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-08T21:23:19Z",
+      "side": 1,
+      "message": "It is out of date, but I believe the change to add docs to the default list of tox jobs will cause automation to start pushing them again.",
+      "parentUuid": "facbbca7_f6d23c7e",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
