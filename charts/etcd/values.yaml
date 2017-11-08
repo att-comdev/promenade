@@ -1,3 +1,24 @@
+# Copyright 2017 AT&T Intellectual Property.  All other rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+images:
+  tags:
+    etcd: quay.io/coreos/etcd:v3.2.7
+    etcdctl: quay.io/coreos/etcd:v3.2.7
+    dep_check: quay.io/stackanetes/kubernetes-entrypoint:v0.2.1
+  pull_policy: "IfNotPresent"
+
 anchor:
   dns_policy: Default
   etcdctl_endpoint: example-etcd
@@ -10,12 +31,7 @@ anchor:
     key: etcd-example
     value: enabled
 
-  termination_grace_period: 3600
   period: 15
-
-  tls:
-    cert: placeholder
-    key: placeholder
 
 etcd:
   host_etc_path: /etc/etcd-example
@@ -39,11 +55,16 @@ bootstrapping:
   # XXX Can I just generalize to an anchor timeout?
   timeout: 300
 
-tls:
-  client:
-    ca: placeholder
-  peer:
-    ca: placeholder
+secrets:
+  tls:
+    client:
+      ca: placeholder
+    peer:
+      ca: placeholder
+  anchor:
+    tls:
+      cert: placeholder
+      key: placeholder
 
 nodes:
   - name: example-0
@@ -55,6 +76,30 @@ nodes:
         cert: placeholder
         key: placeholder
 
-images:
-  etcd: quay.io/coreos/etcd:v3.2.7
-  etcdctl: quay.io/coreos/etcd:v3.2.7
+pod:
+  mounts:
+    example_etcd:
+      init_container: null
+      example_etcd:
+  replicas:
+    apiserver: 3
+  lifecycle:
+    upgrades:
+      daemonsets:
+        pod_replacement_strategy: RollingUpdate
+        example_etcd:
+          enabled: false
+          min_ready_seconds: 0
+          max_unavailable: 1
+    termination_grace_period:
+      example_etcd:
+        timeout: 3600
+  resources:
+    enabled: false
+    example_etcd:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "1024Mi"
+        cpu: "2000m"

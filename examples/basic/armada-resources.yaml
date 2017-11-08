@@ -315,8 +315,9 @@ data:
       host_directory: /var/lib/anchor
       filename: calico-etcd-bootstrap
     images:
-      etcd: quay.io/coreos/etcd:v3.0.17
-      etcdctl: quay.io/coreos/etcd:v3.0.17
+      tags:
+        etcd: quay.io/coreos/etcd:v3.0.17
+        etcdctl: quay.io/coreos/etcd:v3.0.17
     nodes:
       - name: n0
         tls:
