@@ -1,10 +1,22 @@
 #!/bin/sh
+# Copyright 2017 AT&T Intellectual Property.  All other rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 set -x
 
-export CLIENT_ENDPOINT=https://$POD_IP:{{ .Values.service.client.target_port }}
-export PEER_ENDPOINT=https://$POD_IP:{{ .Values.service.peer.target_port }}
-export MANIFEST_PATH=/manifests/{{ .Values.service.name }}.yaml
+export CLIENT_ENDPOINT=https://$POD_IP:{{ .Values.network.service_client.target_port }}
+export PEER_ENDPOINT=https://$POD_IP:{{ .Values.network.service_peer.target_port }}
 
 function copy_certificates {
     ETCD_NAME=$1
@@ -43,7 +55,8 @@ spec:
   hostNetwork: true
   containers:
     - name: etcd
-      image: {{ .Values.images.etcd }}
+      image: {{ .Values.images.tags.etcd }}
+      imagePullPolicy: {{ .Values.images.pull_policy }}
       env:
         - name: ETCD_NAME
           value: $ETCD_NAME
@@ -72,15 +85,15 @@ spec:
         - name: ETCD_PEER_KEY_FILE
           value: /etc/etcd/tls/etcd-peer-key.pem
         - name: ETCD_ADVERTISE_CLIENT_URLS
-          value: https://\$(POD_IP):{{ .Values.service.client.target_port }}
+          value: https://\$(POD_IP):{{ .Values.network.service_client.target_port }}
         - name: ETCD_INITIAL_ADVERTISE_PEER_URLS
-          value: https://\$(POD_IP):{{ .Values.service.peer.target_port }}
+          value: https://\$(POD_IP):{{ .Values.network.service_peer.target_port }}
         - name: ETCD_INITIAL_CLUSTER_TOKEN
           value: {{ .Values.service.name }}-init-token
         - name: ETCD_LISTEN_CLIENT_URLS
-          value: https://0.0.0.0:{{ .Values.service.client.target_port }}
+          value: https://0.0.0.0:{{ .Values.network.service_client.target_port }}
         - name: ETCD_LISTEN_PEER_URLS
-          value: https://0.0.0.0:{{ .Values.service.peer.target_port }}
+          value: https://0.0.0.0:{{ .Values.network.service_peer.target_port }}
         - name: ETCD_INITIAL_CLUSTER_STATE
           value: $ETCD_INITIAL_CLUSTER_STATE
         - name: ETCD_INITIAL_CLUSTER
@@ -90,7 +103,7 @@ spec:
         - name: ETCDCTL_DIAL_TIMEOUT
           value: 3s
         - name: ETCDCTL_ENDPOINTS
-          value: https://127.0.0.1:{{ .Values.service.client.target_port }}
+          value: https://127.0.0.1:{{ .Values.network.service_client.target_port }}
         - name: ETCDCTL_CACERT
           value: \$(ETCD_TRUSTED_CA_FILE)
         - name: ETCDCTL_CERT
