@@ -14,19 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */}}
 
-{{- if .Values.manifests.configmap_bin }}
+{{- if .Values.manifests.configmap_etc }}
 {{- $envAll := . }}
-
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.service.name }}-bin
+  name: {{ $envAll.Values.service.name }}-etc
 data:
-  etcdctl_anchor: |+
-{{ tuple "bin/_etcdctl_anchor.tpl" . | include "helm-toolkit.utils.template" | indent 4 }}
-  pre_stop: |+
-{{ tuple "bin/_pre_stop.tpl" . | include "helm-toolkit.utils.template" | indent 4 }}
-  readiness: |+
-{{ tuple "bin/_readiness.tpl" . | include "helm-toolkit.utils.template" | indent 4 }}
+  anchor-etcd-client.pem: {{ $envAll.Values.secrets.anchor.tls.cert | quote }}
+  client-ca.pem: {{ $envAll.Values.secrets.tls.client.ca | quote }}
+  peer-ca.pem: {{ $envAll.Values.secrets.tls.peer.ca | quote }}
+{{- range .Values.nodes }}
+  {{- $node := . }}
+  {{ $node.name }}-etcd-client.pem: {{ $node.tls.client.cert | quote }}
+  {{ $node.name }}-etcd-peer.pem: {{ $node.tls.peer.cert | quote }}
+{{- end }}
 {{- end }}
