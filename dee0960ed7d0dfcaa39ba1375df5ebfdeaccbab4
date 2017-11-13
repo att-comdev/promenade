@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccf70f10_d735131c",
+        "filename": "charts/apiserver/templates/bin/_pre_stop.tpl",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-11-13T15:09:50Z",
+      "side": 1,
+      "message": "Should this also have a template comment block around it?",
+      "revId": "dee0960ed7d0dfcaa39ba1375df5ebfdeaccbab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f9c3cde_f0cd8f79",
+        "filename": "charts/apiserver/templates/etc/_kubernetes-apiserver.yaml.tpl",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-11-13T15:09:50Z",
+      "side": 1,
+      "message": "Template comment block",
+      "revId": "dee0960ed7d0dfcaa39ba1375df5ebfdeaccbab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
