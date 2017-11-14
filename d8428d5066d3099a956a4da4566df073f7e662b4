@@ -16,6 +16,24 @@
       "revId": "d8428d5066d3099a956a4da4566df073f7e662b4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24f3b199_432af5d4",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T18:24:50Z",
+      "side": 1,
+      "message": "I added a check to make sure that the directory was empty.",
+      "parentUuid": "65bcb76a_26f2c17b",
+      "revId": "d8428d5066d3099a956a4da4566df073f7e662b4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
