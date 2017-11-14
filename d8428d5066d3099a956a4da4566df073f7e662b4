@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65bcb76a_26f2c17b",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-14T16:45:09Z",
+      "side": 1,
+      "message": "Need to add \n\n|| systemctl start docker\n\nIf the remove encounters permissions or lock issue, it exists, and neglects to restart docker.\nThis will run docker start for sure. It seems like it continues when you have a || regardless of the exit condition of the rm, so another issue is to log some garbage log \"Failed to remove something\" ...",
+      "revId": "d8428d5066d3099a956a4da4566df073f7e662b4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
