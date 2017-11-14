@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cc7deb91_30c4a638",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T15:44:19Z",
+      "side": 1,
+      "message": "I can describe what we\u0027re doing now, but it remains to be finalized what set of validations we want to perform in prod.",
+      "parentUuid": "2e195956_f193d9a2",
+      "range": {
+        "startLine": 56,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24a6084d_99e0dbd3",
         "filename": "docs/source/design.rst",
         "patchSetId": 5
@@ -71,6 +95,30 @@
       "writtenOn": "2017-11-08T22:00:42Z",
       "side": 1,
       "message": "I wonder it this would be clear if you explain the build scripts. i.e. I just realized by reading this that the reason there is a join-\u003cgenesis hostname\u003e  script is for this reason specifically.  A section explain the genesis vs join scripts ,a n the reason for the validate scripts might be helpfull.",
+      "range": {
+        "startLine": 60,
+        "startChar": 56,
+        "endLine": 61,
+        "endChar": 59
+      },
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de709491_42329d0b",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T15:44:19Z",
+      "side": 1,
+      "message": "Let me outline the thinking here, and we can decide what to include in the doc:\n\n* The target is that the only script people will use is `genesis.sh`\n* The `validate-*.sh` scripts are really hooks for testing.\n* The `join-*.sh` scripts won\u0027t need to be generated and will just be fetched on demand from the API.",
+      "parentUuid": "24a6084d_99e0dbd3",
       "range": {
         "startLine": 60,
         "startChar": 56,
@@ -100,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "77130bb4_605fd35b",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T15:44:19Z",
+      "side": 1,
+      "message": "Limitation added.",
+      "parentUuid": "9a5f0372_c8a10acb",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8123ca90_440298ec",
         "filename": "docs/source/design.rst",
         "patchSetId": 5
@@ -111,6 +177,24 @@
       "writtenOn": "2017-11-08T22:00:42Z",
       "side": 1,
       "message": "Looking at the teardown script, I believe it would make some sense to run the cleanup.sh or some aspects of it after a node is brought down.",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0a24bb9_e929b451",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T15:44:19Z",
+      "side": 1,
+      "message": "This might be a good idea, though we may not care for our use cases if we\u0027re re-provisioning via MaaS.",
+      "parentUuid": "8123ca90_440298ec",
       "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -134,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "da5bf938_7b16e890",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T15:44:19Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "599fb032_af764f7f",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b37d64ac_c2d0a44c",
         "filename": "docs/source/design.rst",
         "patchSetId": 5
@@ -145,6 +247,24 @@
       "writtenOn": "2017-11-08T22:00:42Z",
       "side": 1,
       "message": "Some blurb explaining step by step how to test this , or a real world example. i.e. Power failure al servers are down. Now lets power them up in any random order , etc...",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a9fbf6c_79ebe12e",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T15:44:19Z",
+      "side": 1,
+      "message": "I wonder if we should consider a separate document describing resiliency exercise/testing.  It doesn\u0027t seem like it fits particularly well in a design or architecture doc though.\n\nDoes that sound reasonable?",
+      "parentUuid": "b37d64ac_c2d0a44c",
       "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -168,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "8e38986f_aa691a00",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T15:44:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure exactly what use cases a preStart hook addresses exactly.\n\nThe body of the anchor pod scripts just starts managing the pods right away.",
+      "parentUuid": "2ceaa361_6c1e33d1",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32d1ed84_005333cf",
         "filename": "docs/source/design.rst",
         "patchSetId": 5
@@ -179,6 +317,24 @@
       "writtenOn": "2017-11-08T22:00:42Z",
       "side": 1,
       "message": "This section requires a Header  to separate it from Alternatives.",
+      "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b74b6f35_03f4dbb6",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-14T15:44:19Z",
+      "side": 1,
+      "message": "I don\u0027t think these need a section, because they do not render.",
+      "parentUuid": "32d1ed84_005333cf",
       "revId": "7668894c2e995a625bc0a1e6ede6565d06e5e52c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
