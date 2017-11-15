@@ -48,6 +48,11 @@ log
 log === Installing system packages ===
 set -x
 
+while fuser /var/lib/dpkg/lock &> /dev/null; do
+    log Waiting for dpkg lock..
+    sleep 15
+done
+
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y --no-install-recommends \
