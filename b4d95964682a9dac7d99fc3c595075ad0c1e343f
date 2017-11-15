@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cae1703_b7c40748",
+        "filename": "promenade/control/join_scripts.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011948
+      },
+      "writtenOn": "2017-11-15T21:11:21Z",
+      "side": 1,
+      "message": "I think we should have a place holder to support node taints.  Besides the labels a placeholder for the taint\u0027s.  Should be simple enough to be the support. I know we are not tainting anything yet,",
+      "revId": "b4d95964682a9dac7d99fc3c595075ad0c1e343f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
