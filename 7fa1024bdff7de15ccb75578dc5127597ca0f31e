@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f28ca5e8_97ee75c1",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-16T21:24:30Z",
+      "side": 1,
+      "message": "I don\u0027t think we really need to support files in the API, so you can just remove this kind of support.",
+      "revId": "7fa1024bdff7de15ccb75578dc5127597ca0f31e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8c8a05c_679fb330",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-16T21:24:30Z",
+      "side": 1,
+      "message": "I think you can also (asuming rebased onto the join-scripts api PS) use `promenade.config.Config.from_design_ref` and not worry about fetching/loading the configuration yourself at this point, and get straight to running validations on that config.",
+      "revId": "7fa1024bdff7de15ccb75578dc5127597ca0f31e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d2c64a3_965013f0",
+        "filename": "promenade/promenade.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-16T21:24:30Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this enable_keystone option if we configure whether to use keystone in the paste config.",
+      "revId": "7fa1024bdff7de15ccb75578dc5127597ca0f31e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
