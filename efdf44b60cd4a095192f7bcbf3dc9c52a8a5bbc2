@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62a11d81_9df7dd7d",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-16T21:24:30Z",
+      "side": 1,
+      "message": "You probably need yaml.safe_load_all().",
+      "revId": "efdf44b60cd4a095192f7bcbf3dc9c52a8a5bbc2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "611ec611_eb01f832",
+        "filename": "promenade/promenade.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-16T21:24:30Z",
+      "side": 1,
+      "message": "I think this argument doesn\u0027t get used, so we can remove it for now.",
+      "revId": "efdf44b60cd4a095192f7bcbf3dc9c52a8a5bbc2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
