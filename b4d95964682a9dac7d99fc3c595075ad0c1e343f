@@ -16,6 +16,24 @@
       "revId": "b4d95964682a9dac7d99fc3c595075ad0c1e343f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2641830d_4026555c",
+        "filename": "promenade/control/join_scripts.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-11-17T15:12:43Z",
+      "side": 1,
+      "message": "I don\u0027t think future-looking placeholders are needed. Until the feature is fully defined, you end up with cruft that may never get cleaned out and you lose the context for it over time.",
+      "parentUuid": "9cae1703_b7c40748",
+      "revId": "b4d95964682a9dac7d99fc3c595075ad0c1e343f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
