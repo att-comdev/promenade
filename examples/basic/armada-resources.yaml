@@ -14,7 +14,7 @@ data:
     - dns
     - kubernetes
     - kubernetes-rbac
-    - ucp-platform
+    - ucp-services
 ---
 schema: armada/ChartGroup/v1
 metadata:
@@ -86,7 +86,7 @@ data:
 schema: armada/ChartGroup/v1
 metadata:
   schema: metadata/Document/v1
-  name: ucp-platform
+  name: ucp-services
   layeringDefinition:
     abstract: false
     layer: site
