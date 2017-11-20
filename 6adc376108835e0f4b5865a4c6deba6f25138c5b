@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0edf1471_2cee147d",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-20T18:33:03Z",
+      "side": 1,
+      "message": "Maybe add imagePullPolicy too.",
+      "revId": "6adc376108835e0f4b5865a4c6deba6f25138c5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0eb3fe2_112602dc",
+        "filename": "charts/etcd/templates/bin/_pre_stop.tpl",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-20T18:33:03Z",
+      "side": 1,
+      "message": "It might be nicer to specify these in the Daemonset\u0027s `env` list.",
+      "revId": "6adc376108835e0f4b5865a4c6deba6f25138c5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "755a8ec4_49d10d60",
+        "filename": "charts/etcd/templates/bin/_readiness.tpl",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-20T18:33:03Z",
+      "side": 1,
+      "message": "As a counter point to the previous comment, this one does not really seem to belong in the Daemonset\u0027s env.  It makes sense to me here (or it could be added as a CLI argument to etcdctl).",
+      "revId": "6adc376108835e0f4b5865a4c6deba6f25138c5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52bfd98a_4bd07a19",
+        "filename": "charts/etcd/templates/configmap-certs.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-20T18:33:03Z",
+      "side": 1,
+      "message": "Do you think we should rename this CM to \"*-etc\" to match other services?",
+      "revId": "6adc376108835e0f4b5865a4c6deba6f25138c5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba6ef1ee_ae130aec",
+        "filename": "charts/etcd/templates/daemonset-anchor.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-20T18:33:03Z",
+      "side": 1,
+      "message": "I think you asked me about this in chat, and I misunderstood your question.  I think this manifest should be called something like `.Values.manifests.daemonset_anchor` or similar.",
+      "revId": "6adc376108835e0f4b5865a4c6deba6f25138c5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d020bf05_1f3b6eb6",
+        "filename": "charts/etcd/templates/daemonset-anchor.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-20T18:33:03Z",
+      "side": 1,
+      "message": "I don\u0027t think we want dependencies here, so I think we should avoid this HTK feature.  No sense in having an init container here.",
+      "revId": "6adc376108835e0f4b5865a4c6deba6f25138c5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df1ea0e9_1eb142da",
+        "filename": "charts/etcd/templates/daemonset-anchor.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-20T18:33:03Z",
+      "side": 1,
+      "message": "Again, I think \"etcd_example\" should change to something like \"anchor\".",
+      "revId": "6adc376108835e0f4b5865a4c6deba6f25138c5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05b40e0_b0f9bb1f",
+        "filename": "charts/etcd/values.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-20T18:33:03Z",
+      "side": 1,
+      "message": "Is this the OSH pattern for multi-port services?  I\u0027m not familiar with it.",
+      "revId": "6adc376108835e0f4b5865a4c6deba6f25138c5b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
