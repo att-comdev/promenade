@@ -14,7 +14,7 @@ data:
     - dns
     - kubernetes
     - kubernetes-rbac
-    - ucp-platform
+    - ucp-services
 ---
 schema: armada/ChartGroup/v1
 metadata:
@@ -86,7 +86,7 @@ data:
 schema: armada/ChartGroup/v1
 metadata:
   schema: metadata/Document/v1
-  name: ucp-platform
+  name: ucp-services
   layeringDefinition:
     abstract: false
     layer: site
@@ -104,6 +104,8 @@ data:
   release: helm-toolkit
   namespace: helm-toolkit
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values: {}
@@ -148,6 +150,8 @@ data:
   release: kubernetes-proxy
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values:
@@ -327,6 +331,8 @@ data:
   release: calico-etcd
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values:
@@ -437,6 +443,8 @@ data:
   release: calico
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values:
@@ -498,6 +506,8 @@ data:
   release: coredns
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values:
@@ -605,6 +615,8 @@ data:
   release: kubernetes-apiserver
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values:
@@ -682,6 +694,8 @@ data:
   release: kubernetes-controller-manager
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values:
@@ -743,6 +757,8 @@ data:
   release: kubernetes-scheduler
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values:
@@ -926,6 +942,8 @@ data:
   release: kubernetes-etcd
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   upgrade:
     no_hooks: true
   values:
@@ -1009,6 +1027,8 @@ data:
   release: rbac
   namespace: kube-system
   timeout: 600
+  wait:
+    timeout: 600
   values: {}
   upgrade:
     no_hooks: true
@@ -1030,6 +1050,8 @@ data:
   release: promenade
   namespace: ucp
   timeout: 600
+  wait:
+    timeout: 600
   values:
     conf:
       paste:
