@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21b1cd82_532e096c",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-11-20T19:55:26Z",
+      "side": 1,
+      "message": "it via",
+      "range": {
+        "startLine": 97,
+        "startChar": 45,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "fc0b1242b7f6a0526460dc8b61e5f90070b4a657",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b5fb9aa_e4bd8f02",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-11-20T19:55:26Z",
+      "side": 1,
+      "message": "In Gerrit this looks like the shortcut is malformed; maybe put it on one line?",
+      "range": {
+        "startLine": 99,
+        "startChar": 63,
+        "endLine": 100,
+        "endChar": 15
+      },
+      "revId": "fc0b1242b7f6a0526460dc8b61e5f90070b4a657",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
