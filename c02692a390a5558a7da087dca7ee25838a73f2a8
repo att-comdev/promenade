@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d36049f_90f4f93d",
+        "filename": "Dockerfile",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-21T15:43:48Z",
+      "side": 0,
+      "message": "Is this still needed for you after the updates in https://review.gerrithub.io/#/c/388230/ ?",
+      "revId": "c02692a390a5558a7da087dca7ee25838a73f2a8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

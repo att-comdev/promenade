@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff54e2d7_990facac",
+        "filename": "etc/promenade/noauth-api-paste.ini",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-21T15:43:48Z",
+      "side": 1,
+      "message": "Let\u0027s update ./tools/dev/server.sh to use this config instead of the \"default\" example, and then update the default example to demonstrate keystone middleware.",
+      "revId": "ba713f94d9bb600637ec564234d4a26516ce265a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1f89560_2d407d56",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-21T15:43:48Z",
+      "side": 1,
+      "message": "I think we should try to make the success and failure messages conform to https://github.com/att-comdev/ucp-integration/blob/master/docs/api-conventions.md#post-v10validatedesign",
+      "revId": "ba713f94d9bb600637ec564234d4a26516ce265a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2982f4b_ba86a4c4",
+        "filename": "promenade/promenade.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-21T15:43:48Z",
+      "side": 1,
+      "message": "This disable flag appears unused.",
+      "revId": "ba713f94d9bb600637ec564234d4a26516ce265a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb769345_29a22f4c",
+        "filename": "promenade/promenade.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-21T15:43:48Z",
+      "side": 1,
+      "message": "Does this work?  I expect this to try a WSGI call into the falcon app object on this line.",
+      "revId": "ba713f94d9bb600637ec564234d4a26516ce265a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
