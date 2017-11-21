@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df9ba31e_57e88984",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-11-21T20:25:43Z",
+      "side": 1,
+      "message": "Might want to convey what the option choices are here and what they do?",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 33
+      },
+      "revId": "6f4ab35abce8c418777023c741cf759218c7f9a5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
