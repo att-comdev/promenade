@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f633ee9_ba1071e5",
+        "filename": "entrypoint.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-22T16:02:53Z",
+      "side": 1,
+      "message": "It must have been unclear what I was suggesting about using the noauth example.  I was referring to the script at tools/dev/server.sh -- that script should probably use  noauth-api-paste.ini",
+      "revId": "c7156b93221dc25e24580d26a7d7fbb551d1f170",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87825e55_0d0f54fd",
+        "filename": "promenade/promenade.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-22T16:02:53Z",
+      "side": 1,
+      "message": "__call__ is how WSGI requests are handled.  It\u0027s not what you want to do here.",
+      "revId": "c7156b93221dc25e24580d26a7d7fbb551d1f170",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
