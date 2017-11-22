@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5856811_03a5a89d",
+        "filename": "promenade/control/base.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-22T21:50:15Z",
+      "side": 1,
+      "message": "Wherever we structure our response (here or back in the handler), it needs to conform to https://github.com/att-comdev/ucp-integration/blob/master/docs/api-conventions.md#output-structure",
+      "revId": "0b2c832a71430ef7cd4bd9d2a8432a60be214439",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbefed8e_fe309af1",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-22T21:50:15Z",
+      "side": 1,
+      "message": "I guess I didn\u0027t catch this before, but we don\u0027t seem to set the response body in the success case to be compatible with the ucp-integration design doc.",
+      "revId": "0b2c832a71430ef7cd4bd9d2a8432a60be214439",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd6cf455_4f3a1b43",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-22T21:50:15Z",
+      "side": 1,
+      "message": "I guess this raise is probably not needed if return_error is constructing the correct response anyway (though I don\u0027t insist on using return_error).",
+      "revId": "0b2c832a71430ef7cd4bd9d2a8432a60be214439",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10e68fca_39612826",
+        "filename": "tools/dev/server.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-22T21:50:15Z",
+      "side": 1,
+      "message": "I don\u0027t think docker run has a --paste option, does it?\n\nI think the way to approach this change is to replace line 17 below with something like:\n\n--volume \"${SOURCE_DIR}/etc/promenade/noauth-api-paste.ini\":/etc/promenade/api-paste.ini:ro \\\n\n\nThat should put the noauth ini you developed into the container as \u0027api-paste.ini\u0027 so that uwsgi sees it.\n\nI think it would be great if you also updated the existing api-paste.ini example to use keystone middleware.  You may want to include some additional example configuration as shown in the configuration of the promenade chart at /examples/complete/armada-resources.yaml",
+      "revId": "0b2c832a71430ef7cd4bd9d2a8432a60be214439",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
