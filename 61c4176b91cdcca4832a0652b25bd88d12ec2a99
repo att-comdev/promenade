@@ -16,6 +16,52 @@
       "revId": "61c4176b91cdcca4832a0652b25bd88d12ec2a99",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1548412_81c3caf3",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-11-27T16:07:09Z",
+      "side": 1,
+      "message": "this could do with a re-phrase i think, it took me several reads to parse it.",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 24
+      },
+      "revId": "61c4176b91cdcca4832a0652b25bd88d12ec2a99",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1548731_b27fb966",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2017-11-27T16:07:09Z",
+      "side": 1,
+      "message": "is it worth stating that to address these issues the kubelet will be gaining \u0027pod-checkpointer\u0027 like functionality in future - and at that point, the anchor pattern may not be required?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 15
+      },
+      "revId": "61c4176b91cdcca4832a0652b25bd88d12ec2a99",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
