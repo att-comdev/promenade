@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ebefc71_f47a1d28",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-27T14:51:20Z",
+      "side": 1,
+      "message": "These can actually be moved into the template even though they contain other environment variables.\n\nYou can use previously-defined environment inside environment variable definitions, e.g.\n\nenv:\n  - name: POD_IP\n    valueFrom:\n      fieldRef:\n        fieldPath: status.podIP\n  - name: CLIENT_ENDPOINT\n    value: https://$(POD_IP):{{ .Values.network.sevice_peer.target_port }}\n\n\nThat should also help you to extract the heredoc from below into configmap data as was done in the other charts.",
+      "revId": "d4bb7b934d2cb863e655cd3ee6100b4bf3ec5373",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d726657_a588c1a5",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-27T14:51:20Z",
+      "side": 1,
+      "message": "As mentioned above, it would be great to get rid of this heredoc as was done in the other charts.",
+      "revId": "d4bb7b934d2cb863e655cd3ee6100b4bf3ec5373",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
