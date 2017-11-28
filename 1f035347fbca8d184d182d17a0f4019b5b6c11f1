@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "156d4ee0_b5f5c311",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-11-28T16:42:47Z",
+      "side": 1,
+      "message": "if at",
+      "range": {
+        "startLine": 221,
+        "startChar": 72,
+        "endLine": 221,
+        "endChar": 74
+      },
+      "revId": "1f035347fbca8d184d182d17a0f4019b5b6c11f1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
