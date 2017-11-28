@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7eda70e5_48e1a968",
+        "filename": "promenade/control/base.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-28T17:02:05Z",
+      "side": 1,
+      "message": "It doesn\u0027t really make sense for these to be properties of the object.  Let\u0027s just remove these functions and move the structuring of these responses into the validatedesign resource, since this structure is specific to that endpoint, and there appears to be some confusion here.",
+      "revId": "3c6c7c15e8e07fa74aae6704a72c6c4d611b091d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1dfd7623_bcc75796",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-28T17:02:05Z",
+      "side": 1,
+      "message": "I don\u0027t think we really need to set a location header, especially since it will really just 404.",
+      "revId": "3c6c7c15e8e07fa74aae6704a72c6c4d611b091d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d0fc63b_1218b60f",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-28T17:02:05Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like we\u0027re returning the content of the error back to users here.",
+      "revId": "3c6c7c15e8e07fa74aae6704a72c6c4d611b091d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55176ac5_52968cec",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-28T17:02:05Z",
+      "side": 1,
+      "message": "Does this work?",
+      "revId": "3c6c7c15e8e07fa74aae6704a72c6c4d611b091d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
