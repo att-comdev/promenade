@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6a7c158_6a3f3f7e",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-28T15:33:05Z",
+      "side": 1,
+      "message": "Thanks, fixed.",
+      "parentUuid": "fec499f7_c6e4b9bd",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 13
+      },
+      "revId": "648051f3013aa3cec370db34b941b81231292999",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9e36c25_fa58db4a",
         "filename": "docs/source/design.rst",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-28T02:24:36Z",
       "side": 1,
       "message": "many are removed",
+      "range": {
+        "startLine": 210,
+        "startChar": 61,
+        "endLine": 210,
+        "endChar": 62
+      },
+      "revId": "648051f3013aa3cec370db34b941b81231292999",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c847fc9f_40a5373f",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-28T15:33:05Z",
+      "side": 1,
+      "message": "Thanks, also fixed.",
+      "parentUuid": "e9e36c25_fa58db4a",
       "range": {
         "startLine": 210,
         "startChar": 61,
