@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "244ac66f_892a5f88",
+        "filename": "charts/etcd/templates/bin/_etcdctl_anchor.tpl",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-29T15:42:27Z",
+      "side": 1,
+      "message": "This looks misquoted to me, though I guess maybe it is not.\n\nMaybe we should do something besides \"$ETC_...\" so we don\u0027t have to worry about shell escaping, maybe just something like \"###ETCD_NAME###\", so you can write the sed as\n\nsed -i -e \"s;###ETCD_NAME###;${ETCD_NAME};g\"\n\nor whatever separator/surrounding characters you like.",
+      "revId": "dc46554d11b09516b878201df1a5b19983affe77",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13921c1f_2c4efb96",
+        "filename": "charts/etcd/templates/etc/_kubernetes-etcd.yaml.tpl",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-29T15:42:27Z",
+      "side": 1,
+      "message": "I think we can simplify this one and just reuse the node name as done in the anchor\u0027s daemonset.",
+      "revId": "dc46554d11b09516b878201df1a5b19983affe77",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
