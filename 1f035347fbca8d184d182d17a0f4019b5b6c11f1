@@ -22,6 +22,30 @@
       "revId": "1f035347fbca8d184d182d17a0f4019b5b6c11f1",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f91b14b9_18c22fde",
+        "filename": "docs/source/design.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-11-30T16:03:37Z",
+      "side": 1,
+      "message": "Thanks, updated!",
+      "parentUuid": "156d4ee0_b5f5c311",
+      "range": {
+        "startLine": 221,
+        "startChar": 72,
+        "endLine": 221,
+        "endChar": 74
+      },
+      "revId": "1f035347fbca8d184d182d17a0f4019b5b6c11f1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
