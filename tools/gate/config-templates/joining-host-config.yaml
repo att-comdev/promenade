@@ -25,6 +25,9 @@ data:
       - openstack-control-plane=enabled
       - openvswitch=enabled
       - ucp-control-plane=enabled
+  packages:
+    additional:
+      - ceph-common=10.2.9-0ubuntu0.16.04.1
 ---
 schema: promenade/KubernetesNode/v1
 metadata:
@@ -52,6 +55,9 @@ data:
       - openstack-control-plane=enabled
       - openvswitch=enabled
       - ucp-control-plane=enabled
+  packages:
+    additional:
+      - ceph-common=10.2.9-0ubuntu0.16.04.1
 ---
 schema: promenade/KubernetesNode/v1
 metadata:
@@ -79,6 +85,9 @@ data:
       - openstack-control-plane=enabled
       - openvswitch=enabled
       - ucp-control-plane=enabled
+  packages:
+    additional:
+      - ceph-common=10.2.9-0ubuntu0.16.04.1
 ---
 schema: promenade/KubernetesNode/v1
 metadata:
@@ -101,4 +110,7 @@ data:
       - openstack-compute-node=enabled
       - openstack-control-plane=enabled
       - openvswitch=enabled
+  packages:
+    additional:
+      - ceph-common=10.2.9-0ubuntu0.16.04.1
 ...
