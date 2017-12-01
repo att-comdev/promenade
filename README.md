@@ -29,6 +29,8 @@ To get started, see
 Configuration is documented
 [here](https://promenade.readthedocs.io/en/latest/configuration/index.html).
 
+Bootstrap validation is documented [here](docs/bootstrap-validation.md)
+
 ## Bugs
 
 Bugs are tracked in
