@@ -15,8 +15,7 @@
 
 manifests:
   daemonset_proxy: true
-  configmap_etc: true
-  secret: true
+  rbac: true
 
 pod:
   lifecycle:
@@ -44,12 +43,6 @@ images:
   tags:
     proxy: gcr.io/google_containers/hyperkube-amd64:v1.8.0
   pull_policy: "IfNotPresent"
-
-secrets:
-  tls:
-    ca: placeholder
-    cert: placeholder
-    key: placeholder
 
 command_prefix:
   - /proxy
