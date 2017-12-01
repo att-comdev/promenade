@@ -79,6 +79,7 @@ data:
   description: UCP Services
   chart_group:
     - promenade
+    - armada
 ---
 schema: armada/ChartGroup/v1
 metadata:
@@ -1027,6 +1028,42 @@ data:
     type: local
     location: /etc/genesis/armada/assets/charts
     subpath: promenade
+  dependencies:
+    - helm-toolkit
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: armada
+data:
+  chart_name: armada
+  release: armada
+  namespace: kube-system
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+  values:
+    images:
+      tags:
+        api: ${IMAGE_ARMADA}
+    labels:
+      node_selector_key: ucp-control-plane
+      node_selector_value: enabled
+    conf:
+      armada:
+        DEFAULT:
+          tiller_namespace: openstack
+    network:
+      api:
+        node_port:
+          enabled: true
+          port: 31903
+  source:
+    type: git
+    location: https://github.com/att-comdev/armada
+    subpath: charts/armada
+    reference: master
   dependencies:
     - helm-toolkit
 ...
