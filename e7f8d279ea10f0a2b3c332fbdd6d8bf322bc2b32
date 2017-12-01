@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b309cf9_aba175ae",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-01T17:51:48Z",
+      "side": 1,
+      "message": "If the existing validation.check_schemas call provides all errors at once, then let\u0027s try to report those.  Otherwise, we\u0027ll make a separate PS that tries to report all errors at once.",
+      "revId": "e7f8d279ea10f0a2b3c332fbdd6d8bf322bc2b32",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166044db_682254db",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-01T17:51:48Z",
+      "side": 1,
+      "message": "I think we raise a custom validation exception when schema validation fails, so make sure we\u0027re catching that instead.",
+      "revId": "e7f8d279ea10f0a2b3c332fbdd6d8bf322bc2b32",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e21909d8_40aab4e5",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-01T17:51:48Z",
+      "side": 1,
+      "message": "Let\u0027s move this functionality to a function in the existing validation module to make it easier to test.\n\nProbably the minimal test cases are:\n\n1 successful example\n2 negative exmaples\n  a) document that does not pass schema validation\n  b) a missing required document",
+      "revId": "e7f8d279ea10f0a2b3c332fbdd6d8bf322bc2b32",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
