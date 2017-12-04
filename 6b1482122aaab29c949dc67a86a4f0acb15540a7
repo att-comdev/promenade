@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e084ecd4_864b68e5",
+        "filename": "test-requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-04T21:59:53Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this requirement here, since it\u0027s already in requirements-direct and requirements-frozen",
+      "revId": "6b1482122aaab29c949dc67a86a4f0acb15540a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d6c172e_e1769dea",
+        "filename": "test-requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-04T21:59:53Z",
+      "side": 1,
+      "message": "As an aside:  it seems that these are not needed for testing, but are not getting installed by the tox -e docs job.\n\nCan you make a separate PS that moves these requirements to that job as needed?  Thanks!",
+      "revId": "6b1482122aaab29c949dc67a86a4f0acb15540a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
