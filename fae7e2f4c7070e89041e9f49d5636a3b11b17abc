@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c54909a_ddd14029",
+        "filename": "charts/proxy/templates/daemonset.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-04T14:40:43Z",
+      "side": 1,
+      "message": "This will need to be configurable.",
+      "revId": "fae7e2f4c7070e89041e9f49d5636a3b11b17abc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b7902a8_bad1c883",
+        "filename": "charts/proxy/templates/daemonset.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-04T14:40:43Z",
+      "side": 1,
+      "message": "This will also need to be configurable.",
+      "revId": "fae7e2f4c7070e89041e9f49d5636a3b11b17abc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf2ef6ff_6d532553",
+        "filename": "charts/proxy/templates/rbac.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-04T14:40:43Z",
+      "side": 1,
+      "message": "Let\u0027s add the \"if .Values.manifests.rbac\" kind of wrapper around this",
+      "revId": "fae7e2f4c7070e89041e9f49d5636a3b11b17abc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5d0c20b_054764d2",
+        "filename": "charts/proxy/templates/rbac.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-04T14:40:43Z",
+      "side": 1,
+      "message": "\"namespace\" fields can be changed to {{ .Release.namespace }}",
+      "revId": "fae7e2f4c7070e89041e9f49d5636a3b11b17abc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
