@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4a108d0_8d0dc177",
+        "filename": "examples/basic/armada-resources.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-05T15:56:58Z",
+      "side": 1,
+      "message": "This will need to be \"noauth\" instead of authtoken, since we don\u0027t deploy keystone in the basic example.\n\nThat should make the default ./tools/gate.sh run a pretty good test of the noauth filter",
+      "revId": "9fc27dd885b71d1ac6bf132b7ea2d8bcff3df52c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
