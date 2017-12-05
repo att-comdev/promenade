@@ -11,14 +11,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import promenade.options
 from promenade.control import api
 from promenade import logging
+from promenade import policy
 
 
 def start_promenade():
     # Setup root logger
-    logging.setup(verbose=False)
-    # TODO: Add policy engine to start
+    logging.setup(verbose=True)
+
+    # Setup policy
+    policy.policy_engine = policy.PromenadePolicy()
+    policy.policy_engine.register_policy()
+
     # Start the API
     return api.start_api()
 

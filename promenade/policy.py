@@ -11,15 +11,42 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-import functools
+
 
 import falcon
+import functools
+import oslo_policy.policy as op
+from oslo_config import cfg
 
 from promenade import exceptions as ex
 
-# TODO: Add policy_engine
 policy_engine = None
+
+POLICIES = [
+    op.RuleDefault(
+        'admin_required',
+        'role:admin or is_admin:1',
+        description='Actions requiring admin authority'),
+    op.DocumentedRuleDefault('kubernetes_provisioner:get_join_scripts',
+        'role:admin', 'Get join script for node',
+                                 [{
+                                     'path': '/api/v1.0/join-scripts',
+                                     'method': 'GET'
+                                 }]),
+]
+
+
+class PromenadePolicy:
+    def __init__(self):
+        self.enforcer = op.Enforcer(cfg.CONF, use_conf=False)
+
+    def register_policy(self):
+        self.enforcer.register_defaults(POLICIES)
+        self.enforcer.load_rules()
+
+    def authorize(self, action, ctx):
+        target = {'project_id': ctx.project_id, 'user_id': ctx.user_id}
+        return self.enforcer.authorize(action, target, ctx.to_policy_view())
 
 
 class ApiEnforcer(object):

@@ -64,9 +64,11 @@ class AuthMiddleware(object):
                     'X-PROJECT-DOMAIN-NAME')
             if service:
                 # comma delimieted list of case-sensitive role names
-                ctx.add_roles(req.get_header('X-SERVICE-ROLES').split(','))
+                if req.get_header('X-SERVICE-ROLES'):
+                    ctx.add_roles(req.get_header('X-SERVICE-ROLES').split(','))
             else:
-                ctx.add_roles(req.get_header('X-ROLES').split(','))
+                if req.get_header('X-ROLES'):
+                    ctx.add_roles(req.get_header('X-ROLES').split(','))
 
             if req.get_header('X-IS-ADMIN-PROJECT') == 'True':
                 ctx.is_admin_project = True

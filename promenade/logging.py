@@ -1,4 +1,9 @@
 import logging
+from logging import CRITICAL
+from logging import DEBUG
+from logging import ERROR
+from logging import INFO
+from logging import WARNING
 from logging import getLogger
 
 __all__ = ['getLogger', 'setup']
