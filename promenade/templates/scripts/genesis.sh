@@ -32,13 +32,13 @@ done
 tail -f /var/log/armada/bootstrap-armada.log &
 
 set +x
-end=$(($(date +%s) + 3600))
+end=$(($(date +%s) + 1800))
 while true; do
     if [[ -e /etc/kubernetes/manifests/bootstrap-armada.yaml ]]; then
         now=$(date +%s)
         if [ $now -gt $end ]; then
             log Armada static pod manifest still in place after expected duration
-            fail
+            break
         fi
         sleep 5
     else

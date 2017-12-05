@@ -90,7 +90,6 @@ spec:
           sleep 5
         done
 
-        rm -f /etc/kubernetes/manifests/bootstrap-armada.yaml
         sleep 10000
     volumeMounts:
       - name: ipc
