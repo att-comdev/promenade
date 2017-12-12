@@ -19,87 +19,120 @@ class Generator:
         return self.config['KubernetesNetwork:dns.cluster_domain']
 
     def generate(self, output_dir):
-        # Certificate Authorities
-        self.gen('ca', 'kubernetes')
-        self.gen('ca', 'kubernetes-etcd')
-        self.gen('ca', 'kubernetes-etcd-peer')
-        self.gen('ca', 'calico-etcd')
-        self.gen('ca', 'calico-etcd-peer')
+        for ca_name, ca_def in self.config['PKICatalog:data.certificate_authorities'].items():
+           self.gen('ca',ca_name)
+           for cert_def in ca_def.get('certificates', []):
+                hosts=cert_def.get(hosts,[])
+                hosts.extend(self.get_host(cert_def.get('kubernetes_service_names')))
+               self.gen(
+                'certificate',
+                cert_def['document_name'],
+                ca=ca_name,
+                cn=cert_def['common_name'],
+                hosts=hosts,
+                groups=cert_def.get('groups',[])
+                )
 
-        # Certificates for Kubernetes API server
-        self.gen(
-            'certificate',
-            'apiserver',
-            ca='kubernetes',
-            cn='apiserver',
-            hosts=self._service_dns('kubernetes', 'default') +
-            ['localhost', '127.0.0.1', 'apiserver.kubernetes.promenade'] +
-            [self.config['KubernetesNetwork:kubernetes.service_ip']])
-        self.gen(
-            'certificate',
-            'apiserver-etcd',
-            ca='kubernetes-etcd',
-            cn='apiserver')
-
-        # Certificates for other Kubernetes components
-        self.gen(
-            'certificate',
-            'scheduler',
-            ca='kubernetes',
-            cn='system:kube-scheduler')
-        self.gen(
-            'certificate',
-            'controller-manager',
-            ca='kubernetes',
-            cn='system:kube-controller-manager')
-        self.gen('keypair', 'service-account')
-
-        self.gen_kubelet_certificates()
-
-        self.gen(
-            'certificate', 'proxy', ca='kubernetes', cn='system:kube-proxy')
-
-        # Certificates for kubectl admin
-        self.gen(
-            'certificate',
-            'admin',
-            ca='kubernetes',
-            cn='admin',
-            groups=['system:masters'])
-
-        # Certificates for armada
-        self.gen(
-            'certificate',
-            'armada',
-            ca='kubernetes',
-            cn='armada',
-            groups=['system:masters'])
-
-        # Certificates for coredns
-        self.gen('certificate', 'coredns', ca='kubernetes', cn='coredns')
-
-        # Certificates for Kubernetes's etcd servers
-        self.gen_etcd_certificates(
-            ca='kubernetes-etcd',
-            genesis=True,
-            service_name='kubernetes-etcd',
-            service_namespace='kube-system',
-            service_ip=self.config['KubernetesNetwork:etcd.service_ip'],
-            additional_hosts=['etcd.kubernetes.promenade'])
-
-        # Certificates for Calico's etcd servers
-        self.gen_etcd_certificates(
-            ca='calico-etcd',
-            service_name='calico-etcd',
-            service_namespace='kube-system',
-            service_ip=self.calico_etcd_service_ip,
-            additional_hosts=['etcd.calico.promenade'])
-
-        # Certificates for Calico node
-        self.gen(
-            'certificate', 'calico-node', ca='calico-etcd', cn='calico-node')
-
+        for keypair_def in self.config['PKICatalog:keypairs']:
+            self.gen(
+                'keypair',
+                keypair_def['name']
+                )
         _write(output_dir, self.documents)
+.   
+
+    # def generate(self, output_dir):
+    #     # Certificate Authorities
+    #     self.gen('ca', 'kubernetes')
+    #     self.gen('ca', 'kubernetes-etcd')
+    #     self.gen('ca', 'kubernetes-etcd-peer')
+    #     self.gen('ca', 'calico-etcd')
+    #     self.gen('ca', 'calico-etcd-peer')
+
+    #     # Certificates for Kubernetes API server
+    #     self.gen(
+    #         'certificate',
+    #         'apiserver',
+    #         ca='kubernetes',
+    #         cn='apiserver',
+    #         hosts=self._service_dns('kubernetes', 'default') +
+    #         ['localhost', '127.0.0.1', 'apiserver.kubernetes.promenade'] +
+    #         [self.config['KubernetesNetwork:kubernetes.service_ip']])
+    #     self.gen(
+    #         'certificate',
+    #         'apiserver-etcd',
+    #         ca='kubernetes-etcd',
+    #         cn='apiserver')
+
+    #     # Certificates for other Kubernetes components
+    #     self.gen(
+    #         'certificate',
+    #         'scheduler',
+    #         ca='kubernetes',
+    #         cn='system:kube-scheduler')
+    #     self.gen(
+    #         'certificate',
+    #         'controller-manager',
+    #         ca='kubernetes',
+    #         cn='system:kube-controller-manager')
+    #     self.gen('keypair', 'service-account')
+
+    #     self.gen_kubelet_certificates()
+
+    #     self.gen(
+    #         'certificate', 'proxy', ca='kubernetes', cn='system:kube-proxy')
+
+    #     # Certificates for kubectl admin
+    #     self.gen(
+    #         'certificate',
+    #         'admin',
+    #         ca='kubernetes',
+    #         cn='admin',
+    #         groups=['system:masters'])
+
+    #     # Certificates for armada
+    #     self.gen(
+    #         'certificate',
+    #         'armada',
+    #         ca='kubernetes',
+    #         cn='armada',
+    #         groups=['system:masters'])
+
+    #     # Certificates for coredns
+    #     self.gen('certificate', 'coredns', ca='kubernetes', cn='coredns')
+
+    #     # Certificates for Kubernetes's etcd servers
+    #     self.gen_etcd_certificates(
+    #         ca='kubernetes-etcd',
+    #         genesis=True,
+    #         service_name='kubernetes-etcd',
+    #         service_namespace='kube-system',
+    #         service_ip=self.config['KubernetesNetwork:etcd.service_ip'],
+    #         additional_hosts=['etcd.kubernetes.promenade'])
+
+    #     # Certificates for Calico's etcd servers
+    #     self.gen_etcd_certificates(
+    #         ca='calico-etcd',
+    #         service_name='calico-etcd',
+    #         service_namespace='kube-system',
+    #         service_ip=self.calico_etcd_service_ip,
+    #         additional_hosts=['etcd.calico.promenade'])
+
+    #     # Certificates for Calico node
+    #     self.gen(
+    #         'certificate', 'calico-node', ca='calico-etcd', cn='calico-node')
+
+    #     _write(output_dir, self.documents)
+
+    def get_host(service_name):
+        service_list = []
+        for service in service_name:
+            parts = service_name.split('.')
+            for i in range(len(parts)):
+                service_list.append('.'.join(parts[:i]))
+        return service_list
+
+
 
     def gen(self, kind, *args, **kwargs):
         method = getattr(self.keys, 'generate_' + kind)
@@ -192,4 +225,4 @@ def _write(output_dir, docs):
             stream=f,
             default_flow_style=False,
             explicit_start=True,
-            indent=2)
+            indent=2)   
