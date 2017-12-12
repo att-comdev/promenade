@@ -1002,6 +1002,8 @@ data:
   values:
     anchor:
       etcdctl_endpoint: kubernetes-etcd.kube-system.svc.cluster.local
+      host_network: false
+      dns_policy: null
     labels:
       anchor:
         node_selector_key: kubernetes-etcd

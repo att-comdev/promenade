@@ -919,6 +919,8 @@ data:
   values:
     anchor:
       etcdctl_endpoint: kubernetes-etcd
+      host_network: false
+      dns_policy: null
     labels:
       anchor:
         node_selector_key: kubernetes-etcd
