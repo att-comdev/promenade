@@ -24,7 +24,6 @@ labels:
     node_selector_value: enabled
 
 anchor:
-  dns_policy: Default
   etcdctl_endpoint: example-etcd
   host_data_path: /var/lib/etcd/example
 
