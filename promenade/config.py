@@ -110,7 +110,7 @@ class Configuration:
     @property
     def kubelet_name(self):
         for document in self.iterate(kind='Genesis'):
-            return 'genesis'
+            return document['data']['hostname']
 
         for document in self.iterate(kind='KubernetesNode'):
             return document['data']['hostname']
