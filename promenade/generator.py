@@ -192,4 +192,4 @@ def _write(output_dir, docs):
             stream=f,
             default_flow_style=False,
             explicit_start=True,
-            indent=2)
+            indent=2)   

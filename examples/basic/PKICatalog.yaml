@@ -1,0 +1,95 @@
+---
+schema: promenade/PKICatalog/v1
+metadata:
+  schema: metadata/Document/v1
+  name: cluster-certificates
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  certificate_authorities:
+    kubernetes:
+      description: CA for Kubernetes components
+      certificates:
+        - document_name: apiserver
+          description: Service certificate for Kubernetes apiserver
+          common_name: apiserver
+          hosts:
+            - localhost
+            - 127.0.0.1
+            - 10.96.0.1
+            - apiserver.kubernetes.promenade
+          kubernetes_service_names:
+            # NOTE(mark-burnett): This will result in the following list of hosts:
+            # * kubernetes
+            # * kubernetes.default
+            # * kubernetes.default.svc
+            # * kubernetes.default.svc.cluster.local
+            - kubernetes.default.svc.cluster.local
+
+        # NOTE(mark-burnett): Sample kubelet config.  There will be one for
+        # each node.
+        - document_name: kubelet-n0
+          common_name: system:node:n0
+          hosts:
+            - n0
+            - 192.168.77.10
+          groups:
+            - system:nodes
+
+        - document_name: apiserver-etcd
+          description: etcd client certificate for use by Kubernetes apiserver
+          common_name: apiserver
+          # NOTE(mark-burnett): hosts not required for client certificates
+
+        - document_name: scheduler
+          description: Service certificate for Kuberenetes scheduler
+          common_name: system:kube-scheduler
+
+        - document_name: controller-manager
+          description: certificate for controller-manager
+          common_name: system:kube-controller-manager
+
+        - document_name: kube-proxy
+          common_name: system:kube-proxy
+    
+        - document_name: admin
+          common_name: admin
+          groups:
+            - system:masters
+
+        - document-name: armada
+          common_name: armada
+          groups:
+            - system:masters
+
+        - document_name: coredns
+          common_name: coredns
+
+    kuberenetes-etcd:
+      description: Certificates for Kubernetes's etcd servers
+      certificates:
+        - genesis: true
+          service_name: kubernetes-etcd
+          service_namespace: kube-system
+          service_ip: ''
+          additional_hosts:
+            - etcd.calico.promenade
+
+    calico-etcd:
+      description: Certificates for Calico
+      certificates:
+        - service_name: calico-etcd
+          service_namespace: kube-system
+          service_ip: ''
+          additional_hosts:
+            - etcd.calico.promenade
+
+        - document_name: calico-node
+          common_name: calcico-node
+
+
+  keypairs:
+    - name: service-account
+      description: Service account signing key for use by Kubernetes controller-manager.
+...
