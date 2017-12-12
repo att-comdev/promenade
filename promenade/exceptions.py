@@ -238,6 +238,7 @@ class InvalidFormatError(PromenadeException):
 
 class ValidationException(PromenadeException):
     title = 'Validation Error'
+    status=0
 
 
 def massage_error_list(error_list, placeholder_description):
