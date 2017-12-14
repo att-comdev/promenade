@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba48c08e_1c11de13",
+        "filename": "promenade/validation.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-12-14T22:48:42Z",
+      "side": 1,
+      "message": "This will fail if doc.get(\u0027schema\u0027, \u0027\u003cmissing\u0027\u003e) returns \u0027\u003cmissing\u003e\u0027 because \u0027\u003cmissing\u003e\u0027.split(\u0027/\u0027) will return [\u0027\u0027] so indexing into [1] will return an IndexError.\n\nThis should work:\n\n    schema \u003d doc.get(\u0027schema\u0027, None)\n    if not schema:\n        raise exceptions.ValidationException(\u0027\"schema\" is a required document key.\u0027)",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 39
+      },
+      "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3822b561_ebe04729",
+        "filename": "tests/unit/api/test_versions.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-12-14T22:48:42Z",
+      "side": 1,
+      "message": "versions",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc966ac_661a1a70",
+        "filename": "tests/unit/api/test_versions.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-12-14T22:48:42Z",
+      "side": 1,
+      "message": "Should be possible to do this instead:\n\nassert {\u0027v1.0\u0027: {\u0027path\u0027: \u0027/api/v1.0\u0027, \u0027status\u0027: \u0027stable\u0027}} \u003d\u003d body.json",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
