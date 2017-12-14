@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f3a3896_d19f88d8",
+        "filename": "examples/basic/PKICatalog.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-14T21:54:27Z",
+      "side": 1,
+      "message": "Naturally, we need to add a copy of this to the \"complete\" example, and also to the (legacy?) gate.",
+      "revId": "09c290db52cef4ec573e9f5d7af0ce87440ab50b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90f9dd1d_5048d646",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-14T21:54:27Z",
+      "side": 1,
+      "message": "Let\u0027s fix this in a separate patch set.",
+      "revId": "09c290db52cef4ec573e9f5d7af0ce87440ab50b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0be0583d_790dab04",
+        "filename": "promenade/generator.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-14T21:54:27Z",
+      "side": 1,
+      "message": "Maybe we can brainstorm a more descriptive name for this.",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "09c290db52cef4ec573e9f5d7af0ce87440ab50b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
