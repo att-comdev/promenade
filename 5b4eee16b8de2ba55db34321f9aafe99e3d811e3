@@ -22,6 +22,30 @@
       "revId": "5b4eee16b8de2ba55db34321f9aafe99e3d811e3",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f46a0c01_99a1ed1a",
+        "filename": "tools/dev/server.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2017-12-14T20:59:42Z",
+      "side": 1,
+      "message": "I believe the `:ro` at the end is telling docker this is a read-only volume",
+      "parentUuid": "ba8c9d32_8d5b7830",
+      "range": {
+        "startLine": 16,
+        "startChar": 93,
+        "endLine": 16,
+        "endChar": 95
+      },
+      "revId": "5b4eee16b8de2ba55db34321f9aafe99e3d811e3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
