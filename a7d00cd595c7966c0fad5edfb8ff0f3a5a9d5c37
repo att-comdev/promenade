@@ -68,6 +68,30 @@
       "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05a302a5_07d435bf",
+        "filename": "tests/unit/api/test_versions.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1012359
+      },
+      "writtenOn": "2017-12-15T21:06:32Z",
+      "side": 1,
+      "message": "I ran this a few times and found the order isn\u0027t consistent over multiple tests.",
+      "parentUuid": "dfc966ac_661a1a70",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
