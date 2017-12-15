@@ -92,6 +92,30 @@
       "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b08903e_553642fd",
+        "filename": "tests/unit/api/test_versions.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2017-12-15T21:35:26Z",
+      "side": 1,
+      "message": "It\u0027s because py.test uses inherently stupid assertions (the basic assert statement). So to do anything more sophisticated you need to implement your own wrapper. It\u0027s probably failing because the keys are unsorted, else it would pass.\n\nE.g.:\n     assert sorted(expected), sorted(body.json)",
+      "parentUuid": "05a302a5_07d435bf",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
