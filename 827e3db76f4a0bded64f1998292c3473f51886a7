@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b9c0459_177d2141",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-18T19:07:53Z",
+      "side": 1,
+      "message": "It would be nice to include the actual validation errors in the response.",
+      "revId": "827e3db76f4a0bded64f1998292c3473f51886a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e38ab2e_f9239e6e",
+        "filename": "promenade/validation.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-18T19:07:53Z",
+      "side": 1,
+      "message": "I guess you probably want `if count !\u003d 0:`, since not having one of these documents is also a serious error.",
+      "revId": "827e3db76f4a0bded64f1998292c3473f51886a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
