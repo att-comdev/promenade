@@ -116,6 +116,30 @@
       "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "487e89c3_48e04563",
+        "filename": "tests/unit/api/test_versions.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-18T19:07:53Z",
+      "side": 1,
+      "message": "Actually py.test does some sneaky patching to try to generate more meaningful diffs:  https://docs.pytest.org/en/latest/example/reportingdemo.html#tbreportdemo\n\nI\u0027m not sure why the original equal isn\u0027t working here precisely, I\u0027d have to see :)",
+      "parentUuid": "8b08903e_553642fd",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "a7d00cd595c7966c0fad5edfb8ff0f3a5a9d5c37",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
