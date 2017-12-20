@@ -25,4 +25,6 @@ metadata:
 data:
   api-paste.ini: |+
 {{ include "helm-toolkit.utils.to_ini" .Values.conf.paste | indent 4 }}
+  promenade.conf: |+
+{{ include "helm-toolkit.utils.to_ini" .Values.conf.promenade | indent 4 }}
 {{- end }}
