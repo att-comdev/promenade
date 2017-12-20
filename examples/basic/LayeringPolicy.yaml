@@ -1,0 +1,13 @@
+---
+schema: deckhand/LayeringPolicy/v1
+metadata:
+  schema: metadata/Control/v1
+  name: layering-policy
+data:
+  layerOrder:
+# NOTE(mark-burnett): Limit to one layer for now to avoid limitations in
+# Deckhand engine.
+#    - global
+#    - type
+    - site
+...
