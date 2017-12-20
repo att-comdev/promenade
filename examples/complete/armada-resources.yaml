@@ -1756,6 +1756,12 @@ data:
     timeout: 600
   values:
     conf:
+      promenade:
+        keystone_authtoken:
+          password: password
+          username: promenade
+          domain_name: default
+          auth_url: 'http://keystone-api.ucp.svc.cluster.local/'
       paste:
         filter:authtoken:
           paste.filter_factory: 'keystonemiddleware.auth_token:filter_factory'

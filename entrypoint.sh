@@ -11,7 +11,8 @@ if [ "$1" = 'server' ]; then
         -z ${UWSGI_TIMEOUT} \
         --paste config:/etc/promenade/api-paste.ini \
         --enable-threads -L \
-        --workers 4
+        --workers 4 \
+        --pyargv "--config-file /etc/promenade/promenade.conf"
 fi
 
 exec ${@}

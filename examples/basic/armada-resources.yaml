@@ -1069,6 +1069,8 @@ data:
   values:
     conf:
       paste:
+        app:promenade-api:
+          disable: keystone
         pipeline:main:
           pipeline: noauth promenade-api
     images:
