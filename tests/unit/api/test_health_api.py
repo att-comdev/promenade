@@ -10,6 +10,7 @@ from promenade.promenade import promenade
 def client():
     return testing.TestClient(promenade)
 
+
 def test_get_health(client):
     response = client.simulate_get('/api/v1.0/health')
     assert response.status == falcon.HTTP_204
