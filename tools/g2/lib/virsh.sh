@@ -4,7 +4,7 @@ img_base_declare() {
         log Installing base image from "${BASE_IMAGE_URL}"
 
         cd "${TEMP_DIR}"
-        curl -q -L -o base.img "${BASE_IMAGE_URL}"
+        curl --fail --max-time 300 --retry 2 --retry-delay 5 -L -o base.img "${BASE_IMAGE_URL}"
 
         {
             virsh vol-create-as \
