@@ -19,6 +19,7 @@ import falcon
 from promenade.config import Configuration
 from promenade.control import base
 from promenade import exceptions
+from promenade import policy
 from promenade import validation
 
 LOG = logging.getLogger(__name__)
@@ -46,6 +47,7 @@ class ValidateDesignResource(base.BaseResource):
             "code": status_code,
         })
 
+    @policy.ApiEnforcer('kubernetes_provisioner:post_validatedesign')
     def on_post(self, req, resp):
         href = req.get_param('href', required=True)
         try:
