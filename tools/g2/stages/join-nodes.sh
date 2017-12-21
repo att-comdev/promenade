@@ -85,6 +85,10 @@ for NAME in "${NODES[@]}"; do
         "${BASE_PROM_URL}/api/v1.0/health"
     log "Promenade API healthy"
 
+    log "Validating documents"
+    ssh_cmd "${VIA}" curl -v "${CURL_ARGS[@]}" \
+        --data-urlencode "href=http://192.168.77.1:7777" "${BASE_PROM_URL}"
+
     log "Fetching join script"
     ssh_cmd "${VIA}" curl "${CURL_ARGS[@]}" \
         "$(render_curl_url "${NAME}" "${LABELS[@]}")" > "${SCRIPT_DIR}/join-${NAME}.sh"
