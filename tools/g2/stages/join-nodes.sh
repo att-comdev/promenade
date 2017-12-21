@@ -64,6 +64,13 @@ render_curl_url() {
     echo "${BASE_URL}?${DESIGN_REF}&${HOST_PARAMS}${LABEL_PARAMS}"
 }
 
+render_validate_url() {
+    BASE_URL="${BASE_PROM_URL}/api/v1.0/validatedesign"
+    HREF="href=http://192.168.77.1:7777"
+
+    echo "${BASE_URL}?${HREF}"
+}
+
 mkdir -p "${SCRIPT_DIR}"
 
 for NAME in "${NODES[@]}"; do
@@ -88,6 +95,9 @@ for NAME in "${NODES[@]}"; do
     log "Fetching join script"
     ssh_cmd "${VIA}" curl "${CURL_ARGS[@]}" \
         "$(render_curl_url "${NAME}" "${LABELS[@]}")" > "${SCRIPT_DIR}/join-${NAME}.sh"
+
+    log "Validating documents"
+    ssh_cmd "${VIA}" curl "${CURL_ARGS[@]} $(render_curl_url)"
 
     chmod 755 "${SCRIPT_DIR}/join-${NAME}.sh"
     log "Join script received"
