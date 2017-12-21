@@ -73,6 +73,13 @@ render_curl_url() {
     echo "${BASE_URL}?${DESIGN_REF}&${HOST_PARAMS}${LABEL_PARAMS}"
 }
 
+render_validate_url() {
+    BASE_URL="${BASE_PROM_URL}/api/v1.0/validatedesign"
+    HREF="href=http://192.168.77.1:7777"
+
+    echo "${BASE_URL}?${HREF}"
+}
+
 mkdir -p "${SCRIPT_DIR}"
 
 for NAME in "${NODES[@]}"; do
