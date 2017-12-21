@@ -64,6 +64,13 @@ render_curl_url() {
     echo "${BASE_URL}?${DESIGN_REF}&${HOST_PARAMS}${LABEL_PARAMS}"
 }
 
+render_validate_url() {
+    BASE_URL="${BASE_PROM_URL}/api/v1.0/validatedesign"
+    HREF="href=http://192.168.77.1:7777"
+
+    echo "${BASE_URL}?${HREF}"
+}
+
 mkdir -p "${SCRIPT_DIR}"
 
 for NAME in "${NODES[@]}"; do
@@ -84,6 +91,9 @@ for NAME in "${NODES[@]}"; do
     ssh_cmd "${VIA}" curl -v "${CURL_ARGS[@]}" \
         "${BASE_PROM_URL}/api/v1.0/health"
     log "Promenade API healthy"
+
+    log "Validating documents"
+    ssh_cmd "${VIA}" curl "${CURL_ARGS[@]}" "$(render_validate_url)"
 
     log "Fetching join script"
     ssh_cmd "${VIA}" curl "${CURL_ARGS[@]}" \

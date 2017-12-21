@@ -192,7 +192,7 @@ class PromenadeException(Exception):
     @staticmethod
     def _gen_ex_message(title, description):
         ttl = title or 'Exception'
-        dsc = description or 'No additional decsription'
+        dsc = description or 'No additional description'
         return '{} : {}'.format(ttl, dsc)
 
     @staticmethod
@@ -238,6 +238,7 @@ class InvalidFormatError(PromenadeException):
 
 class ValidationException(PromenadeException):
     title = 'Validation Error'
+    status = falcon.HTTP_400
 
 
 def massage_error_list(error_list, placeholder_description):
