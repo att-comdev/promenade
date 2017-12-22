@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e79fd387_e4fd87bc",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-22T20:49:38Z",
+      "side": 1,
+      "message": "Let\u0027s update validatedesign to conform to https://github.com/att-comdev/ucp-integration/blob/master/docs/api-conventions.md#post-v10validatedesign\n\nin a follow-on change.  It should take a JSON body rather than query params.",
+      "revId": "464972eee39308b59bb3d6028c83e8755665ebe8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8a6cb63_e13cfae8",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2017-12-22T20:49:38Z",
+      "side": 1,
+      "message": "I would prefer to see validate happen before we try to render a join script.  I think it\u0027s OK to leave it in the loop here though.",
+      "revId": "464972eee39308b59bb3d6028c83e8755665ebe8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
