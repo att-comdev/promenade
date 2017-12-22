@@ -187,7 +187,7 @@ class PromenadeException(Exception):
         self.retry = retry
         self.trace = trace
         super().__init__(
-            PromenadeException._gen_ex_message(title, description))
+            PromenadeException._gen_ex_message(self.title, description))
 
     @staticmethod
     def _gen_ex_message(title, description):

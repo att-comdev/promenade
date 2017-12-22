@@ -31,7 +31,9 @@ class Configuration:
                          stream_name)
             documents.extend(stream_documents)
 
-        return cls(documents=documents, **kwargs)
+        cfg = cls(documents=documents, **kwargs)
+        validation.check_design(cfg)
+        return cfg
 
     @classmethod
     def from_design_ref(cls, design_ref):
@@ -40,8 +42,11 @@ class Configuration:
 
         documents = list(yaml.safe_load_all(response.text))
         validation.check_schemas(documents)
+        validation.check_design(documents)
 
-        return cls(documents=documents)
+        cfg = cls(documents=documents)
+        validation.check_design(cfg)
+        return cfg
 
     def __getitem__(self, path):
         value = self.get_path(path)

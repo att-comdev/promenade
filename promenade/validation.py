@@ -28,16 +28,13 @@ def check_design(config):
     kinds = ['Docker', 'HostSystem', 'Kubelet', 'KubernetesNetwork']
     for kind in kinds:
         count = 0
-        for doc in config.documents:
-            schema = doc.get('schema', None)
-            if not schema:
-                raise exceptions.ValidationException(
-                    '"schema" is a required document key.')
-            name = schema.split('/')[1]
-            if name == kind:
-                count += 1
+        for doc in config.iterate(kind=kind):
+            count += 1
+
         if count != 1:
-            raise exceptions.ValidationException()
+            raise exceptions.ValidationException(
+                description='Got %d copies of schema/%s/v1.  '
+                'Exactly 1 is required.' % (count, kind))
 
 
 def check_schemas(documents):
@@ -59,7 +56,7 @@ def check_schema(document):
         try:
             jsonschema.validate(document.get('data'), SCHEMAS[schema_name])
         except jsonschema.ValidationError as e:
-            raise exceptions.ValidationException(str(e))
+            raise exceptions.ValidationException(description=str(e))
     else:
         LOG.warning('Skipping validation for unknown schema: %s', schema_name)
 
