@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cebd4dcd_17da8ffa",
+        "filename": "tests/unit/api/test_health_api.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1012025
+      },
+      "writtenOn": "2017-12-27T21:37:17Z",
+      "side": 1,
+      "message": "Do test files need the copyright comment?\n\nie:\n# Copyright 2017 AT\u0026T Intellectual Property.  All other rights reserved.\n...",
+      "revId": "28439cea73c54f682cfb7c3c64741c4f6c21f0f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ba2840c_be143582",
+        "filename": "tests/unit/api/test_versions.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1012025
+      },
+      "writtenOn": "2017-12-27T21:37:17Z",
+      "side": 1,
+      "message": "This is efficient! I will try to utilize this approach in my tests.",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 79
+      },
+      "revId": "28439cea73c54f682cfb7c3c64741c4f6c21f0f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
