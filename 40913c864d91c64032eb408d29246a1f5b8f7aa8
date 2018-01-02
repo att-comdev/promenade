@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf0b042a_d5973470",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-02T15:59:32Z",
+      "side": 1,
+      "message": "I think this patchset is a good place to udpate this API to be a POST like the other UCP services.",
+      "revId": "40913c864d91c64032eb408d29246a1f5b8f7aa8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a37975e_418bbaad",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-02T15:59:32Z",
+      "side": 1,
+      "message": "This is failing the gate, because it is mis-quoted.\n\nThere is a good check for this kind of error you can run quickly:  tox -e gate-lint\n\nYou will need to install \"shellcheck\" first: sudo apt install shellcheck\n\nI\u0027ll request a story to add this package so we can add it to the gate.",
+      "revId": "40913c864d91c64032eb408d29246a1f5b8f7aa8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
