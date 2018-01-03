@@ -22,7 +22,7 @@ limitations under the License.
 {{- $serviceAccountName := "promenade-api" }}
 {{ tuple $envAll $dependencies $serviceAccountName | include "helm-toolkit.snippets.kubernetes_pod_rbac_serviceaccount" }}
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: promenade-api
@@ -42,8 +42,10 @@ spec:
 {{ tuple $envAll "promenade" "api" | include "helm-toolkit.snippets.kubernetes_pod_anti_affinity" | indent 8 }}
       nodeSelector:
         {{ .Values.labels.node_selector_key }}: {{ .Values.labels.node_selector_value }}
-      serviceAccountName: promenade
       terminationGracePeriodSeconds: {{ .Values.pod.lifecycle.termination_grace_period.api.timeout | default "30" }}
+      restartPolicy: Always
+      initContainers:
+{{ tuple $envAll $dependencies $mounts_promenade_init | include "helm-toolkit.snippets.kubernetes_entrypoint_init_container" | indent 8 }}
       containers:
         - name: promenade-api
           image: {{ .Values.images.tags.promenade }}
