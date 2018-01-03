@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f0b4b55_9bb4baae",
+        "filename": "charts/promenade/templates/deployment-api.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2018-01-03T23:05:04Z",
+      "side": 0,
+      "message": "was this not the route cause of the issue?",
+      "range": {
+        "startLine": 45,
+        "startChar": 6,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "83cfb760c48b7c099c9f74984f07137f72aaecce",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
