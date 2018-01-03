@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfb63388_8f060ceb",
+        "filename": "charts/promenade/templates/deployment-api.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-03T14:33:22Z",
+      "side": 1,
+      "message": "I don\u0027t think we want the OSH init container for promenade API.  Let\u0027s keep this PS to just the fix for the seen issue.",
+      "revId": "67fe9af456da0232012641cb06c012204c13f891",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
