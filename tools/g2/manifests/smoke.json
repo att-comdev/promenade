@@ -1,6 +1,6 @@
 {
   "configuration": [
-    "examples/complete"
+    "examples/basic"
   ],
   "stages": [
     {

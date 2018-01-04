@@ -1,4 +1,5 @@
 from . import exceptions, logging, validation
+from deckhand.engine import layering
 import copy
 import jinja2
 import jsonpath_ng
@@ -13,7 +14,7 @@ LOG = logging.getLogger(__name__)
 class Configuration:
     def __init__(self, *, documents, debug=False, substitute=True):
         if substitute:
-            documents = _substitute(documents)
+            documents = _render(documents)
         self.debug = debug
         self.documents = documents
 
@@ -31,7 +32,8 @@ class Configuration:
                          stream_name)
             documents.extend(stream_documents)
 
-        return cls(documents=documents, **kwargs)
+        rendered_documents = _render(documents)
+        return cls(documents=rendered_documents, **kwargs)
 
     @classmethod
     def from_design_ref(cls, design_ref):
@@ -171,42 +173,28 @@ def _get(documents, kind=None, schema=None, name=None):
                 and (name is None or name == _mg(document, 'name'))):
             return document
 
+def _render(all_documents):
+    layering_policy = None
 
-def _substitute(documents):
-    result = []
+    input_documents = []
+    for document in all_documents:
+        if document.get('schema') == 'deckhand/LayeringPolicy/v1':
+            layering_policy = document
+        else:
+            input_documents.append(document)
 
-    for document in documents:
-        dest_schema = document.get('schema')
-        dest_name = _mg(document, 'name')
-        LOG.debug('Checking for substitutions in schema=%s metadata.name=%s',
-                  dest_schema, dest_name)
-        final_doc = copy.deepcopy(document)
-        for substitution in _mg(document, 'substitutions', []):
-            source_schema = substitution['src']['schema']
-            source_name = substitution['src']['name']
-            source_path = substitution['src']['path']
-            dest_path = substitution['dest']['path']
-            LOG.debug('Substituting from schema=%s name=%s src_path=%s '
-                      'into dest_path=%s', source_schema, source_name,
-                      source_path, dest_path)
-            source_document = _get(
-                documents, schema=source_schema, name=source_name)
-            if source_document is None:
-                msg = 'Failed to find source document for subsitution.  ' \
-                        'dest_schema=%s dest_name=%s ' \
-                        'source_schema=%s source_name=%s' \
-                        % (dest_schema, dest_name, source_schema, source_name)
-                LOG.critical(msg)
-                raise exceptions.ValidationException(msg)
+    if layering_policy is None:
+        raise exceptions.ValidationException('No layering policy specified')
 
-            source_value = _extract(source_document['data'],
-                                    substitution['src']['path'])
-            final_doc['data'] = _replace(final_doc['data'], source_value,
-                                         substitution['dest']['path'])
+    dh_engine = layering.DocumentLayering(layering_policy, all_documents)
+    rendered_documents = dh_engine.render()
+    rendered_documents.append(layering_policy)
 
-        result.append(final_doc)
-
-    return result
+    for document in rendered_documents:
+        if (document.get('schema') == 'armada/Chart/v1'
+            and _mg(document, 'name') == 'kubernetes-proxy'):
+            LOG.warn('KP: %s', document)
+    return rendered_documents
 
 
 def _extract(document, jsonpath):
@@ -214,11 +202,6 @@ def _extract(document, jsonpath):
     matches = p.find(document)
     if matches:
         return matches[0].value
-
-
-def _replace(document, value, jsonpath):
-    p = jsonpath_ng.parse(jsonpath)
-    return p.update(document, value)
 
 
 def _mg(document, field, default=None):

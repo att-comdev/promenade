@@ -213,9 +213,9 @@ class PromenadeException(Exception):
 
     def display(self, debug=False):
         if self.trace or debug:
-            LOG.exception(self.description)
+            LOG.exception('%s: %s', self.title, self.description)
         else:
-            LOG.error(self.description)
+            LOG.error('%s: %s', self.title, self.description)
 
 
 class ApiError(PromenadeException):
@@ -238,6 +238,7 @@ class InvalidFormatError(PromenadeException):
 
 class ValidationException(PromenadeException):
     title = 'Validation Error'
+    status = falcon.HTTP_400
 
 
 def massage_error_list(error_list, placeholder_description):

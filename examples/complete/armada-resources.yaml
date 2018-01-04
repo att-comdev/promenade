@@ -141,6 +141,9 @@ schema: armada/Chart/v1
 metadata:
   schema: metadata/Document/v1
   name: helm-toolkit
+  layeringDefinition:
+    abstract: false
+    layer: site
 data:
   chart_name: helm-toolkit
   release: helm-toolkit
@@ -197,11 +200,6 @@ data:
   upgrade:
     no_hooks: true
   values:
-    secrets:
-      tls:
-        ca: placeholder
-        cert: placeholder
-        key: placeholder
     images:
       tags:
         proxy: gcr.io/google_containers/hyperkube-amd64:v1.8.0
@@ -384,16 +382,6 @@ data:
       anchor:
         node_selector_key: calico-etcd
         node_selector_value: enabled
-    secrets:
-      anchor:
-        tls:
-          cert: placeholder
-          key: placeholder
-      tls:
-        client:
-          ca: placeholder
-        peer:
-          ca: placeholder
     etcd:
       host_data_path: /var/lib/etcd/calico
       host_etc_path: /etc/etcd/calico
@@ -407,38 +395,10 @@ data:
         etcdctl: quay.io/coreos/etcd:v3.0.17
     nodes:
       - name: n0
-        tls:
-          client:
-            cert: placeholder
-            key: placeholder
-          peer:
-            cert: placeholder
-            key: placeholder
       - name: n1
-        tls:
-          client:
-            cert: placeholder
-            key: placeholder
-          peer:
-            cert: placeholder
-            key: placeholder
       - name: n2
-        tls:
-          client:
-            cert: placeholder
-            key: placeholder
-          peer:
-            cert: placeholder
-            key: placeholder
       # n3 is here to demonstrate movability of the cluster
       - name: n3
-        tls:
-          client:
-            cert: placeholder
-            key: placeholder
-          peer:
-            cert: placeholder
-            key: placeholder
     service:
       name: calico-etcd
       ip: 10.96.232.136
@@ -506,10 +466,6 @@ data:
       service:
         ip: 10.96.232.136
         port: 6666
-      tls:
-        ca: placeholder
-        cert: placeholder
-        key: placeholder
     images:
       cni: quay.io/calico/cni:v1.11.0
       ctl: quay.io/calico/ctl:v1.6.1
@@ -587,10 +543,6 @@ data:
     images:
       anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
       coredns: coredns/coredns:0.9.9
-    tls:
-      ca: placeholder
-      cert: placeholder
-      key: placeholder
     network:
       kubernetes_netloc: apiserver.kubernetes.promenade:6443
   source:
@@ -676,18 +628,6 @@ data:
       tags:
         anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
         apiserver: gcr.io/google_containers/hyperkube-amd64:v1.8.0
-    secrets:
-      service_account:
-        public_key: placeholder
-      tls:
-        ca: placeholder
-        cert: placeholder
-        key: placeholder
-      etcd:
-        tls:
-          ca: placeholder
-          cert: placeholder
-          key: placeholder
     network:
       kubernetes_service_ip: 10.96.0.1
       pod_cidr: 10.97.0.0/16
@@ -752,13 +692,6 @@ data:
       tags:
         anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.0
         controller_manager: gcr.io/google_containers/hyperkube-amd64:v1.8.0
-    secrets:
-      service_account:
-        private_key: placeholder
-      tls:
-        ca: placeholder
-        cert: placeholder
-        key: placeholder
     network:
       kubernetes_netloc: apiserver.kubernetes.promenade:6443
       pod_cidr: 10.97.0.0/16
@@ -811,12 +744,6 @@ data:
   upgrade:
     no_hooks: true
   values:
-    secrets:
-      tls:
-        ca: placeholder
-        cert: placeholder
-        key: placeholder
-
     network:
       kubernetes_netloc: apiserver.kubernetes.promenade:6443
 
@@ -1002,16 +929,6 @@ data:
       anchor:
         node_selector_key: kubernetes-etcd
         node_selector_value: enabled
-    secrets:
-      anchor:
-        tls:
-          cert: placeholder
-          key: placeholder
-      tls:
-        client:
-          ca: placeholder
-        peer:
-          ca: placeholder
     etcd:
       host_data_path: /var/lib/etcd/kubernetes
       host_etc_path: /etc/etcd/kubernetes
@@ -1021,37 +938,9 @@ data:
         etcdctl: quay.io/coreos/etcd:v3.0.17
     nodes:
       - name: n0
-        tls:
-          client:
-            cert: placeholder
-            key: placeholder
-          peer:
-            cert: placeholder
-            key: placeholder
       - name: n1
-        tls:
-          client:
-            cert: placeholder
-            key: placeholder
-          peer:
-            cert: placeholder
-            key: placeholder
       - name: n2
-        tls:
-          client:
-            cert: placeholder
-            key: placeholder
-          peer:
-            cert: placeholder
-            key: placeholder
       - name: n3
-        tls:
-          client:
-            cert: placeholder
-            key: placeholder
-          peer:
-            cert: placeholder
-            key: placeholder
     service:
       name: kubernetes-etcd
       ip: 10.96.0.2
