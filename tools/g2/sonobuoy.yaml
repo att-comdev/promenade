@@ -118,7 +118,7 @@ data:
       - env:
         - name: E2E_FOCUS
           value: Conformance
-        image: gcr.io/heptio-images/kube-conformance:v1.8.0
+        image: gcr.io/heptio-images/kube-conformance:v1.8.6
         imagePullPolicy: Always
         name: e2e
         volumeMounts:
