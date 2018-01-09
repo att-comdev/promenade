@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8018f05e_73a993ac",
+        "filename": "docs/source/troubleshooting/genesis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-09T16:11:47Z",
+      "side": 1,
+      "message": "I think we should recommend using `kubectl logs` rather than looking at flat files.  I\u0027m not sure that all configurations of Docker/fluentd guarantee that these files will exist.",
+      "revId": "883fa1b075ef5cb2bc0160e4734850dfd5bed331",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
