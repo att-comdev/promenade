@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6144cc58_12bcdb20",
+        "filename": "promenade/config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-10T18:56:47Z",
+      "side": 1,
+      "message": "I\u0027ve cleaned this up for you here: https://review.gerrithub.io/#/c/393721/\n\nShould just be able to do:\n\n        dh_engine \u003d layering.DocumentLayering(layering_policy, all_documents)\n        rendered_documents \u003d dh_engine.render()\n        ...\n        return rendered_documents",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "23ef5bb89a535713ffa6bd1fb9eb9d785c70d687",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
