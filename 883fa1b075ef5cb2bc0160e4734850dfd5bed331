@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "dec9d9a6_bc6f061f",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T01:24:33Z",
+      "side": 1,
+      "message": "Incomplete sentence, but looks like you intended to add a reference after this",
+      "range": {
+        "startLine": 51,
+        "startChar": 74,
+        "endLine": 51,
+        "endChar": 77
+      },
+      "revId": "883fa1b075ef5cb2bc0160e4734850dfd5bed331",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f0ebf43_314d3fa1",
+        "filename": "docs/source/troubleshooting/genesis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T01:24:33Z",
+      "side": 1,
+      "message": "This doesn\u0027t really look like a bash output to me, just a snippet. Perhaps a few more lines would be helpful?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 123
+      },
+      "revId": "883fa1b075ef5cb2bc0160e4734850dfd5bed331",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8018f05e_73a993ac",
         "filename": "docs/source/troubleshooting/genesis.rst",
         "patchSetId": 1
@@ -13,6 +59,46 @@
       "writtenOn": "2018-01-09T16:11:47Z",
       "side": 1,
       "message": "I think we should recommend using `kubectl logs` rather than looking at flat files.  I\u0027m not sure that all configurations of Docker/fluentd guarantee that these files will exist.",
+      "revId": "883fa1b075ef5cb2bc0160e4734850dfd5bed331",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "234baf0d_a6f80340",
+        "filename": "docs/source/troubleshooting/genesis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T01:24:33Z",
+      "side": 1,
+      "message": "Line length should also be reduced here to make it more easily readable.",
+      "revId": "883fa1b075ef5cb2bc0160e4734850dfd5bed331",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cebee027_98965d9d",
+        "filename": "docs/source/troubleshooting/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T01:24:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the caption be:\n\n    Troubleshooting\n\nOr perhaps:\n\n    Genesis",
+      "range": {
+        "startLine": 6,
+        "startChar": 14,
+        "endLine": 6,
+        "endChar": 23
+      },
       "revId": "883fa1b075ef5cb2bc0160e4734850dfd5bed331",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
