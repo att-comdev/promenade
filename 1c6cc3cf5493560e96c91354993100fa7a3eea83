@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4e085b5_950e621c",
+        "filename": "etc/promenade/promenade.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T00:41:46Z",
+      "side": 1,
+      "message": "Is this a sample? If so, should end in .sample IMO. Also look into oslo-conf-generator for this.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "1c6cc3cf5493560e96c91354993100fa7a3eea83",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "419e7639_f0c6273a",
+        "filename": "promenade/config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T00:41:46Z",
+      "side": 1,
+      "message": "This stuff should be broken into appropriate groupings.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "1c6cc3cf5493560e96c91354993100fa7a3eea83",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f3822ec_fe0e1a35",
+        "filename": "promenade/design_ref.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T00:41:46Z",
+      "side": 1,
+      "message": "Same thing with imports here.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "1c6cc3cf5493560e96c91354993100fa7a3eea83",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37556904_55aae2c3",
+        "filename": "promenade/options.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T00:41:46Z",
+      "side": 1,
+      "message": "Disable I take it is reserved for disabling a service like Keystone for testing?",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "1c6cc3cf5493560e96c91354993100fa7a3eea83",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f68d055_1ae45d7d",
+        "filename": "promenade/promenade.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T00:41:46Z",
+      "side": 1,
+      "message": "Seems like *args could also be provided.",
+      "revId": "1c6cc3cf5493560e96c91354993100fa7a3eea83",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82370e63_61792ba1",
+        "filename": "tools/g2/stages/load-site-config.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-11T00:41:46Z",
+      "side": 1,
+      "message": "Is this always 9000?",
+      "range": {
+        "startLine": 27,
+        "startChar": 55,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "1c6cc3cf5493560e96c91354993100fa7a3eea83",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
