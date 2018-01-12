@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c9ece67_9326683d",
+        "filename": "tools/gate/config-templates/site-config.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-12T17:36:22Z",
+      "side": 1,
+      "message": "These values will need to come from `envsubst` in this file.  Here are the relevant env vars (note the values will change):\n\nGENESIS_HOSTNAME\u003dpromenade-66-genesis-server-qll2w5kk6hsz\nGENESIS_IP\u003d10.0.0.13\nMASTER1_HOSTNAME\u003dpromenade-66-master1-server-ufalfsksbn3s\nMASTER1_IP\u003d10.0.0.34\nMASTER2_HOSTNAME\u003dpromenade-66-master2-server-urcjfmgm7ov7\nMASTER2_IP\u003d10.0.0.37\nWORKER_HOSTNAME\u003dpromenade-66-worker-server-tkikffvejfm6\nWORKER_IP\u003d10.0.0.17\n\nSo instead of using \"192.168.77.10\", you can use \"${GENESIS_IP}\"",
+      "revId": "b77559e80ae9b5127c7fb694f8b4f3cb7efc16b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
