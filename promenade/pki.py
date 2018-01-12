@@ -154,7 +154,7 @@ class PKI:
             'metadata': {
                 'schema': 'metadata/Document/v1',
                 'name': name,
-                'layerinDefinition': {
+                'layeringDefinition': {
                     'abstract': False,
                     'layer': 'site',
                 },
