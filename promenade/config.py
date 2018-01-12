@@ -5,6 +5,9 @@ import jsonpath_ng
 import requests
 import yaml
 
+from deckhand.engine import layering
+from deckhand.engine import document_validation
+
 __all__ = ['Configuration']
 
 LOG = logging.getLogger(__name__)
@@ -12,8 +15,16 @@ LOG = logging.getLogger(__name__)
 
 class Configuration:
     def __init__(self, *, documents, debug=False, substitute=True):
+        LOG.info("Parsing document schemas.")
+        schema_set = validation.load_schemas_from_docs(documents)
+        LOG.info("Parsed %d document schemas." % len(schema_set))
+        LOG.info("Building config from %d documents." % len(documents))
         if substitute:
-            documents = _substitute(documents)
+            LOG.info("Rendering documents via Deckhand engine.")
+            deckhand_eng = layering.DocumentLayering(documents)
+            documents = deckhand_eng.render()
+            LOG.info("Deckhand engine returned %d documents." % len(documents))
+        validation.check_schemas(documents, schemas=schema_set)
         self.debug = debug
         self.documents = documents
 
@@ -25,10 +36,9 @@ class Configuration:
             if stream_name is not None:
                 LOG.info('Loading documents from %s', stream_name)
             stream_documents = list(yaml.safe_load_all(stream))
-            validation.check_schemas(stream_documents)
             if stream_name is not None:
-                LOG.info('Successfully validated documents from %s',
-                         stream_name)
+                LOG.info('Successfully loaded %d documents from %s',
+                         len(stream_documents), stream_name)
             documents.extend(stream_documents)
 
         return cls(documents=documents, **kwargs)
@@ -39,9 +49,8 @@ class Configuration:
         response.raise_for_status()
 
         documents = list(yaml.safe_load_all(response.text))
-        validation.check_schemas(documents)
 
-        return cls(documents=documents)
+        return cls(documents=documents, **kwargs)
 
     def __getitem__(self, path):
         value = self.get_path(path)

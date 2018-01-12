@@ -14,10 +14,11 @@ docker run --rm -t \
     -v "${TEMP_DIR}:/target" \
     -e "PROMENADE_DEBUG=${PROMENADE_DEBUG}" \
     "${IMAGE_PROMENADE}" \
-        promenade \
+        promenade -v \
             build-all \
                 --validators \
                 -o scripts \
                 config/*.yaml
 
+mkdir -p "${TEMP_DIR}/nginx/"
 cat "${TEMP_DIR}"/config/*.yaml > "${TEMP_DIR}/nginx/promenade.yaml"
