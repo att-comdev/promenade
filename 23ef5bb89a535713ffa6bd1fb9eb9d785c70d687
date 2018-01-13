@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1231b81e_4356ecc2",
+        "filename": "promenade/config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-13T22:00:34Z",
+      "side": 1,
+      "message": "I still don\u0027t understand the purpose of this, and I think it\u0027s flawed for many reasons:\n\n1) Not using the Deckahnd API client library -- which is supposed to be a stable interface -- and instead importing Deckhand modules directly here will lead to maintenance and coupling headaches.\n2) This avoids RBAC (because it\u0027s enforced at the controller level) which seems very flawed to me.\n3) It makes the usage of the Deckhand API client library utterly superfluous -- as in here: https://review.gerrithub.io/#/c/392672/3/promenade/design_ref.py -- why not just use module imports wherever Promenade needs to?\n4) It means that Promenade will forever be completely dependent on Deckhand; if Deckhand has an ImportError or something inside that module, then so too will Promenade, by extension.\n\nI don\u0027t understand why Keystone isn\u0027t available here. Keystone doesn\u0027t have very many dependencies and so I don\u0027t see why it can\u0027t be deployed earlier on during the genesis script.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 36
+      },
+      "revId": "23ef5bb89a535713ffa6bd1fb9eb9d785c70d687",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6144cc58_12bcdb20",
         "filename": "promenade/config.py",
         "patchSetId": 1
