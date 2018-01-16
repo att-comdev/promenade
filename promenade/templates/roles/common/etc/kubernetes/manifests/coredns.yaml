@@ -24,7 +24,13 @@ spec:
         - name: config
           mountPath: /etc/coredns
           readOnly: true
+        - name: tls
+          mountPath: /etc/coredns-pki
+          readOnly: true
   volumes:
     - name: config
       hostPath:
         path: /etc/coredns
+    - name: tls
+      hostPath:
+        path: /etc/kubernetes/admin/pki
