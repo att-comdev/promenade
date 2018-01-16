@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8040090c_eee20d37",
+        "filename": "docs/source/troubleshooting/genesis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-16T02:05:52Z",
+      "side": 1,
+      "message": "No, that\u0027s fine; I re-read this and that was my bad. I was thinking, What command came before this? But if this is just a piece of code that loops over and over again then it will be really obvious for people to figure out that this troubleshooting section is what they should reference.",
+      "parentUuid": "53ab313a_2911162e",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 123
+      },
+      "revId": "883fa1b075ef5cb2bc0160e4734850dfd5bed331",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8018f05e_73a993ac",
         "filename": "docs/source/troubleshooting/genesis.rst",
         "patchSetId": 1
