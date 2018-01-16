@@ -5,6 +5,13 @@ promenade {
 }
 
 . {
+    kubernetes {{ config['KubernetesNetwork:dns.cluster_domain'] }} {{ config['KubernetesNetwork:kubernetes.pod_cidr'] }} {{ config['KubernetesNetwork:kubernetes.service_cidr'] }} {
+        endpoint https://127.0.0.1:6443
+        tls /etc/coredns-pki/admin.pem /etc/coredns-pki/admin-key.pem /etc/coredns-pki/cluster-ca.pem
+
+        pods insecure
+    }
+
     {%- if config['KubernetesNetwork:dns.upstream_servers'] is defined %}
     proxy .  {%- for server in config['KubernetesNetwork:dns.upstream_servers'] %} {{ server -}}{%- endfor %}
     {%- endif %}
