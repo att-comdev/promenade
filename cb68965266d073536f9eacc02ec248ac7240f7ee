@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9bfe600_30e29252",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-17T03:11:24Z",
+      "side": 1,
+      "message": "This should be indented so that it aligns with the \"C\" in \"Copy\".",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "cb68965266d073536f9eacc02ec248ac7240f7ee",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8dac7a_28db2658",
+        "filename": "docs/source/troubleshooting/genesis.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-17T03:11:24Z",
+      "side": 1,
+      "message": "Promenade",
+      "range": {
+        "startLine": 17,
+        "startChar": 66,
+        "endLine": 17,
+        "endChar": 75
+      },
+      "revId": "cb68965266d073536f9eacc02ec248ac7240f7ee",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
