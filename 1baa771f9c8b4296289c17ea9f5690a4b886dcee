@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5add1167_f7dc3452",
+        "filename": "docs/source/troubleshooting/genesis.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1013092
+      },
+      "writtenOn": "2018-01-17T20:37:21Z",
+      "side": 1,
+      "message": "I would change .. code-block:: bash to .. code-block:: console almost everywhere.",
+      "revId": "1baa771f9c8b4296289c17ea9f5690a4b886dcee",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
