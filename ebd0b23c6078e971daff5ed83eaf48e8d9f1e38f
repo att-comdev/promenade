@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa4e3bb_b92f716f",
+        "filename": "examples/complete/LayeringPolicy.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-17T00:17:04Z",
+      "side": 1,
+      "message": "Don\u0027t know if it matters but this is identical with the one in examples/basic/LayeringPolicy.yaml: https://review.gerrithub.io/#/c/392672/7/examples/basic/LayeringPolicy.yaml",
+      "revId": "ebd0b23c6078e971daff5ed83eaf48e8d9f1e38f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d63f7d6_ff52fa81",
+        "filename": "promenade/design_ref.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-17T00:17:04Z",
+      "side": 1,
+      "message": "Does _get_from_basic_web (I\u0027m guessing the Promenade API server?) also return YAML?",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "ebd0b23c6078e971daff5ed83eaf48e8d9f1e38f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c977d206_3aa15979",
+        "filename": "tools/gate/config-templates/LayeringPolicy.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-17T00:17:04Z",
+      "side": 1,
+      "message": "Ditto same as the one in examples/basic/LayeringPolicy.yaml: https://review.gerrithub.io/#/c/392672/7/examples/basic/LayeringPolicy.yaml",
+      "revId": "ebd0b23c6078e971daff5ed83eaf48e8d9f1e38f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
