@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "98825cd0_aa3cbc35",
+        "filename": "examples/complete/LayeringPolicy.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-17T15:41:11Z",
+      "side": 1,
+      "message": "Indeed, it is the same!  It\u0027s just repeated so that the examples stand on their own.",
+      "parentUuid": "9aa4e3bb_b92f716f",
+      "revId": "ebd0b23c6078e971daff5ed83eaf48e8d9f1e38f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d63f7d6_ff52fa81",
         "filename": "promenade/design_ref.py",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6dc5b46e_e981754a",
+        "filename": "promenade/design_ref.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-17T15:41:11Z",
+      "side": 1,
+      "message": "Ah, this is actually assumed to be a simple HTTP server delivering a big YAML payload.  It\u0027s really for testing :D\n\nThe resiliency gate doesn\u0027t install any of UCP except the prom-api, so it loads config from an nginx server run on the host.",
+      "parentUuid": "9d63f7d6_ff52fa81",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "ebd0b23c6078e971daff5ed83eaf48e8d9f1e38f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c977d206_3aa15979",
         "filename": "tools/gate/config-templates/LayeringPolicy.yaml",
         "patchSetId": 7
@@ -53,6 +95,24 @@
       "writtenOn": "2018-01-17T00:17:04Z",
       "side": 1,
       "message": "Ditto same as the one in examples/basic/LayeringPolicy.yaml: https://review.gerrithub.io/#/c/392672/7/examples/basic/LayeringPolicy.yaml",
+      "revId": "ebd0b23c6078e971daff5ed83eaf48e8d9f1e38f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7462785_baf43419",
+        "filename": "tools/gate/config-templates/LayeringPolicy.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-17T15:41:11Z",
+      "side": 1,
+      "message": "Likewise here, this one is for what I tend to call the \"legacy\" gate that is the basis for some Armada testing.  It\u0027s just here for completeness :)",
+      "parentUuid": "c977d206_3aa15979",
       "revId": "ebd0b23c6078e971daff5ed83eaf48e8d9f1e38f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
