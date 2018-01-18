@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "03fddb6d_2cd575ae",
+        "filename": "docs/source/troubleshooting/genesis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1012094
+      },
+      "writtenOn": "2018-01-18T00:34:16Z",
+      "side": 1,
+      "message": "Actually, I realized this won\u0027t work because if kubernetes API isn\u0027t up, then the kubectl call to get the logs won\u0027t work either. So I think it will be relevant to have the flat files option, at least to troubleshoot the base system kubernetes services.",
+      "parentUuid": "8018f05e_73a993ac",
+      "revId": "883fa1b075ef5cb2bc0160e4734850dfd5bed331",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "234baf0d_a6f80340",
         "filename": "docs/source/troubleshooting/genesis.rst",
         "patchSetId": 1
