@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ddbb681_c3856986",
+        "filename": "examples/basic/armada-resources.data.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-18T02:48:08Z",
+      "side": 1,
+      "message": "This change isn\u0027t necessary Deckhand-side (not sure if that\u0027s why you made the change). This should\u0027ve fixed any weirdness with this: https://review.gerrithub.io/#/c/393544/9/deckhand/utils.py\n\nBut even before that change, \u0027$\u0027 should\u0027ve worked.\n\nSo use whichever is better all around (\u0027.\u0027 or \u0027$\u0027).",
+      "range": {
+        "startLine": 131,
+        "startChar": 14,
+        "endLine": 131,
+        "endChar": 15
+      },
+      "revId": "fbacb8c50dea532493bf4e69ca7e44fde069428c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02bba0c4_1cd12d1e",
+        "filename": "examples/complete/armada-resources.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-18T02:48:08Z",
+      "side": 1,
+      "message": "Ditto (from previous file)",
+      "revId": "fbacb8c50dea532493bf4e69ca7e44fde069428c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02b3be1b_e1145d65",
+        "filename": "examples/complete/armada-resources.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 1459,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-18T02:48:08Z",
+      "side": 1,
+      "message": "Is this an intended change?",
+      "range": {
+        "startLine": 1459,
+        "startChar": 31,
+        "endLine": 1459,
+        "endChar": 50
+      },
+      "revId": "fbacb8c50dea532493bf4e69ca7e44fde069428c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c180f534_7e0c5691",
+        "filename": "promenade/config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-18T02:48:08Z",
+      "side": 1,
+      "message": "This is currently unused.\n\nOnce Deckhand has \"pretty\" validation error generation (partially addressed by https://review.gerrithub.io/#/c/391897/ but the output itself can be further improved -- there\u0027s a US for that) it will be better to leverage this than Promenade schema validation.\n\nIt\u0027ll also be better from the POV retaining a one-to-one correspondence between Promenade using layering here and the rendered-documents endpoint, which renders documents then subjects the rendered documents to schema validation.\n\nHowever, that\u0027s currently not possible because this module does a DB call (which can be refactored later Deckhand-side by moving that call into the controller).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "fbacb8c50dea532493bf4e69ca7e44fde069428c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be628634_adfb22f9",
+        "filename": "promenade/config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-18T02:48:08Z",
+      "side": 1,
+      "message": "Wrap this in try/catch deckhand.errors.DeckhandException",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "fbacb8c50dea532493bf4e69ca7e44fde069428c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25b12ef8_5804549f",
+        "filename": "promenade/validation.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-18T02:48:08Z",
+      "side": 1,
+      "message": "This is inconsistent with L58 above.",
+      "range": {
+        "startLine": 82,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 47
+      },
+      "revId": "fbacb8c50dea532493bf4e69ca7e44fde069428c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2186347a_824f7010",
+        "filename": "tox.ini",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-18T02:48:08Z",
+      "side": 1,
+      "message": "You could probably put this in a base [testenv] section because it should apply everywhere. Ex: https://github.com/att-comdev/shipyard/blob/master/tox.ini#L9",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "fbacb8c50dea532493bf4e69ca7e44fde069428c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
