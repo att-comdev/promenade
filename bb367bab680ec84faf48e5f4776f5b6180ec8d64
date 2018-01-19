@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10adc794_71c5231b",
+        "filename": "examples/basic/HostSystem.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-19T19:18:04Z",
+      "side": 1,
+      "message": "Updated to get past a panic exposed from tls issues.  Belongs in a separate PS to update versions.",
+      "revId": "bb367bab680ec84faf48e5f4776f5b6180ec8d64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a2d9c22_6842dcbf",
+        "filename": "promenade/templates/roles/common/etc/coredns/Corefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-19T19:18:04Z",
+      "side": 1,
+      "message": "It is clearly not intended to require DNS for calico to come up, it\u0027s just an artifact of some intermediate testing.",
+      "revId": "bb367bab680ec84faf48e5f4776f5b6180ec8d64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
