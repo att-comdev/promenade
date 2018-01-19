@@ -38,6 +38,8 @@ spec:
         {{- range .Values.command_prefix }}
         - {{ . }}
         {{- end }}
+        - --address=$(POD_IP)
+        - --port={{ .Values.network.kubernetes_controllermanager.port }}
         - --configure-cloud-routes=false
         - --leader-elect=true
         - --kubeconfig=/etc/kubernetes/controller-manager/kubeconfig.yaml
@@ -45,7 +47,17 @@ spec:
         - --service-account-private-key-file=/etc/kubernetes/controller-manager/service-account.priv
         - --use-service-account-credentials=true
         - --v=5
-
+      livenessProbe:
+        failureThreshold: 8
+        httpGet:
+          host: $(POD_IP)
+          path: /healthz
+          port: {{ .Values.network.kubernetes_controllermanager.port }}
+          scheme: HTTP
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
       volumeMounts:
         - name: etc
           mountPath: /etc/kubernetes/controller-manager
