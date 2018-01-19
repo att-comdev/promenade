@@ -54,9 +54,19 @@ spec:
         - --etcd-keyfile=/etc/kubernetes/apiserver/pki/etcd-client-key.pem
         - --allow-privileged=true
         - --service-account-key-file=/etc/kubernetes/apiserver/pki/service-account.pub
-
       ports:
         - containerPort: {{ .Values.network.kubernetes_apiserver.port }}
+      livenessProbe:
+        failureThreshold: 8
+        httpGet:
+          host: $(POD_IP)
+          path: /healthz
+          port: {{ .Values.network.kubernetes_apiserver.port }}
+          scheme: HTTPS
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
       volumeMounts:
         - name: etc
           mountPath: /etc/kubernetes/apiserver
