@@ -44,7 +44,6 @@ spec:
         - --root-ca-file=/etc/kubernetes/controller-manager/cluster-ca.pem
         - --service-account-private-key-file=/etc/kubernetes/controller-manager/service-account.priv
         - --use-service-account-credentials=true
-        - --v=5
       livenessProbe:
         failureThreshold: 8
         httpGet:
