@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5d059b9_4f586d3e",
+        "filename": "charts/controller_manager/values.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2018-01-21T15:45:27Z",
+      "side": 1,
+      "message": "Would it not make more sense to pull this into the Pod environment from an singleton setting so that it can be tuned via override w/o duplicating the rest of the arguments?",
+      "revId": "09f54aa8a42d76d37f1ee2dd68e8e931362227af",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
