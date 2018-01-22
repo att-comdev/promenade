@@ -16,6 +16,24 @@
       "revId": "09f54aa8a42d76d37f1ee2dd68e8e931362227af",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51c942a5_c1455e7b",
+        "filename": "charts/controller_manager/values.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2018-01-22T14:58:54Z",
+      "side": 1,
+      "message": "long-term certainly, this ps simply makes the controller manager chart inline with the others in promenade",
+      "parentUuid": "e5d059b9_4f586d3e",
+      "revId": "09f54aa8a42d76d37f1ee2dd68e8e931362227af",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
