@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df57b411_b676836c",
+        "filename": "examples/complete/armada-resources.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-22T18:37:57Z",
+      "side": 1,
+      "message": "Is it an intended change to hardcode this?",
+      "range": {
+        "startLine": 1464,
+        "startChar": 32,
+        "endLine": 1464,
+        "endChar": 53
+      },
+      "revId": "eeee591f8efb8896e2297f2e04b71836a04cf49d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f17d4df_2cd0ed6c",
+        "filename": "promenade/design_ref.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-22T18:37:57Z",
+      "side": 1,
+      "message": "This\u0027ll require some exception handling. Should be subclasses of https://github.com/att-comdev/deckhand/blob/master/deckhand/client/exceptions.py#L28 although I think there\u0027s some better error handling I need to add to Deckhand client too (for like handling 503 from Keystone for example).",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "eeee591f8efb8896e2297f2e04b71836a04cf49d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e77a637_e94b69d7",
+        "filename": "tox.ini",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-01-22T18:37:57Z",
+      "side": 1,
+      "message": "I think this can go under a generic testenv category as it ought to be true for all other tox jobs. See: https://github.com/att-comdev/shipyard/blob/master/tox.ini#L9",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "eeee591f8efb8896e2297f2e04b71836a04cf49d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
