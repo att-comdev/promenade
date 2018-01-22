@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52087a8f_9f789153",
+        "filename": "examples/complete/armada-resources.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-22T19:03:31Z",
+      "side": 1,
+      "message": "Ah, good question.  So in a \"prod\" situation, this should be substituted in via Deckhand (it\u0027s used multiple places as you see), but for this example I think it\u0027s probably ok to leave it inline (at least for now).",
+      "parentUuid": "df57b411_b676836c",
+      "range": {
+        "startLine": 1464,
+        "startChar": 32,
+        "endLine": 1464,
+        "endChar": 53
+      },
+      "revId": "eeee591f8efb8896e2297f2e04b71836a04cf49d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f17d4df_2cd0ed6c",
         "filename": "promenade/design_ref.py",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8ded3897_c3d28d9f",
+        "filename": "promenade/design_ref.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-22T19:03:31Z",
+      "side": 1,
+      "message": "Yeah, you\u0027re quite right.  We for sure need to migrate to a more consistent client interface.\n\nWould you make a github issue to reflect this defect?  I\u0027d like to proceed with this change even though error handling isn\u0027t perfect.",
+      "parentUuid": "2f17d4df_2cd0ed6c",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "eeee591f8efb8896e2297f2e04b71836a04cf49d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e77a637_e94b69d7",
         "filename": "tox.ini",
         "patchSetId": 13
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-22T18:37:57Z",
       "side": 1,
       "message": "I think this can go under a generic testenv category as it ought to be true for all other tox jobs. See: https://github.com/att-comdev/shipyard/blob/master/tox.ini#L9",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "eeee591f8efb8896e2297f2e04b71836a04cf49d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ef3dd9c_ff77acd7",
+        "filename": "tox.ini",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-22T19:03:31Z",
+      "side": 1,
+      "message": "This is definitely fair.  I am surprised that the freeze job needed this (This is taken from some work Scott did), as it didn\u0027t seem to need in with pyenv.",
+      "parentUuid": "7e77a637_e94b69d7",
       "range": {
         "startLine": 32,
         "startChar": 0,
