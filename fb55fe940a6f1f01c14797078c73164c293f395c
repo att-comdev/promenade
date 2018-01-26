@@ -22,6 +22,29 @@
       "revId": "fb55fe940a6f1f01c14797078c73164c293f395c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "582a4cc2_b29fd0a4",
+        "filename": "examples/complete/armada-resources.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2018-01-26T06:42:19Z",
+      "side": 1,
+      "message": "Should we use v2.7.2 instead of v2.7.0?",
+      "range": {
+        "startLine": 1633,
+        "startChar": 46,
+        "endLine": 1633,
+        "endChar": 52
+      },
+      "revId": "fb55fe940a6f1f01c14797078c73164c293f395c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
