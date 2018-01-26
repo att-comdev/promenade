@@ -45,6 +45,30 @@
       "revId": "fb55fe940a6f1f01c14797078c73164c293f395c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3198d4_fe295c29",
+        "filename": "examples/complete/armada-resources.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-26T14:55:54Z",
+      "side": 1,
+      "message": "Probably so.  I\u0027ll make a separate PS for that so this one can proceed.",
+      "parentUuid": "582a4cc2_b29fd0a4",
+      "range": {
+        "startLine": 1633,
+        "startChar": 46,
+        "endLine": 1633,
+        "endChar": 52
+      },
+      "revId": "fb55fe940a6f1f01c14797078c73164c293f395c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
