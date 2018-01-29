@@ -29,7 +29,7 @@ coredns:
 
 images:
   anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
-  coredns: coredns/coredns:0.9.9
+  coredns: coredns/coredns:1.0.5
 
 network:
   kubernetes_netloc: 10.96.0.1
