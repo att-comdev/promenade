@@ -1,7 +1,8 @@
-Kubernetes Node
+KubernetesNode
 ===============
 
-Configuration for a basic node in the cluster.
+Configuration for a basic node in the cluster, provided in 
+``joining-host-config.yaml`` file.
 
 
 Sample Document

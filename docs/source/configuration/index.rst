@@ -5,6 +5,9 @@ Promenade is configured using a set of Deckhand_ compatible configuration
 documents and a bootstrapping Armada_ manifest that is responsible for
 deploying core components into the cluster.
 
+The provided Armada_ manifest ``armada-resources.yaml`` will be applied on the 
+genesis node as soon as it is healthy.
+
 Details about Promenade-specific documents can be found here:
 
 .. toctree::
@@ -17,11 +20,7 @@ Details about Promenade-specific documents can be found here:
     kubelet
     kubernetes-network
     kubernetes-node
-
-
-The provided Armada_ manifest and will be applied on the genesis node as soon
-as it is healthy.
-
+    layering-policy
 
 .. _Armada: https://github.com/att-comdev/armada
 .. _Deckhand: https://github.com/att-comdev/deckhand

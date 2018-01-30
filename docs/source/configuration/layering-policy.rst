@@ -1,0 +1,21 @@
+LayeringPolicy
+===============
+
+Sample Document
+---------------
+
+Here is a sample document:
+
+.. code-block:: yaml
+
+    ---
+    schema: deckhand/LayeringPolicy/v1
+    metadata:
+      schema: metadata/Control/v1
+      name: layering-policy
+    data:
+      layerOrder:
+        - global
+        - type
+        - site
+    ...

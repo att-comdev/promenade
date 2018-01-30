@@ -1,4 +1,4 @@
-Kubernetes Network
+KubernetesNetwork
 ==================
 
 Configuration for Kubernetes networking during bootstrapping and for the

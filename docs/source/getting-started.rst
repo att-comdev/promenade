@@ -26,6 +26,17 @@ a separate build machine.
 Generate Build files
 ^^^^^^^^^^^^^^^^^^^^
 
+Let's use configuration provided in ``examples/basic`` directory. Set hostnames
+and IP addresses of your nodes in the following configuration files: 
+
+    - ``Genesis.yaml`` - your Genesis node
+    - ``joining-host-config.yaml`` - your cluster nodes
+    - ``armada-resources.yaml`` - Armada manifest
+
+You might need to add/remove nodes in ``joining-host-config.yaml`` and 
+``armada-resources.yaml``. Detailed configuration options are listed in :doc:`configuration/index` 
+section.
+
 To create the certificates and scripts needed to perform a basic deployment,
 you can use the following helper script on your build machine:
 
@@ -37,15 +48,14 @@ This will copy the configuration provided in the ``examples/basic`` directory
 into the ``build`` directory.  Then, it will generate self-signed certificates
 for all the needed components in Deckhand-compatible format.  Finally, it will
 render the provided configuration into directly-usable ``genesis.sh`` and
-``join-<NODE>.sh`` scripts.
+``join-<NODE>.sh`` scripts. In the event of runtime errors, refer to :doc:`troubleshooting/simple-deployment`
+document.
 
 Genesis Host Provision
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Install Ubuntu 16.04 on the machine intended to be the genesis host. Ensure
 the host has outbound internet access and DNS resolution.
-Ensure that the hostname matches the hostname specified in the Genesis.yaml
-file used to build the above configurations.
 
 Execution
 ^^^^^^^^^
@@ -53,7 +63,7 @@ Execution
 Perform the following steps to execute the deployment:
 
 1. Copy the ``genesis.sh`` script to the genesis node and run it as sudo. In the
-   event of runtime errors, refer to :doc:`troubleshooting/genesis`
+   event of runtime errors, refer to :doc:`troubleshooting/genesis`.
 2. Validate the genesis node by running ``validate-genesis.sh`` on it.
 3. Nodes for which ``join-<NODE>.sh`` scripts have been generated should be
    provisioned at this point, and need to have network connectivity to the
