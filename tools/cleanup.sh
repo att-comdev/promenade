@@ -20,6 +20,7 @@ TO_RM=(
     "/var/lib/openstack-helm"
     "/var/log/containers"
     "/var/log/pods"
+    "/var/log/armada"
 )
 
 
