@@ -58,7 +58,7 @@ def genereate_certs(*, calico_etcd_service_ip, config_files, output_dir):
         c = config.Configuration.from_streams(
             debug=debug,
             streams=config_files,
-            substitute=False,
+            substitute=True,
             validate=False)
         g = generator.Generator(
             c, calico_etcd_service_ip=calico_etcd_service_ip)
