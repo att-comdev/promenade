@@ -16,6 +16,24 @@
       "revId": "6cc116cf9d5af90d6b1796b3c8d2390a7559bf45",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e907a36_e91e2603",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-01-30T18:33:10Z",
+      "side": 1,
+      "message": "The cleanup script is just a helper for testing environments.  It\u0027s totally fine to remove this from here.",
+      "parentUuid": "40552b99_9fe708d6",
+      "revId": "6cc116cf9d5af90d6b1796b3c8d2390a7559bf45",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
