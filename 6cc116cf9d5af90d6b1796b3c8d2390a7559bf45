@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40552b99_9fe708d6",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1013390
+      },
+      "writtenOn": "2018-01-30T18:23:56Z",
+      "side": 1,
+      "message": "Actually, might be not a right place to do, if it\u0027s generic cleanup script - we wouldn\u0027t necessarily have armada running.\n\nOn the other hand, this directory is created by genesis.sh script.",
+      "revId": "6cc116cf9d5af90d6b1796b3c8d2390a7559bf45",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
