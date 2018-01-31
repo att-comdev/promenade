@@ -24,6 +24,8 @@ data:
     pod_cidr: 10.97.0.0/16
     service_cidr: 10.96.0.0/16
     service_ip: 10.96.0.1
+    apiserver_port: 6443
+    haproxy_port: 6553
 
   etcd:
     service_ip: 10.96.0.2
