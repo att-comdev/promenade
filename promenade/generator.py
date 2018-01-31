@@ -34,6 +34,7 @@ class Generator:
             cn='apiserver',
             hosts=self._service_dns('kubernetes', 'default') +
             ['localhost', '127.0.0.1', 'apiserver.kubernetes.promenade'] +
+            self._node_ips() +
             [self.config['KubernetesNetwork:kubernetes.service_ip']])
         self.gen(
             'certificate',
@@ -100,6 +101,12 @@ class Generator:
             'certificate', 'calico-node', ca='calico-etcd', cn='calico-node')
 
         _write(output_dir, self.documents)
+
+    def _node_ips(self):
+        result = []
+        for node in self.config.iterate(kind='KubernetesNode'):
+            result.append(node['data']['ip'])
+        return result
 
     def gen(self, kind, *args, **kwargs):
         method = getattr(self.keys, 'generate_' + kind)

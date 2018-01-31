@@ -540,13 +540,14 @@ data:
                 namespace: kube-system
     images:
       anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
-      coredns: coredns/coredns:0.9.9
+      coredns: coredns/coredns:1.0.5
     tls:
       ca: placeholder
       cert: placeholder
       key: placeholder
     network:
       kubernetes_netloc: apiserver.kubernetes.promenade:6443
+      kubernetes_endpoints: https://192.168.77.10:6443,https://192.168.77.11:6443,https://192.168.77.12:6443,https://192.168.77.13:6443
   source:
     type: local
     location: /etc/genesis/armada/assets/charts

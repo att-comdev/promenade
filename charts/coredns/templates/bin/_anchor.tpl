@@ -19,14 +19,16 @@ create_corefile() {
     cat <<EOCOREFILE > $ETC_PATH/Corefile
 promenade {
     file /etc/coredns/zones/promenade
+    prometheus
+    health localhost:8091
     loadbalance
-    errors stdout
-    log stdout
+    errors
+    log
 }
 
 . {
     kubernetes{{- range .Values.coredns.kubernetes_zones }} {{ . -}}{{- end }} {
-        endpoint https://{{ .Values.network.kubernetes_netloc }}
+        endpoint {{ .Values.network.kubernetes_endpoints }}
         tls /etc/coredns/coredns.pem /etc/coredns/coredns-key.pem /etc/coredns/cluster-ca.pem
 
         pods insecure
@@ -40,8 +42,10 @@ promenade {
     loadbalance
     cache {{ .Values.coredns.cache.ttl }}
 
-    errors stdout
-    log stdout
+    prometheus
+    health localhost:8091
+    errors
+    log
 }
 EOCOREFILE
 }
