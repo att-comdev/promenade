@@ -1002,7 +1002,7 @@ data:
     no_hooks: true
   values:
     anchor:
-      etcdctl_endpoint: 10.96.0.2
+      etcdctl_endpoint: kubernetes-etcd.kube-system.svc.cluster.local
     labels:
       anchor:
         node_selector_key: kubernetes-etcd
@@ -1059,7 +1059,6 @@ data:
             key: placeholder
     service:
       name: kubernetes-etcd
-      ip: 10.96.0.2
     network:
       service_client:
         name: service_client
@@ -1756,6 +1755,11 @@ data:
   wait:
     timeout: 600
   values:
+    pod:
+      env:
+        promenade_api:
+          - name: PROMENADE_DEBUG
+            value: '1'
     images:
       tags:
         dep_check: quay.io/stackanetes/kubernetes-entrypoint:v0.2.1
