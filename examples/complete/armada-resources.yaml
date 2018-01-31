@@ -1756,6 +1756,11 @@ data:
   wait:
     timeout: 600
   values:
+    pod:
+      env:
+        promenade_api:
+          - name: PROMENADE_DEBUG
+            value: '1'
     images:
       tags:
         dep_check: quay.io/stackanetes/kubernetes-entrypoint:v0.2.1
