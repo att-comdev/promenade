@@ -557,6 +557,36 @@ data:
 schema: armada/Chart/v1
 metadata:
   schema: metadata/Document/v1
+  name: haproxy
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  chart_name: haproxy
+  release: haproxy
+  namespace: kube-system
+  timeout: 600
+  wait:
+    timeout: 600
+  upgrade:
+    no_hooks: true
+  values:
+    anchor:
+      kubernetes_url: https://10.96.0.1:443
+    images:
+      tags:
+        anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
+        haproxy: haproxy:1.8.3
+  source:
+    type: local
+    location: /etc/genesis/armada/assets/charts
+    subpath: haproxy
+  dependencies:
+    - helm-toolkit
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
   name: kubernetes-apiserver
   layeringDefinition:
     abstract: false
