@@ -73,6 +73,8 @@ data:
       properties:
         coredns:
           $ref: '#/definitions/image'
+        haproxy:
+          $ref: '#/definitions/image'
         helm:
           type: object
           properties:
@@ -91,6 +93,7 @@ data:
           additionalProperties: false
       required:
         - coredns
+        - haproxy
         - helm
         - kubernetes
       additionalProperties: false

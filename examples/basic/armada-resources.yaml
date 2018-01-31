@@ -57,6 +57,7 @@ data:
   description: Cluster DNS
   chart_group:
     - coredns
+    - haproxy
 ---
 schema: armada/ChartGroup/v1
 metadata:
@@ -160,7 +161,7 @@ data:
       tags:
         proxy: gcr.io/google_containers/hyperkube-amd64:v1.8.6
     network:
-      kubernetes_netloc: apiserver.kubernetes.promenade:6443
+      kubernetes_netloc: 127.0.0.1:6553
   source:
     type: local
     location: /etc/genesis/armada/assets/charts
@@ -514,43 +515,69 @@ data:
   upgrade:
     no_hooks: true
   values:
-    coredns:
-      kubernetes_zones:
-        - cluster.local
-        - 10.96.0.0/16
-        - 10.97.0.0/16
-      upstream_nameservers:
-        - 8.8.8.8
-        - 8.8.4.4
-
-      zones:
-        - name: promenade
-          services:
-            - bind_name: apiserver.kubernetes
-              service:
-                name: kubernetes-apiserver
-                namespace: kube-system
-            - bind_name: etcd.kubernetes
-              service:
-                name: kubernetes-etcd
-                namespace: kube-system
-            - bind_name: etcd.calico
-              service:
-                name: calico-etcd
-                namespace: kube-system
     images:
-      anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
-      coredns: coredns/coredns:0.9.9
-    tls:
-      ca: placeholder
-      cert: placeholder
-      key: placeholder
-    network:
-      kubernetes_netloc: apiserver.kubernetes.promenade:6443
+      tags:
+        coredns: coredns/coredns:1.0.5
   source:
     type: local
     location: /etc/genesis/armada/assets/charts
     subpath: coredns
+  dependencies:
+    - helm-toolkit
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: haproxy
+  layeringDefinition:
+    abstract: false
+    layer: site
+data:
+  chart_name: haproxy
+  release: haproxy
+  namespace: kube-system
+  timeout: 600
+  wait:
+    timeout: 600
+  upgrade:
+    no_hooks: true
+  values:
+    conf:
+      anchor:
+        kubernetes_url: https://10.96.0.1:443
+        services:
+          default:
+            kubernetes:
+              server_opts: "check"
+              conf_parts:
+                frontend:
+                  - mode tcp
+                  - option tcpka
+                  - bind *:6553
+                backend:
+                  - mode tcp
+                  - option tcpka
+          kube-system:
+            kubernetes-etcd:
+              server_opts: "check"
+              conf_parts:
+                frontend:
+                  - mode tcp
+                  - option tcpka
+                  - bind *:2378
+                backend:
+                  - mode tcp
+                  - option tcpka
+
+    images:
+      tags:
+        anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
+        haproxy: haproxy:1.8.3
+
+  source:
+    type: local
+    location: /etc/genesis/armada/assets/charts
+    subpath: haproxy
   dependencies:
     - helm-toolkit
 ---
@@ -626,7 +653,7 @@ data:
   values:
     apiserver:
       etcd:
-        endpoints: https://etcd.kubernetes.promenade:2379
+        endpoints: https://127.0.0.1:2378
     images:
       tags:
         anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
@@ -716,7 +743,7 @@ data:
         cert: placeholder
         key: placeholder
     network:
-      kubernetes_netloc: apiserver.kubernetes.promenade:6443
+      kubernetes_netloc: 127.0.0.1:6553
       pod_cidr: 10.97.0.0/16
       service_cidr: 10.96.0.0/16
 
@@ -775,7 +802,7 @@ data:
         key: placeholder
 
     network:
-      kubernetes_netloc: apiserver.kubernetes.promenade:6443
+      kubernetes_netloc: 127.0.0.1:6553
 
     images:
       tags:
