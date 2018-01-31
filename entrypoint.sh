@@ -8,6 +8,7 @@ if [ "$1" = 'server' ]; then
     exec uwsgi \
         --http :${PORT} \
         --http-timeout ${UWSGI_TIMEOUT} \
+        --die-on-term \
         -z ${UWSGI_TIMEOUT} \
         --paste config:/etc/promenade/api-paste.ini \
         --enable-threads -L \
