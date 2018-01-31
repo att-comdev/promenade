@@ -542,6 +542,7 @@ data:
       key: placeholder
     network:
       kubernetes_netloc: apiserver.kubernetes.promenade:6443
+      kubernetes_endpoints: https://${GENESIS_IP}:6443,https://${MASTER1_IP}:6443,https://${MASTER2_IP}:6443
   source:
     type: local
     location: /etc/genesis/armada/assets/charts
