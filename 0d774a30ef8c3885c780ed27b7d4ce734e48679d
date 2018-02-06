@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "e2a31ff5_e261c7fe",
+        "filename": "docs/source/configuration/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-06T17:19:28Z",
+      "side": 1,
+      "message": "This isn\u0027t really a Promenade-specific document",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "0d774a30ef8c3885c780ed27b7d4ce734e48679d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8ec6e34_f79be5a3",
+        "filename": "docs/source/configuration/layering-policy.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-06T17:19:28Z",
+      "side": 1,
+      "message": "I would provide a link to this: http://deckhand.readthedocs.io/en/latest/layering.html\n\nAnd mention it\u0027s needed by Deckhand which Promenade calls.",
+      "revId": "0d774a30ef8c3885c780ed27b7d4ce734e48679d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d9195b0_236a8d5c",
+        "filename": "docs/source/getting-started.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-06T17:19:28Z",
+      "side": 1,
+      "message": "Line length.",
+      "revId": "0d774a30ef8c3885c780ed27b7d4ce734e48679d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd8fd56_931c220e",
         "filename": "docs/source/troubleshooting/simple-deployment.rst",
         "patchSetId": 1
