@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd8fd56_931c220e",
+        "filename": "docs/source/troubleshooting/simple-deployment.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1012094
+      },
+      "writtenOn": "2018-02-06T10:01:04Z",
+      "side": 1,
+      "message": "Minor comment, gerrit seems to be flagging some of the trailing / excess whitespace.",
+      "revId": "0d774a30ef8c3885c780ed27b7d4ce734e48679d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
