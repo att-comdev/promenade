@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89d6c532_8f1eb9e3",
+        "filename": "promenade/cli.py",
+        "patchSetId": 43
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011939
+      },
+      "writtenOn": "2018-02-13T19:19:34Z",
+      "side": 1,
+      "message": "generate",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "f9c848192750caa5e77a5ad3e64319f102dcdd1e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
