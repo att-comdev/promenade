@@ -9,7 +9,20 @@ kubectl_cmd() {
 
     shift
 
-    ssh_cmd "${VIA}" kubectl "${@}"
+    SUCCESS=0
+    for attempt in $(seq 5); do
+        if ssh_cmd "${VIA}" kubectl "${@}"; then
+            SUCCESS=1
+            break
+        else
+            sleep 5
+        fi
+    done
+
+    if [[ "${SUCCESS}" != 1 ]]; then
+        log "Failed to execute kubectl command: \"${@}\""
+        exit 1
+    fi
 }
 
 kubectl_wait_for_pod() {
