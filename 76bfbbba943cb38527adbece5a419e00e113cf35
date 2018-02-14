@@ -22,6 +22,30 @@
       "revId": "76bfbbba943cb38527adbece5a419e00e113cf35",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a3d442_1daa411a",
+        "filename": "promenade/generator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-02-14T20:31:42Z",
+      "side": 1,
+      "message": "Yeah, sorry.  First PS was the fix alone, second PS was actually testing the fix and moving that helper off the class.",
+      "parentUuid": "299ccb6e_5e7eb614",
+      "range": {
+        "startLine": 51,
+        "startChar": 49,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "76bfbbba943cb38527adbece5a419e00e113cf35",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
