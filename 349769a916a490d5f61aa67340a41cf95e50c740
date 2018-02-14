@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ae34b67_c2aec13c",
+        "filename": "docs/source/configuration/pki-catalog.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-02-14T14:40:15Z",
+      "side": 1,
+      "message": "So I don\u0027t mind if it\u0027s in another patchset, but I\u0027d like to see Keypair generation called out specifically too.",
+      "revId": "349769a916a490d5f61aa67340a41cf95e50c740",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
