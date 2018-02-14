@@ -42,7 +42,7 @@ class Generator:
         for service in service_names:
             parts = service.split('.')
             for i in range(len(parts)):
-                service_list.append('.'.join(parts[:i]))
+                service_list.append('.'.join(parts[:i+1]))
         return service_list
 
     def gen(self, kind, *args, **kwargs):
