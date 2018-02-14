@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "299ccb6e_5e7eb614",
+        "filename": "promenade/generator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-14T20:17:46Z",
+      "side": 1,
+      "message": "I see, this is the fix.",
+      "range": {
+        "startLine": 51,
+        "startChar": 49,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "76bfbbba943cb38527adbece5a419e00e113cf35",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
