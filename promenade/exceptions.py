@@ -221,6 +221,8 @@ class PromenadeException(Exception):
 class ApiError(PromenadeException):
     """
     An error to handle general api errors.
+
+    **Message:** **
     """
 
     title = 'Api Error'
@@ -237,6 +239,8 @@ class InvalidFormatError(PromenadeException):
 
 
 class ValidationException(PromenadeException):
+    """
+    """
     title = 'Validation Error'
     status = falcon.HTTP_400
 
