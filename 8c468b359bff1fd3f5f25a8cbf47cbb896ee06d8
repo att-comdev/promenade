@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c80e9d42_86bd1ea7",
+        "filename": "docs/source/configuration/genesis.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1012474
+      },
+      "writtenOn": "2018-02-16T19:38:51Z",
+      "side": 1,
+      "message": "Indented too far",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "8c468b359bff1fd3f5f25a8cbf47cbb896ee06d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57f68d49_2051e7ea",
+        "filename": "docs/source/configuration/genesis.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1012474
+      },
+      "writtenOn": "2018-02-16T19:38:51Z",
+      "side": 1,
+      "message": "Armada",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "8c468b359bff1fd3f5f25a8cbf47cbb896ee06d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
