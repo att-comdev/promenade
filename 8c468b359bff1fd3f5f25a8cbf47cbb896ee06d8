@@ -45,6 +45,29 @@
       "revId": "8c468b359bff1fd3f5f25a8cbf47cbb896ee06d8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa254caa_c80b7613",
+        "filename": "docs/source/configuration/genesis.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-16T20:00:16Z",
+      "side": 1,
+      "message": "Does Prom have an external reference to Armada? At least in its README? Would be good to add.\n\nMaybe this: http://armada-helm.readthedocs.io/en/latest/commands/apply.html",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "8c468b359bff1fd3f5f25a8cbf47cbb896ee06d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
