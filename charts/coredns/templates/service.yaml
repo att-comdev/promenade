@@ -1,3 +1,4 @@
+{{ $prometheus_annotations := .Values.monitoring.prometheus.coredns -}}
 ---
 apiVersion: v1
 kind: Service
@@ -6,6 +7,10 @@ metadata:
   labels:
     kubernetes.io/cluster-service: "true"
     kubernetes.io/name: "CoreDNS"
+  annotations:
+{{- if .Values.monitoring.prometheus.enabled }}
+{{ tuple $prometheus_annotations | include "helm-toolkit.snippets.prometheus_service_annotations" | indent 4 -}}
+{{- end }}
 spec:
   selector:
     {{ .Values.service.name }}: enabled
