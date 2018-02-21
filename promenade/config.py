@@ -25,7 +25,8 @@ class Configuration:
         if substitute:
             LOG.info("Rendering documents via Deckhand engine.")
             deckhand_eng = layering.DocumentLayering(
-                documents, substitution_sources=documents)
+                documents, substitution_sources=documents,
+                fail_on_missing_sub_src=False)
             documents = [dict(d) for d in deckhand_eng.render()]
             LOG.info("Deckhand engine returned %d documents." % len(documents))
         if validate:
