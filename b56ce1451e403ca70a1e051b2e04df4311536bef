@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7804dcc4_666f64c0",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-22T22:25:52Z",
+      "side": 1,
+      "message": "Where does this URL come from?",
+      "range": {
+        "startLine": 78,
+        "startChar": 10,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "b56ce1451e403ca70a1e051b2e04df4311536bef",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
