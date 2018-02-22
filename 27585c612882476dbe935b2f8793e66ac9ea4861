@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed834204_e37a4794",
+        "filename": "docs/source/exceptions.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-22T22:27:05Z",
+      "side": 1,
+      "message": "ValidationException",
+      "range": {
+        "startLine": 38,
+        "startChar": 46,
+        "endLine": 38,
+        "endChar": 64
+      },
+      "revId": "27585c612882476dbe935b2f8793e66ac9ea4861",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
