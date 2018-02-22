@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77754877_aae8e58a",
+        "filename": "examples/basic/armada-resources.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-22T21:06:03Z",
+      "side": 0,
+      "message": "These secrets don\u0027t exist, correct? I had to do this: https://review.gerrithub.io/#/c/400891/",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "5240aca78c080e7c6422f4f952000d15fcc14d02",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

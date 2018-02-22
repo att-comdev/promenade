@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "731fd6ab_c224f013",
+        "filename": "tools/g2/on_error/collect_genesis_info.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-02-22T21:06:03Z",
+      "side": 1,
+      "message": "${VIA}",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 50
+      },
+      "revId": "23840f8f6f1c46d236817e1ba8f4515db6b06953",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
