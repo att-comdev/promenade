@@ -22,6 +22,30 @@
       "revId": "bdfe4cb2b5a5edb0254003cede445486b73eb55c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d22181e9_98e64bb4",
+        "filename": "charts/coredns/templates/service.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1013519
+      },
+      "writtenOn": "2018-02-26T16:44:26Z",
+      "side": 1,
+      "message": "I originally had it there as I agree that that would be better for locality of reference, but as I believe Steve\u0027s comment was referring to this matches the other charts that use prometheus in that those charts seem to prefer co-locating variable declarations near the top of the file. I am happy to change it though if the other reviewers agree.",
+      "parentUuid": "4f879645_700ebb4c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 71
+      },
+      "revId": "bdfe4cb2b5a5edb0254003cede445486b73eb55c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
