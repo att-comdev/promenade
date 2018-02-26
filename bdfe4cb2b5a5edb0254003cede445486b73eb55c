@@ -46,6 +46,30 @@
       "revId": "bdfe4cb2b5a5edb0254003cede445486b73eb55c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "853a8e8c_68f18f56",
+        "filename": "charts/coredns/templates/service.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2018-02-26T22:34:39Z",
+      "side": 1,
+      "message": "we don\u0027t even need to declare this really, but could just call in l12?",
+      "parentUuid": "d22181e9_98e64bb4",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 71
+      },
+      "revId": "bdfe4cb2b5a5edb0254003cede445486b73eb55c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
