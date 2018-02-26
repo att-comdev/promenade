@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "797ea359_1980ec85",
+        "filename": "tox.ini",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2018-02-26T07:09:31Z",
+      "side": 1,
+      "message": "might move all these into a requirements.txt inside the doc folder instead of having these deps specified everywhere.  That said not a blocker - and can be fixed in future PS.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "31c2fc8346c6e6418c74860c0a31d73c7d154ca5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12ec40f5_dcafc59d",
         "filename": "tox.ini",
         "patchSetId": 8
