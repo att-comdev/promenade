@@ -22,6 +22,30 @@
       "revId": "5240aca78c080e7c6422f4f952000d15fcc14d02",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8757cff_3e7e6f29",
+        "filename": "examples/basic/armada-resources.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-02-26T16:12:31Z",
+      "side": 0,
+      "message": "They no longer exist and these references should have been removed with the recent kube-proxy work.",
+      "parentUuid": "77754877_aae8e58a",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "5240aca78c080e7c6422f4f952000d15fcc14d02",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
