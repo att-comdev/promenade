@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+exec docker run --rm -i \
+    --net host \
+    -v /etc/genesis/armada-cli/auth:/armada/.kube \
+    -v /etc/genesis/armada/assets:/etc/genesis/armada/assets \
+    -e OS_PROJECT_DOMAIN_NAME=default \
+    -e OS_USER_DOMAIN_NAME=default \
+    -e OS_PROJECT_NAME=default \
+    -e OS_USERNAME=promenade \
+    -e OS_PASSWORD=password \
+    -e OS_AUTH_URL=http://keystone-api.ucp.svc.cluster.local \
+    -e PROM_URL=http://promenade-api.ucp.svc.cluster.local \
+    {{ config['Genesis:images.kubernetes.apiserver'] }} \
+        $*
