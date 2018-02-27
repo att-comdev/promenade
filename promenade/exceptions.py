@@ -292,6 +292,12 @@ class ValidationException(PromenadeException):
     status = falcon.HTTP_400
 
 
+class KeystoneException(PromenadeException):
+    tittle = 'Keystone Authorization Error'
+    status = falcon.HTTP_401
+
+
+
 class DeckhandException(PromenadeException):
     title = 'Deckhand Engine Error'
     status = falcon.HTTP_500
