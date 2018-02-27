@@ -35,4 +35,5 @@ Promenade Configuration Guide
    configuration/index
    troubleshooting/index
    api
+   client
    exceptions
