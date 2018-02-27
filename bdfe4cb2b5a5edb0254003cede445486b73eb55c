@@ -70,6 +70,30 @@
       "revId": "bdfe4cb2b5a5edb0254003cede445486b73eb55c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29ef5993_cf878e8d",
+        "filename": "charts/coredns/templates/service.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1008770
+      },
+      "writtenOn": "2018-02-27T06:19:07Z",
+      "side": 1,
+      "message": "++ that works.",
+      "parentUuid": "853a8e8c_68f18f56",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 71
+      },
+      "revId": "bdfe4cb2b5a5edb0254003cede445486b73eb55c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
