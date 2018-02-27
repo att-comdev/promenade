@@ -49,7 +49,13 @@
         "-l", "kubernetes-scheduler=enabled",
         "-l", "ucp-control-plane=enabled",
         "-e", "kubernetes n0 n0 n1 n2 n3",
-        "-e", "calico n0 n0 n1 n2 n3"
+        "-e", "calico n0 n0 n1 n2 n3",
+        "-a", "http://keystone-api.ucp.svc.cluster.local/v3",
+        "-u", "promenade",
+        "-p", "password",
+        "-r", "default",
+        "-s", "default",
+        "-o", "default"
       ]
     },
     {
@@ -71,7 +77,13 @@
         "-n", "n0",
         "-l", "ucp-control-plane=enabled",
         "-e", "kubernetes n1 n1 n2 n3",
-        "-e", "calico n1 n1 n2 n3"
+        "-e", "calico n1 n1 n2 n3",
+        "-a", "http://keystone-api.ucp.svc.cluster.local/v3",
+        "-u", "promenade",
+        "-p", "password",
+        "-r", "default",
+        "-s", "default",
+        "-o", "default"
       ]
     },
     {
