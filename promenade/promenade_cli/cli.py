@@ -1,4 +1,5 @@
-from . import builder, config, exceptions, generator, logging
+from promenade import builder, config, exceptions, generator, logging
+from promenade.promenade_client import client
 import click
 import os
 import sys
@@ -62,6 +63,47 @@ def genereate_certs(*, config_files, output_dir):
             validate=False)
         g = generator.Generator(c)
         g.generate(output_dir)
+    except exceptions.PromenadeException as e:
+        e.display(debug=debug)
+        sys.exit(e.EXIT_CODE)
+
+
+@promenade.command('check-health', help='Check health of Promenade API')
+def check_health():
+    debug = _debug()
+    try:
+        client.get_health()
+    except exceptions.PromenadeException as e:
+        e.display(debug=debug)
+        sys.exit(e.EXIT_CODE)
+
+
+@promenade.command('join-scripts', help='Generate join scripts')
+@click.option('--hostname', required=True, help='Name of the node')
+@click.option('--ip', required=True, help='IP address of the node')
+@click.option(
+    '--design-ref',
+    required=True,
+    help='Endpoint containing configuration documents')
+@click.option(
+    '-dl',
+    '--dynamic-labels',
+    required=True,
+    help='Used to set configuration options in generated script')
+@click.option(
+    '-sl',
+    '--static-labels',
+    required=True,
+    help='Used to set configuration options in generated script')
+def join_scripts(*, hostname, ip, design_ref, dynamic_labels, static_labels):
+    debug = _debug()
+    try:
+        client.get_join_scripts(
+            hostname=hostname,
+            ip=ip,
+            design_ref=design_ref,
+            dynamic_labels=dynamic_labels,
+            static_labels=static_labels)
     except exceptions.PromenadeException as e:
         e.display(debug=debug)
         sys.exit(e.EXIT_CODE)
