@@ -66,7 +66,7 @@ iso_gen() {
             --pool "${VIRSH_POOL}" \
             --vol "cloud-init-${NAME}.iso" \
             --file "${ISO_DIR}/cidata.iso"
-    } &>> "${LOG_FILE}"
+    } 2>&1 | tee -a "${LOG_FILE}"
 }
 
 iso_path() {
@@ -84,8 +84,10 @@ net_clean() {
 net_declare() {
     if ! virsh net-list --name | grep ^promenade$ > /dev/null; then
         log Creating promenade network
-        virsh net-create "${XML_DIR}/network.xml" &>> "${LOG_FILE}"
+        virsh net-create "${XML_DIR}/network.xml" 2>&1 | tee -a "${LOG_FILE}"
     fi
+    virsh net-dumpxml promenade 2>&1 | tee -a "${LOG_FILE}"
+    virsh net-start promenade || true
 }
 
 pool_declare() {
@@ -126,7 +128,7 @@ vm_create() {
     virt-install \
         --name "${NAME}" \
         --virt-type kvm \
-        --cpu host \
+        --cpu host-passthrough,+x2apic \
         --graphics vnc,listen=0.0.0.0 \
         --noautoconsole \
         --network "network=promenade,model=virtio" \
@@ -136,10 +138,17 @@ vm_create() {
         --disk "vol=${VIRSH_POOL}/promenade-${NAME}.img,${DISK_OPTS}" \
         --disk "pool=${VIRSH_POOL},size=20,${DISK_OPTS}" \
         --disk "pool=${VIRSH_POOL},size=20,${DISK_OPTS}" \
-        --disk "vol=${VIRSH_POOL}/cloud-init-${NAME}.iso,device=cdrom" &>> "${LOG_FILE}"
+        --disk "vol=${VIRSH_POOL}/cloud-init-${NAME}.iso,device=cdrom" 2>&1 | tee -a "${LOG_FILE}"
+
+    log VM "${NAME}" created, waiting for SSH to become available.
+    sleep 5
+    ip a | tee -a "${LOG_FILE}"
+    ip r | tee -a "${LOG_FILE}"
+    brctl showstp prom-br
 
     ssh_wait "${NAME}"
     ssh_cmd "${NAME}" sync
+    log VM "${NAME}" is now available.
 }
 
 vm_create_all() {
@@ -147,7 +156,12 @@ vm_create_all() {
     for NAME in $(config_vm_names); do
         vm_create "${NAME}" &
     done
-    wait
+
+    for NAME in $(config_vm_names); do
+        if ! wait -n; then
+            exit 1
+        fi
+    done
 
     for NAME in $(config_vm_names); do
         vm_validate "${NAME}"
@@ -203,5 +217,5 @@ vol_create_root() {
         --capacity 64G \
         --format qcow2 \
         --backing-vol promenade-base.img \
-        --backing-vol-format qcow2 &>> "${LOG_FILE}"
+        --backing-vol-format qcow2 2>&1 | tee -a "${LOG_FILE}"
 }
