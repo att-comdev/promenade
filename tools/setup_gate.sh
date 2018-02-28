@@ -18,6 +18,11 @@ REQUIRE_RELOG=0
 
 log_stage_header "Installing Packages"
 export DEBIAN_FRONTEND=noninteractive
+
+sudo cp /etc/apt/sources.list{,.backup}
+sed -r 's/.*xenial-(updates|security).*//' < /etc/apt/sources.list > /tmp/sources.list
+sudo mv /tmp/sources.list /etc/apt/sources.list
+
 sudo apt-get update -qq
 sudo apt-get install -q -y --no-install-recommends \
     curl \
@@ -27,6 +32,7 @@ sudo apt-get install -q -y --no-install-recommends \
     jq \
     libstring-shellquote-perl \
     libvirt-bin \
+    libvirt0 \
     qemu-kvm \
     qemu-utils \
     virtinst
