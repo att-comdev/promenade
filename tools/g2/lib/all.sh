@@ -19,3 +19,9 @@ source "$LIB_DIR"/virsh.sh
 if [[ -v GATE_DEBUG && ${GATE_DEBUG} = "1" ]]; then
     set -x
 fi
+
+function exit_cleanup() {
+    kill $(jobs -p)
+}
+
+trap 'exit_cleanup' INT TERM
