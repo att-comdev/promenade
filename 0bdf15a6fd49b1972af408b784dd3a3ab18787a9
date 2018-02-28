@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "948d5287_c74441e3",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-02-28T15:25:14Z",
+      "side": 1,
+      "message": "I guess maybe the documentation here isn\u0027t 100% clear: https://github.com/att-comdev/ucp-integration/blob/master/docs/source/api-conventions.rst#input-structure\n\nBut the intent, I believe, is that this href comes from the request body rather than a query param.\n\nThat can happen in this PS or a separate one, but this API can\u0027t be used until SY can call it as expected.",
+      "revId": "0bdf15a6fd49b1972af408b784dd3a3ab18787a9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
