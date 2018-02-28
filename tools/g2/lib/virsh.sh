@@ -57,16 +57,18 @@ iso_gen() {
                 user-data
 
         virsh vol-create-as \
+            --debug 1 \
             --pool "${VIRSH_POOL}" \
             --name "cloud-init-${NAME}.iso" \
             --capacity "$(stat -c %s "${ISO_DIR}/cidata.iso")" \
             --format raw
 
         virsh vol-upload \
+            --debug 1 \
             --pool "${VIRSH_POOL}" \
             --vol "cloud-init-${NAME}.iso" \
             --file "${ISO_DIR}/cidata.iso"
-    } &>> "${LOG_FILE}"
+    } 2>&1 | tee -a "${LOG_FILE}"
 }
 
 iso_path() {
@@ -124,6 +126,7 @@ vm_create() {
     log Creating VM "${NAME}"
     DISK_OPTS="bus=virtio,cache=directsync,discard=unmap,format=qcow2"
     virt-install \
+        --debug \
         --name "${NAME}" \
         --virt-type kvm \
         --cpu host \
@@ -136,7 +139,7 @@ vm_create() {
         --disk "vol=${VIRSH_POOL}/promenade-${NAME}.img,${DISK_OPTS}" \
         --disk "pool=${VIRSH_POOL},size=20,${DISK_OPTS}" \
         --disk "pool=${VIRSH_POOL},size=20,${DISK_OPTS}" \
-        --disk "vol=${VIRSH_POOL}/cloud-init-${NAME}.iso,device=cdrom" &>> "${LOG_FILE}"
+        --disk "vol=${VIRSH_POOL}/cloud-init-${NAME}.iso,device=cdrom" 2>&1 | tee -a "${LOG_FILE}"
 
     ssh_wait "${NAME}"
     ssh_cmd "${NAME}" sync
@@ -198,10 +201,11 @@ vol_create_root() {
 
     log Creating root volume for "${NAME}"
     virsh vol-create-as \
+        --debug 1 \
         --pool "${VIRSH_POOL}" \
         --name "promenade-${NAME}.img" \
         --capacity 64G \
         --format qcow2 \
         --backing-vol promenade-base.img \
-        --backing-vol-format qcow2 &>> "${LOG_FILE}"
+        --backing-vol-format qcow2 2>&1 | tee -a "${LOG_FILE}"
 }
