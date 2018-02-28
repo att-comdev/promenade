@@ -1,7 +1,7 @@
 <network>
   <name>promenade</name>
   <forward mode='nat'/>
-  <bridge name='prom-br' stp='on' delay='0'/>
+  <bridge name='prom-br' delay='0'/>
   <mac address='52:54:00:e7:94:3f'/>
   <ip address='192.168.77.1' netmask='255.255.255.0'>
     <dhcp>
