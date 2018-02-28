@@ -43,7 +43,22 @@ ssh_setup_declare() {
 
 ssh_wait() {
     NAME=${1}
+    TIMEOUT=${2:-120}
+    end=$(($(date +%s) + $TIMEOUT))
     while ! ssh_cmd "${NAME}" /bin/true; do
-        sleep 0.5
+        now=$(date +%s)
+        if [ "${now}" -gt "${end}" ]; then
+            log Failed to wait for node "${NAME}"
+            sudo cat /var/log/syslog
+            virsh list
+            virsh dumpxml n0 || true
+            log n0 log
+            cat /var/log/libvirt/qemu/n0.xml
+            log n1 log
+            cat /var/log/libvirt/qemu/n1.xml
+            exit 1
+        else
+            sleep 0.5
+        fi
     done
 }
