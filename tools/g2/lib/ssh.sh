@@ -43,7 +43,19 @@ ssh_setup_declare() {
 
 ssh_wait() {
     NAME=${1}
+    TIMEOUT=${2:-120}
+    end=$(($(date +%s) + $TIMEOUT))
     while ! ssh_cmd "${NAME}" /bin/true; do
-        sleep 0.5
+        now=$(date +%s)
+        if [ "${now}" -gt "${end}" ]; then
+            log Failed to wait for node "${NAME}"
+            export GATE_DEBUG=1
+            ssh_cmd "${NAME}" /bin/true
+            ip r
+            ip a
+            exit 1
+        else
+            sleep 0.5
+        fi
     done
 }
