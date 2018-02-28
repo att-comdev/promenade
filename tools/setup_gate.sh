@@ -18,6 +18,7 @@ REQUIRE_RELOG=0
 
 log_stage_header "Installing Packages"
 export DEBIAN_FRONTEND=noninteractive
+
 sudo apt-get update -qq
 sudo apt-get install -q -y --no-install-recommends \
     curl \
@@ -30,6 +31,8 @@ sudo apt-get install -q -y --no-install-recommends \
     qemu-kvm \
     qemu-utils \
     virtinst
+
+sudo apt-get dist-upgrade -y
 
 log_stage_header "Joining User Groups"
 for grp in docker libvirtd; do
