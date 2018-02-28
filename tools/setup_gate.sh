@@ -19,6 +19,8 @@ REQUIRE_RELOG=0
 log_stage_header "Installing Packages"
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update -qq
+# NOTE(mark-burnett): pin libvirt version to 1.3.1-1ubuntu10.18 due to 10.19
+# being a breaking patch release.
 sudo apt-get install -q -y --no-install-recommends \
     curl \
     docker.io \
@@ -26,7 +28,8 @@ sudo apt-get install -q -y --no-install-recommends \
     genisoimage \
     jq \
     libstring-shellquote-perl \
-    libvirt-bin \
+    libvirt0=1.3.1-1ubuntu10.18 \
+    libvirt-bin=1.3.1-1ubuntu10.18 \
     qemu-kvm \
     qemu-utils \
     virtinst
