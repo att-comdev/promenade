@@ -13,6 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */}}
+
+{{- $envAll := . }}
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -23,10 +25,7 @@ metadata:
     kubernetes.io/name: "CoreDNS"
 spec:
   replicas: 2
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
+{{ tuple $envAll | include "helm-toolkit.snippets.kubernetes_upgrades_deployment" | indent 2 }}
   selector:
     matchLabels:
       {{ .Values.service.name }}: enabled
@@ -55,6 +54,7 @@ spec:
       - name: coredns
         image: {{ .Values.images.tags.coredns | quote }}
         imagePullPolicy: {{ .Values.images.pull_policy | quote }}
+{{ tuple $envAll $envAll.Values.pod.resources.coredns | include "helm-toolkit.snippets.kubernetes_resources" | indent 8 }}
         args: [ "-conf", "/etc/coredns/Corefile" ]
         volumeMounts:
         - name: config-volume

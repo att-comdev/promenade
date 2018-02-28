@@ -23,3 +23,51 @@ images:
   ctl: quay.io/calico/ctl:v1.6.3
   node: quay.io/calico/node:v2.6.5
   policy_controller: quay.io/calico/kube-controllers:v1.0.2
+
+pod:
+  lifecycle:
+    upgrades:
+      deployments:
+        revision_history: 3
+        pod_replacement_strategy: RollingUpdate
+        rolling_update:
+          max_unavailable: 1
+          max_surge: 3
+    disruption_budget:
+      policy_controller:
+        min_available: 0
+    termination_grace_period:
+      policy_controller:
+        timeout: 5
+      node:
+        timeout: 5
+  resources:
+    enabled: false
+    calico_kube_policy_controller:
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+        limits:
+          memory: "1024Mi"
+          cpu: "2000m"
+    calico_node:
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+        limits:
+          memory: "1024Mi"
+          cpu: "2000m"
+    calico_cni:
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+        limits:
+          memory: "1024Mi"
+          cpu: "2000m"
+    calico_ctl:
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+        limits:
+          memory: "1024Mi"
+          cpu: "2000m"

@@ -1,3 +1,5 @@
+{{- $envAll := . }}
+
 ---
 # This manifest installs the calico/node container, as well
 # as the Calico CNI plugins and network config on
@@ -38,6 +40,7 @@ spec:
         # host.
         - name: calico-node
           image: {{ .Values.images.node }}
+{{ tuple $envAll $envAll.Values.pod.resources.calico_node | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
           env:
             # The location of the Calico etcd cluster.
             - name: ETCD_ENDPOINTS
@@ -109,9 +112,6 @@ spec:
             {{- end }}
           securityContext:
             privileged: true
-          resources:
-            requests:
-              cpu: 250m
           volumeMounts:
             - mountPath: /lib/modules
               name: lib-modules
@@ -125,6 +125,7 @@ spec:
         # and CNI network config file on each node.
         - name: install-cni
           image:  {{ .Values.images.cni }}
+{{ tuple $envAll $envAll.Values.pod.resources.calico_cni | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
           command: ["/install-cni.sh"]
           env:
             # The location of the Calico etcd cluster.
@@ -156,6 +157,7 @@ spec:
         # This container installs calicoctl on each node.
         - name: install-calicoctl
           image:  {{ .Values.images.cni }}
+{{ tuple $envAll $envAll.Values.pod.resources.calico_ctl | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
           command:
             - /bin/sh
             - -c

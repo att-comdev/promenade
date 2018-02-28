@@ -22,6 +22,32 @@ conf:
       - att.com
       - kubernetes.default.svc.cluster.local
 
+pod:
+  mounts:
+    coredns:
+      init_container: null
+      core_dns:
+  lifecycle:
+    upgrades:
+      deployments:
+        revision_history: 3
+        pod_replacement_strategy: RollingUpdate
+        rolling_update:
+          max_unavailable: 1
+          max_surge: 3
+    termination_grace_period:
+      coredns:
+        timeout: 3600
+  resources:
+    enabled: false
+    core_dns:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "1024Mi"
+        cpu: "2000m"
+
 images:
   tags:
     coredns: coredns/coredns:1.0.5
