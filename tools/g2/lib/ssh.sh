@@ -43,7 +43,7 @@ ssh_setup_declare() {
 
 ssh_wait() {
     NAME=${1}
-    while ! ssh_cmd "${NAME}" /bin/true; do
+    while ! ssh_cmd "${NAME}" -v /bin/true; do
         sleep 0.5
     done
 }
