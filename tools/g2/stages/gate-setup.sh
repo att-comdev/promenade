@@ -6,7 +6,7 @@ source "${GATE_UTILS}"
 
 # Docker registry (cache) setup
 registry_up
-registry_populate
+#registry_populate
 
 # NginX for serving config files in the absence of Deckhand
 nginx_down
