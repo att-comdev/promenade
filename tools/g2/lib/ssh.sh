@@ -9,7 +9,7 @@ ssh_cmd() {
     if [[ -v GATE_DEBUG && ${GATE_DEBUG} = "1" ]]; then
         ssh -F "${SSH_CONFIG_DIR}/config" -v "${HOST}" "${args}"
     else
-        ssh -F "${SSH_CONFIG_DIR}/config" "${HOST}" "${args}"
+        ssh -v -F "${SSH_CONFIG_DIR}/config" "${HOST}" "${args}"
     fi
 }
 

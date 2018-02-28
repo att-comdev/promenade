@@ -66,7 +66,7 @@ iso_gen() {
             --pool "${VIRSH_POOL}" \
             --vol "cloud-init-${NAME}.iso" \
             --file "${ISO_DIR}/cidata.iso"
-    } &>> "${LOG_FILE}"
+    } 2>&1 | tee -a "${LOG_FILE}"
 }
 
 iso_path() {
@@ -84,8 +84,9 @@ net_clean() {
 net_declare() {
     if ! virsh net-list --name | grep ^promenade$ > /dev/null; then
         log Creating promenade network
-        virsh net-create "${XML_DIR}/network.xml" &>> "${LOG_FILE}"
+        virsh net-create "${XML_DIR}/network.xml" 2>&1 | tee -a "${LOG_FILE}"
     fi
+    virsh net-dumpxml promenade 2>&1 | tee -a "${LOG_FILE}"
 }
 
 pool_declare() {
@@ -124,6 +125,7 @@ vm_create() {
     log Creating VM "${NAME}"
     DISK_OPTS="bus=virtio,cache=directsync,discard=unmap,format=qcow2"
     virt-install \
+        --debug \
         --name "${NAME}" \
         --virt-type kvm \
         --cpu host \
@@ -135,19 +137,23 @@ vm_create() {
         --import \
         --disk "vol=${VIRSH_POOL}/promenade-${NAME}.img,${DISK_OPTS}" \
         --disk "pool=${VIRSH_POOL},size=20,${DISK_OPTS}" \
-        --disk "pool=${VIRSH_POOL},size=20,${DISK_OPTS}" \
-        --disk "vol=${VIRSH_POOL}/cloud-init-${NAME}.iso,device=cdrom" &>> "${LOG_FILE}"
+        --disk "vol=${VIRSH_POOL}/cloud-init-${NAME}.iso,device=cdrom" 2>&1 | tee -a "${LOG_FILE}"
+
+    log VM "${NAME}" created, waiting for SSH to become available.
 
     ssh_wait "${NAME}"
     ssh_cmd "${NAME}" sync
+    log VM "${NAME}" is now available.
 }
 
 vm_create_all() {
     log Starting all VMs in parallel
+    set -x
     for NAME in $(config_vm_names); do
         vm_create "${NAME}" &
     done
     wait
+    set +x
 
     for NAME in $(config_vm_names); do
         vm_validate "${NAME}"
@@ -203,5 +209,5 @@ vol_create_root() {
         --capacity 64G \
         --format qcow2 \
         --backing-vol promenade-base.img \
-        --backing-vol-format qcow2 &>> "${LOG_FILE}"
+        --backing-vol-format qcow2 2>&1 | tee -a "${LOG_FILE}"
 }
