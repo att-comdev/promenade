@@ -5,12 +5,16 @@
   ],
   "stages": [
     {
+      "name": "Gate Setup",
+      "script": "gate-setup.sh"
+    },
+    {
       "name": "Report Disk IO",
       "script": "report-disk-io.sh"
     },
     {
-      "name": "Gate Setup",
-      "script": "gate-setup.sh"
+      "name": "Create VMs",
+      "script": "create-vms.sh"
     },
     {
       "name": "Build Image",
@@ -23,10 +27,6 @@
     {
       "name": "Build Scripts",
       "script": "build-scripts.sh"
-    },
-    {
-      "name": "Create VMs",
-      "script": "create-vms.sh"
     },
     {
       "name": "Genesis",

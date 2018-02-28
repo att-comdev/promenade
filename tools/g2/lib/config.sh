@@ -8,6 +8,7 @@ export PROMENADE_DEBUG=${PROMENADE_DEBUG:-0}
 export REGISTRY_DATA_DIR=${REGISTRY_DATA_DIR:-/mnt/registry}
 export VIRSH_POOL=${VIRSH_POOL:-promenade}
 export VIRSH_POOL_PATH=${VIRSH_POOL_PATH:-/var/lib/libvirt/promenade}
+export VIRSH_DEBUG=1
 
 config_configuration() {
     # XXX Do I need ' | @sh' now?
