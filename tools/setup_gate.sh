@@ -18,6 +18,18 @@ REQUIRE_RELOG=0
 
 log_stage_header "Installing Packages"
 export DEBIAN_FRONTEND=noninteractive
+
+# NOTE(mark-burnett): pin libvirt version to 1.3.1-1ubuntu10.18 due to 10.19
+# being a breaking patch release.
+sudo tee /etc/apt/preferences <<EOF
+Package: libvirt-bin
+Pin: release a=xenial
+Pin-Priority: 900
+Package: libvirt0
+Pin: release a=xenial
+Pin-Priority: 900
+EOF
+
 sudo apt-get update -qq
 sudo apt-get install -q -y --no-install-recommends \
     curl \
