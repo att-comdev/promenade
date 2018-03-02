@@ -26,6 +26,9 @@ from promenade import policy
 LOG = logging.getLogger(__name__)
 
 
+SENTINEL = object()
+
+
 class JoinScriptsResource(BaseResource):
     """
     Lists the versions supported by this API
@@ -46,6 +49,10 @@ class JoinScriptsResource(BaseResource):
             config = Configuration.from_design_ref(design_ref)
         except exceptions.DeckhandException as e:
             raise falcon.HTTPInternalServerError(description=str(e))
+
+        if config.get_path('KubernetesNode:.', SENTINEL) != SENTINEL:
+            raise exceptions.ExistingKubernetesNodeDocumentError(
+                    'Existing KubernetesNode documents found')
 
         node_document = {
             'schema': 'promenade/KubernetesNode/v1',
