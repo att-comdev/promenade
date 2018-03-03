@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88851229_db59d6c1",
+        "filename": "examples/complete/armada-resources.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2018-03-03T03:12:11Z",
+      "side": 1,
+      "message": "the `job-name` is a very fragile label to target on (and will almost certainly change soon), it would be better to use the `application` `component` and if desired `release_group` labels to target nodes.",
+      "range": {
+        "startLine": 1334,
+        "startChar": 12,
+        "endLine": 1334,
+        "endChar": 38
+      },
+      "revId": "84da4a935613469a6b2b8575ffafd236fda09972",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
