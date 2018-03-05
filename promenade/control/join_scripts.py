@@ -47,8 +47,9 @@ class JoinScriptsResource(BaseResource):
         try:
             config = Configuration.from_design_ref(
                 design_ref, allow_missing_substitutions=False)
-        except exceptions.DeckhandException as e:
-            raise falcon.HTTPInternalServerError(description=str(e))
+        except exceptions.DeckhandException:
+            LOG.exception('Caught Deckhand render error for configuration')
+            raise
 
         if config.get_path('KubernetesNode:.', SENTINEL) != SENTINEL:
             raise exceptions.ExistingKubernetesNodeDocumentError(
