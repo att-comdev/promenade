@@ -14,7 +14,6 @@ LOG = logging.getLogger(__name__)
 
 class PKI:
     def __init__(self):
-        self.certificate_authorities = {}
         self._ca_config_string = None
 
     @property
@@ -40,7 +39,6 @@ class PKI:
             files={
                 'csr.json': self.csr(name=ca_name, groups=['Kubernetes']),
             })
-        self.certificate_authorities[ca_name] = result
 
         return (self._wrap_ca(ca_name, result['cert']),
                 self._wrap_ca_key(ca_name, result['key']))
@@ -56,7 +54,14 @@ class PKI:
         return (self._wrap_pub_key(name, pub_result['pub.pem']),
                 self._wrap_priv_key(name, priv_result['priv.pem']))
 
-    def generate_certificate(self, name, *, ca, cn, groups=[], hosts=[]):
+    def generate_certificate(self,
+                             name,
+                             *,
+                             ca_cert,
+                             ca_key,
+                             cn,
+                             groups=[],
+                             hosts=[]):
         result = self._cfssl(
             [
                 'gencert', '-ca', 'ca.pem', '-ca-key', 'ca-key.pem', '-config',
@@ -64,8 +69,8 @@ class PKI:
             ],
             files={
                 'ca-config.json': self.ca_config,
-                'ca.pem': self.certificate_authorities[ca]['cert'],
-                'ca-key.pem': self.certificate_authorities[ca]['key'],
+                'ca.pem': ca_cert,
+                'ca-key.pem': ca_key,
                 'csr.json': self.csr(name=cn, groups=groups, hosts=hosts),
             })
 
