@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d24195a_a2e910fd",
+        "filename": "promenade/config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-03-06T17:41:58Z",
+      "side": 1,
+      "message": "Double quotes to match the other log statements?  I know Python doesn\u0027t care, but I haven\u0027t made myself not care yet.",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "cfa3dffc5cfc974498d6b15f6531b3a9f6b232dc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
