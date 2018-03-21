@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9f89aed_24893e27",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-03-21T17:55:50Z",
+      "side": 1,
+      "message": "Should add copyright to this file.",
+      "revId": "f9c0688c798d791dd5dcd83ec641589de972df5c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afa2cbe5_5e870240",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-03-21T17:55:50Z",
+      "side": 1,
+      "message": "If this is empty this can be removed I would think.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "f9c0688c798d791dd5dcd83ec641589de972df5c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75288b7c_51699dc7",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-03-21T17:55:50Z",
+      "side": 1,
+      "message": "generate_certs",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "f9c0688c798d791dd5dcd83ec641589de972df5c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6efed54c_58caa99e",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-03-21T17:55:50Z",
+      "side": 1,
+      "message": "I would think this would be kubernetes_provisioner? Maybe without the underscore.",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 28
+      },
+      "revId": "f9c0688c798d791dd5dcd83ec641589de972df5c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d97863c_92671c81",
+        "filename": "promenade/promenade_client/client.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-03-21T17:55:50Z",
+      "side": 1,
+      "message": "nit: This is 2018 in the other files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "f9c0688c798d791dd5dcd83ec641589de972df5c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cd07ec5_eabdb9fb",
+        "filename": "promenade/promenade_client/session.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-03-21T17:55:50Z",
+      "side": 1,
+      "message": "nit: This is aligned differently than elsewhere.",
+      "revId": "f9c0688c798d791dd5dcd83ec641589de972df5c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
