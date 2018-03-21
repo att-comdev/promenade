@@ -31,6 +31,7 @@ anchor:
   kubelet:
     manifest_path: /etc/kubernetes/manifests
   period: 15
+  health_wait_period: 60
   files_to_copy:
     - source: /certs/apiserver.pem
       dest: /etc/kubernetes/apiserver/pki/apiserver.pem
