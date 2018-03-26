@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7cc957a_23f49f82",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-03-26T19:11:07Z",
+      "side": 1,
+      "message": "Should that be \u0027Generates certs for a site\u0027? (Plural).  Or, maybe \u0027Generates certificates for a site\u0027?",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 70
+      },
+      "revId": "a07de01ecb07a6c03e3a289c3397e22d7c3ac31a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43d03f1d_83244742",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-03-26T19:11:07Z",
+      "side": 1,
+      "message": "\u0027Checks health of Promenade API\u0027?",
+      "range": {
+        "startLine": 86,
+        "startChar": 41,
+        "endLine": 86,
+        "endChar": 70
+      },
+      "revId": "a07de01ecb07a6c03e3a289c3397e22d7c3ac31a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2163530_57e46371",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-03-26T19:11:07Z",
+      "side": 1,
+      "message": "This looks to be a copy/paste error.",
+      "range": {
+        "startLine": 101,
+        "startChar": 43,
+        "endLine": 101,
+        "endChar": 72
+      },
+      "revId": "a07de01ecb07a6c03e3a289c3397e22d7c3ac31a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
