@@ -49,8 +49,16 @@ class ValidateDesignResource(base.BaseResource):
 
     @policy.ApiEnforcer('kubernetes_provisioner:post_validatedesign')
     def on_post(self, req, resp):
-        href = req.get_param('href', required=True)
+
         try:
+            json_data = self.req_json(req)
+
+            if json_data is not None:
+                href = json_data.get('href', None)
+
+                if href is not None:
+                    href = uuid.UUID(href)
+                        
             config = Configuration.from_design_ref(
                 href, allow_missing_substitutions=False)
             validation.check_design(config)
