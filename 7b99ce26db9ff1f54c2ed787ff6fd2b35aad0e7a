@@ -22,6 +22,30 @@
       "revId": "7b99ce26db9ff1f54c2ed787ff6fd2b35aad0e7a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3300415d_83669e94",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1012025
+      },
+      "writtenOn": "2018-03-27T20:29:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb25f080_19cc6f00",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "7b99ce26db9ff1f54c2ed787ff6fd2b35aad0e7a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
