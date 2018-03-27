@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb25f080_19cc6f00",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-03-27T18:34:01Z",
+      "side": 1,
+      "message": "This will raise an InvalidFormatError if req is None or something: https://github.com/att-comdev/promenade/blob/873e069549ce18c1872bbd5e6e94eba9c74d225c/promenade/control/base.py#L41\n\nSo this should just be:\n\n    try:\n        json_data \u003d self.req_json(req)\n        href \u003d json_data.get(\u0027href\u0027, None)\n    except errors.InvalidFormatError as e:\n        msg \u003d ...\n        return self._return_msg(resp, falcon.HTTP_400, ...)\n    except errors.ValidationException as e:\n        return self._return_msg(...)",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "7b99ce26db9ff1f54c2ed787ff6fd2b35aad0e7a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
