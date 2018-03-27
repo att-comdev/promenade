@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c38852c7_736c8374",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-03-27T20:33:26Z",
+      "side": 1,
+      "message": "JSON should be capitalized, it is an acronym for JavaScript Object Notation.",
+      "range": {
+        "startLine": 62,
+        "startChar": 27,
+        "endLine": 62,
+        "endChar": 31
+      },
+      "revId": "2eb96b0522aa10bc08ec572b44e26535191013be",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
