@@ -54,10 +54,12 @@ manifests:
   job_ks_service: true
   job_ks_user: true
   secret_keystone: true
+  test_promenade_api: true
 
 network:
   api:
     port: 80
+    default: 9000
     target_port: 9000
     ingress:
       public: true
@@ -194,6 +196,14 @@ pod:
           memory: "128Mi"
           cpu: "100m"
       ks_endpoints:
+        limits:
+          memory: "128Mi"
+          cpu: "100m"
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+    test:
+      api:
         limits:
           memory: "128Mi"
           cpu: "100m"
