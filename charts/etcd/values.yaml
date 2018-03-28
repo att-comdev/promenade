@@ -23,6 +23,9 @@ labels:
     node_selector_key: etcd-example
     node_selector_value: enabled
 
+manifests:
+  test_etcd_health: true
+
 anchor:
   dns_policy: ClusterFirstWithHostNet
   etcdctl_endpoint: example-etcd
@@ -116,6 +119,14 @@ pod:
       limits:
         memory: "1024Mi"
         cpu: "2000m"
+    test:
+      api:
+        limits:
+          memory: "128Mi"
+          cpu: "100m"
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
 
 manifests:
   configmap_bin: true
