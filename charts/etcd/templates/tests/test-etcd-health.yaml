@@ -1,0 +1,45 @@
+{{/*
+# Copyright (c) 2018 AT&T Intellectual Property. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License. */}}
+{{/*
+Test etcdctl endpoint health */}}
+{{- if .Values.manifests.test_etcd_health }}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-etcd-test"
+  annotations:
+    "helm.sh/hook": "test-success"
+spec:
+  restartPolicy: Never
+  containers:
+    - name: "{{ .Release.Name }}-etcd-test"
+      image: {{ .Values.images.tags.etcd }}
+      imagePullPolicy: {{ .Values.images.pull_policy }}
+      command:
+        - /bin/sh
+        - -c
+        - |
+          HEALTH=$(etcdctl endpoint health | grep successfully)
+          if [ -n "$HEALTH" ]; then
+            echo ETCD is healthy
+          else
+            echo ETCD is unhealthy
+            exit 1
+          fi
+          echo Success
+          exit 0
+...
+{{- end }}
