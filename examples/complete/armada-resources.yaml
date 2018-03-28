@@ -650,6 +650,7 @@ data:
       tags:
         anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
         haproxy: haproxy:1.8.3
+        promenade: quay.io/attcomdev/promenade:latest
 
   source:
     type: local

@@ -65,7 +65,27 @@ images:
   tags:
     anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
     haproxy: haproxy:1.8.3
+    promenade: quay.io/attcomdev/promenade:latest
   pull_policy: "IfNotPresent"
+
+manifests:
+  test_haproxy: true
+
+endpoints:
+  cluster_domain_suffix: cluster.local
+  kubernetesprovisioner:
+    name: haproxy
+    hosts:
+      default: haproxy-host
+    port:
+      api:
+        default: 8888
+    path:
+      default: /haproxy-stats
+    scheme:
+      default: http
+    host_fqdn_override:
+      default: null
 
 pod:
   lifecycle:
@@ -95,5 +115,13 @@ pod:
       limits:
         memory: "256Mi"
         cpu: "2000m"
+    test:
+      api:
+        limits:
+          memory: "128Mi"
+          cpu: "100m"
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
 
 release_group: null
