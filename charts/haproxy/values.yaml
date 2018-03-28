@@ -18,6 +18,7 @@ conf:
       - source: /tmp/etc/haproxy.yaml
         dest: /etc/kubernetes/manifests/haproxy.yaml
     period: 30
+    stats_port: 8888
     kubernetes_url: https://kubernetes.default:443
     services:
       default:
@@ -67,6 +68,9 @@ images:
     haproxy: haproxy:1.8.3
   pull_policy: "IfNotPresent"
 
+manifests:
+  test_haproxy: true
+
 pod:
   lifecycle:
     upgrades:
@@ -95,5 +99,13 @@ pod:
       limits:
         memory: "256Mi"
         cpu: "2000m"
+    test:
+      api:
+        limits:
+          memory: "128Mi"
+          cpu: "100m"
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
 
 release_group: null
