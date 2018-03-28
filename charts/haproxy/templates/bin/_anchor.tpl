@@ -83,6 +83,15 @@ install_config() {
             for IP in $SERVICE_IPS; do
                 echo "  server s$IP $IP:$DEST_PORT" {{ $svc_data.server_opts | quote }} >> "$NEXT_HAPROXY_CONF"
             done
+
+            echo >> "$NEXT_HAPROXY_CONF"
+            echo "listen stats" >> "$NEXT_HAPROXY_CONF"
+            echo "  bind *:8888" >> "$NEXT_HAPROXY_CONF"
+            echo "  mode http" >> "$NEXT_HAPROXY_CONF"
+            echo "  stats enable" >> "$NEXT_HAPROXY_CONF"
+            echo "  stats hide-version" >> "$NEXT_HAPROXY_CONF"
+            echo "  stats realm Haproxy\ Statistics" >> "$NEXT_HAPROXY_CONF"
+            echo "  stats uri /haproxy-stats" >> "$NEXT_HAPROXY_CONF"
         else
             echo Failed to get destination port for service.
             SUCCESS=0
