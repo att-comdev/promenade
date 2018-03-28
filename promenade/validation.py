@@ -20,6 +20,7 @@ import pkg_resources
 import yaml
 
 __all__ = ['check_schema', 'check_schemas']
+result = {'msg': [], 'err_count': 0}
 
 LOG = logging.getLogger(__name__)
 
@@ -31,13 +32,22 @@ def check_design(config):
         for doc in config.documents:
             schema = doc.get('schema', None)
             if not schema:
-                raise exceptions.ValidationException(
-                    '"schema" is a required document key.')
+                result['msg'].append(
+                    str(
+                        exceptions.ValidationException(
+                            '"schema" is a required document key.')))
+                result['err_count'] += 1
+                return result
             name = schema.split('/')[1]
             if name == kind:
                 count += 1
         if count != 1:
-            raise exceptions.ValidationException()
+            msg = ('There are {0} {1} documents. However, there should be one.'
+                   ).format(count, kind)
+            result['msg'].append(
+                str(exceptions.ValidationException(description=msg)))
+            result['err_count'] += 1
+    return result
 
 
 def check_schemas(documents, schemas=None):
@@ -49,7 +59,10 @@ def check_schemas(documents, schemas=None):
 
 def check_schema(document, schemas=None):
     if not isinstance(document, dict):
-        LOG.error('Non-dictionary document passed to schema validation.')
+        msg = 'Non-dictionary document passed to schema validation.'
+        LOG.error(msg)
+        result['msg'].append(msg)
+        result['err_count'] += 1
         return
 
     schema_name = document.get('schema', '<missing>')
@@ -63,7 +76,8 @@ def check_schema(document, schemas=None):
         try:
             jsonschema.validate(document.get('data'), schema_set[schema_name])
         except jsonschema.ValidationError as e:
-            raise exceptions.ValidationException(str(e))
+            result['msg'].append(str(exceptions.ValidationException(str(e))))
+            result['err_count'] += 1
     else:
         LOG.warning('Skipping validation for unknown schema: %s', schema_name)
 
@@ -83,7 +97,11 @@ def load_schemas_from_docs(doc_set):
             name = document['metadata']['name']
             LOG.debug("Found schema for %s." % name)
             if name in schema_set:
-                raise RuntimeError('Duplicate schema specified for: %s' % name)
+                result['msg'].append(
+                    str(
+                        RuntimeError(
+                            'Duplicate schema specified for: %s' % name)))
+                result['err_count'] += 1
 
             schema_set[name] = document['data']
 
