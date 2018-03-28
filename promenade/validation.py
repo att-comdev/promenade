@@ -25,19 +25,29 @@ LOG = logging.getLogger(__name__)
 
 
 def check_design(config):
+    result = {'msg': [], 'err_count': 0}
     kinds = ['Docker', 'HostSystem', 'Kubelet', 'KubernetesNetwork']
     for kind in kinds:
         count = 0
         for doc in config.documents:
             schema = doc.get('schema', None)
             if not schema:
-                raise exceptions.ValidationException(
-                    '"schema" is a required document key.')
+                result['msg'].append(
+                    str(
+                        exceptions.ValidationException(
+                            '"schema" is a required document key.')))
+                result['err_count'] += 1
+                return result
             name = schema.split('/')[1]
             if name == kind:
                 count += 1
         if count != 1:
-            raise exceptions.ValidationException()
+            msg = ('There are {0} {1} documents. However, there should be one.'
+                   ).format(count, kind)
+            result['msg'].append(
+                str(exceptions.ValidationException(description=msg)))
+            result['err_count'] += 1
+    return result
 
 
 def check_schemas(documents, schemas=None):
