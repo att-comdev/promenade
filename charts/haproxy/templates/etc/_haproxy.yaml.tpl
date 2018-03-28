@@ -38,6 +38,14 @@ spec:
         - |
             set -eux
 
+            echo HAProxy creating health check
+            echo HTTP/1.0 200 Found > /tmp/health-haproxy.http
+            echo Cache-Control: no-cache >> /tmp/health-haproxy.http
+            echo Connection: close >> /tmp/health-haproxy.http
+            echo Content-Type: text/html >> /tmp/health-haproxy.http
+            echo "" >> /tmp/health-haproxy.http
+            echo "<html><head><title>Up</title></head><body><p>Up</p></body></html>" >> /tmp/health-haproxy.http
+
             while [ ! -s "$HAPROXY_CONF" ]; do
                 echo Waiting for "HAPROXY_CONF"
                 sleep 1
