@@ -23,6 +23,9 @@ labels:
     node_selector_key: etcd-example
     node_selector_value: enabled
 
+manifests:
+  test_etcd_health: true
+
 anchor:
   dns_policy: ClusterFirstWithHostNet
   etcdctl_endpoint: example-etcd
