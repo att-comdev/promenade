@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc057a8c_b33285f7",
+        "filename": "tools/gate/config-templates/bootstrap-armada-config.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-03T20:46:20Z",
+      "side": 1,
+      "message": "See this in logs:\n\n2018-04-02 18:43:58.752 7 INFO armada.handlers.armada [-] Testing: ucp-coredns\n2018-04-02 18:44:01.794 7 INFO armada.handlers.armada [-] Test INFO: \n2018-04-02 18:44:01.798 7 INFO armada.handlers.armada [-] PASSED: ucp-coredns\n2018-04-02 18:44:03.005 7 INFO armada.handlers.armada [-] Deploying: Kubernetes components\n\nSo LGTM.",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 16
+      },
+      "revId": "5075ad5d6fe589214a1e79f01a8c430190e7c0e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
