@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "7cce58d0_8a41f18c",
+        "filename": "promenade/validation.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-03T18:18:05Z",
+      "side": 1,
+      "message": "The import statement grouping is also incorrect. We should segregate the promenade imports from the library imports into distinct groups.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "0604b0404fb77fda498b2ea0f282c0370292ba68",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2554590e_c9665994",
         "filename": "promenade/validation.py",
         "patchSetId": 3
