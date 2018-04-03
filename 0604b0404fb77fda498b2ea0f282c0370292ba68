@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b03af34_b5c44c4e",
+        "filename": "docs/source/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-03T15:07:10Z",
+      "side": 1,
+      "message": "Ran this and LGTM",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "0604b0404fb77fda498b2ea0f282c0370292ba68",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2554590e_c9665994",
+        "filename": "promenade/validation.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-03T15:07:10Z",
+      "side": 1,
+      "message": "This looks like it should be a warning to me because:\n\n1) L81 does that\n2) This doesn\u0027t propagate an error so warning is more appropriate\n\nBut this is carried over from LHS",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "0604b0404fb77fda498b2ea0f282c0370292ba68",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
