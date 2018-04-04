@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d5f62cc_27cc2b43",
+        "filename": "charts/etcd/templates/tests/test-etcd-health.yaml",
+        "patchSetId": 19
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-04T15:16:35Z",
+      "side": 1,
+      "message": "I think you could probably approach this with something pretty similar to the Daemonset pod/environment itself and run with a command similar to:\n\ncommand:\n  - /bin/sh\n  - -c\n  - |\n    #!/bin/sh\n    etcdctl endpoint health",
+      "revId": "af292b296fabe9c065ce866097cff759588802ae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
