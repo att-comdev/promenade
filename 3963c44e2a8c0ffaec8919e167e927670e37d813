@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c5dfa20_9698757f",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-05T15:08:13Z",
+      "side": 1,
+      "message": "kubernetesprovisioner",
+      "range": {
+        "startLine": 255,
+        "startChar": 13,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "3963c44e2a8c0ffaec8919e167e927670e37d813",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "603f0ea0_edcecc57",
+        "filename": "promenade/promenade_cli/client_helper.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-05T15:08:13Z",
+      "side": 1,
+      "message": "If this is needed everywhere consider changing this option globally in tox.ini.",
+      "range": {
+        "startLine": 20,
+        "startChar": 38,
+        "endLine": 20,
+        "endChar": 78
+      },
+      "revId": "3963c44e2a8c0ffaec8919e167e927670e37d813",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
