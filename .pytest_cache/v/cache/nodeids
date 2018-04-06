@@ -1,0 +1,5 @@
+[
+  "tests/unit/test_generator.py::test_get_host_list",
+  "tests/unit/api/test_health_api.py::test_get_health",
+  "tests/unit/api/test_versions.py::test_get_versions"
+]
