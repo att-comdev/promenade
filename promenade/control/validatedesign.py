@@ -22,6 +22,8 @@ from promenade import exceptions
 from promenade import policy
 from promenade import validation
 
+
+
 LOG = logging.getLogger(__name__)
 
 
@@ -37,7 +39,6 @@ class ValidateDesignResource(base.BaseResource):
             status = "Invalid"
         resp.body = json.dumps({
             "kind": "Status",
-            "apiVersion": "v1",
             "metadata": {},
             "status": status,
             "message": message,
@@ -53,8 +54,8 @@ class ValidateDesignResource(base.BaseResource):
     def on_post(self, req, resp):
 
         try:
-            json_data = self.req_json(req)
-            href = json_data.get('href', None)
+            json_data = json.loads(req.stream.read().decode('utf-8'))
+            href = json_data.get("href", None)
             config = Configuration.from_design_ref(
                 href, allow_missing_substitutions=False)
             result = validation.check_design(config)
