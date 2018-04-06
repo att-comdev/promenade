@@ -49,13 +49,15 @@ class BaseResource(object):
         has_input = False
         if ((req.content_length is not None or req.content_length != 0)
                 and (req.content_type is not None
-                     and req.content_type.lower() == 'application/json')):
+                    and req.content_type.lower() == 'application/json')):
             raw_body = req.stream.read(req.content_length or 0)
             if raw_body is not None:
                 has_input = True
-                self.info(req.context, 'Input message body: %s' % raw_body)
+                LOG.info('Input message body: %s \nContext: %s' %
+                         (raw_body, req.context))
             else:
-                self.info(req.context, 'No message body specified')
+                LOG.info(
+                    'No message body specified. \nContext: %s' % req.context)
         if has_input:
             # read the json and validate if necessary
             try:
@@ -66,8 +68,8 @@ class BaseResource(object):
                     validate(json_body, json.loads(validate_json_schema))
                 return json_body
             except json.JSONDecodeError as jex:
-                self.error(req.context,
-                           "Invalid JSON in request: \n%s" % raw_body)
+                LOG.error('Invalid JSON in request: \n%s \nContext: %s' %
+                          (raw_body, req.context))
                 raise exc.InvalidFormatError(
                     title='JSON could not be decoded',
                     description='%s: Invalid JSON in body: %s' % (req.path,
