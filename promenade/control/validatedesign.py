@@ -37,7 +37,6 @@ class ValidateDesignResource(base.BaseResource):
             status = "Invalid"
         resp.body = json.dumps({
             "kind": "Status",
-            "apiVersion": "v1",
             "metadata": {},
             "status": status,
             "message": message,
@@ -54,7 +53,7 @@ class ValidateDesignResource(base.BaseResource):
 
         try:
             json_data = self.req_json(req)
-            href = json_data.get('href', None)
+            href = json_data.get("href", None)
             config = Configuration.from_design_ref(
                 href, allow_missing_substitutions=False)
             result = validation.check_design(config)
