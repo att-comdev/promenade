@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "fa8c242a_cf4be9a1",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1009347
+      },
+      "writtenOn": "2018-04-09T15:11:14Z",
+      "side": 1,
+      "message": "agreed, req_json already exists so why not use that functionality?",
+      "parentUuid": "0112b8cf_ff96c951",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 69
+      },
+      "revId": "62ad2757a6c3745242428f724633269dd1188f93",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f8c7e6_360bd5d2",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1009347
+      },
+      "writtenOn": "2018-04-09T15:11:14Z",
+      "side": 1,
+      "message": "unneeded change",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 39
+      },
+      "revId": "62ad2757a6c3745242428f724633269dd1188f93",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffec250f_2fe6864a",
         "filename": "tools/g2/stages/join-nodes.sh",
         "patchSetId": 2
@@ -36,6 +83,30 @@
       "writtenOn": "2018-04-07T04:19:38Z",
       "side": 1,
       "message": "do we want to log keystone token?",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 41
+      },
+      "revId": "62ad2757a6c3745242428f724633269dd1188f93",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c71bd06d_42c7461b",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1009347
+      },
+      "writtenOn": "2018-04-09T15:11:14Z",
+      "side": 1,
+      "message": "No, putting tokens in logs is not a good idea.",
+      "parentUuid": "ffec250f_2fe6864a",
       "range": {
         "startLine": 98,
         "startChar": 34,
