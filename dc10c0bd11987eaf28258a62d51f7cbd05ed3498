@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387c5a30_c54b3304",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-09T23:30:13Z",
+      "side": 1,
+      "message": "May we explain why? Like to avoid double-validation?",
+      "revId": "dc10c0bd11987eaf28258a62d51f7cbd05ed3498",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa124ff_43d27c0e",
+        "filename": "promenade/design_ref.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-09T23:30:13Z",
+      "side": 1,
+      "message": "Should this all be False as it\u0027s from web?",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "dc10c0bd11987eaf28258a62d51f7cbd05ed3498",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
