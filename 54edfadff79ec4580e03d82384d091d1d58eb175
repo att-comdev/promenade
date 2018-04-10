@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f63a3b9_3801bb95",
+        "filename": "charts/promenade/templates/tests/test-promenade-api.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-10T17:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb62460d_41f2c5cd",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "54edfadff79ec4580e03d82384d091d1d58eb175",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61445ed5_4906a6aa",
         "filename": "charts/promenade/templates/tests/test-promenade-api.yaml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-05T15:07:58Z",
       "side": 1,
       "message": "Sync with Sam here: https://review.gerrithub.io/#/c/401720/15/promenade/promenade_cli/cli.py@255",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "54edfadff79ec4580e03d82384d091d1d58eb175",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f20f02b_8e33da47",
+        "filename": "charts/promenade/templates/tests/test-promenade-api.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-10T17:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61445ed5_4906a6aa",
       "range": {
         "startLine": 31,
         "startChar": 27,
