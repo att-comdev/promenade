@@ -211,6 +211,30 @@
       "revId": "62ad2757a6c3745242428f724633269dd1188f93",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f559ce5e_7c662d5b",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-10T13:14:27Z",
+      "side": 1,
+      "message": "This is not related to this PS, so it\u0027s inappropriate to be pushing for it to be included here.\n\nWe\u0027re certainly happy to accept contributions if you\u0027d like to make a separate PS.",
+      "parentUuid": "6ca3ed69_f33f7625",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 41
+      },
+      "revId": "62ad2757a6c3745242428f724633269dd1188f93",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
