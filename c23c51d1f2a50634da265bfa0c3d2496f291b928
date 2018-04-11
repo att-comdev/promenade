@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "26104c91_9de20355",
+        "filename": "charts/haproxy/templates/bin/_anchor.tpl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-11T20:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f004eb8f_62f2481e",
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25df195f_c61537dc",
         "filename": "charts/haproxy/values.yaml",
         "patchSetId": 1
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "2a36827e_28ee5187",
+        "filename": "charts/haproxy/values.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-11T20:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf9b9d1_1fec8f34",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39783279_9fb7cf8d",
         "filename": "examples/basic/armada-resources.yaml",
         "patchSetId": 1
@@ -83,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "e6612ead_98b1a968",
+        "filename": "examples/basic/armada-resources.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-11T20:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39783279_9fb7cf8d",
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf4f2e7d_858305e9",
         "filename": "promenade/schemas/KubernetesNetwork.yaml",
         "patchSetId": 1
@@ -94,6 +154,24 @@
       "writtenOn": "2018-04-11T19:42:12Z",
       "side": 1,
       "message": "This comment impacts changes to promenade/templates/roles/common/etc/promenade/haproxy/haproxy.cfg also:\n\nI don\u0027t actually think we need to add the additional stats configuration to the haproxy we run before the chart takes over, since we\u0027ll never run helm test against it.",
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "567cd093_80fdcab3",
+        "filename": "promenade/schemas/KubernetesNetwork.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-11T20:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf4f2e7d_858305e9",
       "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
