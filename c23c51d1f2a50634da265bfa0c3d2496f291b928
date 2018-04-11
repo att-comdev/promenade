@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f004eb8f_62f2481e",
+        "filename": "charts/haproxy/templates/bin/_anchor.tpl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-11T19:42:12Z",
+      "side": 1,
+      "message": "We are actually enabling stats here with different params: https://github.com/att-comdev/promenade/blob/c23c51d1f2a50634da265bfa0c3d2496f291b928/charts/haproxy/templates/configmap-etc.yaml#L28\n\nI wonder if we should consolidate the stats config there?",
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25df195f_c61537dc",
         "filename": "charts/haproxy/values.yaml",
         "patchSetId": 1
@@ -19,6 +36,64 @@
         "endLine": 68,
         "endChar": 49
       },
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbf9b9d1_1fec8f34",
+        "filename": "charts/haproxy/values.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-11T19:42:12Z",
+      "side": 1,
+      "message": "I would probably call the image \"test\", maybe we can use the busybox image, which has wget?",
+      "parentUuid": "25df195f_c61537dc",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39783279_9fb7cf8d",
+        "filename": "examples/basic/armada-resources.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-11T19:42:12Z",
+      "side": 1,
+      "message": "I don\u0027t think you meant to delete this 600.",
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf4f2e7d_858305e9",
+        "filename": "promenade/schemas/KubernetesNetwork.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-11T19:42:12Z",
+      "side": 1,
+      "message": "This comment impacts changes to promenade/templates/roles/common/etc/promenade/haproxy/haproxy.cfg also:\n\nI don\u0027t actually think we need to add the additional stats configuration to the haproxy we run before the chart takes over, since we\u0027ll never run helm test against it.",
       "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
