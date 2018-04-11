@@ -22,6 +22,7 @@ data:
   kubernetes:
     apiserver_port: 6443
     haproxy_port: 6553
+    haproxy_stats_port: 8888
     pod_cidr: 10.97.0.0/16
     service_cidr: 10.96.0.0/16
     service_ip: 10.96.0.1

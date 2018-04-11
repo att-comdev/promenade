@@ -34,6 +34,15 @@ install_config() {
     mkdir -p $(dirname "$HAPROXY_CONF")
     cp "$HAPROXY_HEADER" "$NEXT_HAPROXY_CONF"
 
+    echo >> "$NEXT_HAPROXY_CONF"
+    echo "listen stats" >> "$NEXT_HAPROXY_CONF"
+    echo "  bind *:{{ .Values.endpoints.stats.port }}" >> "$NEXT_HAPROXY_CONF"
+    echo "  mode http" >> "$NEXT_HAPROXY_CONF"
+    echo "  stats enable" >> "$NEXT_HAPROXY_CONF"
+    echo "  stats hide-version" >> "$NEXT_HAPROXY_CONF"
+    echo "  stats realm Haproxy\ Statistics" >> "$NEXT_HAPROXY_CONF"
+    echo "  stats uri /haproxy-stats" >> "$NEXT_HAPROXY_CONF"
+
     {{- range $namespace, $services := $envAll.Values.conf.anchor.services }}
     {{- range $service, $svc_data := $services }}
     echo Constructing config for namespace=\"{{ $namespace }}\" service=\"{{ $service }}\"
