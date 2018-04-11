@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25df195f_c61537dc",
+        "filename": "charts/haproxy/values.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-11T19:01:33Z",
+      "side": 1,
+      "message": "Not sure if there is a more acceptable image to use for testing?  I need an image with curl.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "c23c51d1f2a50634da265bfa0c3d2496f291b928",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
