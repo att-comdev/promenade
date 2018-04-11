@@ -572,6 +572,7 @@ data:
   timeout: 600
   wait:
     timeout: 600
+  test: true
   upgrade:
     no_hooks: true
   values:
@@ -610,6 +611,7 @@ data:
       tags:
         anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
         haproxy: haproxy:1.8.3
+        test: busybox:1.27.1
 
   source:
     type: local
@@ -1139,6 +1141,7 @@ data:
   timeout: 600
   wait:
     timeout: 600
+  test: true
   values:
     pod:
       env:
