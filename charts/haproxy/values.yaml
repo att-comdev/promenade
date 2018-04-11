@@ -65,7 +65,16 @@ images:
   tags:
     anchor: gcr.io/google_containers/hyperkube-amd64:v1.8.6
     haproxy: haproxy:1.8.3
+    test: busybox:1.27.1
   pull_policy: "IfNotPresent"
+
+manifests:
+  test_haproxy: true
+
+endpoints:
+  health:
+    port: 6553
+    path: "healthz"
 
 pod:
   lifecycle:
@@ -95,5 +104,12 @@ pod:
       limits:
         memory: "256Mi"
         cpu: "2000m"
+    test:
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
 
 release_group: null
