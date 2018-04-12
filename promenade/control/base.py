@@ -53,9 +53,9 @@ class BaseResource(object):
             raw_body = req.stream.read(req.content_length or 0)
             if raw_body is not None:
                 has_input = True
-                self.info(req.context, 'Input message body: %s' % raw_body)
+                LOG.debug(req.context, 'Input message body: %s' % raw_body)
             else:
-                self.info(req.context, 'No message body specified')
+                LOG.debug(req.context, 'No message body specified')
         if has_input:
             # read the json and validate if necessary
             try:
