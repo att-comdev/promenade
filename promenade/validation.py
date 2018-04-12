@@ -22,6 +22,15 @@ import yaml
 
 __all__ = ['check_schema', 'check_schemas']
 result_template = {'msg': [], 'err_count': 0}
+error_msg_template = {
+    'message': '',
+    'error': 'true',
+    'name': '',
+    'documents': [],
+    'level': 'Error',
+    'diagnostic': '',
+    'kind': 'ValidationMessage'
+}
 
 LOG = logging.getLogger(__name__)
 
@@ -34,10 +43,13 @@ def check_design(config):
         for doc in config.documents:
             schema = doc.get('schema', None)
             if not schema:
-                result['msg'].append(
-                    str(
-                        exceptions.ValidationException(
-                            '"schema" is a required document key.')))
+                error_msg = copy.deepcopy(error_msg_template)
+                msg = '"schema" is a required document key.'
+                error_msg['message'] = msg
+                error_msg['name'] = exceptions.ValidationException(msg)
+                error_msg['documents'].append({'schema': schema, 'name': doc})
+                error_msg['diagnostic'] = msg
+                result['msg'].append(error_msg)
                 result['err_count'] += 1
                 return result
             name = schema.split('/')[1]
@@ -46,8 +58,12 @@ def check_design(config):
         if count != 1:
             msg = ('There are {0} {1} documents. However, there should be one.'
                    ).format(count, kind)
-            result['msg'].append(
-                str(exceptions.ValidationException(description=msg)))
+            error_msg = copy.deepcopy(error_msg_template)
+            error_msg['message'] = msg
+            error_msg['name'] = exceptions.ValidationException(description=msg)
+            error_msg['documents'].append({'schema': schema, 'name': kind})
+            error_msg['diagnostic'] = msg
+            result['msg'].append(error_msg)
             result['err_count'] += 1
     return result
 
