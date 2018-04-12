@@ -14,6 +14,7 @@
 
 from promenade import exceptions
 from promenade import logging
+from promenade.utils.validation_message import ValidationMessage
 import copy
 import jsonschema
 import os
@@ -34,10 +35,10 @@ def check_design(config):
         for doc in config.documents:
             schema = doc.get('schema', None)
             if not schema:
-                result['msg'].append(
-                    str(
-                        exceptions.ValidationException(
-                            '"schema" is a required document key.')))
+                msg = '"schema" is a required document key.'
+                error_msg = ValidationMessage(
+                    message=msg, name=exceptions.ValidationException(msg))
+                result['msg'].append(error_msg.get_output_json())
                 result['err_count'] += 1
                 return result
             name = schema.split('/')[1]
@@ -46,8 +47,12 @@ def check_design(config):
         if count != 1:
             msg = ('There are {0} {1} documents. However, there should be one.'
                    ).format(count, kind)
-            result['msg'].append(
-                str(exceptions.ValidationException(description=msg)))
+            error_msg = ValidationMessage(
+                message=msg,
+                name=exceptions.ValidationException(msg),
+                schema=schema,
+                doc_name=kind)
+            result['msg'].append(error_msg.get_output_json())
             result['err_count'] += 1
     return result
 
