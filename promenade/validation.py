@@ -14,6 +14,7 @@
 
 from promenade import exceptions
 from promenade import logging
+from promenade.utils.validation_message import ValidationMessage
 import copy
 import jsonschema
 import os
@@ -21,35 +22,35 @@ import pkg_resources
 import yaml
 
 __all__ = ['check_schema', 'check_schemas']
-result_template = {'msg': [], 'err_count': 0}
 
 LOG = logging.getLogger(__name__)
 
 
 def check_design(config):
     kinds = ['Docker', 'HostSystem', 'Kubelet', 'KubernetesNetwork']
-    result = copy.deepcopy(result_template)
     for kind in kinds:
         count = 0
         for doc in config.documents:
             schema = doc.get('schema', None)
             if not schema:
-                result['msg'].append(
-                    str(
-                        exceptions.ValidationException(
-                            '"schema" is a required document key.')))
-                result['err_count'] += 1
-                return result
+                msg = '"schema" is a required document key.'
+                new_error = ValidationMessage()
+                new_error.add_error_message(
+                    msg, name=exceptions.ValidationException(msg))
+                return new_error
             name = schema.split('/')[1]
             if name == kind:
                 count += 1
         if count != 1:
             msg = ('There are {0} {1} documents. However, there should be one.'
                    ).format(count, kind)
-            result['msg'].append(
-                str(exceptions.ValidationException(description=msg)))
-            result['err_count'] += 1
-    return result
+            new_error = ValidationMessage()
+            new_error.add_error_message(
+                msg,
+                name=exceptions.ValidationException(msg),
+                schema=schema,
+                doc_name=kind)
+            return new_error
 
 
 def check_schemas(documents, schemas=None):

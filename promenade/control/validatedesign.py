@@ -20,6 +20,7 @@ from promenade.config import Configuration
 from promenade.control import base
 from promenade import exceptions
 from promenade import policy
+from promenade.utils.validation_message import ValidationMessage
 from promenade import validation
 
 LOG = logging.getLogger(__name__)
@@ -27,27 +28,22 @@ LOG = logging.getLogger(__name__)
 
 class ValidateDesignResource(base.BaseResource):
     def _return_msg(self, resp, result):
-        if result['err_count'] == 0:
-            message = "Promenade validations succeeded."
-            status_code = falcon.HTTP_200
-            status = "Success"
+        if 'errorCount' in result:
+            resp.body = result
         else:
-            message = "Promenade validations failed."
-            status_code = falcon.HTTP_400
-            status = "Failure"
-        resp.body = json.dumps({
-            "kind": "Status",
-            "apiVersion": "v1",
-            "metadata": {},
-            "status": status,
-            "message": message,
-            "reason": "Validation",
-            "details": {
-                "errorCount": result['err_count'],
-                "messageList": result['msg'],
-            },
-            "code": status_code,
-        })
+            resp.body = json.dumps({
+                "kind": "Status",
+                "apiVersion": "v1.0",
+                "metadata": {},
+                "status": "Valid",
+                "message": "Promenade validations succeeded.",
+                "reason": "Validation",
+                "details": {
+                    "errorCount": 0,
+                    "messageList": []
+                },
+                "code": falcon.HTTP_200,
+            })
 
     @policy.ApiEnforcer('kubernetes_provisioner:post_validatedesign')
     def on_post(self, req, resp):
@@ -60,7 +56,9 @@ class ValidateDesignResource(base.BaseResource):
             result = validation.check_design(config)
         except exceptions.InvalidFormatError as e:
             msg = "Invalid JSON Format: %s" % str(e)
-            result = {'msg': [msg], 'err_count': 1}
+            new_error = ValidationMessage()
+            new_error.add_error_message(msg, name=e)
         except exceptions.DeckhandException as e:
-            result = {'msg': [str(e)], 'err_count': 1}
+            new_error = ValidationMessage()
+            new_error.add_error_message(msg, name=e)
         return self._return_msg(resp, result)
