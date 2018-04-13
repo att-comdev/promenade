@@ -20,6 +20,15 @@ register_labels {{ config['KubernetesNode:hostname'] }} 3600 {{ config['Kubernet
 
 sleep 60
 
+{%- if not config.leave_kubectl %}
+set +x
+log
+log === Removing kubectl and credentials ===
+set -x
+rm -rf /etc/kubernetes/admin
+rm -f /usr/local/bin/kubectl
+{%- endif %}
+
 {% include "cleanup.sh" with context %}
 
 set +x
