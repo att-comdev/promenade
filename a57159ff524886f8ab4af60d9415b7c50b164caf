@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b371bb80_fa8987c2",
+        "filename": "promenade/promenade_client/client.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-13T22:02:00Z",
+      "side": 1,
+      "message": "I\u0027m curious why this isn\u0027t just:\n\n    if resp.status_code \u003d\u003d 204:",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "a57159ff524886f8ab4af60d9415b7c50b164caf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "909c049e_28eeaacf",
+        "filename": "promenade/promenade_client/session.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-13T22:02:00Z",
+      "side": 1,
+      "message": "nit: this isn\u0027t indented underneath Callable like elsewhere",
+      "range": {
+        "startLine": 27,
+        "startChar": 11,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "a57159ff524886f8ab4af60d9415b7c50b164caf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df9123ae_5022ee7b",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-13T22:02:00Z",
+      "side": 1,
+      "message": "I don\u0027t think this condition can be hit anymore since L87 always initializes TOKEN to \"--token\" so consider doing something like:\n\n    \n    TOKEN\u003d\"$(os_ks_get_token \"${VIA}\")\"\n    if [[ -z $TOKEN ]]; then\n    ...\n    fi\n    TOKEN\u003d\"--token \" + $TOKEN",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 27
+      },
+      "revId": "a57159ff524886f8ab4af60d9415b7c50b164caf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
