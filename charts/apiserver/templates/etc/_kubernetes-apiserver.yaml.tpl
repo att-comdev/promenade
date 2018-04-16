@@ -33,12 +33,13 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+
       command:
         {{- range .Values.command_prefix }}
         - {{ . }}
         {{- end }}
         - --advertise-address=$(POD_IP)
-        - --anonymous-auth=false
+        - --anonymous-auth=true
         - --bind-address=0.0.0.0
         - --secure-port={{ .Values.network.kubernetes_apiserver.port }}
         - --insecure-port=0
@@ -58,6 +59,29 @@ spec:
 
       ports:
         - containerPort: {{ .Values.network.kubernetes_apiserver.port }}
+
+      readinessProbe:
+        httpGet:
+          host: 127.0.0.1
+          path: /healthz
+          port: {{ .Values.network.kubernetes_apiserver.port }}
+          scheme: HTTPS
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        timeoutSeconds: 5
+
+      livenessProbe:
+        failureThreshold: 2
+        httpGet:
+          host: 127.0.0.1
+          path: /healthz
+          port: {{ .Values.network.kubernetes_apiserver.port }}
+          scheme: HTTPS
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 10
+
       volumeMounts:
         - name: etc
           mountPath: /etc/kubernetes/apiserver
