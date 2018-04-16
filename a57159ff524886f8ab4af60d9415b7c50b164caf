@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "b6c039bd_be9d231b",
+        "filename": "tools/g2/stages/join-nodes.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-16T13:58:56Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to do this exec\u0027d into a promenade container (presumably on the host?).\n\nWe have already built a promenade image for each test run that is already used in the generate scripts and certs steps.  It should be possible to use that container instead of this approach which has a number of serious drawbacks (such as only installing the upstream version of promenade and installing it differently than we do when we build the docker image).\n\n\nI would expect tools/g2/lib/promenade.sh to expose a function like:\n\npromenade_api_join_scripts \"${VIA}\" \"${DESIGN_REF}\" ...\n\nwhich would ssh to the \"${VIA}\" node, launch the promenade container to run the CLI command, and rsync the resulting script off the \"${VIA}\" node onto the host.\n\nRight now it\u0027s not clear how the script makes it out of the docker container it\u0027s being fetched into.",
+      "revId": "a57159ff524886f8ab4af60d9415b7c50b164caf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df9123ae_5022ee7b",
         "filename": "tools/g2/stages/join-nodes.sh",
         "patchSetId": 17
