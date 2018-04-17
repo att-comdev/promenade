@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4e8bdc7_ea3d1cb5",
+        "filename": "promenade/validation.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-17T04:31:15Z",
+      "side": 1,
+      "message": "I think it would be better to follow this pattern: https://review.gerrithub.io/#/c/404038/3/armada/utils/validation_message.py\n\nThat would make this logic consistent across UCP components.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "144c89f0ae2b52ea63ce9f98b874fdb41d314e8e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89ffeea3_b4c21a3f",
+        "filename": "promenade/validation.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-17T04:31:15Z",
+      "side": 1,
+      "message": "s/diagnostics/diagnostic",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "144c89f0ae2b52ea63ce9f98b874fdb41d314e8e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
