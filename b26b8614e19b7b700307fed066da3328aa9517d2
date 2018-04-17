@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75244733_65c39c42",
+        "filename": "promenade/templates/scripts/join.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1010324
+      },
+      "writtenOn": "2018-04-17T13:41:39Z",
+      "side": 1,
+      "message": "could this be implemented via a trap? that way we would cleanup even if an error occurred during the join process?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "b26b8614e19b7b700307fed066da3328aa9517d2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
