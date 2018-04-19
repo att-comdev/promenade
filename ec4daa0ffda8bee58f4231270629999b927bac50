@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fe8d02f_7fa15775",
+        "filename": "promenade/control/base.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-19T18:08:38Z",
+      "side": 1,
+      "message": "I think the code check if failing due to a missing space.  \u0027and\u0027 needs to line up with \u0027req\u0027 instead of \u0027(\u0027",
+      "revId": "ec4daa0ffda8bee58f4231270629999b927bac50",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
