@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ee4d2c6_3d9e6985",
+        "filename": "promenade/validation.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-04-19T19:57:53Z",
+      "side": 1,
+      "message": "https://github.com/att-comdev/ucp-integration/blob/master/docs/source/api-conventions.rst#validation-api",
+      "parentUuid": "d4e8bdc7_ea3d1cb5",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "144c89f0ae2b52ea63ce9f98b874fdb41d314e8e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89ffeea3_b4c21a3f",
         "filename": "promenade/validation.py",
         "patchSetId": 2
