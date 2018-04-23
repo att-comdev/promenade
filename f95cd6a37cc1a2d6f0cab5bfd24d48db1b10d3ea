@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8af8742e_a2b4ab8c",
+        "filename": "promenade/config.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-23T22:02:39Z",
+      "side": 1,
+      "message": "Could do return next(self.iterate(*args, **kwargs)) and catch the StopIteration if applicable.",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 22
+      },
+      "revId": "f95cd6a37cc1a2d6f0cab5bfd24d48db1b10d3ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c43efbf_7a5c3342",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-23T22:02:39Z",
+      "side": 1,
+      "message": "Missing status",
+      "revId": "f95cd6a37cc1a2d6f0cab5bfd24d48db1b10d3ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aab38fc_f6e6de28",
+        "filename": "promenade/generator.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-23T22:02:39Z",
+      "side": 1,
+      "message": "Would be more robust to do:\n\n    found_schemas \u003d [x.get(\u0027schema\u0027) for x in docs]\n    if sorted(found_schemas) \u003d\u003d sorted(schemas):\n        ...\n\nTo avoid having 2 PrivateKey documents but 0 PublicKey documents for example.",
+      "range": {
+        "startLine": 93,
+        "startChar": 12,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "f95cd6a37cc1a2d6f0cab5bfd24d48db1b10d3ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40d90429_21b580a8",
+        "filename": "promenade/pki.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-23T22:02:39Z",
+      "side": 1,
+      "message": "Default mutable types should be avoided: http://docs.python-guide.org/en/latest/writing/gotchas/#mutable-default-arguments",
+      "range": {
+        "startLine": 63,
+        "startChar": 36,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "f95cd6a37cc1a2d6f0cab5bfd24d48db1b10d3ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e62e9fb7_8f95c5bc",
+        "filename": "tools/g2/lib/promenade.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-23T22:02:39Z",
+      "side": 1,
+      "message": "As an aside is this port number actually used in prod? I just used it randomly for dev",
+      "range": {
+        "startLine": 23,
+        "startChar": 84,
+        "endLine": 23,
+        "endChar": 88
+      },
+      "revId": "f95cd6a37cc1a2d6f0cab5bfd24d48db1b10d3ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
