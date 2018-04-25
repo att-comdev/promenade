@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "229f4a03_8205d31e",
+        "filename": "tools/setup_gate.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1013390
+      },
+      "writtenOn": "2018-04-25T08:16:08Z",
+      "side": 1,
+      "message": "usermod would probably be better",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "c52027332ff5e4bb4868dc3b747b95a9fc2827e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
