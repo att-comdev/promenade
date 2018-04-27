@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "e01923b9_1f0aca35",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-27T19:31:13Z",
+      "side": 1,
+      "message": "Totally fair (and more clear to duplicate I think).\n\nI did repeat both the status code and note for extra clarity.\n\nHopefully this code gets moved into a separate certificate management system \"soonish\".",
+      "parentUuid": "ae88c396_bcd797ab",
+      "revId": "f95cd6a37cc1a2d6f0cab5bfd24d48db1b10d3ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aab38fc_f6e6de28",
         "filename": "promenade/generator.py",
         "patchSetId": 5
