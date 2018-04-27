@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "875a3d55_e67b607e",
+        "filename": "promenade/generator.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-27T14:06:43Z",
+      "side": 1,
+      "message": "Forgot to respond to this one, sorry.\n\nI assumed here that there wouldn\u0027t be multiple of a given kind for one name, which should generally hold, though this would guard against that, I agree.",
+      "parentUuid": "5aab38fc_f6e6de28",
+      "range": {
+        "startLine": 93,
+        "startChar": 12,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "f95cd6a37cc1a2d6f0cab5bfd24d48db1b10d3ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40d90429_21b580a8",
         "filename": "promenade/pki.py",
         "patchSetId": 5
