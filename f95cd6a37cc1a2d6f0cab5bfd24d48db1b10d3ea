@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "ae88c396_bcd797ab",
+        "filename": "promenade/exceptions.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-27T18:49:32Z",
+      "side": 1,
+      "message": "Oh didn\u0027t see that. I previously screwed things up by not specifying the exact status. It helps from a self-documenting POV.",
+      "parentUuid": "117b32a9_902f4e24",
+      "revId": "f95cd6a37cc1a2d6f0cab5bfd24d48db1b10d3ea",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aab38fc_f6e6de28",
         "filename": "promenade/generator.py",
         "patchSetId": 5
