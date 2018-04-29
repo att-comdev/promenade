@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8d5e88b1_e2a7b683",
+        "filename": "promenade/schemas/KubernetesNetwork.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-29T21:54:13Z",
+      "side": 1,
+      "message": "You could use url here, see L27",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "c52027332ff5e4bb4868dc3b747b95a9fc2827e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e7b0799_94f4f453",
+        "filename": "tools/g2/stages/build-image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-04-29T21:54:13Z",
+      "side": 1,
+      "message": "nit: I don\u0027t see why this would ever be different than HTTP_PROXY. Same reasoning below",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "c52027332ff5e4bb4868dc3b747b95a9fc2827e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "229f4a03_8205d31e",
         "filename": "tools/setup_gate.sh",
         "patchSetId": 1
