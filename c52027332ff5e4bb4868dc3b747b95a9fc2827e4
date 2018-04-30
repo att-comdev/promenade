@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "391d4aea_66f25314",
+        "filename": "promenade/schemas/KubernetesNetwork.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-30T14:25:16Z",
+      "side": 1,
+      "message": "Ideally we\u0027d just make the hostname_or_ip_address regex correct.",
+      "parentUuid": "8d5e88b1_e2a7b683",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "c52027332ff5e4bb4868dc3b747b95a9fc2827e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e7b0799_94f4f453",
         "filename": "tools/g2/stages/build-image.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-29T21:54:13Z",
       "side": 1,
       "message": "nit: I don\u0027t see why this would ever be different than HTTP_PROXY. Same reasoning below",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "c52027332ff5e4bb4868dc3b747b95a9fc2827e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67458d57_dcaabaee",
+        "filename": "tools/g2/stages/build-image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-04-30T14:25:16Z",
+      "side": 1,
+      "message": "You\u0027re right they shouldn\u0027t be different, but I think the idea is to just defer to the user\u0027s configuration.",
+      "parentUuid": "1e7b0799_94f4f453",
       "range": {
         "startLine": 24,
         "startChar": 29,
