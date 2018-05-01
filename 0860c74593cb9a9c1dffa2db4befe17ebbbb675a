@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dde0fd8_f3142757",
+        "filename": "promenade/validation.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-01T14:02:05Z",
+      "side": 1,
+      "message": "This name is like an alias or a shorthand description:\n\nExample of alias: https://github.com/att-comdev/armada/blob/964aed2973cca3e9b60933361f59798bf0d4cb96/armada/utils/validate.py#L77\n\nExample of shorthand: This is a short name that identifies the validation among a full set of validations. It is preferred to use non-action words to identify the validation. E.g. \"MTU in bounds\" is preferred instead of \"Check MTU in bounds\" (https://github.com/att-comdev/ucp-integration/blob/master/docs/source/api-conventions.rst)\n\nThey\u0027re probably going to ask you to make it an alias though like P001 and P002 then include a documentation page with information about what each validation failure means.",
+      "range": {
+        "startLine": 40,
+        "startChar": 38,
+        "endLine": 40,
+        "endChar": 73
+      },
+      "revId": "0860c74593cb9a9c1dffa2db4befe17ebbbb675a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
