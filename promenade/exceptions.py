@@ -320,6 +320,41 @@ class TemplateRenderException(PromenadeException):
     status = falcon.HTTP_500
 
 
+class KubernetesExceptions(PromenadeException):
+    title = 'Kubernetes API Error'
+    status = falcon.HTTP_502
+
+
+class KubernetesErrorEvent(KubernetesExceptions):
+    title = 'Got Kubernetes Error event type'
+    status = falcon.HTTP_502
+
+
+class KubernetesUnexpectedEvent(KubernetesExceptions):
+    title = 'Unexpected Kubernetes event type'
+    status = falcon.HTTP_502
+
+
+class KubernetesCRDVerifyFailure(KubernetesExceptions):
+    title = 'Failed to verify CRD'
+    status = falcon.HTTP_502
+
+
+class KubernetesApiError(KubernetesExceptions):
+    title = 'Failed to interact with Kubernetes API'
+    status = falcon.HTTP_502
+
+
+class SystemdException(PromenadeException):
+    title = 'Systemd Error'
+    status = falcon.HTTP_500
+
+
+class SystemdMissingUnit(SystemdException):
+    title = 'Failed to load unit'
+    status = falcon.HTTP_500
+
+
 def massage_error_list(error_list, placeholder_description):
     """
     Returns a best-effort attempt to make a nice error list
