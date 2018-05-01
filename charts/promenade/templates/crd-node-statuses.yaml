@@ -1,0 +1,43 @@
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: node-statuses.promenade.ucp.att.com
+spec:
+  group: promenade.ucp.att.com
+  version: v1
+  scope: Cluster
+  names:
+    plural: node-statuses
+    singular: node-status
+    kind: NodeStatus
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          type: object
+          properties:
+            services:
+              type: object
+              docker:
+                # NOTE(mark-burnett): Duplciation, because $ref and
+                # additionalProperties are not supported in Kubernetes 1.10
+                type: object
+                properties:
+                  status:
+                    type: string
+                  messages:
+                    type: list
+                    items:
+                      type: string
+              kubelet:
+                # NOTE(mark-burnett): Duplciation, because $ref and
+                # additionalProperties are not supported in Kubernetes 1.10
+                type: object
+                properties:
+                  status:
+                    type: string
+                  messages:
+                    type: list
+                    items:
+                      type: string

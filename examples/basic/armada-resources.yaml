@@ -1153,6 +1153,9 @@ data:
         promenade_api:
           - name: PROMENADE_DEBUG
             value: '1'
+        promenade_agent:
+          - name: PROMENADE_DEBUG
+            value: '1'
     conf:
       paste:
         app:promenade-api:
@@ -1163,7 +1166,9 @@ data:
       tags:
         dep_check: quay.io/stackanetes/kubernetes-entrypoint:v0.2.1
         promenade: quay.io/attcomdev/promenade:latest
+      pull_policy: Always
     manifests:
+      daemonset_agent: true
       job_ks_endpoints: false
       job_ks_service: false
       job_ks_user: false
