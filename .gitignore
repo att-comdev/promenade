@@ -10,10 +10,12 @@
 /.cache
 /.eggs
 /.helm-pid
+/.pytest_cache
 /.tox
 /build
 /conformance
 /promenade.egg-info
+/kubecfg
 
 # Python artifacts
 __pycache__
