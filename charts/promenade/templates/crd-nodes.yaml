@@ -1,0 +1,13 @@
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: nodes.promenade.ucp.att.com
+spec:
+  group: promenade.ucp.att.com
+  version: v1
+  scope: Cluster
+  names:
+    plural: nodes
+    singular: node
+    kind: Node

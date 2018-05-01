@@ -14,6 +14,7 @@
 /build
 /conformance
 /promenade.egg-info
+/kubecfg
 
 # Python artifacts
 __pycache__

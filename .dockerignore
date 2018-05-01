@@ -18,6 +18,7 @@ build
 conformance
 promenade.egg-info
 tmp
+kubecfg
 
 # Python artifacts
 __pycache__

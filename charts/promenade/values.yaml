@@ -47,6 +47,7 @@ labels:
 manifests:
   configmap_bin: true
   configmap_etc: true
+  daemonset_agent: true
   deployment_api: true
   rbac: true
   service_api: true
@@ -164,11 +165,19 @@ pod:
         rolling_update:
           max_unavailable: 1
           max_surge: 3
+      daemonsets:
+        pod_replacement_strategy: RollingUpdate
+        agent:
+          enabled: true
+          min_ready_seconds: 0
+          max_unavailable: 1
     disruption_budget:
       api:
         min_available: 0
     termination_grace_period:
       api:
+        timeout: 30
+      agent:
         timeout: 30
   resources:
     enabled: false
