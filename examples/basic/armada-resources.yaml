@@ -1163,6 +1163,7 @@ data:
       tags:
         dep_check: quay.io/stackanetes/kubernetes-entrypoint:v0.2.1
         promenade: quay.io/attcomdev/promenade:latest
+      pull_policy: Always
     manifests:
       job_ks_endpoints: false
       job_ks_service: false
