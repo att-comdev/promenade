@@ -11,6 +11,7 @@ charts/*/requirements.lock
 .fiotest
 .git
 .helm-pid
+.pytest_cache
 .tox
 AUTHORS
 ChangeLog
@@ -18,6 +19,7 @@ build
 conformance
 promenade.egg-info
 tmp
+kubecfg
 
 # Python artifacts
 __pycache__
