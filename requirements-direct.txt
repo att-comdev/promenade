@@ -5,12 +5,13 @@ jsonpath-ng==1.4.3
 jsonschema==2.6.0
 keystoneauth1==3.2.0
 keystonemiddleware==4.17.0
-kubernetes==3.0.0
+kubernetes==6.0.0
 oslo.context==2.19.2
 oslo.policy==1.22.1
 pastedeploy==1.5.2
 pbr==3.0.1
+pystemd==0.4.0
 pyyaml==3.12
 requests==2.18.4
 uwsgi==2.0.15
-git+https://github.com/att-comdev/deckhand.git@c962eeb975af5ecf9793f794d536538d210b7735#egg=deckhand
+git+https://github.com/att-comdev/deckhand.git@c094b16ff6ff008f5f86c321093b537e50778ccb#egg=deckhand

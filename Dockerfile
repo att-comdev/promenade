@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM python:3.6
+FROM ubuntu:16.04
 
 VOLUME /etc/promenade
 VOLUME /target
@@ -26,19 +26,29 @@ EXPOSE $PORT
 ENTRYPOINT ["/opt/promenade/entrypoint.sh"]
 
 RUN set -ex \
-    && curl -Lo /usr/local/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 \
-    && chmod 555 /usr/local/bin/cfssl \
     && apt-get update -q \
     && apt-get install --no-install-recommends -y \
+        build-essential \
+        curl \
+        git \
+        libsystemd-dev \
         libyaml-dev \
+        python3 \
+        python3-pip \
+        python3-setuptools \
+        python3-dev \
         rsync \
+    && curl -Lo /usr/local/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 \
+    && chmod 555 /usr/local/bin/cfssl \
     && useradd -u 1000 -g users -d /opt/promenade promenade \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements-frozen.txt /opt/promenade
-RUN pip install --no-cache-dir -r requirements-frozen.txt
+RUN pip3 install --no-cache-dir -r requirements-frozen.txt
 
 COPY . /opt/promenade
-RUN pip install -e /opt/promenade
+RUN pip3 install -e /opt/promenade
 
 USER promenade
+
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
