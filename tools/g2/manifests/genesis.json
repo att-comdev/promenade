@@ -1,6 +1,6 @@
 {
   "configuration": [
-    "examples/complete",
+    "examples/basic",
     "promenade/schemas"
   ],
   "stages": [
@@ -31,7 +31,7 @@
     }
   ],
   "vm": {
-    "memory": 12288,
+    "memory": 4096,
     "names": [
       "n0"
     ],

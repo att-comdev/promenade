@@ -43,12 +43,12 @@ helm-init-%: helm-serve
 lint: helm-lint gate-lint
 
 .PHONY: gate-lint
-gate-lint: gate-lint-deps
+gate-lint: debian-deps
 	tox -e gate-lint
 
-.PHONY: gate-lint-deps
-gate-lint-deps:
-	sudo apt-get install -y --no-install-recommends shellcheck
+.PHONY: debian-deps
+debian-deps:
+	sudo tools/install-host-deps.sh
 
 .PHONY: helm-lint
 helm-lint: $(addprefix helm-lint-,$(CHARTS))

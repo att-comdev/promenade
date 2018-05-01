@@ -118,7 +118,8 @@ class PKI:
             # This method wraps cfssl calls originating from this module.
             return json.loads(  # nosec
                 subprocess.check_output(
-                    ['cfssl'] + command, cwd=tmp, stderr=subprocess.PIPE))
+                    ['cfssl'] + command, cwd=tmp,
+                    stderr=subprocess.PIPE).decode('utf-8'))
 
     def _openssl(self, command, *, files=None):
         if not files:

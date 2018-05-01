@@ -1,4 +1,18 @@
-from . import builder, config, exceptions, generator, logging
+# Copyright 2018 AT&T Intellectual Property.  All other rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+from . import agent, builder, config, exceptions, generator, logging
 import click
 import os
 import sys
@@ -67,6 +81,22 @@ def genereate_certs(*, config_files, output_dir):
             validate=False)
         g = generator.Generator(c)
         g.generate(output_dir)
+    except exceptions.PromenadeException as e:
+        e.display(debug=debug)
+        sys.exit(e.EXIT_CODE)
+
+
+@promenade.command('agent', help='Run in-cluster agent')
+@click.option(
+    '--hostname',
+    required=True,
+)
+def agent_cmd(*, hostname):
+    debug = _debug()
+
+    try:
+        a = agent.runner.AgentRunner.with_defaults(hostname=hostname)
+        a.run()
     except exceptions.PromenadeException as e:
         e.display(debug=debug)
         sys.exit(e.EXIT_CODE)

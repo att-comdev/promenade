@@ -320,6 +320,51 @@ class TemplateRenderException(PromenadeException):
     status = falcon.HTTP_500
 
 
+class KubernetesException(PromenadeException):
+    title = 'Kubernetes API Error'
+    status = falcon.HTTP_502
+
+
+class KubernetesErrorEvent(KubernetesException):
+    title = 'Got Kubernetes Error event type'
+    status = falcon.HTTP_502
+
+
+class KubernetesUnexpectedEvent(KubernetesException):
+    title = 'Unexpected Kubernetes event type'
+    status = falcon.HTTP_502
+
+
+class KubernetesEarlyStreamReturn(KubernetesException):
+    title = 'Kubernetes stream ended unexpectly'
+    status = falcon.HTTP_502
+
+
+class KubernetesCRDVerifyFailure(KubernetesException):
+    title = 'Failed to verify CRD'
+    status = falcon.HTTP_502
+
+
+class KubernetesApiError(KubernetesException):
+    title = 'Failed to interact with Kubernetes API'
+    status = falcon.HTTP_502
+
+
+class StatusLogicError(PromenadeException):
+    title = 'Programming logic error: you must call get before set status'
+    status = falcon.HTTP_500
+
+
+class SystemdException(PromenadeException):
+    title = 'Systemd Error'
+    status = falcon.HTTP_500
+
+
+class SystemdMissingUnit(SystemdException):
+    title = 'Failed to load unit'
+    status = falcon.HTTP_500
+
+
 def massage_error_list(error_list, placeholder_description):
     """
     Returns a best-effort attempt to make a nice error list
