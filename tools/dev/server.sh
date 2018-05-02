@@ -14,6 +14,6 @@ exec docker run \
     --rm -it \
     --publish 9000:9000 \
     --env PROMENADE_DEBUG=${PROMENADE_DEBUG} \
-    --volume "${SOURCE_DIR}/etc/promenade/noauth-api-paste.ini":/etc/promenade/api-paste.ini:ro \
+    --volume "${SOURCE_DIR}/etc/promenade/noauth-api-paste.ini":/etc/promenade/noauth-api-paste.ini:ro \
     quay.io/attcomdev/promenade:latest \
         server
