@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c76dc462_b3f8817d",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-02T22:24:44Z",
+      "side": 1,
+      "message": "Unless you want to prioritize this the condition on 114 over this one, you could do:\n\n   if token:\n       ...\n   elif url:\n       ...\n   else:\n      keystone_env \u003d {...}\n\nTo make it more robust or else you could do on 114:\n\n    if all([os_project_domain_name, os_user_domain_name, ...]):",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "d029b7b971da35e24f0e55397e178e6f312c66a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
