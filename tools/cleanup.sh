@@ -23,6 +23,7 @@ TO_RM=(
     "/usr/local/bin/armada"
     "/usr/local/bin/helm"
     "/usr/local/bin/kubectl"
+    "/usr/local/bin/promenade"
     "/usr/local/bin/promenade-teardown"
     "/var/lib/anchor/calico-etcd-bootstrap"
     "/var/lib/etcd"
