@@ -26,6 +26,6 @@ setup(
         'templates': 'templates/*',
     },
     entry_points={
-        'console_scripts': 'promenade=promenade.cli:promenade',
+        'console_scripts': 'promenade=promenade.promenade_cli.cli:promenade',
     },
 )

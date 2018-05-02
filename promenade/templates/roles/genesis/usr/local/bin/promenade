@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+exec docker run --rm -i \
+    --net host \
+    -e OS_PROJECT_DOMAIN_NAME \
+    -e OS_USER_DOMAIN_NAME \
+    -e OS_PROJECT_NAME \
+    -e OS_USERNAME \
+    -e OS_PASSWORD \
+    -e OS_AUTH_URL \
+    -e PROM_URL \
+    {{ config['Genesis:images.kubernetes.apiserver'] }} \
+        $*
