@@ -82,7 +82,8 @@
         "-l", "kubernetes-scheduler=enabled",
         "-l", "ucp-control-plane=enabled",
         "-e", "kubernetes n0 n0 n1 n2 n3",
-        "-e", "calico n0 n0 n1 n2 n3"
+        "-e", "calico n0 n0 n1 n2 n3",
+        "-m", "http://promenade-api.ucp.svc.cluster.local"
       ]
     },
     {
