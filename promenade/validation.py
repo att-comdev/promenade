@@ -49,6 +49,9 @@ def check_design(config):
             result['msg'].append(
                 str(exceptions.ValidationException(description=msg)))
             result['err_count'] += 1
+        else:
+            result['msg'].append(
+                'Correct number of %s documents found.' % kind)
     return result
 
 
