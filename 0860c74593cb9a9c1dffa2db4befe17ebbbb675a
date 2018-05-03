@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "99e6118a_3dd32e58",
+        "filename": "promenade/utils/validation_message.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-05-03T16:18:45Z",
+      "side": 1,
+      "message": "This is close to the convention, but the structure is a little different.  Try something like the following (code hasn\u0027t been tested, just pseudo code).  Create a ValidationMessage object, then call add_error_message() for each message to add.\n\n\nimport json\n\n\nclass ValidationMessage(object):\n    \"\"\" ValidationMessage per UCP convention:\n    https://github.com/att-comdev/ucp-integration/blob/master/docs/source/api-conventions.rst#output-structure  # noqa\n    \"\"\"\n\n    def __init__(self,\n                 status\u003d\u0027Failure\u0027,\n                 component\u003dNone,\n                 code\u003dNone):\n        self.status \u003d status\n        self.component \u003d component\n        self.code \u003d code\n        self.message_list \u003d []\n        self.error_count \u003d 0\n\n    def get_output(self):\n        \"\"\" Return ValidationMessage message.\n\n        :returns: The ValidationMessage for the Validation API response.\n        :rtype: dict\n        \"\"\"\n        self.output \u003d {\n            \u0027kind\u0027: \u0027Status\u0027,\n            \u0027apiVersion\u0027: \u0027v1.0\u0027,\n            \u0027metadata\u0027: {},\n            \u0027status\u0027: self.status,\n            \u0027message\u0027: \u0027%s validations failed\u0027 % self.component,\n            \u0027reason\u0027: \u0027Validation\u0027,\n            \u0027details\u0027: {\n                \u0027errorCount\u0027: self.error_count,\n                \u0027messageList\u0027: self.message_list,\n            },\n            \u0027code\u0027: self.code\n        }\n        return self.output\n\n    def add_error_message(self, msg, name\u003dNone, documents\u003d[], diagnostic\u003dNone):\n        docs \u003d []\n        # There is probably an python way to reduce the number of lines here\n        for d in documents:\n            if d.get(\u0027schema\u0027, None) and d.get(\u0027name\u0027, None):\n                docs.append(d)\n        message \u003d {\n            \u0027message\u0027: msg,\n            \u0027error\u0027: True,\n            \u0027name\u0027: name,\n            \u0027documents\u0027: docs,\n            \u0027level\u0027: \u0027Error\u0027,\n            \u0027diagnostic\u0027: diagnostic,\n            \u0027kind\u0027: \u0027ValidationMessage\u0027\n        }\n        self.error_count \u003d self.error_count + 1\n        self.message_list.append(message)\n\n    def get_output_json(self):\n        \"\"\" Return ValidationMessage message as JSON.\n\n        :returns: The ValidationMessage formatted in JSON, for logging.\n        :rtype: json\n        \"\"\"\n        return json.dumps(self.output, indent\u003d2)",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 110
+      },
+      "revId": "0860c74593cb9a9c1dffa2db4befe17ebbbb675a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dde0fd8_f3142757",
         "filename": "promenade/validation.py",
         "patchSetId": 5
