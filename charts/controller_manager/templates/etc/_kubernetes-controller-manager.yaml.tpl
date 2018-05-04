@@ -49,26 +49,6 @@ spec:
         - --use-service-account-credentials=true
         - --v=5
 
-      readinessProbe:
-        httpGet:
-          host: 127.0.0.1
-          path: /healthz
-          port: {{ .Values.network.kubernetes_controller_manager.port }}
-        initialDelaySeconds: 10
-        periodSeconds: 5
-        timeoutSeconds: 5
-
-      livenessProbe:
-        failureThreshold: 2
-        httpGet:
-          host: 127.0.0.1
-          path: /healthz
-          port: {{ .Values.network.kubernetes_controller_manager.port }}
-        initialDelaySeconds: 15
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 10
-
       volumeMounts:
         - name: etc
           mountPath: /etc/kubernetes/controller-manager
