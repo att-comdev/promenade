@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfa22ba1_273b7772",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-12T00:19:46Z",
+      "side": 1,
+      "message": "This should check if result[\u0027errorCount\u0027] \u003d\u003d 0 instead and if so, return the successful body on L34. Otherwise return the message formatted as an error (result on L56 would either be None or a ValidationMessage so that needs to be handled correctly so that L31 doesn\u0027t blow up).",
+      "revId": "0808baa0025fe847d4ef018316597784214d2c8e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3a6bf1_61f1873d",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-12T00:19:46Z",
+      "side": 1,
+      "message": "This results in either None or a ValidationMessage. You\u0027ll also need to cast it to a dict using the appropriate method. So:\n\n    if result:\n        return",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "0808baa0025fe847d4ef018316597784214d2c8e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35aef096_7f7c8471",
+        "filename": "promenade/utils/validation_message.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-12T00:19:46Z",
+      "side": 1,
+      "message": "We should make this a default of 500.",
+      "range": {
+        "startLine": 36,
+        "startChar": 58,
+        "endLine": 36,
+        "endChar": 61
+      },
+      "revId": "0808baa0025fe847d4ef018316597784214d2c8e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2499833_d28296c3",
+        "filename": "promenade/validation.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-12T00:19:46Z",
+      "side": 1,
+      "message": "I\u0027d define a ValidationMessage() object up here instead of on L36, 47 and then return it by default on L54.",
+      "revId": "0808baa0025fe847d4ef018316597784214d2c8e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0085a721_5c95bfbc",
+        "filename": "promenade/validation.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-12T00:19:46Z",
+      "side": 1,
+      "message": "This doesn\u0027t return anything on L54 as a default value (for success) so this is causing the controller to fail as it assumes an object is returned.",
+      "revId": "0808baa0025fe847d4ef018316597784214d2c8e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
