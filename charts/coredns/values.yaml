@@ -25,6 +25,7 @@ images:
   tags:
     coredns: coredns/coredns:1.1.2
     test: coredns/coredns:1.1.2
+    dep_check: quay.io/stackanetes/kubernetes-entrypoint:v0.2.1
   pull_policy: "IfNotPresent"
 
 labels:
@@ -37,6 +38,10 @@ service:
   ip: 10.96.0.10
 
 pod:
+  mounts:
+    coredns:
+      init_container: null
+      coredns:
   resources:
     enabled: false
     coredns:
