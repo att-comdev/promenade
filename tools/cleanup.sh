@@ -27,7 +27,7 @@ TO_RM=(
     "/var/lib/anchor/calico-etcd-bootstrap"
     "/var/lib/etcd"
     "/var/lib/kubelet/pods"
-    "/var/lib/openstack-helm"
+    "/var/lib/openstack-helm-infra"
     "/var/log/armada"
     "/var/log/containers"
     "/var/log/pods"

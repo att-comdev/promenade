@@ -39,6 +39,11 @@ images:
     ks_service: docker.io/openstackhelm/heat:newton
     ks_endpoints: docker.io/openstackhelm/heat:newton
   pull_policy: IfNotPresent
+  local_registry:
+    active: false
+    exclude:
+      - dep_check
+      - image_repo_sync
 
 dependencies:
   test:
@@ -46,6 +51,9 @@ dependencies:
       - service: promenade-api
 
 labels:
+  job:
+    node_selector_key: ucp-control-plane
+    node_selector_value: enabled
   node_selector_key: ucp-control-plane
   node_selector_value: enabled
 
@@ -69,32 +77,33 @@ network:
       public: true
 
 dependencies:
-  ks_user:
-    services:
-    - service: identity
-      endpoint: internal
-  ks_service:
-    services:
-    - service: identity
-      endpoint: internal
-  ks_endpoints:
-    jobs:
-    - promenade-ks-service
-    services:
-    - service: identity
-      endpoint: internal
+  static:
+    ks_user:
+      services:
+      - service: identity
+        endpoint: internal
+    ks_service:
+      services:
+      - service: identity
+        endpoint: internal
+    ks_endpoints:
+      jobs:
+      - promenade-ks-service
+      services:
+      - service: identity
+        endpoint: internal
 
 secrets:
   identity:
     admin: promenade-keystone-admin
-    user: promenade-keystone-user
+    promenade: promenade-keystone-user
 
 endpoints:
   cluster_domain_suffix: cluster.local
   identity:
     name: keystone
     auth:
-      user:
+      promenade:
         region_name: RegionOne
         role: admin
         project_name: service
