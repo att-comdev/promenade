@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e381226_ec2ed9a0",
+        "filename": "charts/promenade/templates/tests/test-promenade-api.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-14T13:36:14Z",
+      "side": 0,
+      "message": "I think this init container is useful because it avoids the following race:\n\n1. Promenade chart is deployed, and apiserver pod\u0027s readiness probe is successful.\n2. Tiller/armada recognize the deployment as a success and move on to run tests.\n3. The test starts, before the combination of kubernetes controller-manager and kube-proxy configuring the service to correctly point at the api pod.\n4. The test fails because the service ip has no endpoints.",
+      "revId": "ccdaceabf30c8cd42661a95e05f72a630b5310a0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

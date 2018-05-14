@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41065af8_4a417de1",
+        "filename": "charts/coredns/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-14T13:36:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we should use dep-check for coredns (it doesn\u0027t have dependencies anyway).",
+      "revId": "bd7f59520c5073d27661c746a80bfca028b79260",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ab03341_b74558e1",
+        "filename": "charts/coredns/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-14T13:36:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we should expose mounts to configuration for these most of these charts, but we can discuss.",
+      "revId": "bd7f59520c5073d27661c746a80bfca028b79260",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c1d66cc_88abd8d2",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-14T13:36:14Z",
+      "side": 1,
+      "message": "I think this needs to stay /var/lib/openstack-helm.  This directory is just used by some components (like ceph) to store data.",
+      "revId": "bd7f59520c5073d27661c746a80bfca028b79260",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
