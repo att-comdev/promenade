@@ -17,7 +17,7 @@
 Test that the API is up and the health endpoint returns a 2XX code */}}
 {{- if .Values.manifests.test_promenade_api }}
 {{- $envAll := . }}
-{{- $dependencies := .Values.dependencies.test }}
+{{- $dependencies := .Values.dependencies.static.test }}
 ---
 apiVersion: v1
 kind: Pod
