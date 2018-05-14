@@ -39,11 +39,17 @@ images:
     ks_service: docker.io/openstackhelm/heat:newton
     ks_endpoints: docker.io/openstackhelm/heat:newton
   pull_policy: IfNotPresent
+  local_registry:
+    active: false
+    exclude:
+      - dep_check
+      - image_repo_sync
 
 dependencies:
-  test:
-    services:
-      - service: promenade-api
+  static:
+    test:
+      services:
+        - service: promenade-api
 
 labels:
   node_selector_key: ucp-control-plane
