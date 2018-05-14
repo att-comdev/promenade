@@ -33,6 +33,7 @@ spec:
   template:
     metadata:
       labels:
+{{ tuple $envAll "kubernetes" "coredns" | include "helm-toolkit.snippets.kubernetes_metadata_labels" | indent 8 }}
         {{ .Values.service.name }}: enabled
       annotations:
         configmap-etc-hash: {{ tuple "configmap-etc.yaml" . | include "helm-toolkit.utils.hash" }}
