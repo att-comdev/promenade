@@ -13,6 +13,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */}}
+
+{{- $envAll := . }}
+{{- $mounts_coredns := .Values.pod.mounts.coredns.coredns }}
+{{- $mounts_coredns_init := .Values.pod.mounts.coredns.init_container }}
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -33,6 +37,7 @@ spec:
   template:
     metadata:
       labels:
+{{ tuple $envAll "kubernetes" "coredns" | include "helm-toolkit.snippets.kubernetes_metadata_labels" | indent 8 }}
         {{ .Values.service.name }}: enabled
       annotations:
         configmap-etc-hash: {{ tuple "configmap-etc.yaml" . | include "helm-toolkit.utils.hash" }}
@@ -59,7 +64,7 @@ spec:
       - name: coredns
         image: {{ .Values.images.tags.coredns | quote }}
         imagePullPolicy: {{ .Values.images.pull_policy | quote }}
-{{ tuple . .Values.pod.resources.coredns | include "helm-toolkit.snippets.kubernetes_resources" | indent 8 }}
+{{ tuple $envAll $envAll.Values.pod.resources.coredns | include "helm-toolkit.snippets.kubernetes_resources" | indent 8 }}
         args: [ "-conf", "/etc/coredns/Corefile" ]
         volumeMounts:
         - name: config-volume
@@ -89,6 +94,7 @@ spec:
           successThreshold: 1
           failureThreshold: 3
       dnsPolicy: Default
+{{ if $mounts_coredns.volumeMounts }}{{ toYaml $mounts_coredns.volumeMounts | indent 12 }}{{ end }}
       volumes:
         - name: config-volume
           configMap:
@@ -96,3 +102,4 @@ spec:
             items:
             - key: Corefile
               path: Corefile
+{{ if $mounts_coredns.volumes }}{{ toYaml $mounts_coredns.volumes | indent 8 }}{{ end }}
