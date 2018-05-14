@@ -19,6 +19,8 @@ kind: Pod
 metadata:
   name: haproxy
   namespace: {{ .Release.Namespace }}
+  labels:
+{{ tuple $envAll "kubernetes" "haproxy" | include "helm-toolkit.snippets.kubernetes_metadata_labels" | indent 4 }}
 spec:
   hostNetwork: true
   containers:
