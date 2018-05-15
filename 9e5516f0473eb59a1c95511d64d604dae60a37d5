@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca618805_99221388",
+        "filename": "charts/promenade/templates/tests/test-promenade-api.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-15T12:32:16Z",
+      "side": 1,
+      "message": "I think this will need to match the name of the dependency set we want, in this case \"test\": https://github.com/openstack/openstack-helm-infra/blob/master/helm-toolkit/templates/snippets/_kubernetes_entrypoint_init_container.tpl#L34",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "9e5516f0473eb59a1c95511d64d604dae60a37d5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
