@@ -15,15 +15,29 @@
 HELM ?= helm
 HELM_PIDFILE ?= $(abspath ./.helm-pid)
 
+TEST_BIN_DIR := $(abspath ./.bin)
+
 CHARTS := $(patsubst charts/%/.,%,$(wildcard charts/*/.))
 
 .PHONY: all
 all: charts lint
 
 .PHONY: tests
-tests: gate-lint
-	tox
+tests: test-deps
+	PATH=$(TEST_BIN_DIR):$$PATH tox -e lint,coverage,gate-lint,bandit,docs
 
+.PHONY: test-deps
+test-deps: gate-lint-deps install-cfssl
+
+.PHONY: install-cfssl
+install-cfssl:
+	if [ ! -x "$(TEST_BIN_DIR)/cfssl" ]; then \
+		mkdir $(TEST_BIN_DIR) ; \
+		curl -Lo $(TEST_BIN_DIR)/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 ; \
+		chmod 555 $(TEST_BIN_DIR)/cfssl ; \
+	fi
+
+.PHONY: chartbanner
 chartbanner:
 	@echo Building charts: $(CHARTS)
 

@@ -7,11 +7,16 @@ charts/*/charts
 charts/*/requirements.lock
 
 # Build & test artifacts
+.bin
 .eggs
 .fiotest
 .git
 .helm-pid
 .tox
+.pytest_cache
+.coverage.*
+.coverage
+.coveragerc
 AUTHORS
 ChangeLog
 build
