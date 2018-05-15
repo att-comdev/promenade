@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a79c193_779c3495",
+        "filename": "tools/functional-coverage.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-15T21:53:06Z",
+      "side": 1,
+      "message": "Coverage usually only captures unit test coverage. Is it worth capturing coverage functionally too?",
+      "revId": "9a6599131749ec397779f487d9f34db8f08faf40",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "375a80ef_cff7626c",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-15T21:53:06Z",
+      "side": 1,
+      "message": "Should we add coverage here for CICD to pick it up automatically?",
+      "revId": "9a6599131749ec397779f487d9f34db8f08faf40",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
