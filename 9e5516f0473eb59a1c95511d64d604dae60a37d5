@@ -22,6 +22,30 @@
       "revId": "9e5516f0473eb59a1c95511d64d604dae60a37d5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0774a4e_8727efde",
+        "filename": "charts/promenade/templates/tests/test-promenade-api.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2018-05-15T13:47:43Z",
+      "side": 1,
+      "message": "Agree. Will update.",
+      "parentUuid": "ca618805_99221388",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "9e5516f0473eb59a1c95511d64d604dae60a37d5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
