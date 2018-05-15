@@ -74,3 +74,7 @@ def genereate_certs(*, config_files, output_dir):
 
 def _debug():
     return os.environ.get('PROMENADE_DEBUG', '').lower() in {'1', 'True'}
+
+
+if __name__ == '__main__':
+    promenade()

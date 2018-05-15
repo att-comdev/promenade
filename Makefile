@@ -21,8 +21,8 @@ CHARTS := $(patsubst charts/%/.,%,$(wildcard charts/*/.))
 all: charts lint
 
 .PHONY: tests
-tests: gate-lint
-	tox
+tests:
+	tox -e lint,coverage,gate-lint,bandit,docs
 
 chartbanner:
 	@echo Building charts: $(CHARTS)

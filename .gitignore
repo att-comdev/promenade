@@ -11,6 +11,9 @@
 /.eggs
 /.helm-pid
 /.tox
+/.pytest_cache
+/.coverage.*
+/.coverage
 /build
 /conformance
 /promenade.egg-info

@@ -12,6 +12,10 @@ charts/*/requirements.lock
 .git
 .helm-pid
 .tox
+.pytest_cache
+.coverage.*
+.coverage
+.coveragerc
 AUTHORS
 ChangeLog
 build
