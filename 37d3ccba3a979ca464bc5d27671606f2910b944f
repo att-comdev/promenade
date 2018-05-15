@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb702b9a_54ddac08",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-05-15T14:16:30Z",
+      "side": 1,
+      "message": "Consider reusing ValidationMessage class, just enhance it to pass in a success message.  That way you don\u0027t have to manually create the JSON structure twice.",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "37d3ccba3a979ca464bc5d27671606f2910b944f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0b1ed71_e771445f",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-05-15T14:16:30Z",
+      "side": 1,
+      "message": "The standard calls for status to be \u0027Success\u0027 or \u0027Failure\u0027.",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "37d3ccba3a979ca464bc5d27671606f2910b944f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14f0c00a_44a5f284",
+        "filename": "promenade/control/validatedesign.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-05-15T14:16:30Z",
+      "side": 1,
+      "message": "The code should be a unique code for Promenade that can be documented, not just a HTTP status code.  Drydock\u0027s example: https://github.com/att-comdev/drydock/blob/c27c8e6c9b6b0b60efdba7f21927f7da600ba73a/drydock_provisioner/orchestrator/validations/ip_locality_check.py#L21",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "37d3ccba3a979ca464bc5d27671606f2910b944f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0796bc9b_5da2b5ca",
+        "filename": "promenade/utils/validation_message.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-05-15T14:16:30Z",
+      "side": 1,
+      "message": "These two fields could be populated when get_output() is called.  It can check error count and determine if it is a Success or Failure.  Should make it easier to use in a non-error scenario.",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "37d3ccba3a979ca464bc5d27671606f2910b944f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7fafabd_38b94fea",
+        "filename": "promenade/validation.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-05-15T14:16:30Z",
+      "side": 1,
+      "message": "Consider renaming.  This is really a validation, there doesn\u0027t have to be an error.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "37d3ccba3a979ca464bc5d27671606f2910b944f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
