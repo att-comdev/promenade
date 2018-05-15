@@ -21,9 +21,21 @@ CHARTS := $(patsubst charts/%/.,%,$(wildcard charts/*/.))
 all: charts lint
 
 .PHONY: tests
-tests: gate-lint
-	tox
+tests: test-deps
+	PATH=.bin:$(PATH) tox -e lint,coverage,gate-lint,bandit,docs
 
+.PHONY: test-deps
+test-deps: gate-lint-deps install-cfssl
+
+.PHONY: install-cfssl
+install-cfssl:
+	if [ ! -x ".bin/cfssl" ]; then \
+		mkdir .bin ; \
+		curl -Lo .bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 ; \
+		chmod 555 .bin/cfssl ; \
+	fi
+
+.PHONY: chartbanner
 chartbanner:
 	@echo Building charts: $(CHARTS)
 
