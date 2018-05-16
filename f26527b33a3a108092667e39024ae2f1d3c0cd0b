@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07aa03d1_23e8a9df",
+        "filename": "promenade/templates/roles/genesis/etc/kubernetes/manifests/kubernetes-apiserver.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-05-16T14:13:54Z",
+      "side": 1,
+      "message": "Should this be \u0027kube-apiserver\u0027 or should \u0027kube-scheduler\u0027, \u0027kube-controller-manager\u0027, etc drop the \u0027kube-\u0027 prefix?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "f26527b33a3a108092667e39024ae2f1d3c0cd0b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
