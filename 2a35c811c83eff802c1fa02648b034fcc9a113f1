@@ -33,6 +33,29 @@
       "revId": "2a35c811c83eff802c1fa02648b034fcc9a113f1",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c9191dc_b5ff1a1d",
+        "filename": "promenade/promenade_cli/cli.py",
+        "patchSetId": 31
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1011940
+      },
+      "writtenOn": "2018-05-16T22:23:32Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure what e.display does, but I can guess it\u0027s logging, with configurable log level. \nClick provides context methods if you want to use them (see [0]) that will provide exit codes and failure messages and etc... through its own mechanism. I don\u0027t know that they would do anything more than what you\u0027ve done here, but for your consideration.\n\n[0]: https://github.com/att-comdev/shipyard/blob/14d66afb012025a5289818d8e8d2092ccce19ffa/src/bin/shipyard_client/shipyard_client/cli/create/commands.py#L66",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "2a35c811c83eff802c1fa02648b034fcc9a113f1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
