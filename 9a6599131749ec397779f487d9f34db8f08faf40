@@ -69,6 +69,24 @@
       "revId": "9a6599131749ec397779f487d9f34db8f08faf40",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5e7b0df_eec04c28",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-16T14:08:25Z",
+      "side": 1,
+      "message": "Ah, it turns out that the make tests entrypoint has just merged :)",
+      "parentUuid": "eadc1780_584bbd4e",
+      "revId": "9a6599131749ec397779f487d9f34db8f08faf40",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
