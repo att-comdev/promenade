@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "952aebf3_b18899d2",
+        "filename": "docs/source/client.rst",
+        "patchSetId": 31
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-16T16:30:10Z",
+      "side": 1,
+      "message": "Would be nice to add Promenade CLI client docs in follow up",
+      "revId": "2a35c811c83eff802c1fa02648b034fcc9a113f1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8f00385_7f6a56eb",
+        "filename": "docs/source/client.rst",
+        "patchSetId": 31
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011942
+      },
+      "writtenOn": "2018-05-16T16:30:10Z",
+      "side": 1,
+      "message": "A code example would be nice. How do we initialize it, use it, etc.?",
+      "revId": "2a35c811c83eff802c1fa02648b034fcc9a113f1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
