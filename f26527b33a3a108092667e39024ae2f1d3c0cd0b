@@ -46,6 +46,30 @@
       "revId": "f26527b33a3a108092667e39024ae2f1d3c0cd0b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e34418c6_7a5b6705",
+        "filename": "promenade/templates/roles/genesis/etc/kubernetes/manifests/kubernetes-apiserver.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2018-05-16T14:40:48Z",
+      "side": 1,
+      "message": "Ok. I will keep it as it is then.",
+      "parentUuid": "9ff9c52c_0d2dbaeb",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "f26527b33a3a108092667e39024ae2f1d3c0cd0b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
