@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "958d27d5_db84cb78",
+        "filename": "tools/functional-coverage.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-16T12:55:12Z",
+      "side": 1,
+      "message": "Capturing coverage from functional tests is typical in my experience.  It\u0027s going to be a little more work to actually capture it from the APIs, but we can get there.",
+      "parentUuid": "5a79c193_779c3495",
+      "revId": "9a6599131749ec397779f487d9f34db8f08faf40",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "375a80ef_cff7626c",
         "filename": "tox.ini",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-15T21:53:06Z",
       "side": 1,
       "message": "Should we add coverage here for CICD to pick it up automatically?",
+      "revId": "9a6599131749ec397779f487d9f34db8f08faf40",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eadc1780_584bbd4e",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-16T12:55:12Z",
+      "side": 1,
+      "message": "CICD is supposed to be using `make tests`.  I figure we can adapt the default tox envlist for developers.",
+      "parentUuid": "375a80ef_cff7626c",
       "revId": "9a6599131749ec397779f487d9f34db8f08faf40",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
