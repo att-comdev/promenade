@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "018ce7da_b9a78dd0",
+        "filename": "charts/coredns/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2018-05-16T01:07:05Z",
+      "side": 1,
+      "message": "Agree. Will remove.",
+      "parentUuid": "41065af8_4a417de1",
+      "revId": "bd7f59520c5073d27661c746a80bfca028b79260",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ab03341_b74558e1",
         "filename": "charts/coredns/values.yaml",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "20c114e2_27a975f1",
+        "filename": "charts/coredns/values.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2018-05-16T01:07:05Z",
+      "side": 1,
+      "message": "Agree",
+      "parentUuid": "8ab03341_b74558e1",
+      "revId": "bd7f59520c5073d27661c746a80bfca028b79260",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c1d66cc_88abd8d2",
         "filename": "tools/cleanup.sh",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2018-05-14T13:36:14Z",
       "side": 1,
       "message": "I think this needs to stay /var/lib/openstack-helm.  This directory is just used by some components (like ceph) to store data.",
+      "revId": "bd7f59520c5073d27661c746a80bfca028b79260",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b052fcb_29db751e",
+        "filename": "tools/cleanup.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2018-05-16T01:07:05Z",
+      "side": 1,
+      "message": "Ok. Will not make any changes to it.",
+      "parentUuid": "0c1d66cc_88abd8d2",
       "revId": "bd7f59520c5073d27661c746a80bfca028b79260",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false

@@ -16,6 +16,24 @@
       "revId": "ccdaceabf30c8cd42661a95e05f72a630b5310a0",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "784f3233_7eab3b21",
+        "filename": "charts/promenade/templates/tests/test-promenade-api.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2018-05-16T01:07:05Z",
+      "side": 0,
+      "message": "Agree. This has been addressed by the other p.s., i.e. https://review.gerrithub.io/#/c/att-comdev/promenade/+/411130/ that was reviewed and merged earlier.",
+      "parentUuid": "2e381226_ec2ed9a0",
+      "revId": "ccdaceabf30c8cd42661a95e05f72a630b5310a0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
