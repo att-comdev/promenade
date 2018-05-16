@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c883ca10_8fbacb77",
+        "filename": "charts/etcd/templates/etc/_kubernetes-etcd.yaml.tpl",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011672
+      },
+      "writtenOn": "2018-05-16T14:53:18Z",
+      "side": 1,
+      "message": "So I think that this needs to be generalized - probably in the anchor/daemonset too.\n\nThe issue is that we use this chart as part of two applications: kubernetes and calico.  I would expect we probably want the labels to be like the following.\n\nfor the static pod:\n  application: calico\n  component: etcd\n\nfor the anchor:\n  application: calico\n  component: etcd-anchor",
+      "revId": "f7bc8990b6fdb075017699f2f34dcaa05f7d8205",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
