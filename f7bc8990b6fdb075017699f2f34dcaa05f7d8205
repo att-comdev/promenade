@@ -16,6 +16,24 @@
       "revId": "f7bc8990b6fdb075017699f2f34dcaa05f7d8205",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f20e6b98_39b08a09",
+        "filename": "charts/etcd/templates/etc/_kubernetes-etcd.yaml.tpl",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011947
+      },
+      "writtenOn": "2018-05-17T07:27:41Z",
+      "side": 1,
+      "message": "Ok, I will try and make an update in the next p.s. by keeping only the application name so that we can differentiate between application and component.",
+      "parentUuid": "c883ca10_8fbacb77",
+      "revId": "f7bc8990b6fdb075017699f2f34dcaa05f7d8205",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
