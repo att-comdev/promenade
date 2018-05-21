@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c3e234a_05e17172",
+        "filename": "promenade/utils/validation_message.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1013049
+      },
+      "writtenOn": "2018-05-21T18:45:05Z",
+      "side": 1,
+      "message": "I don\u0027t think you want to use HTTP Status Codes.  The codes should be something unique to Promenade so they can be documented.  Any example from Drydock is \u0027DD2002\u0027, https://github.com/openstack/airship-drydock/blob/506e06623a5f1c11c0d34f2089851cc8381f06ae/drydock_provisioner/orchestrator/validations/ip_locality_check.py#L21",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "ab4c9c108ec87ed0c8e6dc0854dde47e5ccf208f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
