@@ -22,6 +22,30 @@
       "revId": "ab4c9c108ec87ed0c8e6dc0854dde47e5ccf208f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "370b8eac_a755f7a0",
+        "filename": "promenade/utils/validation_message.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1012359
+      },
+      "writtenOn": "2018-05-23T14:32:29Z",
+      "side": 1,
+      "message": "Thank you for the feedback. Unless I\u0027m misunderstanding something, it seems that the code field is intended for HTTP Status Codes, according to the UCP integration documentation (https://github.com/att-comdev/ucp-integration/blob/master/docs/source/api-conventions.rst#status-responses). Please correct me if I\u0027m wrong.",
+      "parentUuid": "1c3e234a_05e17172",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "ab4c9c108ec87ed0c8e6dc0854dde47e5ccf208f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
